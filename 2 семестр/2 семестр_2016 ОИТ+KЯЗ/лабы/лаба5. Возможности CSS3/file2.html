@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Дополнение</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+		#blok{
+			background-color: hsla(89,80%,55%,0.9);
+			text-shadow:1px 1px 2px;/*text-shadow+text-overflow*/
+			text-overflow:clip;
+			transform:translate(20px,40px);
+			transform:rotate(-3deg);
+			transform:scale(2,1);
+			transform:skew(1deg,2deg);
+		}
+		#blok_2{
+			background-color: hsl(160,40%,80%);/*после цветов рамки*/ 
+		}
+		#border_1{/*рамка*/
+			border: 5px solid;
+			width:200px;
+			border-color: hsl(200, 70%,40%);
+			padding-left: 20px;
+			margin-right: 1150px;
+			border-radius: 20px;
+			box-shadow: 0px 0px 5px 2px;
+			-webkit-transition: width 4s; 
+		}
+		#border_1:hover{
+				width: 600px;
+		}	
+		#border_2{
+			border: 5px double;/*картинка далее шрифты*/
+			border-color: hsl(150, 70%,40%);
+			width:100px;
+			padding-left: 20px;
+			margin-right: 1150px;
+			border-radius: 20px;
+			border-image:url(4.jpg);
+			-webkit-transition: color 4s, width 4s, background-color 4s;
+		}
+		#border_2:hover{
+			color:#0f0;
+			width:600px;
+			background-color: #c00;
+		}
+			#img{
+				background:-webkit-linear-gradient(left, green 0%, yellow 50%, red 100%);
+			}
+	</style>
+</head>
+<body>
+<h3>
+	<div id="blok">
+		<p>div и span применяются вместе с каскадными таблицами стилей. По отдельности они не вызывают больших изменений. Факт в том, что тег span вообще не влияет визуально на контент. Использование тега div приведет к «блокировке» его содержимого, как если бы вы поставили тег br до и после секции на странице.
+		Как и большинство остальных тегов, div и span могут иметь класс, идентификатор и стилевые атрибуты. Благодаря этим атрибутам стили можно применять к элементам. Теги применяются таким же способом, как и другие HTML-теги. Допускается вложенность одних тегов в другие в несколько уровней.
+		</p>		
+	</div>
+
+		<div id="blok_2">
+			<p>Это упражнение научит вас как добавлять классы (class) и атрибуты идентификаторов (id) тегам div и span HTML-страницы, которые уже существуют. HTML-страница уже имеет встроенную таблицу стилей, которая должна оставаться без изменений. Ваша задача состоит в том, чтобы сделать так, что страница выглядит как следует.
+			Никаких подробных инструкций. Просто анализируйте правила во встроенной таблице стилей, используйте классы и идентификаторы id и соответствующим образом применяйте их.
+			</p>
+		</div>
+</h3>
+			<h2 align="center"> Рисунок</h2>
+			<center><a href="laba4.html" target="_blank"><div id="img"><img src="D:/обои на рабочий стол/632e165af79b7d87a011f222c61360f9.jpg" /></div></center></a>
+			<span>&copy; Куницкий Никита Дмитриевич</span>
+			<ul type="circle">
+
+			<div id="border_1"> <li><a href="primer1.html" target="_blank">Пример №1</a></li>
+				<li><a href="primer2.html" target="_blank">Пример №2</a></li>
+				<li><a href="primer3.html" target="_blank">Пример №3</a></li>
+			</div> <li><a href="primer4.html" target="_blank">Пример №4</a></li>
+			<div id="border_2"><li><a href="primer5.html" target="_blank">Пример №5</a></li>
+				<li><a href="primer6.html" target="_blank">Пример №6</a></li>
+			<li><a href="primer7.html" target="_blank">Пример №7</a></li></div>
+			</ul>
+</body>
+</html>

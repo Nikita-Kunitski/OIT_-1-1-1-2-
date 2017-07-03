@@ -1,0 +1,1394 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Синтаксис CSS2 и базовые типы данных</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html"><link rel="next" href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><center><!--#include virtual="/lvt.htm"--></center><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">предыдущий</a>
+  &nbsp; <a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div><hr class="navbar"><H1 align="center">4&nbsp; Синтаксис CSS2 и
+базовые типы данных</H1>
+<div class="subtoc"><p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#syntax" class="tocxref">4.1 Синтаксис</a><ul class="toc">
+<li class="tocline3"><a href="#tokenization" class="tocxref">4.1.1 Лексический
+  разбор</a>
+<li class="tocline3"><a href="#keywords" class="tocxref">4.1.2 Ключевые
+  слова</a>
+<li class="tocline3"><a href="#q4" class="tocxref">4.1.3 Символы и регистр</a>
+<li class="tocline3"><a href="#q5" class="tocxref">4.1.4 Операторы</a>
+<li class="tocline3"><a href="#at-rules" class="tocxref">4.1.5 at-правила (<span class="index-def" title="at-rule">at-rules)</span></a>
+<li class="tocline3"><a href="#block" class="tocxref">4.1.6 Блоки</a>
+<li class="tocline3"><a href="#q8" class="tocxref">4.1.7 Наборы правил,
+  блоки объявлений и селекторы</a>
+<li class="tocline3"><a href="#declaration" class="tocxref">4.1.8 Объявления
+  и свойства</a>
+<li class="tocline3"><a href="#comments" class="tocxref">4.1.9 Комментарии</a></ul>
+<li class="tocline2"><a href="#parsing-errors" class="tocxref">4.2 Правила
+  обработки ошибок грамматического разбора</a>
+<li class="tocline2"><a href="#values" class="tocxref">4.3 Значения</a><ul class="toc">
+<li class="tocline3"><a href="#q13" class="tocxref">4.3.1 Целые и вещественные
+  числа</a>
+<li class="tocline3"><a href="#length-units" class="tocxref">4.3.2 Размеры</a>
+<li class="tocline3"><a href="#percentage-units" class="tocxref">4.3.3 Процентные</a>
+<li class="tocline3"><a href="#uri" class="tocxref">4.3.4 URL + URN = URI</a>
+<li class="tocline3"><a href="#counter" class="tocxref">4.3.5 Счётчики</a>
+<li class="tocline3"><a href="#color-units" class="tocxref">4.3.6 Цвета</a>
+<li class="tocline3"><a href="#q19" class="tocxref">4.3.7 Угловые значения</a>
+<li class="tocline3"><a href="#q20" class="tocxref">4.3.8 Время</a>
+<li class="tocline3"><a href="#q21" class="tocxref">4.3.9 Частоты</a>
+<li class="tocline3"><a href="#strings" class="tocxref">4.3.10 Строки</a></ul>
+<li class="tocline2"><a href="#q23" class="tocxref">4.4
+  Представление документа CSS</a>
+<ul class="toc">
+<li class="tocline3"><a href="#q24" class="tocxref">4.4.1 Мнемоники
+  символов, не представленных в кодировке</a>
+</ul></ul></div><H2><br>
+4.1 <a name="syntax">Синтаксис</a></H2>
+
+<P>В этом разделе описывается грамматика (и
+правила <a name="x0"><span class="index-def"
+title="forward-compatible parsing"><dfn>вперёд-совместимого разбора</dfn></span></a>),
+общие для любой версии CSS (включая CSS2).
+Будущие версии CSS будут придерживаться
+этого ядра синтаксиса, хотя и могут ввести
+дополнительные синтаксические ограничения.
+
+<P>Эти описания являются нормативными. Они
+также дополняются нормативными
+грамматическими правилами в <a
+href="grammar.html" tppabs="http://pyramidin.narod.ru/css2/grammar.html">Приложении D</a>.
+
+<H3><br>
+4.1.1 <a name="tokenization">Лексический разбор</a></H3>
+
+<P>Все уровни CSS - уровень 1, уровень 2 и любые
+будущие уровни - используют одно ядро
+синтаксиса. Это позволяет пользовательским
+агентам (ПА) разбирать (хотя и не полностью
+понимать) таблицы стилей, написанные в
+уровнях CSS, ещё не существовавших в момент
+создания ПА. Дизайнеры могут использовать
+это свойство для создания таблиц стилей,
+работающих со старыми ПА, применяя также
+возможности позднейших уровней CSS.<P>На
+лексическом уровне таблицы стилей CSS
+состоят из последовательности лексем (грамматических
+единиц). Список лексем CSS2 приведён ниже.
+Определения используют общепринятые
+выражения в стиле Lex. Восьмеричные коды
+относятся к ISO 10646 (<a href="refs.html#ref-ISO10646" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ISO10646" rel="biblioentry" class="noxref"><span class="normref">[ISO10646]</span></a>).
+Как и в Lex, в случае нескольких
+одновременных совпадений, самое длинное
+совпадение определяет лексему.<P>&nbsp;
+
+<TABLE width="100%">
+<THEAD>
+<TR><TH>
+    <p align="left">Лексема		<TH>
+    <p align="left">Определение
+</THEAD>
+<TR><TD colspan=2><HR>
+<TR><TD>IDENT		<TD><code><var>{ident}</var></code>
+<TR><TD>ATKEYWORD	<TD><code>@<var>{ident}</var></code>
+<TR><TD>STRING		<TD><code><var>{string}</var></code>
+<TR><TD>HASH		<TD><code>#<var>{name}</var></code>
+<TR><TD>NUMBER		<TD><code><var>{num}</var></code>
+<TR><TD>PERCENTAGE	<TD><code><var>{num}</var>%</code>
+<TR><TD>DIMENSION	<TD><code><var>{num}{ident}</var></code>
+<TR><TD>URI		<TD><code>url\(<var>{w}{string}{w}</var>\)<br>
+		|url\(<var>{w}</var>([!#$%&amp;*-~]|<var>{nonascii}</var>|<var>{escape}</var>)*<var>{w}</var>\)</code>
+<TR><TD>UNICODE-RANGE	<TD><code>U\+[0-9A-F?]{1,6}(-[0-9A-F]{1,6})?</code>
+<TR><TD>CDO		<TD><code>&lt;!--</code>
+<TR><TD>CDC		<TD><code>--&gt;</code>
+<TR><TD>;		<TD><code>;</code>
+<TR><TD>{		<TD><code>\{</code>
+<TR><TD>}		<TD><code>\}</code>
+<TR><TD>(		<TD><code>\(</code>
+<TR><TD>)		<TD><code>\)</code>
+<TR><TD>[		<TD><code>\[</code>
+<TR><TD>]		<TD><code>\]</code>
+<TR><TD>S		<TD><code>[ \t\r\n\f]+</code>
+<TR><TD>COMMENT		<TD><code>\/\*[^*]*\*+([^/][^*]*\*+)*\/</code>
+<TR><TD>FUNCTION	<TD><code><var>{ident}</var>\(</code>
+<TR><TD>INCLUDES	<TD><code>~=</code>
+<TR><TD>DASHMATCH	<TD><code>|=</code>
+<TR><TD>DELIM		<TD><var>любой другой символ, не
+    совпавший с вышеприведёнными правилами</var>
+</TABLE>
+
+<P>&nbsp;
+
+<P>Вышеприведённые макросы в фигурных
+скобках ({}) определены так:
+
+<P>&nbsp;
+
+<TABLE width="100%">
+<THEAD>
+<TR><TH align="left">Макрос	<TH align="left">Определение
+</THEAD>
+<TR><TD colspan=2><HR>
+<TR><TD>ident	<TD><code><var>{nmstart}{nmchar}*</var></code>
+<TR><TD>name	<TD><code><var>{nmchar}+</var></code>
+<TR><TD>nmstart	<TD><code>[a-zA-Z]|<var>{nonascii}</var>|<var>{escape}</var></code>
+<TR><TD>nonascii<TD><code>[^\0-\177]</code>
+<TR><TD>unicode	<TD><code>\\[0-9a-f]{1,6}[ \n\r\t\f]?</code>
+<TR><TD>escape	<TD><code><var>{unicode}</var>|\\[ -~\200-\4177777]</code>
+<TR><TD>nmchar	<TD><code>[a-z0-9-]|<var>{nonascii}</var>|<var>{escape}</var></code>
+<TR><TD>num	<TD><code>[0-9]+|[0-9]*\.[0-9]+</code>
+<TR><TD>string	<TD><code><var>{string1}</var>|<var>{string2}</var></code>
+<TR><TD>string1	<TD><code>\"([\t !#$%&amp;(-~]|\\{nl}|\'|<var>{nonascii}</var>|<var>{escape}</var>)*\"</code>
+<TR><TD>string2	<TD><code>\'([\t !#$%&amp;(-~]|\\{nl}|\"|<var>{nonascii}</var>|<var>{escape}</var>)*\'</code>
+<TR><TD>nl	<TD><code>\n|\r\n|\r|\f</code>
+<TR><TD>w	<TD><code>[ \t\r\n\f]*</code>
+</TABLE>
+
+<P>&nbsp;<P>Ниже дан синтаксис ядра CSS. В
+последующих разделах описывается, как этот
+синтаксис использовать. <a href="grammar.html" tppabs="http://pyramidin.narod.ru/css2/grammar.html">Приложение
+D</a>  описывает более ограниченный набор
+грамматических правил исключительно для
+уровня 2 языка CSS.
+
+<PRE>stylesheet  : [ CDO | CDC | S | statement ]*;
+statement   : ruleset | at-rule;
+at-rule     : ATKEYWORD S* any* [ block | ';' S* ];
+block       : '{' S* [ any | block | ATKEYWORD S* | ';' ]* '}' S*;
+ruleset     : selector? '{' S* declaration? [ ';' S* declaration? ]* '}' S*;
+selector    : any+;
+declaration : property ':' S* value;
+property    : IDENT S*;
+value       : [ any | block | ATKEYWORD S* ]+;
+any         : [ IDENT | NUMBER | PERCENTAGE | DIMENSION | STRING
+              | DELIM | URI | HASH | UNICODE-RANGE | INCLUDES
+              | FUNCTION | DASHMATCH | '(' any* ')' | '[' any* ']' ] S*;
+</PRE>
+
+<P>Лексемы <a name="comment">КОММЕНТАРИЕВ</a> в
+грамматике отсутствуют (для сохранения
+читабельности), но некоторое количество
+этих лексем может появляться где-либо среди
+других лексем.<p><a name="whitespace">Л</a>ексема S в вышеприведённой
+грамматике стоит вместо пробела. Только
+символы &quot;space&quot; (Unicode
+code 32), "tab" (9), "line feed" (10), &quot;carriage return&quot; (13) и
+&quot;form feed&quot; (12) могут служить пробелами.
+Другие &quot;пробелоподобные&quot; символы,
+такие как "em-space" (8195) и "ideographic space" (12288),
+никогда не могут быть пробелами.
+
+<H3><br>
+4.1.2 <a name="keywords">Ключевые слова</a></H3>
+
+
+
+<P>Ключевые слова имеют форму
+идентификаторов. Ключевые слова обязаны не
+размещаться между кавычками ("..." или '...').
+Таким образом,
+
+<pre>red</pre>
+
+<p>это ключевое слово, а&nbsp;
+
+<pre>&quot;red&quot;</pre>
+
+- нет (это <a href="#strings">строка</a>). Другие
+неверные примеры:
+
+<div class="illegal-example"><P style="display:none">Примеры
+  неверного использования:</P>
+<pre>width: &quot;auto&quot;;
+border: &quot;none&quot;;
+font-family: &quot;serif&quot;;
+background: &quot;red&quot;;
+</pre>
+</div>
+
+
+<H3><a name="q4">4.1.3 Символы и регистр</a></H3>
+<P>  Следующие правила всегда соблюдаются:</p>
+
+<UL>
+    <LI> Все таблицы стилей CSS нечувствительны
+      к регистру, за исключением тех частей,
+      которые не контролируются CSS. Например,
+      чувствительность к регистру значений
+      атрибутов "id" и &quot;class&quot;, имён шрифтов и
+      URI в HTML находится вне пределов действия
+      этой спецификации. Особо отметьте, что
+      имена элементов нечувствительны к
+      регистру в HTML, но чувствительны в XML.
+
+    <LI> В CSS2 <span class="index-def"
+    title="identifier|identifier, definition of"><a
+    name="value-def-identifier"><dfn>идентификаторы</dfn></a></span>
+      (включая имена элементов, классы и ID в <a
+    href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">селекторах</a>) могут содержать
+      только символы [A-Za-z0-9] и символы ISO 10646 от 161
+      и выше и дефис (-); они не могут начинаться
+      с дефиса или цифры. Они могут также
+      содержать escape-последовательности и
+      любые символы и цифровые коды ISO 10646 (см.
+      далее). <span class="example">Например,
+      идентификатор "B&amp;W?" можно записать как
+      &quot;B\&amp;W\?" или &quot;B\26 W\3F&quot;.</span>
+      <P>Заметьте, что Unicode это покодовый
+      эквивалент ISO 10646 (см.
+    <a href="refs.html#ref-UNICODE" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-UNICODE" rel="biblioentry" class="noxref"><span class="normref">[UNICODE]</span></a>
+      и <a href="refs.html#ref-ISO10646" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ISO10646" rel="biblioentry" class="noxref"><span class="normref">[ISO10646]</span></a>).
+
+    <LI> В CSS2 символ обратного слэша (\)
+      обозначает три типа <span class="index-def" title="backslash escapes"><a name="escaped-characters">символов
+      - escape-последовательностей</a></span>.<P>1. В <a href="#strings">строке</a>
+      обратный слэш, после которого идёт новая
+      строка, игнорируется (т.е. считается, что
+      строка не содержит ни обратных слэшей,
+      ни переводов строки).<P>2. Отменяет
+      значение специальных символов CSS. Любой
+      символ (исключая 16-ричные числа) может
+      войти в escape-последовательность с
+      помощью обратного слэша для отмены
+      своего специального значения. Например, <samp>"\""</samp> 
+      это строка. состоящая из одной двойной
+      кавычки. Препроцессоры таблиц стилей
+      обязаны не удалять эти слэши из таблиц
+      стилей до тех пор, пока они не изменят
+      значения таблицы стилей.<P>3. Escape-последовательности
+      с обратным слэшем позволяют авторам обращаться
+      к символам, которые не могут быть
+      напрямую помещены в документ. В таких
+      случаях используется обратный слэш,
+      после которого идут не более шести 16-ричных
+      цифр (0..9A..F), что соответствует символам ISO 10646 (<a href="refs.html#ref-ISO10646" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ISO10646" rel="biblioentry" class="noxref"><span class="normref">[ISO10646]</span></a>)
+      с этим числом. Если после 16-ричного числа
+      идёт цифра или буква, то конец числа
+      должен быть очищен. Есть два способа
+      сделать это:
+
+    <ol>
+    <li>пробел (или иной символ пробела): &quot;\26 B" ("&amp;B")
+    <li>предоставление точного 16-ричного числа
+      из шести цифр: &quot;\000026B&quot; ("&amp;B")
+    </ol>
+
+      <p>Фактически эти два метода можно
+      комбинировать. Только один символ
+      пробела игнорируется после 16-ричной escape-последовательности.
+      Заметьте, что это означает, что &quot;реальный&quot;
+      пробел после escape-последовательности
+      обязан или сам быть выражен с
+      использованием escape-последовательности,
+      или удвоен.
+
+    <LI>Escape-последовательности с обратным
+      слэшем всегда рассматриваются как часть <a
+    href="#value-def-identifier">идентификатора</a> или
+      строки (т.е. &quot;\7B&quot; это не пунктуация, а "{"
+      - она, и &quot;\32&quot; допускается в начале
+      имени класса, а "2" - нет).
+  </UL>
+
+<H3><a name="q5"><br>
+4.1.4 Операторы</a></H3>
+
+<P>Таблица стилей любой версии CSS состоит из
+списка
+<a name="x5"><span class="index-inst" title="statements"><em>операторов</em></span></a>
+(см. грамматику выше). Есть два вида
+операторов: <a name="x6"><span
+class="index-inst" title="at-rules"><em>at-правила</em></span></a> и <a name="x7"><span class="index-inst" title="rule sets"><em>наборы
+правил.</em></span></a> Вокруг операторов могут
+быть <a href="#whitespace">пробелы</a>.<P>В данной
+спецификации выражения &quot;непосредственно
+перед&quot; или &quot;сразу после&quot; означают отсутствие
+пробелов или комментариев.<H3><br>
+4.1.5 at-правила (<span class="index-def" title="at-rule"><a name="at-rules">at-rules</a>)</span></H3>
+
+<P>At-правила начинаются <DFN>at-ключевым словом</DFN>,
+символом '@', сразу после которого следует <a
+href="#value-def-identifier">идентификатор</a> (например, '@import',
+'@page').<P>At-правило состоит из вышеназванного
+и последующей точки с запятой (;) или <a href="#block">блока,</a>
+в зависимости от того, что идёт первым. ПА CSS,
+обнаруживающий нераспознаваемое at-правило,
+обязан <span class="index-inst" title="ignore"><a name="x9" href="#ignore">игнорировать</a></span>
+ всё это правило и продолжить разбор после
+него.<P>В CSS2 ПА обязан <span class="index-inst" title="ignore"><a name="x10"
+href="#ignore">игнорировать</a></span> любое правило <a
+href="cascade.html#at-import" tppabs="http://pyramidin.narod.ru/css2/cascade.html#at-import">'@import'</a>, которое появляется
+внутри&nbsp; <a
+href="#block">блока</a> или предшествует всем
+наборам правил.
+
+<div class="illegal-example"><P style="display:none">Пример
+  неверного использования:</P><P>
+Предположим, например, что разборщик CSS2
+обрабатывает такую таблицу стилей:
+
+<PRE>@import &quot;subs.css&quot;;
+H1 { color: blue }
+@import &quot;list.css&quot;;</PRE>
+
+<P> Второе '@import', в соответствии с CSS2,
+недопустимо. Разборщик CSS2
+<span class="index-inst" title="ignore"><a name="x11" href="#ignore">игнорирует</a></span>
+ всё at-правило, сокращая таблицу стилей до:
+
+<PRE>@import &quot;subs.css&quot;;
+H1 { color: blue }</PRE>
+</div>
+
+<div class="illegal-example"><P style="display:none">Пример
+  неверного использования:</P><P>
+Здесь второе правило '@import' - неверное,
+поскольку появляется внутри <a href="#block">блока</a>
+'@media'.
+
+<PRE>@import &quot;subs.css&quot;;
+@media print {
+  @import &quot;print-main.css&quot;;
+  BODY { font-size: 10pt }
+}
+H1 {color: blue }
+</PRE>
+</div>
+
+<H3>4.1.6 <a name="block">Блоки</a></H3>
+
+<P> <a name="x12"><span class="index-inst" title="block"><em>Блок </em></span></a>начинается
+с левой фигурной скобки ({) и заканчивается парной
+правой скобкой (}). Между ними могут
+находиться любые символы, кроме скобок ((&nbsp;)), квадратных скобок ([&nbsp;]) и
+фигурных скобок ({&nbsp;}), которые обязаны
+всегда использоваться в паре и могут
+вкладываться. Одиночные (') и двойные (")
+кавычки также обязаны использоваться
+парами, а символы между ними разбираются
+как <a name="x13"><span class="index-inst" title="string">строка</span></a><span class="index-inst" title="string">\string</span>.
+См. выше
+определение строки в <a href="#tokenization">Лексическом разборе</a>.
+
+
+<div class="illegal-example"><P style="display:none">Пример
+  неверного использования:</P>
+  <P>Это пример блока. Обратите внимание, что
+  правая скобка между двойными кавычками не
+  образует пары с открывающей скобкой блока,
+  а вторая одиночная кавычка - это <a href="#escaped-characters">escape-символ</a>,
+  не образующий пары с первой одиночной
+  кавычкой:
+
+<PRE>{ causta: &quot;}&quot; + ({7} * '\'') }</PRE>
+
+<P>Заметьте, что это неверное правило CSS2,
+образующее, тем не менее, блок, как указано
+выше.
+</div>
+
+<H3><a name="q8"><br>
+4.1.7 Наборы правил, блоки объявлений и
+селекторы</a></H3>
+
+<P>Набор правил (называемый также &quot;правило&quot;)
+состоит из селектора с последующим блоком
+объявлений.<P> <a name="x14"><span class="index-def"
+title="declaration-block"><dfn>Блок объявлений</dfn></span></a> (называемый
+также в последующем тексте {}-блоком)
+начинается с левой фигурной скобки ({) и
+заканчивается парной правой скобкой (}).
+Между ними может находиться список из 0 или
+более разделённых точкой с запятой (;)
+объявлений.<P> <a name="x15"><span class="index-def"
+title="selector"><em>Селектор</em></span></a> (см. также
+раздел <a
+href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">Селекторы</a>) состоит из чего-либо,
+предшествующего первой
+скобке (но не включая) ({). Селектор всегда идёт вместе с
+{}-блоком.
+Если ПА не может разобрать селектор (т.е.
+если он неверен в CSS2), он обязан также <span class="index-inst" title="ignore"><a name="x16"
+href="#ignore">игнорировать</a></span>  и {}-блок.<P>В CSS2
+запятая (,) имеет специальное значение в
+селекторах. Однако, поскольку не известно,
+примет ли запятая иные значения в
+последующих версиях CSS, весь оператор
+должен быть <span class="index-inst" title="ignore"><a name="x17"
+href="#ignore">проигнорирован</a>,</span>  если где-либо
+в селекторе имеется ошибка, даже если остальная
+часть селектора выглядит как
+соответствующая CSS2.
+
+<DIV class=illegal-example><P style="display:none">Пример
+  неверного использования:</P>
+  <P>Например, поскольку "&amp;" это неверная
+  лексема в селекторе CSS2, ПА CSS2 обязан
+<span class="index-inst" title="ignore"><a name="x18" href="#ignore">игнорировать</a></span>
+  всю вторую строку и не устанавливать
+  красный цвет в H3:
+<PRE>H1, H2 {color: green }
+H3, H4 &amp; H5 {color: red }
+H6 {color: black }</PRE>
+</DIV>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Это
+  более сложный пример. Первые две пары
+  фигурных скобок находятся внутри строки и
+  не обозначают конец селектора. Это - верный
+  оператор CSS2.
+<PRE>P[example=&quot;public class foo\
+{\
+    private int x;\
+\
+    foo(int x) {\
+        this.x = x;\
+    }\
+\
+}&quot;] { color: red }
+</PRE>
+</div>
+
+<H3>4.1.8 <a name="declaration">Объявления и свойства</a> </H3>
+
+<P> <a name="x19"><span class="index-def"
+title="declaration"><dfn>Объявление</dfn></span></a> может
+быть пустым или состоять из <a name="x20"><span class="index-inst"
+title="property">свойства</span></a> с последующими
+двоеточием (:) и значением. Вокруг каждого из
+них могут быть <a
+href="#whitespace">пробелы</a>.<p>В зависимости от
+способа работы селектора, несколько
+объявлений для одного селектора могут быть
+упорядочены точкой с запятой (;),
+разделяющей группы.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+Таким образом, следующие правила:</p>
+<pre>H1 { font-weight: bold }
+H1 { font-size: 12pt }
+H1 { line-height: 14pt }
+H1 { font-family: Helvetica }
+H1 { font-variant: normal }
+H1 { font-style: normal }</pre>
+
+<p>эквивалентны:</p>
+
+<pre>H1 {
+  font-weight: bold;
+  font-size: 12pt;
+  line-height: 14pt;
+  font-family: Helvetica;
+  font-variant: normal;
+  font-style: normal
+}</pre>
+</div>
+
+<P><a name="x68">Свойства</a> это <a
+href="#value-def-identifier">идентификаторы</a>. Между ними
+могут находиться любые символы, кроме скобок ((&nbsp;)), квадратных
+скобок ([&nbsp;]) и фигурных скобок ({&nbsp;}),
+которые обязаны всегда использоваться в
+паре, а точка с запятой вне строки обязана
+вводиться с использованием <a
+href="#escaped-characters">escape-последовательности</a>.
+Угловые, квадратные и круглые скобки могут
+вкладываться. Внутри кавычек символы
+разбираются как строка.<P>Синтаксис <a name="x21"><span class="index-def" title="value">значений</span></a>
+специфицируется отдельно для каждого
+свойства, но, в любом случае, значения
+выводятся из идентификаторов, строк, чисел,
+размеров, процентов, URI, цветов, углов,
+времени и частот.<P>ПА обязан <span class="index-inst" title="ignore"><a name="x22"
+href="#ignore">игнорировать</a></span>  объявление с
+неверным названием свойства или неверным
+значением. Каждое свойство CSS2 имеет свой
+собственный синтаксис и семантические
+ограничения для принимаемых значений.
+
+<div class="illegal-example"><P style="display:none">Пример
+  неверного использования:</P><P>Предположим,
+  что разборщик CSS2 обрабатывает такую
+  таблицу стилей:
+
+<PRE>H1 { color: red; font-style: 12pt }  /* Неверное значение: 12pt */
+P { color: blue;  font-vendor: any;  /* Неверное свойство: font-vendor */
+    font-variant: small-caps }
+EM EM { font-style: normal }</PRE>
+
+  <P>Второе объявление в первой строке имеет
+  неверное значение
+'12pt'. Второе объявление второй строки
+  содержит неопределённое свойство 'font-vendor'.
+  Разборщик CSS2 будет <span
+class="index-inst" title="ignore"><a name="x23" href="#ignore">игнорировать</a></span> 
+  эти объявления, уменьшая таблицу до:
+
+<PRE class="example">H1 { color: red; }
+P { color: blue;  font-variant: small-caps }
+EM EM { font-style: normal }
+</PRE>
+</div>
+
+<H3>4.1.9 <a name="comments">Комментарии</a></H3>
+
+<P><a name="x24">Комментарии</a> начинаются символом "/*" и
+заканчиваются символом "*/". Они могут
+появляться в любом месте между лексемами, и
+их содержимое не влияет на представление
+документа. Комментарии не могут
+вкладываться.<P>CSS допускает также SGML-ограничители
+комментариев ("&lt;!--" и "--&gt;") в определённых
+местах, но это не комментарии CSS. Они
+разрешены для ввода правил стиля в
+документе-источнике HTML (в элементе STYLE),
+чтобы спрятать эти правила от до-HTML 3.2
+ПАгентов. См. спецификацию HTML 4.0 (<a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="informref">[HTML40]</span></a>).
+
+
+<H2><br>
+4.2 <a name="parsing-errors">Правила обработки ошибок грамматического
+разбора</a></H2>
+
+<P>В некоторых случаях ПА обязан
+игнорировать часть неверной таблицы стилей.
+В этой спецификации <span class="index-def"
+title="ignore"><a name="ignore"><dfn>игнорирует</dfn></a></span> 
+означает, что ПА разбирает неверную часть (чтобы
+определить её начало и конец), но действует
+так, как будто её нет.<P>Для гарантий того,
+что новые свойства и новые значения для существующих свойств смогут быть добавлены
+в будущем, от ПА требуется соблюдение
+следующих правил при обработке следующих
+сценариев:</p>
+
+<UL>
+<LI><strong>Неизвестные свойства.</strong> ПА обязан <span
+class="index-inst" title="ignore"><a name="x26" href="#ignore">игнорировать</a></span>&nbsp;
+  <a
+href="#declaration">объявление</a> с неизвестным
+  свойством. Например, если в таблице стилей
+  указано:
+
+<PRE class="illegal-example">H1 { color: red; rotation: 70minutes }</PRE>
+
+  <P>ПА будет рассматривать это, как если бы в
+  таблице было:
+
+<PRE class="example">H1 { color: red }</PRE>
+
+<LI><strong>Неверные значения.</strong>  ПА обязан
+  игнорировать объявление с неверным
+  значением. Например:<PRE class="illegal-example">IMG { float: left }       /* корректно в CSS2 */
+IMG { float: left here }  /* &quot;here&quot; это неверное значение для 'float' */
+IMG { background: &quot;red&quot; } /* ключевые слова CSS2 не могут вводиться в кавычках */
+IMG { border-width: 3 }   /* для размеров должны быть указаны единицы измерения */
+</PRE>
+
+  Разборщик CSS2 примет первое правило и
+<span class="index-inst" title="ignore"><a name="x27" href="#ignore">проигнорирует</a></span>
+  остальные, как если бы таблица была такой:
+
+<PRE class="example">IMG { float: left }
+IMG { }
+IMG { }
+IMG { }</PRE>
+
+<P>ПА, соответствующий будущим
+спецификациям CSS, может учитывать также
+одно или более из следующих правил.</P>
+
+<LI><strong>Неверные at-ключевые слова.</strong>  ПА
+  обязаны <span
+class="index-inst" title="ignore"><a name="x28" href="#ignore">игнорировать</a></span> 
+  неверные ключевые слова at- вместе с тем,
+  что следует после них до (;) включительно
+  или до блока ({...}), в зависимости от того,
+  что идёт первым. Например, рассмотрим:
+
+<PRE class="illegal-example">@three-dee {
+  @background-lighting {
+    azimuth: 30deg;
+    elevation: 190deg;
+  }
+  H1 { color: red }
+}
+H1 { color: blue }</PRE>
+
+  <P>Правило от- '@three-dee' не входит в CSS2.
+  Следовательно, всё at-правило (до третьей
+  правой фигурной скобки включительно) <span
+class="index-inst" title="ignore"><a name="x29" href="#ignore">игнорируется</a>.</span>
+  ПА CSS2 <span class="index-inst" title="ignore"><a name="x30"
+href="#ignore">игнорирует</a></span>  его, уменьшая
+  таблицу до:</P>
+
+<PRE class="example">H1 { color: blue }
+</PRE>
+
+</UL>
+
+
+<H2>4.3 <a name="values">Значения</a></H2>
+
+<H3><a name="q13">4.3.1 Целые и вещественные числа</a></H3>
+
+<P>Значения некоторых типов могут принимать
+целые (обозначенные <span
+class="index-def" title="&lt;integer&gt;::definition of"><a
+name="value-def-integer" class="value-def">&lt;integer&gt;</a></span>) или
+реальные числа (обозначенные <span class="index-def"
+title="&lt;number&gt;::definition of"><a name="value-def-number"
+class="value-def">&lt;number&gt;</a></span>). Реальные и целые
+числа специфицируются только в
+десятеричной нотации. &lt;integer&gt; состоит из
+одной или более цифр от "0" до "9". &lt;number&gt;
+может быть &lt;integer&gt; или ноль или более цифр
+с точкой (.), после которой идут одна или
+более цифр. И целые, и реальные числа могут
+иметь впереди "-" или "+" для указания знака
+числа.<P>Заметьте, что многие свойства,
+допускающие целые и реальные числа в
+качестве значения, на практике
+ограничивают значение некоторым
+диапазоном, часто неотрицательным
+значением.
+
+<H3><br>
+4.3.2 <A NAME="length-units">Размеры</A></H3>
+
+<P>Размеры имеют отношение к горизонтальным
+и вертикальным измерениям.<P>Формат
+значения размера (обозначаемого в этой
+спецификации <span class="index-def"
+title="&lt;length&gt;::definition of"><a name="value-def-length"
+class="value-def">&lt;length&gt;</a></span>) - это
+необязательный символ знака ('+' или '-', с '+'
+по умолчанию), после которого сразу идёт <a href="#value-def-number" class="noxref"><span
+class="value-inst-number">&lt;number&gt;</span></a>  (с или без
+десятичной точки), после которого сразу
+идёт идентификатор единиц измерения (например,
+px, deg и т.п.). После размера '0' единицы
+измерения не обязательны.<P>Некоторые
+свойства допускают негативные значения
+размеров, но это может усложнять модель
+форматирования и могут иметься ограничения,
+обусловленные конкретной реализацией. Если
+негативное значение размера не
+поддерживается, оно должно быть
+конвертировано до ближайшего
+поддерживаемого значения.<P><a name="absrel-units">Есть
+два типа единиц измерения: относительные и
+абсолютные.</a> <a name="x34"><span class="index-def" title="relative
+units"><em>Относительные размеры</em></span></a>
+специфицируют значение размера
+относительно какого-либо исходного
+свойства размера. Таблицы стилей,
+использующие относительные единицы
+измерения, легче масштабируются при
+переносе
+на различные носители (например, с дисплея
+компьютера на лазерный принтер).
+
+<P>Относительными единицами измерения
+являются:
+<ul>
+<li><strong>em</strong>: <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span class="propinst-font-size">'font-size'</span></a> 
+  соответствующего шрифта;
+<li><strong>ex</strong>: <span class="descinst">'x-height'</span> 
+  соответствующего шрифта;
+<li><strong>px</strong>: пикселы, относительно
+  устройства просмотра.
+</ul>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { margin: 0.5em }      /* em */
+H1 { margin: 1ex }        /* ex */
+P  { font-size: 12px }    /* px */</PRE>
+</div>
+
+<P>Единицы измерения <span class="index-def" title="em (unit)|quad width"><a
+name="em-width">'em'</a></span>   эквивалентны
+вычисленному значению свойства <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span class="propinst-font-size">'font-size'</span></a> 
+того элемента, в котором оно используется.
+Исключением является тот случай, когда 'em'
+появляется в самом значении свойства 'font-size',
+тогда оно относится к размеру шрифта
+родительского элемента. Может
+использоваться для вертикального или
+горизонтального измерения. (Эта единица
+измерения иногда называется
+quad-width/квад-ширина в типографском тексте.)<p>Единицы
+<span class="index-def" title="x-height|ex (unit)"><a
+name="ex">'ex'</a></span>  определяются <a href="fonts.html#descdef-x-height" tppabs="http://pyramidin.narod.ru/css2/fonts.html#descdef-x-height" class="noxref"><span
+class="descinst-x-height">'x-height'</span></a><span
+class="descinst-x-height"> шрифта</span>. x-height называется
+так, потому что она часто равна высоте
+&quot;x&quot; нижнего регистра. Однако 'ex'
+определены даже для тех шрифтов, которые не
+содержат "x".
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<P>Правило:
+
+<PRE>H1 { line-height: 1.2em }</PRE>
+
+  <P>означает, что высота строки элементов H1
+  будет на 20% больше, чем размер шрифта
+  элементов H1. С другой стороны:
+
+<PRE>H1 { font-size: 1.2em }</PRE>
+
+<P>означает, что размер шрифта элементов H1
+будет на 20% больше, чем размер шрифта,
+наследуемый из элементов H1.
+</div>
+
+<P>Если они специфицированы для корня <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева
+документа</a> (например, "HTML" в HTML), 'em' и 'ex'
+относятся к <a href="cascade.html#initial-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#initial-value">начальному
+значению</a> свойства.<P><a name="pixel-units">Пикселы&nbsp;</a>
+относительны к разрешению устройства
+просмотра, т.е. чаще всего - дисплея
+компьютера. Если плотность пикселов
+выводного устройства сильно отличается от
+плотности типичного компьютерного дисплея,
+ПА должен перемасштабировать пикселные
+значения. Рекомендуется, чтобы <a name="x39"><span class="index-def"
+title="reference pixel|pixel"><em>пиксел в качестве точки отсчёта</em></span></a>
+был визуальным углом одного пиксела на
+устройстве с плотностью пикселов 90dpi на
+расстоянии вытянутой руки от читателя. При
+нормальной длине руки 28 дюймов визуальный
+угол будет примерно 0.0227 градусов.<p>При
+чтении с расстояния вытянутой руки 1px
+соответствует примерно 0.28&nbsp;мм
+(1/90&nbsp;дюйма). При печати на лазерном
+принтере, рассчитанном на чтение с
+несколько меньшего расстояния, чем
+вытянутая рука, (55&nbsp;см, 21&nbsp;дюймов), 1px
+составляет около 0.21&nbsp;мм. На принтере с
+разрешением 300 точек на дюйм (dpi) это можно
+округлить до 3 точек (0.25&nbsp;мм); на принтере с 600&nbsp;dpi
+это можно округлить до 5 точек.<p>Два
+нижеследующих изображения иллюстрируют
+эффект при просмотре размера
+пиксела с расстояния и эффект разрешения устройства. На
+первом рисунке расстояние чтения 71&nbsp;см (28&nbsp;дюймов)
+даёт&nbsp; пиксел 0.28&nbsp;мм, а с расстояния 3.5&nbsp;м
+(12&nbsp;футов) требуется пиксел 1.4&nbsp;мм. </p>
+
+<div class="figure">
+<p>
+<img src="pixel1.gif" tppabs="http://pyramidin.narod.ru/css2/pixel1.gif" alt="Showing that pixels must become
+larger if the viewing distance increases" width="255" height="183"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-pixel1" href="pixel1-desc.html" tppabs="http://pyramidin.narod.ru/css2/pixel1-desc.html" title="Long description for the illustration of a pixel's definition">[D]</A></SPAN> </p>
+</div>
+
+<P>На втором рисунке область 1px на 1px
+закрывается одной точкой устройства с
+низким разрешением (экран компьютера), и та
+же самая область покрывается 16-ю точками на
+устройстве с высоким разрешением (как
+лазерный принтер 400&nbsp;dpi).</p>
+
+<div class="figure">
+<P>
+<img
+src="pixe2.gif" tppabs="http://pyramidin.narod.ru/css2/pixe2.gif" alt="Showing that more device pixels (dots)
+are needed to cover a 1px by 1px area on a high-resolution device than
+on a low-res one" width="322" height="251"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-pixel2" href="pixel2-desc.html" tppabs="http://pyramidin.narod.ru/css2/pixel2-desc.html" title="Long description for the illustration of reference
+vs. device pixel">[D]</A></SPAN></p>
+</div>
+
+<P>Дочерние элементы не наследуют
+относительные значения, специфицированные
+для из родителя; они (обычно) наследуют <a
+href="cascade.html#computed-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#computed-value">вычисленные значения</a>.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>В
+  следующих правилах вычисленное значение <a href="text.html#propdef-text-indent" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-indent" class="noxref"><span
+class="propinst-text-indent">'text-indent'</span></a>  элементов H1
+  будет 36pt, а не 45pt, если H1 является дочерним
+  относительно элемента BODY:<PRE>BODY {
+  font-size: 12pt;
+  text-indent: 3em;  /* т.е. 36pt */
+}
+H1 { font-size: 15pt }</PRE>
+</div>
+
+<P><a name="x41"><span class="index-def" title="absolute length"><em>Абсолютные
+единицы измерения</em></span></a> используются
+только тогда, когда известны физические
+свойства выводного устройства.<br>
+Абсолютными значениями являются:
+
+<UL>
+<LI><STRONG>in</STRONG>: inches/дюймы -- 1 дюйм равен 2.54
+  сантиметра.
+<LI><STRONG>cm</STRONG>: сантиметры
+<LI><STRONG>mm</STRONG>: миллиметры
+<LI><STRONG>pt</STRONG>: points/пункты - пункт,
+  используемый в&nbsp; CSS2, равен 1/72 дюйма. 
+<LI><STRONG>pc</STRONG>: picas/пики -- 1 пика равна 12
+  пунктам.
+</UL>
+
+<div class="example"><P style="display:none">Пример(ы):</P><PRE>H1 { margin: 0.5in }      /* дюймы  */
+H2 { line-height: 3cm }   /* сантиметры */
+H3 { word-spacing: 4mm }  /* миллиметры */
+H4 { font-size: 12pt }    /* пункты */
+H4 { font-size: 1pc }     /* пики */</PRE>
+</div>
+
+<P> В тех случаях, когда специфицированные
+размеры не могут поддерживаться, ПА обязаны
+давать значение, приближённое к реальному.
+
+<H3><br>
+4.3.3  <A NAME="percentage-units">&#1055;&#1088;&#1086;&#1094;&#1077;&#1085;&#1090;&#1085;&#1099;&#1077;
+&#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1103;</A></H3>
+
+<P> Формат процентного значения (обозначаемого
+в этой спецификации <span
+class="index-def" title="&lt;percentage&gt;::definition of"><a
+name="value-def-percentage"
+class="value-def">&lt;percentage&gt;</a></span>) - это
+необязательный знак ('+' или '-', с '+' по
+умолчанию), сразу за которым следует <span class="index-inst"
+title="&lt;number&gt;"><a name="x43" href="#value-def-number" class="noxref"><span
+class="value-inst-number">&lt;number&gt;</span></a></span><span
+class="value-inst-number">,</span> за которым сразу следует
+'%'.<P>Процентные значения всегда
+относительны к другому значению, например,
+размеру. Каждое свойство, допускающее
+процентные значения, определяет также
+значение, на которое ссылается процентное.
+Значение может быть взято из другого
+свойства того же элемента, свойства
+элемента-предка или значения контекста
+форматирования (например, ширины <a
+href="visuren.html#containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#containing-block">содержащего блока</a>).
+Если процентное значение установлено для
+свойства <a
+href="conform.html#root" tppabs="http://pyramidin.narod.ru/css2/conform.html#root">корневого</a> элемента и
+проценты определены как относительные к
+наследуемому значению какого-либо свойства,
+то результирующее значение - это <a
+href="cascade.html#initial-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#initial-value">начальное значение</a>
+этого свойства, взятое кратным количеству процентов.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Поскольку
+  дочерние элементы (обычно) наследуют <a
+href="cascade.html#computed-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#computed-value">вычисленные значения</a>
+  своих родителей, в следующем примере
+  дочерние от P элементы унаследуют значение
+  в 12pt для <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height'</span></a>, а не
+  процентное значение (120%):
+
+<PRE>P { font-size: 10pt }
+P { line-height: 120% }  /* 120% от 'font-size' */
+</PRE>
+</div>
+
+<H3>4.3.4 <A NAME="uri">URL + URN = URI</A></H3>
+
+<P><a name="x44"><span class="index-def" title="Uniform Resource Locator (URL)|URL
+(Uniform Resource Locator)">URL</span></a> (Uniform Resource Locator, см. <a href="refs.html#ref-RFC1738" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC1738" rel="biblioentry" class="noxref"><span class="normref">[RFC1738]</span></a>
+и <a href="refs.html#ref-RFC1808" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC1808" rel="biblioentry" class="noxref"><span class="normref">[RFC1808]</span></a>),
+предоставляет адрес ресурса Web. Ожидается
+появление нового способа идентификации
+ресурсов, называемого <a name="x46"><span
+class="index-def" title="URN (Uniform Resource Name)|Uniform Resource
+Name (URN)">URN</span></a> (Uniform Resource Name). Вместе они
+называются <a name="x48"><span class="index-def" title="Resource Identifier (URI)|URI
+(Uniform Resource Identifier)">URI</span></a> (Uniform Resource Identifiers,
+см. <a href="refs.html#ref-URI" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-URI" rel="biblioentry" class="noxref"><span class="normref">[URI]</span></a>).
+В этой спецификации используется термин URI.
+
+<P>Значения URI в этой спецификации
+обозначаются <span
+class="index-def" title="&lt;uri&gt;::definition of"><a
+name="value-def-uri" class="value-def">&lt;uri&gt;</a></span>.
+Функциональное обозначение URI в значениях
+свойств - "url()", как здесь:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY { background: url(&quot;http://www.bg.com/pinkish.gif&quot;) }</PRE>
+</div>
+
+<P>Формат значения URI таков: 'url(' с
+последующим необязательным <a
+href="#whitespace">пробелом</a>, с последующей
+необязательной одинарной кавычкой
+(') или двойной кавычкой ("), с последующим
+собственно URI, с последующей необязательной
+одинарной кавычкой
+(') или двойной кавычкой ("), с последующим
+необязательным пробелом с последующей
+')'. Знаки кавычек должны быть одинаковыми (двойными
+или одинарными).
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Пример
+  без кавычек:
+<PRE>LI { list-style: url(http://www.redballs.com/redball.png) disc }</PRE>
+</div>
+
+<P>Скобки, запятые, пробельные символы,
+одинарные (') и двойные (") кавычки в URI
+обязаны вводиться с помощью escape-последовательностей
+с обратным слэшем: '\(', '\)', '\,'.<P>В зависимости
+от типа URI, может иметься возможность также
+записывать вышеуказанные символы как
+URI-escape-последовательности (где "(" = %28, ")" = %29
+и т.д.), как описано в <a href="refs.html#ref-URI" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-URI" rel="biblioentry" class="noxref"><span class="normref">[URI]</span></a>.<P>Для
+того, чтобы создать модульные таблицы стилей,
+не зависящие от абсолютного размещения
+ресурса, авторы могут использовать
+относительные URI. Относительные URI (как
+определено в <a href="refs.html#ref-RFC1808" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC1808" rel="biblioentry" class="noxref"><span class="normref">[RFC1808]</span></a>)
+расширяются до полного URI с использованием
+базового URI. RFC&nbsp;1808, раздел 3 определяет
+нормативный алгоритм этого процесса. В
+таблицах стилей CSS базовый URI это URI таблицы
+стилей, а не документа-источника.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<P>Предположим, имеется такое правило:</p>
+
+<PRE>BODY { background: url(&quot;yellow&quot;) }</PRE>
+
+<P>размещённое в таблице стилей с URI:</p>
+
+<PRE>http://www.myorg.org/style/basic.css</PRE>
+
+  <P>Фон элемента BODY в документе-источнике
+  будет заполнен каким-нибудь изображением,
+  обозначенный ресурсом URI:
+
+<PRE>http://www.myorg.org/style/yellow</PRE>
+</div>
+
+<P>ПА могут по-разному обрабатывать URI,
+обозначающие несуществующий или
+необрабатываемый ресурс<H3><br>
+4.3.5&nbsp; <a name="counter">Счётчики</a></h3>
+
+<p>Счётчики обозначаются идентификаторами (см.
+свойства <a href="generate.html#propdef-counter-increment" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-counter-increment" class="noxref"><span
+class="propinst-counter-increment">'counter-increment'</span></a> и <a href="generate.html#propdef-counter-reset" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a>).
+Чтобы обратиться к значению счётчика,
+используется обозначение <a name="x52"><span class="index-def" title="counter()">'counter(&lt;identifier&gt;)'</span></a>
+или 'counter(&lt;identifier&gt;,
+&lt;list-style-type&gt;)'. Стиль по умолчанию - 'decimal'.<p>Чтобы
+обратиться к последовательности вложенных
+счётчиков с одним именем, обозначение будет:
+'counters(&lt;identifier&gt;, &lt;string&gt;)' или
+'counters(&lt;identifier&gt;, &lt;string&gt;,
+&lt;list-style-type&gt;)'. См. <a href="generate.html#scope" tppabs="http://pyramidin.narod.ru/css2/generate.html#scope">&quot;Вложенные
+счётчики и область видимости&quot;</a>  в главе
+о <a
+href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html">генерируемом содержимом</a>.<p>В
+CSS2 к значениям счётчиков можно обратиться
+только из свойства <a href="generate.html#propdef-content" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>. Заметьте, что 'none',
+это возможный &lt;list-style-type&gt;: 'counter(x,
+none)' рассматривается как пустая строка.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Вот таблица стилей, нумерующая параграфы (P)
+  для каждой главы (H1). Параграфы нумеруются
+  римскими цифрами с последующими точкой и
+  пробелом:
+
+<pre>P {counter-increment: par-num}
+H1 {counter-reset: par-num}
+P:before {content: counter(par-num, upper-roman) &quot;. &quot;}</pre>
+</div>
+
+<p>Счётчики вне <a
+href="generate.html#scope" tppabs="http://pyramidin.narod.ru/css2/generate.html#scope">области видимости</a> какого-либо
+'counter-reset', считаются сброшенными в 0 в 'counter-reset'
+корневого элемента.
+
+<H3><br>
+4.3.6&nbsp; <a name="color-units">Цвета</a></H3>
+
+ <span class="index-def" title="&lt;color&gt;::definition of"><a
+name="value-def-color" class="value-def">&lt;color&gt;</a></span>
+ это или предопределённое слово, или
+числовая спецификация RGB.<P>Список названий
+цветов: aqua, black, blue, fuchsia,
+gray, green, lime, maroon, navy, olive, purple, red, silver, teal, white и
+yellow. Эти 16 цветов определены в HTML 4.0
+(<a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="informref">[HTML40]</span></a>).
+Пользователь может дополнительно
+специфицировать ключевые слова,
+соответствующие цветам, используемым
+определёнными объектами в среде
+пользователя. Дополнительную информацию см.
+в <a
+href="ui.html#system-colors" tppabs="http://pyramidin.narod.ru/css2/ui.html#system-colors">системных цветах</a>.
+
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY {color: black; background: white }
+H1 { color: maroon }
+H2 { color: olive }</PRE>
+</div>
+
+<P>Модель цветов RGB используется в числовых
+спецификациях цвета. Во всех данных
+примерах специфицируется один и тот же цвет:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>EM { color: #f00 }              /* #rgb */
+EM { color: #ff0000 }           /* #rrggbb */
+EM { color: rgb(255,0,0) }      /* диапазон целых чисел 0 - 255 */
+EM { color: rgb(100%, 0%, 0%) } /* диапазон чисел с плавающей точкой 0.0% - 100.0% */
+</PRE>
+</div>
+
+<P>Формат значения RGB в 16-ричной записи -&nbsp; '#'
+за которым сразу идут три или шесть 16-ричных
+символов. Трёхсимвольная запись RGB (#rgb)
+конвертируется в шестисимвольную форму
+(#rrggbb) путём дублирования цифр, но не
+дополнением нулями. Например, #fb0
+расширяется до #ffbb00. Это гарантирует, что белый
+(#ffffff) можно специфицировать сокращённой
+записью (#fff) и удалить зависимость от
+глубины цвета на дисплее.<P>Формат значения RGB
+в функциональной записи - 'rgb(' за которым
+идёт список разделённых запятыми трёх
+числовых значений (или трёх целых, или трёх
+процентных) с последующей ')'. Целое значение
+255 соответствует 100% и F или FF в 16-ричной
+записи: rgb(255,255,255) = rgb(100%,100%,100%) =
+#FFF. <a href="#whitespace">Пробельные</a> символы
+допускаются вокруг числовых значений.<P>Все
+цвета RGB специфицированы в цветовом
+пространстве sRGB (см. <a href="refs.html#ref-SRGB" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-SRGB" rel="biblioentry" class="noxref"><span class="normref">[SRGB]</span></a>).
+ПА могут различаться в том, насколько точно
+они представляют эти цвета, но
+использование sRGB предоставляет
+недвусмысленное и объективно измеряемое
+определение того, каким должен быть цвет,
+соответствующий международным стандартам (см.
+<a href="refs.html#ref-COLORIMETRY" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-COLORIMETRY" rel="biblioentry" class="noxref"><span class="normref">[COLORIMETRY]</span></a>).<P>Соответствующие
+ПА могут ограничивать свои возможности
+вывода цвета для выполнения коррекции
+гаммы цветов. sRGB специфицирует гамму
+дисплея в 2.2 от специфицированных условий
+просмотра. ПА должны уточнить цвет,
+заданный в CSS, так чтобы в сочетании с 'натуральной'
+гаммой дисплея выводного устройства
+воспроизводилась эффективная гамма
+дисплея в 2.2. См. дополнительные детали в
+разделе <a
+href="colors.html#gamma-correction" tppabs="http://pyramidin.narod.ru/css2/colors.html#gamma-correction">коррекция гаммы</a>.
+Обратите внимание, что воздействие
+производится только на цвета,
+специфицированные в CSS; например, от
+изображений ожидается сопровождающая их
+собственная цветовая информация.<P>Значения
+вне гаммы устройства должны усекаться:
+значения red, green и blue обязаны измениться,
+чтобы войти в рамки диапазона,
+поддерживаемого устройством. Для типичного
+CRT-монитора, чья гамма устройства - та же
+самая, что и sRGB, следующие три правила
+эквивалентны:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>EM { color: rgb(255,0,0) }       /* диапазон целых 0 - 255 */
+EM { color: rgb(300,0,0) }       /* усекается до rgb(255,0,0) */
+EM { color: rgb(255,-10,0) }     /* усекается до rgb(255,0,0) */
+EM { color: rgb(110%, 0%, 0%) }  /* усекается до rgb(100%,0%,0%) */</PRE>
+
+<p>Другие устройства, такие как принтеры,
+имеют гаммы, отличные от sRGB; некоторые цвета
+вне диапазона 0..255 sRGB будут
+презентабельными (в пределах гаммы
+устройства), в то время как другие цвета в
+пределах диапазона 0..255 sRGB будут вне гаммы
+устройства и будут, таким образом, усечены.
+</div>
+
+
+<div class="note"><P>
+<em><strong><font color="#008000">Примечание.</font></strong> <font color="#008000"> Хотя цвета могут
+добавить значительное количество
+информации в документы и сделать их более
+читабельными, необходимо учитывать, что
+определённые сочетания цветов могут
+вызвать проблемы у людей,
+страдающих нарушениями восприятия цвета.
+Если Вы используете фоновое изображение
+или устанавливаете цвет фона, подбирайте,
+пожалуйста, подходящий цвет переднего
+плана</font>.
+</em>
+</div>
+
+
+<H3><a name="q19"><br>
+4.3.7 Угловые значения</a></H3>
+<P>Угловые значения (обозначаемые в тексте&nbsp;
+<span class="index-def"
+title="&lt;angle&gt;::definition of"><a
+name="value-def-angle">&lt;angle&gt;</a></span>) используются со <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">звуковыми
+таблицами стилей</a>.<P>Их формат -&nbsp;
+необязательный знак ('+' или '-', с '+' по
+умолчанию), сразу за которым следует <span class="index-inst"
+title="&lt;number&gt;"><a name="x55" href="#value-def-number" class="noxref"><span
+class="value-inst-number">&lt;number&gt;</span></a></span><span
+class="value-inst-number">, за которым сразу следует </span>идентификатор
+единиц измерения углов.
+
+<P>Единицами измерения углов являются:</p>
+
+<ul>
+<li><strong>deg</strong>: градусы
+<LI><strong>grad</strong>: грады
+<LI><strong>rad</strong>: радианы
+</UL>
+
+<p>Угловые значения могут быть негативными.
+Они должны быть нормализованы ПАгентом до
+диапазона 0-360deg. Например, -10deg и 350deg
+эквивалентны.
+
+<P>Для примера, правый угол - '90deg' или '100grad',
+или '1.570796326794897rad'.
+
+<H3><a name="q20"><br>
+4.3.8&nbsp; Время</a></H3>
+
+<P>Временные значения (обозначаемые в тексте
+<span class="index-def" title="&lt;time&gt;::definition of"><a name="value-def-time">&lt;time&gt;</a></span>)
+используются со <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">звуковыми таблицами
+стилей</a>.
+
+<P>Их формат: <span class="index-inst"
+title="&lt;number&gt;"><a name="x57" href="#value-def-number" class="noxref"><span
+class="value-inst-number">&lt;number&gt;</span></a></span><span
+class="value-inst-number">,</span> сразу за которым идёт идентификатор
+единиц измерения времени.
+
+<P>Идентификаторами единиц измерения
+времени являются:</p>
+
+<UL>
+<LI><strong>ms</strong>: миллисекунды
+<LI><strong>s</strong>: секунды
+</UL>
+
+<p>Значения времени не могут быть
+негативными.
+
+<H3><a name="q21"><br>
+4.3.9&nbsp; Частоты</a></H3>
+
+<P>Значения частот (обозначаемые в тексте <span class="index-def"
+title="&lt;frequency&gt;::definition of"><a
+name="value-def-frequency">&lt;frequency&gt;</a></span>)
+используются со <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">звуковыми
+каскадными таблицами стилей</a>.
+
+<P>Их формат: <span class="index-inst"
+title="&lt;number&gt;"><a name="x59" href="#value-def-number" class="noxref"><span
+class="value-inst-number">&lt;number&gt;</span></a></span>, сразу за
+которым идёт идентификатор единиц
+измерения частоты.
+
+<p>Идентификаторами единиц измерения
+частоты являются:</p>
+
+<ul>
+<li><strong>Hz</strong>: герцы
+<li><strong>kHz</strong>: килогерцы
+</ul>
+
+<p>Значения частоты не могут быть
+негативными.<P>Например, 200Hz (или 200hz) - это
+басовый звук, а 6kHz (или 6khz) - средний регистр.
+
+<h3><br>
+4.3.10&nbsp;<a name="strings"> Строки</a></H3>
+
+<P>Строки могут записываться в двойных или
+одинарных кавычках. Двойные кавычки не
+могут появляться внутри двойных кавычек,
+если только они не вводятся с помощью escape-последовательности
+( '\"' или '\22'). Аналогично для одинарной
+кавычки ("\'" или "\27"). 
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<pre>&quot;this is a 'string'&quot;
+&quot;this is a \&quot;string\&quot;&quot;
+'this is a &quot;string&quot;'
+'this is a \'string\''</pre>
+</div>
+
+<P>Строк<a name="x61">а не может </a> непосредственно
+содержать переход на новую строку. Чтобы
+вставить переход на новую строку,
+используйте escape-последовательность "\A" (16-ричная
+A - это символ прогона строки в Unicode, но в&nbsp;
+CSS представляет общее обозначение для &quot;новой
+строки&quot;). См., например, свойство <a href="generate.html#propdef-content" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>.<p>Можно разбивать
+строки на несколько строк, по эстетическим
+и другим соображениям, но в таком случае
+новая строка сама escape'ируется обратным
+слэшем (\). Например, следующие два селектора
+совершенно одинаковы:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>A[TITLE=&quot;a not s\
+o very long title&quot;] {/*...*/}
+A[TITLE=&quot;a not so very long title&quot;] {/*...*/}
+</pre>
+</div>
+
+<H2><a name="q23">4.4&nbsp; Представление документа CSS</a></H2>
+
+<P>Таблица стилей CSS это последовательность
+символов из Universal
+Character Set/Универсального Набора Символов (см. <a href="refs.html#ref-ISO10646" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ISO10646" rel="biblioentry" class="noxref"><span class="normref">[ISO10646]</span></a>).
+Для передачи и хранения эти символы обязаны
+кодироваться в кодировке символов,
+поддерживающей набор символов, доступных в US-ASCII
+(например, ISO
+8859-x, SHIFT JIS и т.д.). Чтобы хорошенько
+разобраться в наборах символов и кодировке,
+см. спецификацию HTML 4.0 (<a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="informref">[HTML40]</span></a>,
+главу 5). См. также спецификацию XML 1.0 (<a href="refs.html#ref-XML10" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-XML10" rel="biblioentry" class="noxref"><span class="informref">[XML10]</span></a>,
+разделы 2.2 и 4.3.3, и Приложение F.<P>Если
+таблица стилей встроена в другой документ,
+например, элемент STYLE или атрибут &quot;style&quot; в HTML,
+таблица стилей разделяет использование
+кодировки символов с этим документов.<P>Если
+таблица стилей находится в отдельном файле,
+ПА обязаны учитывать следующий приоритет
+при определении <a name="x64"><span class="index-inst" title="character
+encoding::default|default::character encoding">кодировки
+символов </span></a> документа (от высшего
+приоритета к низшему):</p>
+
+<ol>
+<li>Параметр HTTP "charset" в поле "Content-Type".
+<li>At-правило <a name="x66"><span class="index-def" title="@charset">@charset</span></a>.
+<li>Механизмы языка обращающегося документа
+  (например, в HTML атрибут "charset" элемента LINK).
+</ol>
+
+<P>Не более одного правила @charset может
+появляться во внешней таблице стилей - оно
+обязано <em>не</em> появляться во внедрённой
+таблице стилей - и оно должно появляться в
+самом начале документа, до появления любых
+символов. После &quot;@charset&quot; авторы
+специфицируют имя кодировки символов. Имя
+обязано быть названием набора символов, как
+описано в регистре IANA (см. <a href="refs.html#ref-IANA" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-IANA" rel="biblioentry" class="noxref"><span class="normref">[IANA]</span></a>.
+См. также в <a href="refs.html#ref-CHARSETS" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-CHARSETS" rel="biblioentry" class="noxref"><span class="informref">[CHARSETS]</span></a> 
+полный список наборов символов). Например:</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+@charset "ISO-8859-1";
+</div>
+
+<P>В данной спецификации не определено,
+какие кодировки символов ПА обязан
+поддерживать.<P>Обратите внимание, что опора
+на конструкцию @charset теоретически создаёт
+проблему, поскольку отсутствует <em>a priori</em> 
+информация о том, как она кодирована. На
+практике, однако, широко используемые
+кодировки в
+Internet базируются или на ASCII, UTF-16, UCS-4, или (редко)
+на EBCDIC. В общем, это означает, что значения
+начальных байтов документа дают ПАгенту
+возможность определить семейство
+кодировки, что даёт достаточно информации
+для декодирования правила @charset, которое, в
+свою очередь, определяет точную кодировку.<h3><a name="q24"><br>
+4.4.1 Мнемоники символов, не представленных в
+кодировке символов</a></h3>
+
+<P>Таблице стилей может понадобиться
+обратиться к символам, которые невозможно
+представить в текущей кодировке символов.
+Эти символы обязаны быть записаны как <a href="#escaped-characters">escape'ированные</a>
+ссылки на символы ISO 10646. Эти мнемоники
+служат для тех же целей, что и числовые
+ссылки в документах HTML или XML (см. <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>,
+главы 5 и 25).<P>Escape-механизм символов должен
+использоваться только тогда, когда
+необходимо вывести таким способом только
+несколько символов. Если большая часть
+документа требует этого, авторы должны
+кодировать документ в более подходящей
+кодировке (например, если документ содержит
+много греческих символов, автор может
+использовать "ISO-8859-7" или "UTF-8").<P>Процессоры-посредники,
+использующие другие кодировки символов,
+могут транслировать эти escape-последовательности
+в последовательности байтов кодировки.
+Процессоры-посредники не обязаны, с другой
+стороны, изменять escape-последовательности,
+отменяющие специальные значения символов ASCII.<P><a href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие
+ПА</a> обязаны корректно отображать в Unicode
+все символы любой кодировки, которые они
+могут распознать (или они обязаны вести
+себя так, как будто они это делают).<P>Например,
+документ, передаваемый как ISO-8859-1
+(Latin-1), не может содержать напрямую
+греческую букву:
+"&#954;&#959;&#965;&#961;&#959;&#962;" (по-гречески: "kouros"),
+которая должна быть записана как "\3BA\3BF\3C5\3C1\3BF\3C2".
+
+<div class="note"><P>
+<em><strong><font color="#008000">Примечание.</font></strong>
+<font color="#008000">
+ В HTML 4.0 числовые мнемоники
+интерпретируются в значениях атрибута
+&quot;style&quot;, но не в содержимом элемента STYLE.
+Из-за этой асимметрии мы рекомендуем, чтобы
+авторы использовали
+escape-механизм CSS вместо числовых мнемоник и
+для атрибута &quot;style&quot;, и для элемента STYLE.
+Например, мы рекомендуем:</font></em></p>
+
+<pre class="html-example">&lt;SPAN style=&quot;voice-family: D\FC rst&quot;&gt;...&lt;/SPAN&gt;</pre>
+
+<P><em><font color="#008000">вместо:</font></em></p>
+
+<pre class="html-example">&lt;SPAN style=&quot;voice-family: D&amp;#252;rst&quot;&gt;...&lt;/SPAN&gt;
+</pre>
+</div>
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">предыдущий</a> &nbsp; <a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">следующий</a>&nbsp;
+&nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp;
+&nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</html><!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

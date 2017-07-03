@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-stylesheet type="text/css" href="Topics.css"?>-->
+<!DOCTYPE ARTICLE
+	[<!ELEMENT ARTICLE (TITLEPAGE,INTPRODUCTION,SECTION*)>
+	 <!ELEMENT TITLEPAGE (#PCDATA)>
+	 <!ELEMENT INTPRODUCTION (#PCDATA)>
+	 <!ELEMENT SECTION (#PCDATA)>
+	 <!ENTITY title "A short History of XML">
+	]
+>
+
+<ARTICLE>
+	<TITLEPAGE>lsdkfjlskdjf</TITLEPAGE>
+	<INTRODUCTION>dflkgj</INTRODUCTION>
+	<SECTION>dflkjg</SECTION>
+</ARTICLE>

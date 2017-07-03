@@ -1,0 +1,31 @@
+BOOK{
+	display: block;
+	margin-top: 15px;
+	margin-left: 20px;
+	font-size: 15px;
+}
+BINDING{
+	display: block;
+	margin-left: 35px;
+}
+TITLE{
+	color:red;
+	font-size: 15px;
+	display: block;
+	margin-left: 20px;
+}
+AUTHOR{
+	margin-top: 5px;
+	color: green;
+	font-weight: bold;
+	display: block;
+	margin-left: 35px;
+}
+PAGES{
+	display: none;
+	margin-left: 35px;
+}
+PRICE{
+display: block;
+margin-left: 35px;
+}

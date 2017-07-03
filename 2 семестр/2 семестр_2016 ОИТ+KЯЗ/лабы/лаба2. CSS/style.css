@@ -1,0 +1,21 @@
+
+
+
+			h1,h2,h3,span {
+				color: #802060;
+				font-family: fantasy;
+			}
+			
+			 
+			 #span1{
+				color:#200300;	
+				font-family: fantasy;
+				text-decoration: underline;
+			}
+
+			#span2{
+				color: purple;
+				font-family: Times New Roman;
+				text-decoration: overline;
+			}
+			

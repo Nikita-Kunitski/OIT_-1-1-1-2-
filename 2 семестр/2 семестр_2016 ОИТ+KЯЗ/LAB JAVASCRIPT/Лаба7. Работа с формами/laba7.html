@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Laba7.1(perepis)</title>
+</head>
+<body>
+<script type="text/javascript">
+	function pechat(){
+		a=window.open();
+	a.document.open()
+	{
+		a.document.write("<html>");
+		a.document.write("<head>");
+		a.document.write("<title>"+"vkladka"+"</title>");
+		a.document.write("</head>");
+		a.document.write("<body>");
+		a.document.write('<p>Студент <span style="text-decoration:underline;">'+document.anketa.lasrname.value+'</span>');
+		a.document.write(' Специальность <span style="text-decoration:underline;">'+document.anketa.spec.value+'</span>');
+		a.document.write(' Курс <span style="text-decoration:underline;">'+document.anketa.kurs.value+'</span></p><br>');		
+		a.document.write("<form><select>");
+		if(document.anketa.predmet1.checked){
+		a.document.write("<option>"+document.anketa.predmet1.value+"</option>");}
+		if(document.anketa.predmet2.checked){
+		a.document.write("<option>"+document.anketa.predmet2.value+"</option>");}
+		if(document.anketa.predmet3.checked){
+		a.document.write("<option>"+document.anketa.predmet3.value+"</option>");}
+		if(document.anketa.predmet4.checked){
+		a.document.write("<option>"+document.anketa.predmet4.value+"</option>");}
+		if(document.anketa.predmet5.checked){
+		a.document.write("<option>"+document.anketa.predmet5.value+"</option>");}
+		a.document.write("</select></form>");
+		a.document.write('<input type="button" value="Закрыть" onclick="window.close()">');
+		a.document.write("</body>");
+		a.document.write("</html>");
+	}
+	a.document.close();
+}
+</script>
+
+<form name="anketa">
+<textarea style="font-family:Times New Roman; font-size:20px; height:70px;">
+Факультет
+Информационных 
+Технологий	
+</textarea>
+<br>
+Фамилия
+<input type="text" name="lasrname"/><br>
+Имя
+<input type="text" name="names"/><br>
+<br>
+<select name="spec">
+	<option>ИСИТ</option>
+	<option>ПОИТ</option>
+	<option>ПОИБМС</option>
+	<option>ДЭВИ</option>
+</select>
+<br><br>
+Курс <br>
+ <input type="radio" name="kurs" value="1"/> 1
+ <input type="radio" name="kurs" value="2"/> 2
+ <input type="radio" name="kurs" value="3"/> 3
+ <input type="radio" name="kurs" value="4"/> 4
+<br><br>
+Предметы
+<input type="checkbox" name="predmet1" value="ОИТ"/> ОИТ, 
+<input type="checkbox" name="predmet2" value="ОАП"/> ОАП, 
+<input type="checkbox" name="predmet3" value="История"/> История, 
+<input type="checkbox" name="predmet4" value="Физика"/> Физика, 
+<input type="checkbox" name="predmet5" value="Математика"/> Математика 
+<br><br>
+<input type="submit" value="Отправить"/> <input type="reset" value="Очистить"/>
+<input type="button" value="Печать" onclick="pechat()"/>
+</form>
+</body>
+</html>

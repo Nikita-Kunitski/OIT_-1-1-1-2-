@@ -1,0 +1,320 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>Приложение D: Грамматика CSS2</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html"><link rel="next" href="refs.html" tppabs="http://pyramidin.narod.ru/css2/refs.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">предыдущий</a> &nbsp; <a href="refs.html" tppabs="http://pyramidin.narod.ru/css2/refs.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">Приложение D.&nbsp; Грамматика CSS2</H1><div class="subtoc">
+<p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#q1" class="tocxref">D.1 Грамматика</a>
+<li class="tocline2"><a href="#q2" class="tocxref">D.2 Лексический сканер</a>
+<li class="tocline2"><a href="#tokenizer-diffs" class="tocxref">D.3
+Сравнение лексического разбора в CSS2 и в CSS1</a></ul></div>
+<P><em>Это приложение является нормативным.</em>
+
+<P>Грамматика определяет синтаксис CSS2. В
+некотором смысле она является наднабором CSS2,
+так как в этой спецификации вводятся
+дополнительные семантические ограничения,
+не указанные в грамматике. Соответствующие
+пользовательские агенты (ПА) также обязаны
+придерживаться <a href="syndata.html#syntax" tppabs="http://pyramidin.narod.ru/css2/syndata.html#syntax">
+правил вперёд-совместимого разбора</a>, <a
+href="about.html#property-defs" tppabs="http://pyramidin.narod.ru/css2/about.html#property-defs">нотации свойств и значений</a>
+и нотации модуля. В дополнение к этому, язык
+документа может вводить ограничения,
+например, HTML вводит ограничения на
+возможные значения атрибута "class".
+<h2><a name="q1"><br>
+D.1 Грамматика</a></h2>
+
+<P> Это грамматика <a name="x0"><span class="index-inst"
+title="LL(1)">LL(1)</span></a>  (но учтите, что
+большинство ПА не должны использовать её
+напрямую, поскольку она отражает не <a
+href="syndata.html#parsing-errors" tppabs="http://pyramidin.narod.ru/css2/syndata.html#parsing-errors">соглашения по разбору</a>,
+а только синтаксис CSS2. Формат продуктов
+оптимизирован для удобства,
+и используются некоторые сокращения Yacc (см. <a href="refs.html#ref-YACC" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-YACC" rel="biblioentry" class="noxref"><span class="normref">[YACC]</span></a>):</P>
+
+<ul>
+<li><strong>*</strong>: 0 или более
+<li><strong>+</strong>: 1 или более
+<li><strong>?</strong>: 0 или 1 
+<li><strong>|</strong>: разделитель альтернатив 
+<li><strong>[&nbsp;]</strong>: группировка</ul>
+
+<p>&nbsp;</p>
+
+<p>Продуктами являются:<pre>stylesheet
+  : [ CHARSET_SYM S* STRING S* ';' ]?
+    [S|CDO|CDC]* [ import [S|CDO|CDC]* ]*
+    [ [ ruleset | media | page | font_face ] [S|CDO|CDC]* ]*
+  ;
+import
+  : IMPORT_SYM S*
+    [STRING|URI] S* [ medium [ ',' S* medium]* ]? ';' S*
+  ;
+media
+  : MEDIA_SYM S* medium [ ',' S* medium ]* '{' S* ruleset* '}' S*
+  ;
+medium
+  : IDENT S*
+  ;
+page
+  : PAGE_SYM S* IDENT? pseudo_page? S*
+    '{' S* declaration [ ';' S* declaration ]* '}' S*
+  ;
+pseudo_page
+  : ':' IDENT
+  ;
+font_face
+  : FONT_FACE_SYM S*
+    '{' S* declaration [ ';' S* declaration ]* '}' S*
+  ;
+operator
+  : '/' S* | ',' S* | /* empty */
+  ;
+combinator
+  : '+' S* | '&gt;' S* | /* empty */
+  ;
+unary_operator
+  : '-' | '+'
+  ;
+property
+  : IDENT S*
+  ;
+ruleset
+  : selector [ ',' S* selector ]*
+    '{' S* declaration [ ';' S* declaration ]* '}' S*
+  ;
+<a name="x1"><span class="index-inst" title="selector">selector</span></a>
+  : simple_selector [ combinator simple_selector ]*
+  ;
+simple_selector
+  : element_name? [ HASH | class | attrib | pseudo ]* S*
+  ;
+class
+  : '.' IDENT
+  ;
+element_name
+  : IDENT | '*'
+  ;
+attrib
+  : '[' S* IDENT S* [ [ '=' | INCLUDES | DASHMATCH ] S*
+    [ IDENT | STRING ] S* ]? ']'
+  ;
+pseudo
+  : ':' [ IDENT | FUNCTION S* IDENT S* ')' ]
+  ;
+declaration
+  : property ':' S* expr prio?
+  | /* empty */
+  ;
+prio
+  : IMPORTANT_SYM S*
+  ;
+expr
+  : term [ operator term ]*
+  ;
+term
+  : unary_operator?
+    [ NUMBER S* | PERCENTAGE S* | LENGTH S* | EMS S* | EXS S* | ANGLE S* |
+      TIME S* | FREQ S* | function ]
+  | STRING S* | IDENT S* | URI S* | RGB S* | UNICODERANGE S* | hexcolor
+  ;
+function
+  : FUNCTION S* expr ')' S*
+  
+/*
+ * <a name="x2">Имеется</a> ограничение: цвет обязан иметь
+ * 3 или 6 16-ричных цифр (т.е., [0-9a-fA-F]) после &quot;#&quot;,
+ * например, &quot;#000&quot; это OK, но &quot;#abcd&quot; - нет.
+ */
+hexcolor
+  : HASH S*
+  ;
+</pre>
+
+<h2><a name="q2">D.2&nbsp; Лексический сканер</a>&nbsp;&nbsp;<a name="x3">&nbsp;</a></h2>
+
+<p>Это сканер, написанный в нотации Flex (см. <a href="refs.html#ref-FLEX" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-FLEX" rel="biblioentry" class="noxref"><span class="normref">[FLEX]</span></a>).
+Сканер является нечувствительным к
+регистру.<p>Два &quot;\377&quot; представляют
+наибольшее число символа, которое может
+быть обработано текущей версией Flex (десятеричное
+255). Они должны читаться как "\4177777" (десятеричное
+1114111), которое является наивысшей возможной
+кодовой точкой в <a name="x4"><span class="index-inst"
+title="unicode">Unicode</span></a>/<a name="x5"><span class="index-inst"
+title="iso-10646">ISO-10646</span></a>.
+
+
+<pre>%option case-insensitive
+
+h		[0-9a-f]
+nonascii	[\200-\377]
+unicode		\\{h}{1,6}[ \t\r\n\f]?
+escape		{unicode}|\\[ -~\200-\377]
+nmstart		[a-z]|{nonascii}|{escape}
+nmchar		[a-z0-9-]|{nonascii}|{escape}
+string1		\&quot;([\t !#$%&amp;(-~]|\\{nl}|\'|{nonascii}|{escape})*\&quot;
+string2		\'([\t !#$%&amp;(-~]|\\{nl}|\&quot;|{nonascii}|{escape})*\'
+
+ident		{nmstart}{nmchar}*
+name		{nmchar}+
+num		[0-9]+|[0-9]*&quot;.&quot;[0-9]+
+string		{string1}|{string2}
+url		([!#$%&amp;*-~]|{nonascii}|{escape})*
+w		[ \t\r\n\f]*
+nl		\n|\r\n|\r|\f
+range		\?{1,6}|{h}(\?{0,5}|{h}(\?{0,4}|{h}(\?{0,3}|{h}(\?{0,2}|{h}(\??|{h})))))
+
+%%
+
+[ \t\r\n\f]+		{return S;}
+
+\/\*[^*]*\*+([^/][^*]*\*+)*\/	/* ignore comments */
+
+&quot;&lt;!--&quot;			{return CDO;}
+&quot;--&gt;&quot;			{return CDC;}
+&quot;~=&quot;			{return INCLUDES;}
+&quot;|=&quot;			{return DASHMATCH;}
+
+{string}		{return STRING;}
+
+{ident}			{return IDENT;}
+
+&quot;#&quot;{name}		{return HASH;}
+
+&quot;@import&quot;		{return IMPORT_SYM;}
+&quot;@page&quot;			{return PAGE_SYM;}
+&quot;@media&quot;		{return MEDIA_SYM;}
+&quot;@font-face&quot;		{return FONT_FACE_SYM;}
+&quot;@charset&quot;		{return CHARSET_SYM;}
+&quot;@&quot;{ident}		{return ATKEYWORD;}
+
+&quot;!{w}important&quot;		{return IMPORTANT_SYM;}
+
+{num}em			{return EMS;}
+{num}ex			{return EXS;}
+{num}px			{return LENGTH;}
+{num}cm			{return LENGTH;}
+{num}mm			{return LENGTH;}
+{num}in			{return LENGTH;}
+{num}pt			{return LENGTH;}
+{num}pc			{return LENGTH;}
+{num}deg		{return ANGLE;}
+{num}rad		{return ANGLE;}
+{num}grad		{return ANGLE;}
+{num}ms			{return TIME;}
+{num}s			{return TIME;}
+{num}Hz			{return FREQ;}
+{num}kHz		{return FREQ;}
+{num}{ident}		{return DIMEN;}
+{num}%			{return PERCENTAGE;}
+{num}			{return NUMBER;}
+
+&quot;url(&quot;{w}{string}{w}&quot;)&quot;	{return URI;}
+&quot;url(&quot;{w}{url}{w}&quot;)&quot;	{return URI;}
+{ident}&quot;(&quot;		{return FUNCTION;}
+
+U\+{range}		{return UNICODERANGE;}
+U\+{h}{1,6}-{h}{1,6}	{return UNICODERANGE;}
+
+.			{return *yytext;}
+</pre>
+
+<h2>D.3 <a name="tokenizer-diffs">Сравнение лексического
+разбора в CSS2 и в CSS1</a></h2>
+
+<p>Имеются некоторые различия между
+вышеприведённым синтаксисом и синтаксисом,
+специфицированным в рекомендациях CSS1 (<a href="refs.html#ref-CSS1" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-CSS1" rel="biblioentry" class="noxref"><span class="informref">[CSS1]</span></a>).
+Большинство этих отличий&nbsp; - из-за новых
+понятий в CSS2, которые отсутствовали в CSS1.
+Другие&nbsp; - из-за того, что грамматика была
+переписана, чтобы сделать её более
+читабельной. Однако есть и некоторые
+несовместимые изменения, которые вызвали
+бы ошибку в CSS1. Они разъяснены ниже.
+
+<ul>
+<li>Таблицы стилей CSS1 могут быть кодированы
+  только 1-байт-на-символ, как ASCII и ISO-8859-1. CSS2
+  не имеет таких ограничений. На практике
+  было мало трудностей с экстраполированием
+  сканера CSS1, и некоторые ПА принимали 2-байтное
+  кодирование.
+
+<li>CSS1 допускал только четыре 16-ричных числа
+  после обратного слэша (\) для ссылок на
+  символы Unicode, CSS2 <a
+href="syndata.html#escaped-characters" tppabs="http://pyramidin.narod.ru/css2/syndata.html#escaped-characters">допускает шесть</a>.
+  Кроме того,
+CSS2 допускает символы пробела в качестве
+  разграничителей escape-последовательностей.
+  Например, в соответствии с CSS1, строка &quot;\abcdef&quot;
+  имеет 3 буквы (\abcd, e и f), а в соответствии с CSS2
+  - только одну (\abcdef).
+
+<li>Символ табуляции (ASCII 9) в строках не
+  допускается. Однако, поскольку строки в CSS1
+  использовались только для имён шрифтов и
+  для URL, единственное, что может привести к
+  несовместимости между CSS1 и CSS2, это если
+  таблица стилей содержит семейство шрифтов,
+  имеющее символ табуляции в своём имени.
+
+<li>Также символы новой строки (<a href="syndata.html#strings" tppabs="http://pyramidin.narod.ru/css2/syndata.html#strings">escape-последовательность
+  с обратным слэшем</a>) не допускались в
+  строках CSS1.
+
+<li>CSS2 разбирает число со следующим
+  непосредственно за ним идентификатором
+  как обозначение DIMEN (т.е. как неизвестный
+  модуль). CSS1 разбирал его как число и как
+  идентификатор. Это означает, что в CSS1
+  объявление 'font:
+10pt/1.2serif' было корректным, а в 'font: 10pt/12pt serif'; в
+  CSS2 требуется пробел перед &quot;serif&quot;. (Некоторые
+  ПА принимали первый пример, но не
+  принимали второй.)
+
+<li>В CSS1 имя класса могло начинаться цифрой (".55ft"),
+  если только оно не было размером (".55in").<br>
+  В CSS2 такие классы разбираются как
+  неизвестные размеры (чтобы позволить в
+  будущем дополнение новых модулей). Чтобы
+  сделать ".55ft" действующим классом, CSS2
+  требует, чтобы первая цифра была escape (&quot;.\55ft&quot;)
+</ul>
+
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">предыдущий</a> &nbsp; <a href="refs.html" tppabs="http://pyramidin.narod.ru/css2/refs.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</body>
+</html>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

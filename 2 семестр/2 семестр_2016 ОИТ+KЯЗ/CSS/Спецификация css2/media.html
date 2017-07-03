@@ -1,0 +1,334 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Типы носителя</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">
+<link rel="next" href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index">
+</HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">предыдущий</a> &nbsp; <a href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+<hr class="navbar">
+
+<H1 align="center">7&nbsp; Типы носителя</H1>
+<div class="subtoc">
+<p><strong>Содержание</strong>
+  <ul class="toc">
+    <li class="tocline2"><a href="#q1" class="tocxref">7.1 Введение</a>
+    <li class="tocline2"><a href="#q2" class="tocxref">7.2
+      Спецификация таблиц стилей, зависимых
+      от типа носителя</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#at-media-rule" class="tocxref">7.2.1
+        Правило&nbsp; @media</a>
+    </ul>
+    <li class="tocline2"><a href="#media-types" class="tocxref">7.3 Распознаваемые
+      типы носителя</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#media-groups" class="tocxref">7.3.1 Группы
+        носителей</a>
+    </ul>
+  </ul>
+</div>
+
+<H2><a name="q1"><br>
+7.1 Введение</a></H2>
+
+Одним из важнейших свойств таблиц стилей
+является то, что они специфицируют
+представление документа на различных
+носителях информации: на экране, бумаге, в
+речевом синтезаторе, в брайль-устройстве и
+т.п.<P>Некоторые свойства CSS созданы для
+конкретных носителей (например, свойство <a href="aural.html#propdef-cue-before" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-cue-before" class="noxref"><span class="propinst-cue-before">'cue-before'</span></a> 
+ - для звуковых пользовательских агентов (ПА)).
+Иногда, однако, таблицы стилей для
+различных носителей могут использовать
+одно и то же свойство, но при этом требуют
+для него различных значений. Например,
+свойство <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>  используется и
+для экрана, и для носителя печати. Однако
+эти два носителя достаточно различны, чтобы
+требовать различных значений для общего
+свойства; документ обычно требует для
+экрана более крупный шрифт, чем для печати.
+Опыт показывает также, что шрифты sans-serif
+лучше читаются на экране, а шрифты с
+засечками (serif) лучше читаются на бумаге.
+Исходя из этих соображений, необходимо
+указывать, что таблица стилей - или раздел
+таблицы стилей - применяется к носителю
+определённого типа.<H2><a name="q2"><br>
+7.2 Спецификация таблиц стилей, зависимых от
+типа носителя</a></H2>
+<P>В настоящее время есть два способа
+специфицировать зависимость от типа
+носителя в таблицах стилей:</p>
+
+<UL>
+
+<LI>Специфицировать целевой носитель из
+  таблицы стилей с помощью at-правил&nbsp; <a name="x0"><span
+	    class="index-inst" title="@media">@media</span></a> или <a name="x1"><span
+	    class="index-inst" title="@import">@import</span></a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>@import url(&quot;loudvoice.css&quot;) aural;
+@media print {
+  /* здесь идёт таблица стилей для печати */
+}</PRE>
+</div>
+
+<LI>Специфицировать целевой носитель в языке
+  документа. Например, в HTML 4.0 (<a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="informref">[HTML40]</span></a>)
+  атрибут "media" элемента LINK специфицирует
+  целевой носитель для внешней таблицы
+  стилей:
+
+<div class="html-example"><PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+   &lt;HEAD&gt;
+      &lt;TITLE&gt;Link to a target medium&lt;/TITLE&gt;
+      &lt;LINK rel=&quot;stylesheet&quot; type=&quot;text/css&quot; 
+	 media=&quot;print, handheld&quot; href=&quot;foo.css&quot;&gt;
+   &lt;/HEAD&gt;
+   &lt;BODY&gt;
+      &lt;P&gt;Тело документа...
+   &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+</div>
+</UL>
+
+<p>Правило&nbsp; <a href="cascade.html#at-import" tppabs="http://pyramidin.narod.ru/css2/cascade.html#at-import">@import</a> 
+определено в <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">главе о каскадах</a>.
+
+
+<H3><br>
+7.2.1 <a name="at-media-rule">Правило&nbsp; @media</a></H3> 
+
+<P>Правило&nbsp; <a name="x2"><span class="index-def" title="media">@media</span></a> 
+специфицирует целевые <a href="#media-types">типы
+носителя</a> (разделённые запятыми) в наборе
+правил (ограниченных фигурными скобками).
+Конструкция&nbsp; <a name="x3"><span
+class="index-inst" title="@media">@media</span></a>  допускает
+присутствие правил таблиц стилей для
+различных носителей в одной таблице стилей:</P>
+
+<pre class="example">  @media print {
+    BODY { font-size: 10pt }
+  }
+  @media screen {
+    BODY { font-size: 12pt }
+  }
+  @media screen, print {
+    BODY { line-height: 1.2 }
+  }
+</pre>
+
+
+<H2>7.3 <a name="media-types">Распознаваемые типы носителя</a></H2> 
+
+<P><a name="x4"><span class="index-def" title="media type"><dfn>Тип носителя</dfn></span></a>
+CSS именует набор свойств CSS. ПА, заявляющий о
+поддержке типа носителя по имени, обязан
+поддерживать все свойства, применимые к
+данному типу носителя.<P>Имена для типов
+носителя в CSS отражают целевое устройство,
+на которое соответствующие свойства
+оказывают действие. В следующем списке
+типов носителя CSS описания в скобках не
+являются нормативными. Они лишь дают
+представление о том, к каким устройствам
+относится данный тип носителя.
+
+<dl>
+<dt><strong>все</strong>
+<dd>Для всех устройств.
+
+<dt><strong>звуковой</strong> 
+<dd>Предполагается для использования в
+  речевых синтезаторах. См. детали в разделе <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">звуковые
+  таблицы стилей</a>.
+
+<dt><strong>брайль-устройство</strong>
+<dd>Для брайль-устройств.<dt><strong>брайль-принтер</strong>
+<dd>Для страничных брайль-принтеров.
+
+<dt><strong>портативный</strong>
+<dd>Для портативных устройств (обычно с
+  маленьким экраном, монохромных, с
+  ограниченной пропускной способностью).
+
+<dt><strong>печатный</strong> 
+<dd>Предполагается для страничных
+  непрозрачных материалов и для документов,
+  просматриваемых на экране в режиме
+  предварительного просмотра для печати.
+  Информацию о вопросах форматирования,
+  специфичных для страничных носителей, см.
+  в разделе <a
+href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">Страничные носители</a>.
+
+<dt><strong>проектор</strong>
+<dd>Предполагается для проецируемых
+  презентаций, например, проекторов или
+  печати на прозрачные носители.&nbsp;
+  Информацию о вопросах форматирования,
+  специфичных для страничных носителей, см.
+  в разделе <a
+href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">Страничные носители</a>.
+
+<dt><strong>экран</strong> 
+<dd>Прежде всего - для компьютерного цветного
+  экрана. 
+
+<dt><strong>tty</strong>
+<dd>Для носителей, использующих решётку символов
+  фиксированного размера, таких как
+  телетайп, терминал или портативные
+  устройства с ограниченными возможностями
+  дисплея. Авторы не должны использовать <a
+href="syndata.html#pixel-units" tppabs="http://pyramidin.narod.ru/css2/syndata.html#pixel-units">пикселы</a> с типом
+  носителя "tty".
+
+<dt><strong>tv</strong>
+<dd>Для устройств типа телевизора (низкое
+  разрешение, цвет, ограниченная
+  возможность прокрутки экрана, звуковые
+  возможности). 
+</dl>
+
+<P>Названия типов носителя нечувствительны
+к регистру.  
+
+<P>Из-за быстрых изменений технологий, CSS2 не
+специфицирует определительный список
+типов носителя, которые могут быть
+значениями для&nbsp; <a name="x5"><span
+class="index-inst" title="@media">@media</span></a>.
+
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ Будущие версии CSS могут расширить этот
+список. Авторы не должны ссылаться на
+названия типов носителя, ещё не
+определённых в спецификации CSS.
+</em>
+</div>
+
+<H3><br>
+7.3.1 <a name="media-groups">&#1043;&#1088;&#1091;&#1087;&#1087;&#1099;
+&#1085;&#1086;&#1089;&#1080;&#1090;&#1077;&#1083;&#1077;&#1081;</a></H3>
+
+<P>Каждое определение свойства CSS
+специфицирует типы носителя, для которых
+свойство обязано выполняться на <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствующих ПА</a>.
+Поскольку свойства обычно применяются для
+различных носителей, раздел &quot;Применяется:
+&quot; каждого определения свойства
+перечисляет <a name="x6"><span class="index-def"
+title="media group">группы носителей</span></a>, а не отдельные
+типы носителей. Каждое свойство применяется
+ко всем типам носителя группы, указанной в
+определении свойства.<P>CSS2 определяет
+следующие группы носителей: </P>
+<ul>
+<li>
+<span class="index-def" title="'continuous' media group"><a
+name="continuous-media-group"><strong>непрерывные</strong></a></span>
+или <span class="index-def" title="'paged' media group"><a
+name="paged-media-group"><strong>страничные</strong></a></span>.
+&quot;Оба&quot; означает, что свойство
+применяется к обеим группам носителей.
+<li><span
+class="index-def" title="'visual' media group"><a
+name="visual-media-group"> <strong>визуальные</strong></a>,</span> <span
+class="index-def" title="'aural' media group"><a
+name="aural-media-group"><strong>звуковые</strong></a></span> или <span
+class="index-def" title="'tactile' media group"><a
+name="tactile-media-group"><strong>осязательные</strong></a></span>.
+<li><span
+class="index-def" title="'grid' media group"><a
+name="grid-media-group"><strong>решётка</strong></a></span>  (для
+  устройств с решётками символов) или <span
+class="index-def" title="'bitmap' media group"><a
+name="bitmap-media-group"><strong>растровые</strong></a></span>. &quot;Оба&quot;
+  означает, что свойство применяется к обеим
+  группам носителей.
+<li><span
+class="index-def" title="'interactive media group"><a
+name="interactive-media-group"><strong>интерактивные</strong></a></span> 
+  (для устройств, взаимодействующих с
+  пользователем или <span
+class="index-def" title="'static' media group"><a
+name="static-media-group"><strong>статичные</strong></a></span>  (для
+  не взаимодействующих).
+"Оба" означает, что свойство применяется к
+  носителям обеих групп.
+<li><span class="index-def" title="'all'
+media group"> <a name="all-media-group"><strong>все</strong></a></span>
+  (включает все типы носителей).
+</ul>
+
+<P>В следующей таблице показаны соотношения
+между группами носителей и типами носителя:</P>
+
+<TABLE border="1" 
+       summary="Relationship between media groups and media types" width="100%">
+<CAPTION>Соотношения между группами носителя и
+  типами носителя</CAPTION>
+<TR><TH rowspan="2">Типы носителя
+    <p>&nbsp; <TH colspan="4">Группы носителей
+<TR>
+    <TH>непрерывный/<br>
+      страничный
+    <TH>визуальный/звуковой/<br>
+      осязательный
+    <TH>решётка/<br>
+      растровый
+    <TH>интерактивный/<br>
+      статичный
+<TR><TH>звуковой<TD align="center">непрерывный<TD align="center">звуковой<TD align="center">N/A<TD align="center">оба</TR>
+<TR><TH>брайль-устройство<TD align="center">непрерывный<TD align="center">осязательный<TD align="center">решётка<TD align="center">оба</TR>
+<TR><TH>брайль-принтер<TD align="center">страничный<TD align="center">осязательный<TD align="center">решётка<TD align="center">оба</TR>
+<TR><TH>портативный<TD align="center">оба<TD align="center">визуальный<TD
+align="center">оба<TD align="center">оба</TR>
+<TR><TH>печатный<TD align="center">страничный<TD align="center">визуальный<TD
+align="center">растровый<TD align="center">статичный</TR>
+<TR><TH>проектор<TD align="center">страничный<TD align="center">визуальный<TD align="center">растровый<TD align="center">статичный</TR>
+<TR><TH>экран<TD align="center">непрерывный<TD align="center">визуальный<TD align="center">растровый<TD align="center">оба</TR>
+<TR><TH>tty<TD align="center">непрерывный<TD align="center">визуальный<TD align="center">решётка<TD align="center">оба</TR>
+<TR><TH>tv<TD align="center">оба<TD align="center">визуальный, звуковой<TD align="center">растровый<TD align="center">оба</TR>
+</TABLE>
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">предыдущий</a> &nbsp; <a href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</html>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

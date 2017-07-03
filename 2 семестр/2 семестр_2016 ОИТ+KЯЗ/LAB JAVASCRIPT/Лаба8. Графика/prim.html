@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<img src="http://javascript.ru/forum/images/smilies/blink.gif" alt="" style="position: absolute;top:50px;" />
+<div id="target" style="position: absolute; top: 100px; right: 10px;width:20px;height:20px;border: 1px solid red;"></div>
+<button>Run</button>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+function moveTo(element, target) {
+    var targetOffset = target.offset();
+    element.animate({
+        top: targetOffset.top,
+        left: targetOffset.left
+    }, 1000);
+}
+$('button').click(function(){
+    moveTo($('img'), $('#target'));
+});
+</script>

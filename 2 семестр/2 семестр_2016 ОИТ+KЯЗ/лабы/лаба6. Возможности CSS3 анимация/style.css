@@ -1,0 +1,62 @@
+		body{
+			background-image:url(12.jpg) ;//цвет (hsl,rgba) в file2
+			background-size:2200px 2200px; 	
+
+		}
+			h1,h2,h3,span {
+				color: #802060;
+				font-family: fantasy;
+			}
+			
+			 
+			 #span1{
+				color:#cf6;	
+				font-family: fantasy;
+				text-decoration: underline;
+			}
+
+			#span2{
+				color: purple;
+				font-family: Times New Roman;
+				text-decoration: overline;
+			}
+			
+			.spisok1{
+			list-style-type: armenian;
+			font-family: fantasy;
+			color:#f00;	
+			font-size: 1.3em;
+			word-spacing: 5px;
+			}
+
+			.spisok2{
+			list-style-type: georgian;
+			font-family: Times New Roman;
+			color:#033;	
+			font-size: 1em;
+			word-spacing: 2px;
+			}
+
+			.spisok3{
+
+			list-style-image: url('11.jpg');
+			font-family: fantasy;
+			color:#f00;	
+			font-size: 1.3em;
+			word-spacing: 5px;
+			}
+
+					a:link{
+						color: #006;
+						}
+
+						a:visited{
+						color: #330;
+								}
+								a:hover{
+								color: #099;
+										}
+
+								a:active{
+							color: #ff6;
+										}	

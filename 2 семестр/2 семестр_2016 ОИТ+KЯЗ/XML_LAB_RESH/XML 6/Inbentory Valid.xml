@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="Inventory04.css"?>
+
+<!DOCTYPE INVENTORY
+   [
+   	<!ENTITY mass "mass market paperback">
+	<!ENTITY trade "trade paperback">
+	<!ENTITY hard "hardcover">
+	<!NOTATION DOC SYSTEM "Microsoft Word document">
+	<!NOTATION TXT SYSTEM "plain text file">
+	
+	<!ENTITY rev_leaves SYSTEM "Review Leaves of Grass.doc" NDATA DOC>
+	<!ENTITY rev_faun1 SYSTEM "Review 01 of The Marble Faun.doc" NDATA DOC>
+	<!ENTITY rev_faun2 SYSTEM "Review 02 of The Marble Faun.txt" NDATA TXT>
+	<!ENTITY rev_screw SYSTEM "Review of The Turn of the Screw.txt"  NDATA TXT>
+
+   <!ELEMENT INVENTORY (BOOK)*>
+   <!ELEMENT BOOK (TITLE, AUTHOR, BINDING, PAGES, PRICE)>
+               <!ATTLIST BOOK   InStock (yes|no) #REQUIRED Reviews ENTITIES #IMPLIED>
+               <!ELEMENT TITLE (#PCDATA | SUBTITLE)*>
+               <!ELEMENT SUBTITLE (#PCDATA)>
+               <!ELEMENT AUTHOR (#PCDATA)>
+               <!ATTLIST AUTHOR   Born CDATA #IMPLIED>
+               <!ELEMENT BINDING (#PCDATA)>
+               <!ELEMENT PAGES (#PCDATA)>
+              <!ELEMENT PRICE (#PCDATA)>
+              <!ENTITY topics SYSTEM "Topics.xml">
+       ]>
+
+<INVENTORY>
+	<BOOK InStock="yes" Reviews="rev_leaves">
+		<TITLE>The Advetures of Huckleberry Finn</TITLE>
+		<AUTHOR Born="1835">Mark Twain</AUTHOR>
+		<BINDING>&mass;</BINDING>
+		<PAGES>298</PAGES>
+		<PRICE>$5.49</PRICE>
+	</BOOK>
+	<BOOK InStock="no">
+		<TITLE>Moby-Dick</TITLE>
+		<SUBTITLE>Or, the Whale</SUBTITLE>
+		<AUTHOR Born="1901">Herman Melville</AUTHOR>
+		<BINDING>&trade;</BINDING>
+		<PAGES>605</PAGES>
+		<PRICE>$4.95</PRICE>
+	</BOOK>
+	<BOOK InStock="yes">
+		<TITLE>The Scarlet Letter</TITLE>
+		<AUTHOR Born="1925">Nathaniel Hawthorne</AUTHOR>
+		<BINDING>&hard;</BINDING>
+		<PAGES>253</PAGES>
+		<PRICE>&topics;
+			внешний примитив не работает $4.25</PRICE>
+	</BOOK>
+</INVENTORY>

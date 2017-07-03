@@ -1,0 +1,60 @@
+<!-- Имя файла: ShowNodes.htm -->
+<HTML>
+<HEAD>
+   <TITLE>Show DOM Nodes</TITLE>
+   <SCRIPT LANGUAGE="JavaScript" FOR="window" EVENT="ONLOAD">
+      /* получить узел Document: */
+      Document = dsoXML.XMLDocument;
+      /* передача узла Document функции */
+      DisplayDIV.innerText = DisplayNodes(Document, 0);
+      function DisplayNodes (Node, IndentLevel)
+         {
+         /* объявить локальные переменные для рекурсии: */
+         var i;
+         var DisplayString = "";
+         /* создание отступа для данного уровня: */
+         Indent = "";
+         IndentDelta = "      ";
+         for (i=0; i < IndentLevel; ++i)
+            Indent += IndentDelta;   
+          /* отображение свойств текущего узла: */
+         DisplayString += Indent + "nodeName: "      
+                        + Node.nodeName + "\n"
+                        + Indent + "nodeTypeType: "  
+                        + Node.nodeType + "\n"
+                        + Indent + "nodeTypeString: "
+                        + Node.nodeTypeString + "\n"
+                        + Indent + "nodeValue: "      
+                        + Node.nodeValue + "\n\n";
+         /* отображение атрибутов для каждого из дочерних узлов: */
+         Indent += IndentDelta;
+         for (i=0;
+              Node.attributes != null
+              && i < Node.attributes.length;
+              ++i)
+            DisplayString += Indent + "nodeName: "      
+                           + Node.attributes(i).nodeName + "\n"
+                           + Indent + "nodeTypeType:   "
+                           + Node.attributes(i).nodeType + "\n"
+                           + Indent + "nodeTypeString: "
+                           + Node.attributes(i).nodeTypeString
+                           + "\n"
+                           + Indent + "nodeValue: "     
+                           + Node.attributes(i).nodeValue
+                           + "\n\n";
+         /* отображение каждого из дочерних узлов, не являющихся
+            атрибутами: */
+         for (i=0; i < Node.childNodes.length; ++i)
+            DisplayString +=
+              DisplayNodes (Node.childNodes(i), IndentLevel + 1);
+         /* возврат строки, содержащей результаты: */
+         return DisplayString;
+         }
+   </SCRIPT>
+</HEAD>
+<BODY>
+   <XML ID="dsoXML" SRC="Inventory Dom.xml"></XML>
+   <H2>XML Document Object Model (DOM) Nodes</H2>
+      <DIV ID="DisplayDIV"></DIV>
+</BODY>
+</HTML>

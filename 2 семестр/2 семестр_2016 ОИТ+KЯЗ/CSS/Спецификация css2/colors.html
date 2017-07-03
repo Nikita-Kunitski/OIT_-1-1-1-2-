@@ -1,0 +1,532 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>Цвета и фон</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html"><link rel="next" href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc"><link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">предыдущий</a> &nbsp; <a href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">14&nbsp; Цвета и фон</H1><div class="subtoc"><p><strong>Содержание</strong>
+<ul class="toc"><li class="tocline2"><a href="#colors" class="tocxref">14.1 Цвет
+переднего плана: свойство <span class="propinst-color">'color'</span> </a>
+<li class="tocline2"><a href="#q2" class="tocxref">14.2 Фон</a><ul class="toc">
+<li class="tocline3"><a href="#background-properties" class="tocxref">14.2.1
+Свойства фона: <span class="propinst-background-color">'background-color'</span>, <span class="propinst-background-image">'background-image'</span>, <span class="propinst-background-repeat">'background-repeat'</span>, <span class="propinst-background-attachment">'background-attachment'</span>, <span class="propinst-background-position">'background-position'</span>
+и <span class="propinst-background">'background'</span></a></ul>
+<li class="tocline2"><a href="#gamma-correction" class="tocxref">14.3 Коррекция цветовой гаммы</a></ul></div>
+
+<P>Свойства CSS позволяют авторам
+специфицировать цвет переднего плана и
+фона элементов. В качестве фона
+используется цвет или изображение.
+Свойства фона позволяют авторам
+позиционировать фоновое изображение,
+размножать его и объявлять как
+фиксированное относительно <a href="visuren.html#viewport" tppabs="http://pyramidin.narod.ru/css2/visuren.html#viewport">порта
+просмотра</a> или прокручивать вместе с
+документом.
+
+<P> Синтаксис значений цвета см. в разделе <a href="syndata.html#color-units" tppabs="http://pyramidin.narod.ru/css2/syndata.html#color-units">единицы
+измерения цвета</a>. 
+
+<H2><br>
+14.1 <a name="colors">Цвет переднего плана</a>:
+свойство <a href="#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a> </H2>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'color'"><a name="propdef-color" class="propdef-title"><strong>'color'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от пользовательского агента (ПА)
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P> Это свойство описывает цвет переднего плана содержимого текста элемента. Можно по
+разному специфицировать красный цвет:
+
+<div class="example"><P style="display:none">Пример(ы):</P><PRE>EM { color: red }              /* предопределённое название цвета */
+EM { color: rgb(255,0,0) }     /* диапазон RGB 0-255   */
+</PRE></div>
+<H2><a name="q2">14.2 Фон</a></H2>
+
+<P>Авторы могут специфицировать фон
+элемента (т.е. его видимую поверхность) как
+цвет или как изображение. В терминах <a
+href="box.html#box-model" tppabs="http://pyramidin.narod.ru/css2/box.html#box-model">модели бокса</a>, &quot;background&quot;
+относится к фону <a
+href="box.html#box-content-area" tppabs="http://pyramidin.narod.ru/css2/box.html#box-content-area">содержимого</a> и области <a
+href="box.html#box-padding-area" tppabs="http://pyramidin.narod.ru/css2/box.html#box-padding-area">заполнения</a>. Цвет и
+стиль обрамления устанавливаются в <a
+href="box.html#border-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#border-properties">свойствах обрамления</a>.
+Поля всегда прозрачны, поэтому фон бокса-предка
+всегда просвечивает.<P>Свойства фона не
+наследуются, но фон бокса-предка будет по
+умолчанию просвечивать, поскольку начальное
+значение <a href="#propdef-background-color" class="noxref"><span
+class="propinst-background-color">'background-color'</span></a><span
+class="propinst-background-color"> - </span>'transparent'.
+
+<P>Фон бокса, генерируемый корневым
+элементом, покрывает всю <a href="intro.html#canvas" tppabs="http://pyramidin.narod.ru/css2/intro.html#canvas">канву</a>.<P>Для
+документов HTML, однако, мы рекомендуем, чтобы
+авторы специфицировали фон элемента BODY, а
+не элемента HTML.<br>
+ПА должны учитывать следующие правила
+приоритета при заполнении фона: если
+значение свойства <a href="#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a> для элемента HTML
+отлично от 'transparent', тогда используйте его, в
+ином случае - используйте значение свойства
+<a href="#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a>
+ элемента BODY. Если результирующее значение
+-&nbsp; 'transparent', то представление не определено.
+
+<div class="html-example"><P>
+В соответствии с этими правилами, канва
+следующего документа 
+HTML будет иметь фон &quot;marble&quot;:
+
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Установка фона канвы&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+       BODY { background: url(&quot;http://style.com/marble.png&quot;) }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;Мой фон - marble.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+</div>
+
+
+<H3>14.2.1 <a name="background-properties">Свойства фона</a>: <a href="#propdef-background-color" class="noxref"><span
+class="propinst-background-color">'background-color'</span></a>, <a href="#propdef-background-image" class="noxref"><span
+class="propinst-background-image">'background-image'</span></a>, <a href="#propdef-background-repeat" class="noxref"><span
+class="propinst-background-repeat">'background-repeat'</span></a>, <a href="#propdef-background-attachment" class="noxref"><span
+class="propinst-background-attachment">'background-attachment'</span></a>,
+<a href="#propdef-background-position" class="noxref"><span
+class="propinst-background-position">'background-position'</span></a> и <a href="#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a>
+</H3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background-color'"><a name="propdef-background-color" class="propdef-title"><strong>'background-color'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> | transparent | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>transparent
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство устанавливает цвет фона
+элемента значением
+<span class="index-inst" title="&lt;color&gt;"><a name="x2" href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span
+class="value-inst-color">&lt;color&gt;</span></a></span>  или
+ключевым словом 'transparent' (чтобы сделать фон
+подложки просвечивающим).
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { background-color: #F00 }
+</PRE>
+</div>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background-image'"><a name="propdef-background-image" class="propdef-title"><strong>'background-image'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em>&nbsp;<td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство устанавливает изображение-фон
+элемента. При установке изображения для
+фона авторам необходимо также
+специфицировать цвет фона, который будет
+использоваться, если изображение окажется
+недоступным. Если изображение доступно, оно
+выводится поверх цвета фона. (Таким образом,
+цвет фона будет виден в прозрачных участках
+изображения).
+
+<P>Значениями данного свойства являются <span class="index-inst"
+title="&lt;uri&gt;"><a name="x4" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span
+class="value-inst-uri">&lt;uri&gt;</span></a></span>, для
+спецификации изображения, или 'none', если
+изображение не используется.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY { background-image: url(&quot;marble.gif&quot;) }
+P { background-image: none }
+</PRE>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background-repeat'"><a name="propdef-background-repeat" class="propdef-title"><strong>'background-repeat'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>repeat | repeat-x | repeat-y | no-repeat | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>repeat
+<tr valign=baseline><td><em>Применяется:</em><td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em>&nbsp;<td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Если специфицировано изображение фона, то
+данное свойство определяет, повторяется ли
+данное изображение (размножается ли), и как.
+Размноженное изображение покрывает
+области <a
+href="box.html#box-content-area" tppabs="http://pyramidin.narod.ru/css2/box.html#box-content-area">содержимого</a> и <a
+href="box.html#box-padding-area" tppabs="http://pyramidin.narod.ru/css2/box.html#box-padding-area">заполнения</a> бокса.<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><strong>repeat</strong>
+<dd>Изображение размножается горизонтально
+  и вертикально.
+<dt><strong>repeat-x</strong>
+<dd>Изображение размножается только
+  горизонтально .
+<dt><strong>repeat-y</strong>
+<dd>Изображение размножается только
+  вертикально.
+<dt><strong>no-repeat</strong>
+<dd>Изображение не размножается: выводится
+  только одна копия изображения.
+</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY { 
+  background: white url(&quot;pendant.gif&quot;);
+  background-repeat: repeat-y;
+  background-position: center;
+}
+</PRE>
+<div class="figure">
+<p><img src="bg-repeat.gif" tppabs="http://pyramidin.narod.ru/css2/bg-repeat.gif" alt="A centered background image,
+with copies repeated up and down the padding and content areas." width="243" height="334"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-bg-repeat" href="bg-repeat-desc.html" tppabs="http://pyramidin.narod.ru/css2/bg-repeat-desc.html" title="Long description for background pattern">[D]</A></SPAN>
+
+<p class="caption">Единственная копия фонового
+изображения центрирована, а другие копии
+помещены выше и ниже, чтобы создать
+вертикальную ленту позади элемента.
+</div>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background-attachment'"><a name="propdef-background-attachment" class="propdef-title"><strong>'background-attachment'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>scroll | fixed | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>scroll
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Если специфицировано изображение фона, то
+данное свойство определяет, является ли оно
+фиксированным относительно <a
+href="visuren.html#viewport" tppabs="http://pyramidin.narod.ru/css2/visuren.html#viewport">порта просмотра</a> ('fixed'), или
+прокручивается вместе с документом ('scroll').<p>Даже
+если изображение зафиксировано, оно будет
+видно только в том случае, если находится в
+области фона или заполнения элемента. Таким
+образом, пока изображение не размножено ('background-repeat:
+repeat'), оно может быть невидимым.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Здесь
+  создаётся бесконечная вертикальная
+  полоса, остающаяся &quot;приклеенной&quot; к
+  порту просмотра при прокручивании
+  элемента.
+<PRE>BODY { 
+  background: red url(&quot;pendant.gif&quot;);
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+}</PRE>
+</div>
+
+<P>ПА могут рассматривать 'fixed' как 'scroll'.
+Однако рекомендуется, чтобы они
+интерпретировали 'fixed' корректно, хотя бы
+для элементов HTML и BODY, поскольку у автора
+нет способа предоставлять изображение
+только для тех браузеров, которые
+поддерживают 'fixed'. См. детали в разделе <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствие</a>.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background-position'"><a name="propdef-background-position" class="propdef-title"><strong>'background-position'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ [<a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> ]{1,2} | 
+[ [top | center | bottom] || [left | center | right] ] ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>0% 0%
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока и к замещаемым
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относится к
+    размеру самого бокса
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Если фоновое изображение специфицировано,
+то данное свойство определяет его (изображения)
+начальную позицию.<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;percentage&gt;"><a name="x8" href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span
+class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a></span>
+ <span class="index-inst" title="&lt;percentage&gt;"><a name="x9" href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span
+class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a></span>
+<dd> Если пара значений - '0% 0%', то верхний
+  левый угол изображения выровнен с левым
+  верхним углом <a
+href="box.html#padding-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#padding-edge">кромки заполнения</a> бокса.
+  Пара значений '100% 100%' помещает нижний
+  правый угол изображения в нижний правый
+  угол области заполнения. Если пара
+  значений - '14% 84%', точка изображения 14%
+  поперёк и 84% вниз помещается в точку 14%
+  поперёк и 84% вниз области заполнения.
+
+<dt><span class="index-inst" title="&lt;length&gt;"><a name="x10" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length"><strong>&lt;length&gt;</strong></span></a></span>
+ <span class="index-inst" title="&lt;length&gt;"><a name="x11" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length"><strong>&lt;length&gt;</strong></span></a></span>
+<dd> Если пара значений - '2cm 2cm', то верхний
+  левый угол изображения помещается на 2cm
+  вправо и на 2cm вниз от верхнего левого угла
+  области заполнения.
+<dt>
+<dt><strong>top left</strong> и <strong>left top</strong>
+<dd>То же, что '0% 0%'.<dt><strong>top</strong>, 
+    <strong>top center</strong> и <strong>center top</strong>
+<dd>То же, что '50% 0%'.<dt><strong>right top</strong> и <strong>top right</strong>
+<dd>То же, что '100% 0%'.<dt><strong>left</strong>, <strong>left center</strong>
+  и <strong>center left</strong>
+<dd>То же, что '0% 50%'.<dt><strong>center</strong> и <strong>center center</strong>
+<dd>То же, что '50% 50%'.<dt><strong>right</strong>, <strong>right center</strong>
+  и <strong>center right</strong>
+<dd>То же, что '100% 50%'.<dt><strong>bottom left</strong> и <strong>left bottom</strong>
+<dd>То же, что '0% 100%'.<dt><strong>bottom</strong>, 
+    <strong>bottom center</strong> и 
+    <strong>center bottom</strong>
+<dd>То же, что '50% 100%'.<dt><strong>bottom right</strong> и <strong>right bottom</strong>
+<dd>То же, что '100% 100%'.
+</dl>
+
+<P>Если задано только одно значение, в
+процентах или единицах измерения, то оно
+устанавливает только горизонтальную
+позицию, вертикальная позиция будет 50%.<br>
+Если заданы два значения, первое задаёт
+горизонтальную позицию.<br>
+Допускаются комбинации значений в
+процентах и единицах измерения (например, '50% 2cm').
+Допускаются негативные значения позиции.
+Ключевые слова не могут комбинироваться со
+значениями в процентах или единицах
+измерения (все возможные сочетания
+приведены выше).
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<PRE>BODY { background: url(&quot;banner.jpeg&quot;) right top }    /* 100%   0% */
+BODY { background: url(&quot;banner.jpeg&quot;) top center }   /*  50%   0% */
+BODY { background: url(&quot;banner.jpeg&quot;) center }       /*  50%  50% */
+BODY { background: url(&quot;banner.jpeg&quot;) bottom }       /*  50% 100% */
+</PRE>
+</div>
+
+<P> Если фоновое изображение фиксировано в
+порте просмотра (см. свойство <a href="#propdef-background-attachment" class="noxref"><span
+class="propinst-background-attachment">'background-attachment'</span></a>), то
+изображение размещается относительно порта
+просмотра, а не относительно области
+заполнения элемента. Например,
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY { 
+  background-image: url(&quot;logo.png&quot;);
+  background-attachment: fixed;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}</PRE>
+
+  <P>В данном примере изображение (одиночное)
+  размещается в правом верхнем углу порта
+  просмотра.
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'background'"><a name="propdef-background" class="propdef-title"><strong>'background'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[<a href="#propdef-background-color" class="noxref"><span class="propinst-background-color">&lt;'background-color'&gt;</span></a> || <a href="#propdef-background-image" class="noxref"><span class="propinst-background-image">&lt;'background-image'&gt;</span></a> || <a href="#propdef-background-repeat" class="noxref"><span class="propinst-background-repeat">&lt;'background-repeat'&gt;</span></a>
+|| <a href="#propdef-background-attachment" class="noxref"><span class="propinst-background-attachment">&lt;'background-attachment'&gt;</span></a> || <a href="#propdef-background-position" class="noxref"><span class="propinst-background-position">&lt;'background-position'&gt;</span></a>] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>не
+    определено для сокращённых свойств
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>разрешено
+    для 'background-position'
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a> 
+это сокращённое свойство для установки индивидуальных
+свойств фона (т.е. <a href="#propdef-background-color" class="noxref"><span
+class="propinst-background-color">'background-color'</span></a>, <a href="#propdef-background-image" class="noxref"><span
+class="propinst-background-image">'background-image'</span></a>, <a href="#propdef-background-repeat" class="noxref"><span
+class="propinst-background-repeat">'background-repeat'</span></a>, <a href="#propdef-background-attachment" class="noxref"><span
+class="propinst-background-attachment">'background-attachment'</span></a> и <a href="#propdef-background-position" class="noxref"><span
+class="propinst-background-position">'background-position'</span></a>) в
+одном месте в таблице стилей.
+
+<P> Свойство <a href="#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a> 
+сначала устанавливает все индивидуальные
+свойства фона в их начальные значения, а
+затем назначает явные значения, заданные в
+объявлении.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P> 
+В первом правиле задано только значение <a href="#propdef-background-color" class="noxref"><span
+class="propinst-background-color">'background-color'</span></a><span
+class="propinst-background-color">,</span> а другие
+индивидуальные свойства установлены в свои
+начальные значения.<br>
+Во втором правиле все индивидуальные
+свойства специфицированы.
+
+<PRE>BODY { background: red }
+P { background: url(&quot;chess.png&quot;) gray 50% repeat fixed }
+</PRE>
+</div>
+
+<H2>14.3 <a name="gamma-correction">Коррекция цветовой гаммы</a></H2>
+
+<P><em>По вопросам цветовой гаммы
+проконсультируйтесь в Gamma Tutorial в
+спецификации PNG (<a href="refs.html#ref-PNG10" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-PNG10" rel="biblioentry" class="noxref"><span class="normref">[PNG10]</span></a>).</em></P>
+
+<P>При вычислении коррекции цветовой гаммы,
+ПА, выводящие на CRT, могут принять идеальный CRT
+и игнорировать любые эффекты внедряемой
+гаммы. Это означает, что минимальная
+обработка, необходимая для текущей
+платформы - :
+  <DL>
+    <DT> PC, использующий MS-Windows
+    <DD> none
+    <DT> Unix, использующий X11
+    <DD> none
+    <DT> Mac, использующий QuickDraw
+    <DD> применяет гамму 1.45 <a href="refs.html#ref-ICC32" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ICC32" rel="biblioentry" class="noxref"><span class="normref">[ICC32]</span></a> 
+      (приложения ColorSync-savvy могут просто
+      передавать профиль sRGB ICC в ColorSync для
+      выполнения необходимой коррекции цвета)<DT> SGI,
+      использующий X
+    <DD> применяет значения гаммы из <TT>/etc/config/system.glGammaVal</TT> 
+      (значение по умолчанию -
+    1.70; приложения, запущенные на Irix 6.2 или
+      выше могут просто передавать профиль sRGB ICC
+      в систему управления цветом)<DT> NeXT,
+      использующий NeXTStep
+    <DD> применяется гамма 2.22
+  </DL>
+
+<P>&quot;Применение гаммы&quot; означает, что
+каждый из трёх - R, G и B - обязан быть
+конвертирован в R'=R<SUP>gamma</SUP>, G'=G<SUP>gamma</SUP>,
+B'=B<SUP>gamma</SUP>, прежде чем быть обработанным ОС.
+
+<P>Это можно быстро выполнить путём однократного
+создания 256-элементной просмотровой
+таблицы при вызове браузера таким вот
+образом:
+
+<PRE>for i := 0 to 255 do
+  raw := i / 255.0;
+  corr := pow (raw, gamma);
+  table[i] := trunc (0.5 + corr * 255.0)
+end</PRE>
+
+<P>что затем позволяет исключить
+необходимость чрезмерных вычислений для
+атрибута цвета, и ещё меньше - через пикселные
+значения.
+
+<P>&nbsp;
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">предыдущий</a> &nbsp; <a href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</HTML>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

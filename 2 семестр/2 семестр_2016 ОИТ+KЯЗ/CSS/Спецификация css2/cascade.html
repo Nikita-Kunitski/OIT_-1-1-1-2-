@@ -1,0 +1,615 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Установка значений свойств, Каскадирование и Наследование</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html"><link rel="next" href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc"><link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">предыдущий</a>
+  &nbsp; <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div><hr class="navbar">
+
+<H1 align="center">6&nbsp; Установка значений свойств,
+Каскадирование и Наследование</H1>
+<div class="subtoc">
+<p><strong>Содержание</strong>
+  <ul class="toc">
+    <li class="tocline2"><a href="#q1" class="tocxref">6.1
+      Специфицированные, вычисленные и
+      текущие значения</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#specified-value" class="tocxref">6.1.1 <span class="index-def" title="specified value"> Специфицированные
+        значения</span></a>
+      <li class="tocline3"><a href="#computed-value" class="tocxref">6.1.2 <span class="index-def" title="computed value"> Вычисленные
+        значения</span></a>
+      <li class="tocline3"><a href="#actual-value" class="tocxref">6.1.3 <span class="index-def" title="actual value"> Реальные
+        (текущие) значения</span></a>
+    </ul>
+    <li class="tocline2"><a href="#inheritance" class="tocxref">6.2 Наследование</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#value-def-inherit" class="tocxref">6.2.1
+        Значение <span class="index-def" title="inherit, definition of">'inherit'</span> </a>
+    </ul>
+    <li class="tocline2"><a href="#at-import" class="tocxref">6.3
+      Правило&nbsp; @import</a>
+    <li class="tocline2"><a href="#cascade" class="tocxref">6.4 Каскад</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#cascading-order" class="tocxref">6.4.1 Порядок
+        каскадирования</a>
+      <li class="tocline3"><a href="#important-rules" class="tocxref">6.4.2
+        Правила&nbsp; !important</a>
+      <li class="tocline3"><a href="#specificity" class="tocxref">6.4.3
+        Вычисление специфики селектора</a>
+      <li class="tocline3"><a href="#q12" class="tocxref">6.4.4
+        Старшинство не-CSS подсказок</a>
+    </ul>
+  </ul>
+</div>
+
+<H2><a name="q1"><br>
+6.1 Специфицированные, вычисленные и текущие
+значения</a></h2>
+<P>После того, как ПА разобрал документ и
+сконструировал <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерево документа</a>, он
+обязан назначить каждому элементу дерева
+значение для каждого свойства, применимое
+для целевого <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типа носителя</a>.<P>Конечное
+значение свойства является результатом
+трёхступенчатого процесса вычисления:
+значение определяется по спецификации (&quot;специфицированное
+значение&quot;), затем, если необходимо, выводится
+абсолютное значение (&quot;вычисленное
+значение&quot;) и
+наконец - трансформируется в соответствии с
+ограничениями
+локальной среды (&quot;реальное значение&quot;).
+
+<h3><br>
+6.1.1 
+<span class="index-def" title="specified value">
+<a name="specified-value">Специфицированные значения</a></span></h3>
+
+<P>ПА обязаны сначала назначить свойству
+специфицированное значение на основе
+следующих механизмов (по приоритету):</p>
+
+<ol>
+<li>Если <a href="#cascade">каскад даёт значение</a>,
+  использовать его.
+
+<li>Иначе, если свойство <a
+href="#inheritance">унаследовано</a>, использовать
+  значение элемента-предка, обычно -
+  вычисленное значение.
+
+<li>Иначе, использовать <a name="x1"><span class="index-def"
+title="initial value">начальное значение</span></a>
+  свойства. <a
+name="initial-value">Начальное значение</a> каждого
+  свойства указано в определении свойства.
+</ol>
+
+<P>Не имея предков, корневой элемент <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a> не может
+использовать значения, унаследованные от
+элемента-предка; в этом случае используется,
+если необходимо, начальное значение.
+
+
+<h3><br>
+6.1.2 <span class="index-def" title="computed value">
+<a name="computed-value">Вычисленные значения</a>
+</span>
+</h3>
+
+<P>Специфицированные значения могут быть
+абсолютными (т.е. не специфицированными
+относительно других значений: 'red' или '2mm')
+или относительными (т.е. специфицированными
+относительно других значений: 'auto', '2em',
+'12%'). Для абсолютных значений не требуется
+никаких вычислений, чтобы найти
+вычисленное значение.<p>Относительные
+значения, с другой стороны, обязаны быть
+трансформированы в вычисленные значения:
+процентные рассчитываются относительно
+данного значения-ссылки (каждое свойство
+определяет соответствующее значение),
+значения с указанием единиц измерения (em, ex,
+px) должны быть сделаны абсолютными путём
+применения подходящих по размеру шрифтов
+или в пикселах, значения 'auto' должны
+высчитываться по формулам, данным для
+каждого свойства, ключевые слова ('smaller', 'bolder',
+'inherit') должны быть замещены в соответствии
+со своими определениями.<P>В большинстве
+случаев элементы наследуют вычисленные
+значения. Однако есть некоторые свойства,
+чьи специфицированные значения могут
+наследоваться (например, числовое значение
+свойства <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height'</span></a>). В тех случаях
+, когда дочерние элементы не наследуют
+вычисленные значения, это описывается в
+определении свойства.<h3><br>
+6.1.3 <span class="index-def" title="actual value"><a name="actual-value">Реальные
+значения</a></span></h3>
+
+<P>Вычисленное значение в принципе готово
+для использования, но ПА могут не иметь
+возможности использовать такое значение в
+имеющемся окружении. Например, ПА могут иметь
+возможность представлять рамки лишь
+размером в целое число пикселов и,
+следовательно, должны сделать приближение
+до вычисленной ширины. Реальное значение -
+это вычисленное значение после выполнения
+некоторого приближения.
+
+<H2><br>
+6.2&nbsp; <a name="inheritance">Наследование</a></h2>
+
+<P>Некоторые значения наследуются потомками
+элемента в <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дереве документа</a>.
+Каждое свойство <a
+href="about.html#property-defs" tppabs="http://pyramidin.narod.ru/css2/about.html#property-defs">определяет</a>, наследуется
+оно или нет.
+
+<div class="html-example"><P>Предположим, имеется
+  элемент H1 с выделенным элементом (EM) внутри:</p>
+
+<PRE>&lt;H1&gt;The headline &lt;EM&gt;is&lt;/EM&gt; important!&lt;/H1&gt;</PRE>
+
+  <P>Если цвет элементу EM не назначен,
+  выделенное &quot;is&quot; будет наследовать цвет
+  элемента-предка, и, поскольку H1 имеет
+  голубой цвет, элемент EM будет,
+  соответственно, голубым.
+</div>
+
+<P>Чтобы установить свойство стиля &quot;по
+умолчанию&quot; в документе, авторы могут
+установить это свойство в корне дерева
+документа. В HTML, например, эту функцию могут
+выполнить элементы HTML или BODY. Заметьте, что
+это будет работать, даже если автор опустит
+тэг BODY в тексте HTML, поскольку разборщик HTML
+вставит отсутствующие тэги.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P> 
+Например, поскольку свойство <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>
+ наследуется, все потомки элемента BODY будут
+наследовать цвет 'black':
+
+<PRE>BODY { color: black; }</PRE>
+</div>
+
+<P>Специфицированные процентные значения не
+наследуются, а вычисленные значения -
+наследуются.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P> 
+В данной таблице:</P>
+
+<pre>BODY { font-size: 10pt }
+H1 { font-size: 120% }</pre>
+
+<p>и в этом фрагменте документа:
+
+<pre class="html-example">&lt;BODY&gt;
+  &lt;H1&gt;A &lt;EM&gt;large&lt;/EM&gt; heading&lt;/H1&gt;
+&lt;/BODY&gt;</pre>
+
+<p>свойство <span class="prop-inst-font-size">'font-size'</span> 
+элемента H1 будет иметь вычисленное
+значение'12pt' (120% от 10pt, значения-предка).
+Поскольку значение свойства <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>  наследуется,
+элемент EM также получит вычисленное
+значение '12pt'. Если ПА не имеет доступного шрифта
+в 12pt, реальное значение <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span class="propinst-font-size">'font-size'</span></a>
+ и для H1, и для EM может быть, например, '11pt'.
+</div>
+
+<h3><br>
+6.2.1 Значение <span class="index-def" title="inherit, definition
+of"><a name="value-def-inherit">'inherit'</a></span>
+</h3>
+
+<P>Каждое свойство может иметь
+специфицированное значение 'inherit', которое
+означает, что для данного элемента
+свойство принимает то же самое <a
+href="#computed-value">вычисленное значение</a>, что и свойство элемента-предка. Наследуемое
+значение, которое как правило используется
+только как возвращаемое значение, может
+быть усилено путём явной установки 'inherit'.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>В
+  следующем примере свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>  и <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a>  установлены в
+  элементе BODY. Во всех других элементах значение
+  'color' будет наследоваться, а фон будет
+  прозрачным. Если эти правила являются
+  частью пользовательской таблицы стилей,
+  чёрный текст на белом фоне будет
+  форсирован по всему документу.
+
+<PRE>BODY { 
+  color: black !important; 
+  background: white !important;
+}
+
+* { 
+  color: inherit !important; 
+  background: transparent;
+}
+</PRE>
+
+</div>
+
+
+
+
+<H2>6.3 <a name="at-import">Правило&nbsp; @import</a></h2>
+
+<P>Правило <a name="x5"><span class="index-def"
+title="@import"><dfn>'@import'</dfn></span></a>&nbsp; даёт
+пользователям возможность импортировать
+правила стиля из других таблиц стилей.
+Любое правило @import обязано предшествовать
+всем наборам правил в таблице стилей. После
+ключевого слова '@import' обязан следовать URI
+подключаемой таблицы стилей. Допустима
+также строка; она будет интерпретироваться
+так,
+как будто имеет вокруг себя url(...).
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующие
+  строки эквивалентны по значению и обе
+  иллюстрируют синтаксис '@import' (одно с &quot;url()&quot;,
+  а другое - с простой строкой):</p>
+
+<PRE>@import &quot;mystyle.css&quot;;
+@import url(&quot;mystyle.css&quot;);</PRE>
+</div>
+
+<p>Поскольку ПА могут исключать запрос
+ресурсов неподдерживаемых
+<a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типов носителя</a>, авторы могут
+специфицировать медиа-зависимые правила <a name="x6"><span class="index-inst"
+title="@import">@import</span></a>. Эти <a name="x7"><span class="index-def"
+title="conditional import|media-dependent import">условные @import</span></a>
+специфицируют список разделённых запятыми
+типов носителя после URI.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Следующие правила имеют такой же эффект,
+  как если бы импортированная таблица
+  стилей была перенесена в правило @media для
+  того же типа, но данные правила позволят
+  исключить бесполезную нагрузку на ПА.
+
+<pre>@import url(&quot;fineprint.css&quot;) print;
+@import url(&quot;bluish.css&quot;) projection, tv;</pre>
+</div>
+
+<p>При отсутствии любых типов носителя,
+импорт является безусловным. Спецификация 'all'
+для носителя имеет тот же эффект.
+
+<H2><br>
+6.4&nbsp; <a name="cascade">Каскад</a></h2>
+
+<P>Таблицы стилей могут иметь три
+независимых источника: автор, пользователь
+и ПА.</p>
+
+<ul>
+<li><strong>Автор</strong>. Специфицирует таблицы
+  стилей для документа-источника в
+  соответствии с соглашениями о языке
+  документа. К примеру, в HTML таблицы стилей
+  могут быть включены в документ или иметь
+  внешнюю связь.
+
+<li><strong>Пользователь</strong>. Может иметь
+  возможность специфицировать стилевую
+  информацию для определённого документа.
+  Например, пользователь может
+  специфицировать файл, содержащий таблицу
+  стилей, или ПА может предоставить интерфейс,
+  генерирующий пользовательскую таблицу
+  стилей (или вести себя так, как если бы
+  предоставлял).
+
+<li><strong>Пользовательский агент</strong>. <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие ПА</a>
+  обязаны применять <span class="index-def" title="default style sheet"><a
+name="default-style-sheet"><dfn>таблицу стилей по умолчанию</dfn></a></span>
+  (или вести себя так, как если бы применяли) до того, как применять к
+  документу все другие таблицы стилей.
+  Таблицы стилей по умолчанию в ПАгенте должны
+  представить элементы языка документа
+  теми способами, которые удовлетворяют
+  общим ожиданиям для языка документа (например,
+  для визуальных браузеров, элемент EM в HTML
+  представляется шрифтом italic). См. <a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">&quot;Образец
+  таблицы стилей HTML
+4.0"</a>  - рекомендуемую таблицу стилей по
+  умолчанию для документов HTML 4.0.<P>Учтите,
+  что таблица стилей по умолчанию может быть
+  изменена, если системные настройки
+  изменены пользователем (например,
+  системные цвета). Однако, из-за ограничений
+  конкретной реализации ПА, может оказаться
+  невозможным изменить значения в таблице
+  стилей по умолчанию.
+</ul>
+
+<P>Области видимости таблиц стилей из этих
+трёх источников будут перекрываться и
+взаимодействовать в соответствии с
+каскадом.<P><a name="x10">Каскад</a> CSS назначает вес каждому
+правилу стиля. Если применяются несколько
+правил, одно, имеющее больший вес, будет
+иметь приоритет.<P>По умолчанию правила
+авторской таблицы стилей имеют больший вес,
+чем правила&nbsp; таблицы стилей пользователя.
+Преимущество зарезервировано, однако, для
+правил &quot;!important&quot;. Все правила
+пользователя и автора имеют больший вес,
+чем правила таблицы стилей по умолчанию в
+ПА.<P>Импортируемы таблицы стилей также
+каскадируются, и их вес зависит от
+порядка импортирования. Правила,
+специфицированные в имеющейся таблице
+стилей, переопределяют правила,
+импортируемые из других таблиц.
+Импортированные таблицы стилей сами могут
+импортировать и переопределять другие
+таблицы стилей рекурсивно, и тогда применяются те
+же правила приоритета.
+
+<H3><br>
+6.4.1 <a name="cascading-order">Порядок каскадирования</a></H3>
+
+<P>Чтобы найти значение для комбинации элемент/свойство,
+ПА обязаны применять следующий порядок
+сортировки:</p>
+
+<OL>
+    <LI>
+      Найти все объявления, применяемые в
+      запросе к элементу и свойству, для
+      целевого <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типа носителя</a>.
+      Объявления применяются, если
+      ассоциированный селектор <A
+      HREF="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">подбирает</A> элемент в
+      запросе.
+
+    <LI>
+      Сначала объявления сортируются по весу
+      и источнику: для нормальных объявлений -
+      авторские таблицы стилей
+      переопределяют пользовательские,
+      которые, в свою очередь, переопределяют
+      таблицу стилей по умолчанию. Для
+      объявлений <a name="x11"><span class="index-def" title="important">&quot;!important&quot;</span></a>
+      - пользовательские таблицы стилей переопределяют
+      авторские таблицы, которые, в свою
+      очередь, переопределяют таблицу стилей
+      по умолчанию. Объявления &quot;!important&quot;
+      переопределяют нормальные объявления.
+      Импортированная таблица стилей имеет
+      тот же источник, что и таблица стилей,
+      импортировавшая её.
+
+    <LI>
+      Вторая сортировка производится по <a href="#specificity">специфике</a>
+      селектора: более специфические
+      селекторы переопределяют более общие.
+      Псевдоэлементы и псевдоклассы обсчитываются
+      как нормальные элементы и классы
+      соответственно.
+
+    <LI> Наконец, идёт сортировка по
+      специфицированному порядку: если два
+      правила имеют одинаковые вес, источник и
+      специфику, выбирается
+      специфицированное позже. Правила в
+      импортируемых таблицах стилей
+      рассматриваются перед любыми правилами
+      имеющейся таблицы стилей.
+</OL>
+
+<P>Независимо от установок &quot;!important&quot;
+индивидуальных объявлений, эта стратегия
+даёт авторским таблицам стилей больший вес,
+чем таблицам читателя. Это тем более
+важно, поскольку ПА предоставляют
+пользователю возможность отключить
+влияние определённых таблиц стилей,
+например, в выпадающих меню.<H3><br>
+6.4.2&nbsp; Правила&nbsp; <a name="important-rules">!important</a></H3>
+
+<P>CSS пытается создать баланс между
+авторскими и пользовательскими таблицами
+стилей. По умолчанию правила авторской
+таблицы стилей переопределяют правила
+пользовательской таблицы (см. каскадное
+правило 3).<P>Однако, для баланса, объявление
+&quot;!important&quot; (ключевое слово "!" и &quot;important&quot;
+следуют за объявлением) имеет преимущество
+перед нормальной декларацией. И авторские,
+и пользовательские таблицы стилей могут
+содержать объявление &quot;!important&quot;, и
+пользовательские правила &quot;!important&quot;
+переопределяют авторские &quot;!important&quot;. Это
+свойство CSS улучшает доступность
+документов путём предоставления
+пользователям со специфическими
+требованиями (крупные шрифты, комбинации
+цветов и т.п.) контроля над представлением.
+
+<div class="note"><P>
+<em><strong>Примечание.</strong> Это семантическое
+изменение в сравнении с CSS1. В CSS1 авторские
+правила "!important" имели приоритет перед
+пользовательскими правилами "!important". </em>
+</div>
+
+<P>Объявление <a name="x12"><span class="index-inst" title="shorthand
+property">сокращённого свойства</span></a> (например, <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a>) как &quot;!important&quot;
+эквивалентно объявлению всех его
+подсвойств как &quot;!important&quot;.
+
+<div class="example"><P style="display:none">Пример(ы):</P> 
+
+  <P>Первое правило пользовательской таблицы
+  стилей в данном примере содержит
+  объявление &quot;!important&quot;, которое переопределяет
+  соответствующее объявление в авторской
+  таблице стилей. Второе объявление также
+  будет иметь приоритет как помеченное "!important".
+  Однако третье правило пользовательской
+  таблицы стилей - не "!important" - и поэтому будет
+  отброшено в пользу второго правила
+  авторской таблицы стилей (которое
+  устанавливает стиль сокращённого
+  свойства). Таким образом, третье авторское
+  правило будет отброшено в пользу второго
+  авторского правила, поскольку второе
+  правило -
+"!important". Это показывает, что объявления "!important"
+  имеют действие также и внутри авторских
+  таблиц стилей.
+
+<PRE>/* Из пользовательской таблицы стилей */
+P { text-indent: 1em ! important }
+P { font-style: italic ! important }
+P { font-size: 18pt }
+
+/* Из авторской таблицы стилей  */
+P { text-indent: 1.5em !important }
+P { font: 12pt sans-serif !important }
+P { font-size: 24pt }
+</PRE>
+</div>
+
+
+<H3>6.4.3 <a name="specificity">Вычисление специфики селектора</a></H3>
+<P>Специфика селектора высчитывается так:</p>
+
+<ul>
+<li>вычисляется количество атрибутов ID в
+  селекторе (= a)
+<li>вычисляется количество других атрибутов
+  и псевдоклассов в селекторе (= b)
+<li>вычисляется количество имён элементов в
+  селекторе (= c)
+<li>игнорируются псевдоэлементы.
+</ul>
+
+<P>Конкатенация трёх чисел a-b-c (в числовой
+системе с большой базой) дают специфику. 
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<PRE>*             {}  /* a=0 b=0 c=0 -&gt; специфика =   0 */
+LI            {}  /* a=0 b=0 c=1 -&gt; специфика =   1 */
+UL LI         {}  /* a=0 b=0 c=2 -&gt; специфика =   2 */
+UL OL+LI      {}  /* a=0 b=0 c=3 -&gt; специфика =   3 */
+H1 + *[REL=up]{}  /* a=0 b=1 c=1 -&gt; специфика =  11 */
+UL OL LI.red  {}  /* a=0 b=1 c=3 -&gt; специфика =  13 */ 
+LI.red.level  {}  /* a=0 b=2 c=1 -&gt; специфика =  21 */
+#x34y         {}  /* a=1 b=0 c=0 -&gt; специфика = 100 */ 
+</PRE>
+</div>
+
+
+<P>В HTML значения атрибута &quot;style&quot; элемента
+являются правилами таблицы стилей. Эти
+правила не имеют селекторов, но для целей
+шага 3 каскадного алгоритма они
+рассматриваются как имеющие селектор ID (специфика:
+a=1, b=0, c=0). Для целей шага 4 они
+рассматриваются после всех других правил.
+
+<div class="html-example">
+<PRE>&lt;HEAD&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  #x97z { color: blue }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;P ID=x97z style=&quot;color: red&quot;&gt;
+&lt;/BODY&gt;</PRE>
+
+  <P>В данном примере цвет элемента P будет
+  красным. Хотя специфика - одна и та же для
+  обоих объявлений, объявление атрибута "style"
+  переопределит объявление в элементе
+STYLE в соответствии с каскадным правилом 4.
+</div>
+
+<H3><a name="q12"><br>
+6.4.4
+&#1057;&#1090;&#1072;&#1088;&#1096;&#1080;&#1085;&#1089;&#1090;&#1074;&#1086;
+&#1085;&#1077;-CSS &#1087;&#1086;&#1076;&#1089;&#1082;&#1072;&#1079;&#1086;&#1082;</a></H3> 
+
+<P>ПА могут предпочесть подсказки (hints) из
+других источников, а не из таблиц стилей,
+например, элемент FONT или атрибут &quot;align&quot; в
+HTML. Если это так, не-CSS подсказки обязаны
+быть переведены в соответствующие правила CSS
+со спецификой=0. Принимается, что правила
+находятся в начале авторской таблицы
+стилей и могут быть переопределены последующими
+правилами таблиц стилей.
+
+<div class="note">
+<P><em><strong>Примечание.</strong>
+ В фазе переноса эта политика облегчит
+сосуществование стилистических атрибутов
+с таблицами стилей.
+</em>
+</div>
+
+<div class="note">
+<P><em><strong>Примечание.</strong>
+ В CSS1 не-CSS подсказки получали специфику=1, а
+не 0. Это изменение сделано из-за введения
+универсального селектора, имеющего
+специфику 0.
+</em>
+</div>
+
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">предыдущий</a> &nbsp; <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">следующий</a>&nbsp;
+&nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp;
+&nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</html>
+
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

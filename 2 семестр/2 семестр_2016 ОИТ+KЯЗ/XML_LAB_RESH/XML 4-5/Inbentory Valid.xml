@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="Inventory04.css"?>
+<!DOCTYPE INVENTORY
+   [
+   <!ELEMENT INVENTORY (BOOK)*>
+   <!ELEMENT BOOK (TITLE, AUTHOR, BINDING, PAGES, PRICE)>
+               <!ATTLIST BOOK   InStock (yes|no) #REQUIRED>
+               <!ELEMENT TITLE (#PCDATA | SUBTITLE)*>
+               <!ELEMENT SUBTITLE (#PCDATA)>
+               <!ELEMENT AUTHOR (#PCDATA)>
+               <!ATTLIST AUTHOR   Born CDATA #IMPLIED>
+               <!ELEMENT BINDING (#PCDATA)>
+               <!ELEMENT PAGES (#PCDATA)>
+              <!ELEMENT PRICE (#PCDATA)>
+       ]>
+<INVENTORY>
+	<BOOK InStock="yes">
+		<TITLE>The Advetures of Huckleberry Finn</TITLE>
+		<AUTHOR Born="1835">Mark Twain</AUTHOR>
+		<BINDING>mass marker paperback</BINDING>
+		<PAGES>298</PAGES>
+		<PRICE>$5.49</PRICE>
+	</BOOK>
+	<BOOK InStock="no">
+		<TITLE>Moby-Dick</TITLE>
+		<SUBTITLE>Or, the Whale</SUBTITLE>
+		<AUTHOR Born="1901">Herman Melville</AUTHOR>
+		<BINDING>trade paperback</BINDING>
+		<PAGES>605</PAGES>
+		<PRICE>$4.95</PRICE>
+	</BOOK>
+	<BOOK InStock="yes">
+		<TITLE>The Scarlet Letter</TITLE>
+		<AUTHOR Born="1925">Nathaniel Hawthorne</AUTHOR>
+		<BINDING>trade paperback</BINDING>
+		<PAGES>253</PAGES>
+		<PRICE>$4.25</PRICE>
+	</BOOK>
+</INVENTORY>

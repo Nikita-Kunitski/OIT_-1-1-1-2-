@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	
+
+		function sloj_ch()
+		{
+			alert("Начнем с сложения чисел");
+			var x=prompt("Введите число х");//сложение чисел
+			x=+x;
+			var y=prompt("Введите число y");
+			y=+y;
+			var c=x+y;
+			document.getElementById("textf").innerHTML +=('<br><br>Результат сложения чисел равен ' +c);
+		}
+
+			function sloj_str()
+			{
+				alert("Сложим строки");
+				var ch1=prompt("Введите первую строку");
+				var ch2=prompt("Введите вторую строку");
+				var res=ch1+ch2;
+				document.getElementById("textf").innerHTML+=('<br>Результат сложения строк '+res);
+			}
+
+				function sloj_chstr()
+				{
+					alert("Сложим число и строку");
+					var a=prompt("Введите число а");//сложение числа и строки
+					a=+a;
+					var b=prompt("Введите строку b");
+					var e=a+b;
+					document.getElementById("textf").innerHTML+=('<br>Результат сложения числа и строки '+e);
+				}
+
+					function sloj_strch()
+					{
+						alert("Сложим строку и число");
+						var i=prompt("Введите строку i");
+						var j=prompt("Введите число j");
+						j=+j;
+						var s=i+j;
+						document.getElementById("textf").innerHTML+=('<br>Результат сложения строки и числа '+s);
+						alert("Результатом сложения строки и числа всегда будет строка!");
+					}
+
+						function arifm_vir()
+						{
+							alert("Теперь перейдем к вычислению арифметических выражений");
+							alert("У нас есть выражения (50х-10у)*2ху и 5/х*10у-у/3*х*7 нужно, чтобы результат первого выражения был больше второго!");
+							var x1=prompt("Задай х для выражения ((50х-10у)*2ху) и (5/х*10у-у/3*х*7)");
+							x1=+x1;
+							var y1=prompt("Задай y для выражения ((50х-10у)*2ху) и (5/х*10у-у/3*х*7)");
+							y1=+y1;
+							var res1=((50*x1)-(10*y1))*2*x1*y1;
+							var res2=((5/x1)*10*y1)-((y1/3)*x1*7);
+							alert("Результат первого выражения = " +res1);
+							alert("Результат второго выражения = " +res2);
+							alert("Найдем остаток от деления результата первого выражения на результат второго");
+							var ost=res1 % res2;
+							document.getElementById("textf").innerHTML+=('Остаток от деления результата первого выражения на результат второго = '+ost)
+						}
+
+							function uslovie()
+							{
+								var x2=prompt("Введите число Х соответствующее условию: (x/8== y)&&(x >16)&&(y <5)&&(y !=3)");
+								x2=+x2;
+								var y2=prompt("Введите число У соответствующее условию: (x/8== y)&&(x >16)&&(y <5)&&(y !=3)");
+								y2=+y2;
+								if((x2/8 == y2)&&(x2 > 16)&&(y2 < 5)&&(y2 !=3))
+								{
+									document.getElementById("textf").innerHTML+=('Вы подобрали правильные значения x и y <b>поздравляем</b>!');
+								}
+									else
+									{
+									document.getElementById("textf").innerHTML+=('Значения x и y не подходят попробуйте еще раз.');
+									}
+							}
+
+								function dni()
+								{
+									var den=prompt("Введите число от 1 до 7 (дни недели)");
+									den=+den;
+									switch(den)
+									{
+										case 1:document.getElementById("textf").innerHTML+=('Понедельник');break;
+										case 2:document.getElementById("textf").innerHTML+=('Вторник');break;
+										case 3:document.getElementById("textf").innerHTML+=('Среда');break;
+										case 4:document.getElementById("textf").innerHTML+=('Четверг');break;
+										case 5:document.getElementById("textf").innerHTML+=('Пятница');break;
+										case 6:document.getElementById("textf").innerHTML+=('Суббота');break;
+										case 7:document.getElementById("textf").innerHTML+=('Воскресенье');break;
+									}
+								}
+
+									function prov()
+									{
+										try
+										{
+											alert("Вывод числа" +b2);
+										}
+										catch(e)
+										{
+											document.getElementById("textf").innerHTML+=('Ошибка '+e.name);
+										}
+									}
+
+											function privet()
+											{							
+											alert("Вас приветствует учебный центр");
+											var ima=prompt("Как вас зовут","");
+											alert("Здравствуйте, "+ima );
+											if(confirm("Хотите стать Web-дизайнером?"))
+											{
+												alert("Учите стили CSS и JavaScript!");
+											}
+											else{
+												alert("Упускаете время!");
+											}
+											}
+
+												function tab()
+												{
+													var k=prompt("Введите k ");
+													k=+k;
+													var n=prompt("Введите n ");
+													n=+n;
+													document.write("<table border='1'>");
+													for(var i=1;i<=k;i++)
+													{
+														document.write("<tr>");
+														for(var j=1;j<=n;j++)
+														{
+															document.write("<td>"+ i*j +"</td>");
+														}
+													}
+													document.write("</table>");
+												}
+
+													function circle()
+													{
+														document.write('<br><br><table border="2px" style="border-color:green">');
+														document.write("<tr>");
+														document.write("<td>"+"Радиус"+"</td>");
+														document.write("<td>"+"Площадь круга"+"</td>");
+														document.write("<td>"+"Длина окружности"+"</td>");
+														document.write("</tr>");
+														var a=prompt("Введите радиус первого круга (изменение 0,3)");
+														a=+a;
+														var b=prompt("Введите радиус последнего круга");
+														b=+b;
+														do
+														{
+															var s=Math.PI*2*a;
+															var p=Math.PI*a*a;
+															document.write("<tr>");
+															document.write("<td>" + a + "</td>");
+															document.write("<td>" + p + "</td>");
+															document.write("<td>" + s + "</td>");
+															document.write("</tr>");
+															a+=0.3;
+														}while(a<=b);
+														document.write("</table>");
+													}
+
+			function okrug()
+			{
+				var a=prompt("Введите целое число");
+				a=+a;
+				var b=prompt("Введите дробное число");
+				b=+b;
+				document.write('<br><br><table border="1px">');
+				document.write("<tr>");
+				document.write("<td>Число</td>");
+				document.write("<td>Метод</td>");
+				document.write("<td>Результат</td>");
+				document.write("<td>Описание метода</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+a+"</td>");
+				document.write("<td>toExponential(2)</td>");
+				document.write("<td>"+a.toExponential(2)+"</td>");
+				document.write("<td>Округляет до определенного кол-ва символов</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+b+"</td>");
+				document.write("<td>toExponential(2)</td>");
+				document.write("<td>"+b.toExponential(2)+"</td>");
+				document.write("<td>Округляет до определенного кол-ва символов</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+a+"</td>");
+				document.write("<td>toFixed(4)</td>");
+				document.write("<td>"+a.toFixed(4)+"</td>");
+				document.write("<td>Количество цифр после десятичного знака</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+b+"</td>");
+				document.write("<td>toFixed(4)</td>");
+				document.write("<td>"+b.toFixed(4)+"</td>");
+				document.write("<td>Количество цифр после десятичного знака</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+a+"</td>");
+				document.write("<td>toPrecision(4)</td>");
+				document.write("<td>"+a.toPrecision(4)+"</td>");
+				document.write("<td>Число значащих цифр</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+b+"</td>");
+				document.write("<td>toPrecision(4)</td>");
+				document.write("<td>"+b.toPrecision(4)+"</td>");
+				document.write("<td>Число значащих цифр</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+a+"</td>");
+				document.write("<td>toString(16)</td>");
+				document.write("<td>"+a.toString(16)+"</td>");
+				document.write("<td>Обозначает систему счисления чисел</td>");
+				document.write("</tr>");
+
+				document.write("<tr>");
+				document.write("<td>"+b+"</td>");
+				document.write("<td>toString(16)</td>");
+				document.write("<td>"+b.toString(16)+"</td>");
+				document.write("<td>Обозначает систему счисления чисел</td>");
+				document.write("</tr>");
+				document.write("</table>");
+			}
+
+	</script>
+	<style type="text/css">
+	body{
+		background-image: url('1.jpg');
+	}
+
+	#textf{
+		color:#0f0;
+		font-size: 1.3em;
+	}
+
+	.but{
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#0f0), to(#fff));
+		border-radius: 5px;
+		border: 1px solid #666;
+	}
+	</style>
+</head>
+<body>
+<input type="button" value='Приветствие' class="but" onclick="privet()"/> <br><br>
+<input type="button" value='Сложение чисел' class="but" onclick="sloj_ch()"/><br><br>
+<input type="button" value='Сложение строк' class="but" onclick="sloj_str()"/> <br><br>
+<input type="button" value='Сложение числа со строкой' class="but" onclick="sloj_chstr()"/> <br><br>
+<input type="button" value='Сложение строки с числом' class="but" onclick="sloj_strch()"/> <br><br>
+<input type="button" value='Выражение' class="but" onclick="arifm_vir()"/> <br><br>
+<input type="button" value='Условие' class="but" onclick="uslovie()"/> <br><br>
+<input type="button" value='Дни недели' class="but" onclick="dni()"/> <br><br>
+<input type="button" value='Проверка' class="but" onclick="prov()"/> <br><br>
+<input type="button" value='Таблица умножения' class="but" onclick="tab()"/> <br><br>
+<input type="button" value='Таблица площадей' class="but" onclick="circle()"/> <br><br>
+<input type="button" value='Таблица округлений' class="but" onclick="okrug()"/> <br><br>
+<div id="textf"></div>
+</body>
+</html>

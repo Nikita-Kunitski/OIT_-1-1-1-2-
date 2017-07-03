@@ -1,0 +1,956 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html lang="ru">
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>Звуковые таблицы стилей</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css"><link rel="prev" href="ui.html" tppabs="http://pyramidin.narod.ru/css2/ui.html">
+<link rel="next" href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html"><link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties"><link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index">
+</HEAD>
+<BODY><center><!--#include virtual="/lvt.htm"--></center><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="ui.html" tppabs="http://pyramidin.narod.ru/css2/ui.html">предыдущий</a>
+  &nbsp; <a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">19&nbsp; <a name="aural">Звуковые таблицы стилей</a></H1>
+<div class="subtoc">
+<p><strong>Содержание</strong>
+<ul class="toc">
+<li class="tocline2"><a href="#q1" class="tocxref">19.1 Введение</a>
+<li class="tocline2"><a href="#volume-props" class="tocxref">19.2
+  Свойства силы (объёма) звука: <span class="propinst-volume">'volume'</span></a>
+<li class="tocline2"><a href="#speaking-props" class="tocxref">19.3
+  Свойства разговора: <span class="propinst-speak">'speak'</span></a>
+<li class="tocline2"><a href="#pause-props" class="tocxref">19.4
+  Свойства паузы: <span class="propinst-pause-before">'pause-before'</span>, <span class="propinst-pause-after">'pause-after'</span>
+  и <span class="propinst-pause">'pause'</span></a>
+<li class="tocline2"><a href="#cue-props" class="tocxref">19.5 Свойства
+  реплики: <span class="propinst-cue-before">'cue-before'</span>, <span class="propinst-cue-after">'cue-after'</span>
+  и <span class="propinst-cue">'cue'</span></a>
+<li class="tocline2"><a href="#mixing-props" class="tocxref">19.6
+  Свойства микширования: <span class="propinst-play-during">'play-during'</span></a>
+<li class="tocline2"><a href="#spatial-props" class="tocxref">19.7
+  Пространственные свойства: <span class="propinst-azimuth">'azimuth'</span>
+  и <span class="propinst-elevation">'elevation'</span></a>
+<li class="tocline2"><a href="#voice-char-props" class="tocxref">19.8
+  Свойства характеристик голоса: <span class="propinst-speech-rate">'speech-rate'</span>, <span class="propinst-voice-family">'voice-family'</span>, <span class="propinst-pitch">'pitch'</span>, <span class="propinst-pitch-range">'pitch-range'</span>, <span class="propinst-stress">'stress'</span>
+  и <span class="propinst-richness">'richness'</span></a>
+<li class="tocline2"><a href="#speech-props" class="tocxref">19.9
+  Свойства речи: <span class="propinst-speak-punctuation">'speak-punctuation'</span>
+  и <span class="propinst-speak-numeral">'speak-numeral'</span></a>
+</ul></div><H2><a name="q1"><br>
+19.1 Введение</a></H2>
+<p>Звуковое представление документа, обычно
+используемое людьми с проблемами зрения,
+сочетает речевой синтез и <a name="x0"><span class="index-def" title="auditory icon">&quot;звуковые
+иконки&quot;</span></a><span class="index-def" title="auditory icon">.</span>
+Часто такое звуковое представление
+происходит при конвертации документа в
+обычный текст и его перенаправлении в <a name="x1"><span class="index-def" title="screen
+reader"><dfn>устройство чтения с экрана</dfn></span></a> --
+программу или физическое устройство,
+которое просто считывает все символы на
+экране. Результатом этого является менее
+эффективное представление, чем могло бы
+быть, если бы сохранялась структура
+документа. Свойства таблиц стилей для
+звукового представления могут
+использоваться совместно с визуальными
+свойствами (смешанный носитель) или как
+звуковая альтернатива визуальному
+представлению.<p>Помимо очевидного
+преимущества - повышения доступности, есть и
+улучшение использования в других условиях прослушивания
+информации: использовании в
+автомобиле, индустриальных и медицинских
+системах документации (intranet), домашние
+развлечения и помощь пользователям,
+обучающимся чтению или имеющим проблемы с
+чтением.<p>При использовании звуковых
+свойств, канва состоит из трёхмерного
+физического пространства (звуковой среды) и
+временн&#243;го пространства (можно
+специфицировать звуки до, во время и после
+других звуков). Свойства CSS позволяют также
+авторам изменять качество синтезируемой
+речи (тип голоса, частоту, инфлексию и т.п.).
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<pre>H1, H2, H3, H4, H5, H6 {
+    voice-family: paul;
+    stress: 20;
+    richness: 90;
+    cue-before: url(&quot;ping.au&quot;)
+}
+P.heidi { azimuth: center-left }
+P.peter { azimuth: right }
+P.goat  { volume: x-soft }
+</pre>
+
+<p>Здесь речевой синтезатор направляется в речевые заголовки в голосе (своего рода
+&quot;аудио-шрифт&quot;), называемом &quot;paul&quot;, ровным звуком, но очень мягким голосом.
+Перед произнесением заголовков звуковой отрывок будет проигрываться из заданного URL.
+Параграфы класса "heidi" будут идти слева (если звуковая система способна воспроизводить
+пространственное аудио), а параграфы класса "peter" - справа. Параграфы класса "goat" будут
+звучать очень мягко.</div>
+
+<H2><br>19.2 <a name="volume-props">Свойства объёма звука</a>: <a href="#propdef-volume" class="noxref"><span
+class="propinst-volume">'volume'</span></a></H2>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'volume'"><a name="propdef-volume" class="propdef-title"><strong>'volume'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number">&lt;number&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | silent | x-soft | soft | medium | loud |
+x-loud | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>medium
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>относительно наследуемого значения
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+
+<P><a name="x4"><span class="index-def" title="volume">Объём</span></a>
+означает величину размаха синусоиды.
+Другими словами, сильно изогнутая
+синусоида голоса при объёме 50 может давать
+пики выше данного значения. Полные значения,
+вероятно, будут более комфортными для
+человека, например, при физическом
+управлении объёмом звука (что будет
+пропорционально увеличивать значения и 0, и 100);
+единственное, что делает данное свойство,
+это определяет динамический диапазон.
+
+
+<P>Значения имеют следующий смысл:</p><dl>
+<dt><span class="index-inst" title="&lt;number&gt;"><a name="x5" href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span
+class="value-inst-number"><strong>&lt;number&gt;</strong></span></a></span>
+<dd>Любое число от '0' до '100'.
+'0' - это <em>минимальный слышимый</em> уровень громкости, а 100 соответствует <em>максимальному
+комфортному</em> уровню.
+<dt><span class="index-inst" title="&lt;percentage&gt;"><a name="x6" href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a></span>
+<dd>Процентные значения вычисляются относительно наследуемого значения и затем выравниваются
+  в диапазоне от '0' до '100'.
+<dt><strong>silent</strong><dd>Вообще нет звука. Значение '0' не означает то же самое, что 'silent'.
+<dt><strong>x-soft</strong><dd>То же, что '0'.<dt><strong>soft</strong><dd>То же, что '25'.
+<dt><strong>medium</strong><dd>То же, что '50'.<dt><strong>loud</strong><dd>То же, что '75'.
+<dt><strong>x-loud</strong><dd>То же, что '100'.</dl>
+
+<p>ПА должны позволять слушателю
+устанавливать значения, соответствующие '0'
+и '100'. Ни одно значение не является
+универсально применимым; подходящие
+значения зависят от используемой
+аппаратуры (громкоговорителей, наушников),
+обстановки (автомобиль, домашний театр,
+библиотека) и личных предпочтений.<br>
+Вот некоторые примеры:</p>
+
+<ul><li>Браузер для использования в автомобиле имеет установки с учётом сильных посторонних шумов. '0'&nbsp; будет довольно
+высоким уровнем, а '100' - очень высоким. Речь будет хорошо прослушиваться сквозь уличный шум, но общий динамический
+диапазон будет ограничен. Автомобили с улучшенной звукоизоляцией могут обеспечить более широкий динамический диапазон.
+
+<li>Другой браузер используется в квартире поздно ночью или в учебной аудитории. '0'
+  - установлено на очень низкий уровень, а&nbsp; '100'
+- тоже на довольно низкий. Как и в первом примере, динамический диапазон довольно ограничен.
+  Реальный объём звука здесь
+небольшой, а в первом примере - слишком высокий.
+<li>В тихом изолированном помещении установлен домашний театр hi-fi. '0'
+  - установлен довольно низко и '100' - довольно
+высоко; динамический диапазон весьма широк.</ul>
+
+<p>Одна и та же авторская таблица стилей может использоваться во всех случаях, просто отображая значения '0' и '100'
+соответствующим образом на стороне клиента.
+
+<H2><br>19.3 <a name="speaking-props">Свойства разговора</a>: <a href="#propdef-speak" class="noxref"><span
+class="propinst-speak">'speak'</span></a></H2>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'speak'"><a name="propdef-speak" class="propdef-title"><strong>'speak'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>normal | none | spell-out | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>normal
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+<P>Это свойство специфицирует, будет ли
+текст представляться в звуке и - если да - в
+какой манере (примерно как свойство <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>).<br>
+Возможные значения:
+
+<dl><dt><strong>none</strong></dt>
+<dd>Вырезает звуковое представление, так что элемент не требует времени для представления. Обратите внимание, что
+потомки могут переопределять это значение и будут звучать. (Для того, чтобы точно отменить представление элемента и его
+потомков, используйте свойство <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>).
+
+<dt><strong>normal</strong></dt><dd>Использует зависимые от языка правила произношения для представления элемента и
+его потомков.
+
+<dt><strong>spell-out</strong></dt><dd>Текст произносится побуквенно (используется для акронимов и аббревиатур).</dl>
+
+<p>Заметьте разницу между элементом, чьё
+свойство <a href="#propdef-volume" class="noxref"><span
+class="propinst-volume">'volume'</span></a>  имеет значение 'silent',
+и элементом, чьё свойство <a href="#propdef-speak" class="noxref"><span
+class="propinst-speak">'speak'</span></a>  установлено в 'none'.
+Первый отнимает столько же времени, как
+если бы он произносился, включая паузы до и
+после элемента, но звук не будет
+генерироваться. Второй не отнимает времени
+и не представляется (хотя его потомки -
+могут).<H2><br>
+19.4 <a name="pause-props">Свойства паузы</a>: <a href="#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a>, <a href="#propdef-pause-after" class="noxref"><span
+class="propinst-pause-after">'pause-after'</span></a> и <a href="#propdef-pause" class="noxref"><span
+class="propinst-pause">'pause'</span></a></H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'pause-before'"><a name="propdef-pause-before" class="propdef-title"><strong>'pause-before'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-time" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-time" class="noxref"><span class="value-inst-time">&lt;time&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>см. текст
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'pause-after'"><a name="propdef-pause-after" class="propdef-title"><strong>'pause-after'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-time" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-time" class="noxref"><span class="value-inst-time">&lt;time&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>см. текст
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+
+<P>Это свойство специфицирует паузу до (или после) произнесения содержимого элемента.<br>Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;time&gt;"><a name="x10" href="syndata.html#value-def-time" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-time" class="noxref"><span class="value-inst-time"><strong>&lt;time&gt;</strong></span></a></span>
+<dd>Выражает паузу в абсолютных единицах времени (секундах и миллисекундах).
+<dt><span class="index-inst" title="&lt;percentage&gt;"><a name="x11" href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a></span>
+<dd>Относится к инверсии значения свойства
+<a href="#propdef-speech-rate" class="noxref"><span class="propinst-speech-rate">'speech-rate'</span></a>.
+Например, если speech-rate - 120 слов в минуту (т.е.
+одно слово в полсекунды, или 500ms), тогда <a href="#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a> в 100% означает
+паузу в 500ms, а <a href="#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a> в 20% означает 100ms.</dl>
+
+<p>Пауза вставляется между содержимым
+элементов и любым содержимым <a href="#propdef-cue-before" class="noxref"><span
+class="propinst-cue-before">'cue-before'</span></a> или <a href="#propdef-cue-after" class="noxref"><span
+class="propinst-cue-after">'cue-after'</span></a>.
+
+<p>Авторы должны использовать относительные
+значения, чтобы создавать более надёжные
+таблицы стилей с учётом возможной разницы в
+реальных значениях устанавливаемого объёма.</p>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'pause'"><a name="propdef-pause" class="propdef-title"><strong>'pause'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ [<a href="syndata.html#value-def-time" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-time" class="noxref"><span class="value-inst-time">&lt;time&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a>]{1,2} ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>см. описания
+    'pause-before' и 'pause-after'
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-pause" class="noxref"><span class="propinst-pause">'pause'</span></a> 
+это сокращение для <a href="#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a>  и <a href="#propdef-pause-after" class="noxref"><span
+class="propinst-pause-after">'pause-after'</span></a>. Если заданы
+два значения, то первое является <a href="#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a>, а второе -
+<a href="#propdef-pause-after" class="noxref"><span class="propinst-pause-after">'pause-after'</span></a>.
+Если задано только одно значение, оно
+применяется для обоих свойств.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { pause: 20ms } /* pause-before: 20ms; pause-after: 20ms */
+H2 { pause: 30ms 40ms } /* pause-before: 30ms; pause-after: 40ms */
+H3 { pause-after: 10ms } /* pause-before: ?; pause-after: 10ms */
+</PRE>
+</div>
+
+<H2><br>
+19.5 <a name="cue-props">Свойства реплики</a>: <a href="#propdef-cue-before" class="noxref"><span
+class="propinst-cue-before">'cue-before'</span></a>, <a href="#propdef-cue-after" class="noxref"><span
+class="propinst-cue-after">'cue-after'</span></a> и <a href="#propdef-cue" class="noxref"><span
+class="propinst-cue">'cue'</span></a></H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'cue-before'"><a name="propdef-cue-before" class="propdef-title"><strong>'cue-before'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div><div class="propdef"><dl><dt>
+<span class="index-def" title="'cue-after'"><a name="propdef-cue-after" class="propdef-title"><strong>'cue-after'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+<P>Звуковые иконки (реплики) являются способом
+различения семантических элементов. Звуки
+могут проигрываться до и/или после элемента,
+чтобы обозначить его границы.<br>
+Значения имеют следующий смысл:</p>
+
+<dl><dt><span class="index-inst" title="&lt;uri&gt;"><a name="x15" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri"><strong>&lt;uri&gt;</strong></span></a></span>
+<dd> URI обязан указывать на ресурс звуковой
+иконки. Если URI указывает не на аудио-файл,
+а, например, на изображение, ресурс должен
+игнорироваться, а свойство -
+рассматриваться так, как если бы оно имело
+значение 'none'.
+
+<dt><strong>none</strong><dd> Звуковая иконка не специфицирована.</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>A {cue-before: url(&quot;bell.aiff&quot;); cue-after: url(&quot;dong.wav&quot;) }
+H1 {cue-before: url(&quot;pop.au&quot;); cue-after: url(&quot;pop.au&quot;) }
+</pre></div>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'cue'"><a name="propdef-cue" class="propdef-title"><strong>'cue'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="#propdef-cue-before" class="noxref"><span class="propinst-cue-before">&lt;'cue-before'&gt;</span></a> || <a href="#propdef-cue-after" class="noxref"><span class="propinst-cue-after">&lt;'cue-after'&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>не определено для сокращённого свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+<P>Свойство <a href="#propdef-cue" class="noxref"><span class="propinst-cue">'cue'</span></a> 
+является сокращением для установок <a href="#propdef-cue-before" class="noxref"><span class="propinst-cue-before">'cue-before'</span></a>
+ и <a href="#propdef-cue-after" class="noxref"><span class="propinst-cue-after">'cue-after'</span></a>.
+Если заданы два значения, первое является <a href="#propdef-cue-before" class="noxref"><span
+class="propinst-cue-before">'cue-before'</span></a><span
+class="propinst-cue-before">,</span> а второе - <a href="#propdef-cue-after" class="noxref"><span class="propinst-cue-after">'cue-after'</span></a>.
+Если задано только одно значение, оно
+применяется к обоим свойствам.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Следующие два правила эквивалентны:
+<PRE>H1 {cue-before: url(&quot;pop.au&quot;); cue-after: url(&quot;pop.au&quot;) }
+H1 {cue: url(&quot;pop.au&quot;) }</pre>
+</div>
+
+<P>Если ПА не может вывести звуковую иконку (напр.,
+установки ПА не позволяют это сделать), мы
+рекомендуем, чтобы он воспроизводил
+альтернативную подсказку (напр., выводил
+предупреждающее сообщение, издавал
+предупреждающий звук и т.п.).
+
+<P>Информацию о других видах техники
+генерации содержимого см. в <a
+href="generate.html#before-after-content" tppabs="http://pyramidin.narod.ru/css2/generate.html#before-after-content">псевдоэлементах :before
+и :after</a>.
+
+<H2><br>
+19.6 <a name="mixing-props">Свойства микширования</a>: <a href="#propdef-play-during" class="noxref"><span
+class="propinst-play-during">'play-during'</span></a></H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'play-during'"><a name="propdef-play-during" class="propdef-title"><strong>'play-during'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> mix? repeat? | auto | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+<p>Сходное со свойствами <a href="#propdef-cue-before" class="noxref"><span
+class="propinst-cue-before">'cue-before'</span></a> и <a href="#propdef-cue-after" class="noxref"><span
+class="propinst-cue-after">'cue-after'</span></a>, данное свойство
+специфицирует звук, проигрываемое как фон
+в то время, когда проговаривается
+содержимое элемента.<br>
+Значения имеют следующий смысл:</p>
+
+<dl><dt><span class="index-inst" title="&lt;uri&gt;"><a name="x18" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri"><strong>&lt;uri&gt;</strong></span></a></span>
+<dd>Звук, обозначенный этим <span class="index-inst"
+title="&lt;uri&gt;"><a name="x19" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span
+class="value-inst-uri">&lt;uri&gt;</span></a></span><span
+class="value-inst-uri">,</span> проигрывается как фон в то время, когда проговаривается содержимое элемента.
+<dt><strong>mix</strong><dd>Данное ключевое слово, если установлено, означает, что звук, наследуемый из
+свойства <a href="#propdef-play-during" class="noxref"><span class="propinst-play-during">'play-during'</span></a> 
+родительского элемента, продолжает проигрываться, а звучание, указанное в <span
+class="index-inst" title="&lt;uri&gt;"><a name="x20" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span
+class="value-inst-uri">&lt;uri&gt;</span></a></span><span
+class="value-inst-uri">,</span> смешивается с ним. Если 'mix' не специфицировано, фоновое звучание
+элемента замещает звучание из родительского элемента.<dt><strong>repeat</strong>
+<dd>Данное ключевое слово, если установлено, означает, что звук будет повторяться, если окажется слишком короток для заполнения
+всей длительности элемента. В ином случае звучание проигрывается однократно и останавливается. Это подобно действию
+свойства <a href="colors.html#propdef-background-repeat" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background-repeat" class="noxref"><span class="propinst-background-repeat">'background-repeat'</span></a>. Если
+звучание слишком долгое для элемента, оно обрывается сразу, как только элемент произнесён.<dt><strong>auto</strong>
+<dd>Звучание родительского элемента продолжает проигрываться (без рестарта, что могло бы иметь место, если бы свойство
+наследовалось).<dt><strong>none</strong>
+<dd>Это ключевое слово обозначает тишину. Звучание родительского элемента не слышно (если имеется) в течение данного элемента и
+продолжается после данного элемента.</dl>
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BLOCKQUOTE.sad { play-during: url(&quot;violins.aiff&quot;) }
+BLOCKQUOTE Q   { play-during: url(&quot;harp.wav&quot;) mix }
+SPAN.quiet     { play-during: none }
+</pre>
+</div>
+
+<H2><br>
+19.7 <a name="spatial-props">Пространственные свойства</a>: <a href="#propdef-azimuth" class="noxref"><span
+class="propinst-azimuth">'azimuth'</span></a> и <a href="#propdef-elevation" class="noxref"><span class="propinst-elevation">'elevation'</span></a>
+</H2>
+
+<p>Пространственное аудио является важным
+стилистическим свойством звукового
+представления. Оно предоставляет
+естественный способ реализации звучания
+нескольких независимых голосов, как в
+реальной жизни (источники звука редко находятся в
+одной точке помещения). Стереодинамики
+создают пространственный эффект.
+Стереонаушники или становящиеся всё более
+популярными установки с пятью колонками в
+домашнем театре могут генерировать
+объёмное звучание, а многополосные
+установки могут производит трёхмерное
+звучание. VRML 2.0 также включает
+пространственное аудио в предположении,
+что доступные по цене для потребителей
+аудиоустройства с пространственными
+эффектами со временем станут широко
+распространёнными.</p>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'azimuth'"><a name="propdef-azimuth" class="propdef-title"><strong>'azimuth'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-angle" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-angle" class="noxref"><span class="value-inst-angle">&lt;angle&gt;</span></a> | [[ left-side | far-left | left | center-left | center |
+center-right | right | far-right | right-side ] || behind ] |
+leftwards | rightwards | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>center
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table></dl></div>
+<P>Значения имеют следующий смысл:</p>
+
+<dl><dt><span class="index-inst" title="&lt;angle&gt;"><a name="x22" href="syndata.html#value-def-angle" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-angle" class="noxref"><span class="value-inst-angle"><strong>&lt;angle&gt;</strong></span></a></span>
+<dd>Позиция в угловых терминах от '-360deg' до '360deg'.
+Значение '0deg' означает впереди и в центре звукового
+пространства.  '90deg' это справа, '180deg' - сзади, '270deg'
+(или более подходящий эквивалент, '-90deg') - слева.
+<dt><strong>left-side</strong>
+<dd>То же, что '270deg'. С 'behind' - '270deg'.
+<dt><strong>far-left</strong>
+<dd>То же, что '300deg'. С 'behind' - '240deg'.
+<dt><strong>left</strong>
+<dd>То же, что '320deg'. С 'behind' - '220deg'.
+<dt><strong>center-left</strong>
+<dd>То же, что '340deg'. С 'behind' - '200deg'.
+<dt><strong>center</strong>
+<dd>То же, что '0deg'. С 'behind' - '180deg'.
+<dt><strong>center-right</strong>
+<dd>То же, что '20deg'. С 'behind' - '160deg'.
+<dt><strong>right</strong>
+<dd>То же, что '40deg'. С 'behind' - '140deg'.
+<dt><strong>far-right</strong>
+<dd>То же, что '60deg'. С 'behind' - '120deg'.
+<dt><strong>right-side</strong>
+<dd>То же, что '90deg'. С 'behind' - '90deg'.
+<dt><strong>leftwards</strong>
+<dd>Сдвигает звучание влево относительно
+  текущего угла. Точнее, вычитает 20 градусов.
+  Арифметически выполняется modulo 360 градусов.
+  Заметьте, что
+'leftwards' точнее описать как "повёрнуто против
+  часовой стрелки," поскольку оно <em>всегда</em>
+  вычитает 20 градусов, даже если наследуемый azimuth
+  уже позади слушателя (в этом случае
+  звучание на самом деле перемещено вправо).
+<dt><strong>rightwards</strong>
+<dd>Сдвигает звучание вправо относительно
+  текущего угла. Точнее, прибавляет 20
+  градусов. См. 'leftwards' в арифметике.
+</dl>
+
+<p>Данное свойство может быть более точно реализовано микшированием одного сигнала в
+разных каналах с разным уровнем. Оно может
+также использовать фазовое смещение,
+цифровую задержку и другие аналогичные
+приёмы для того, чтобы создать иллюзию сцены.
+Точные значения, используемые для
+выполнения этого эффекта, и количество
+динамиков зависят от ПА; это свойство лишь
+идентифицирует желаемый результат.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1   { azimuth: 30deg }
+TD.a { azimuth: far-right }          /*  60deg */
+#12  { azimuth: behind far-right }   /* 120deg */
+P.comment { azimuth: behind }        /* 180deg */
+</PRE>
+</div>
+
+<p>Если пространственный азимут
+специфицирован и выводящее устройство не
+способно производить звук <em>позади</em>
+слушателя, ПА должны конвертировать
+значения задней полусферы в значения
+передней полусферы. Метод может быть такой:</p>
+
+<ul>
+    <li>если 90deg &lt; x &lt;= 180deg,&nbsp;&nbsp; тогда x := 180deg - x
+    <li>если 180deg &lt; x &lt;= 270deg, тогда x := 540deg - x
+</ul>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'elevation'"><a name="propdef-elevation" class="propdef-title"><strong>'elevation'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-angle" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-angle" class="noxref"><span class="value-inst-angle">&lt;angle&gt;</span></a>  | below | level | above | higher | lower | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>level
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;angle&gt;"><a name="x24" href="syndata.html#value-def-angle" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-angle" class="noxref"><span class="value-inst-angle"><strong>&lt;angle&gt;</strong></span></a></span>
+<dd>Специфицирует возвышение как угол между '-90deg'
+  и '90deg'.
+'0deg' означает передний горизонт, что
+  означает уровень слушателя.  '90deg'
+  означает прямо сверху, а '-90deg' - прямо внизу.
+<dt><strong>below</strong>
+<dd>То же, что '-90deg'.
+<dt><strong>level</strong>
+<dd>То же, что '0deg'.
+<dt><strong>above</strong>
+<dd>То же, что '90deg'.
+<dt><strong>higher</strong>
+<dd>Прибавляет 10 градусов к текущему
+  возвышению.
+<dt><strong>lower</strong>
+<dd>Вычитает 10 градусов из текущего
+  возвышения.
+</dl>
+
+<P>Точные значения, используемые для
+получения этого эффекта, и количество
+динамиков не определены. Это свойство лишь
+идентифицирует желаемый результат.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1   { elevation: above }
+TR.a { elevation: 60deg }
+TR.b { elevation: 30deg }
+TR.c { elevation: level }
+</pre>
+</div>
+
+<h2><br>
+19.8&nbsp; <a name="voice-char-props">Свойства характеристик
+голоса</a>: <a href="#propdef-speech-rate" class="noxref"><span
+class="propinst-speech-rate">'speech-rate'</span></a>, <a href="#propdef-voice-family" class="noxref"><span
+class="propinst-voice-family">'voice-family'</span></a>,
+<a href="#propdef-pitch" class="noxref"><span class="propinst-pitch">'pitch'</span></a>,
+<a href="#propdef-pitch-range" class="noxref"><span class="propinst-pitch-range">'pitch-range'</span></a>,
+<a href="#propdef-stress" class="noxref"><span class="propinst-stress">'stress'</span></a>
+и <a href="#propdef-richness" class="noxref"><span class="propinst-richness">'richness'</span></a></H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'speech-rate'"><a name="propdef-speech-rate" class="propdef-title"><strong>'speech-rate'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number">&lt;number&gt;</span></a>  | x-slow | slow | medium | fast | x-fast | faster | slower
+| <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>medium
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Специфицирует темп речи. Обратите
+внимание, что допустимы и абсолютные, и
+относительные значения ключевых слов (сравните
+с <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>).<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;number&gt;"><a name="x26" href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span
+class="value-inst-number"><strong>&lt;number&gt;</strong></span></a></span>
+<dd>Специфицирует темп речи - слов в минуту,
+  количество которых варьируется в
+  зависимости от языка и широко
+  поддерживается речевыми синтезаторами.
+<dt><strong>x-slow</strong>
+<dd>То же, что 80 слов в минуту.
+<dt><strong>slow</strong>
+<dd>То же, что 120 слов в минуту
+<dt><strong>medium</strong>
+<dd>То же, что 180 - 200 слов в минуту.
+<dt><strong>fast</strong>
+<dd>То же, что 300 слов в минуту.
+<dt><strong>x-fast</strong>
+<dd>То же, что 500 слов в минуту.
+<dt><strong>faster</strong>
+<dd>Прибавляет 40 слов в минуту к текущему
+  темпу.
+<dt><strong>slower</strong>
+<dd>Вычитает 40 слов в минуту из текущего
+  темпа.
+</dl>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'voice-family'"><a name="propdef-voice-family" class="propdef-title"><strong>'voice-family'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[[<a href="#value-def-specific-voice" class="noxref"><span class="value-inst-specific-voice">&lt;specific-voice&gt;</span></a>  | <a href="#value-def-generic-voice" class="noxref"><span class="value-inst-generic-voice">&lt;generic-voice&gt;</span></a> ],]* [<a href="#value-def-specific-voice" class="noxref"><span class="value-inst-specific-voice">&lt;specific-voice&gt;</span></a>  |
+<a href="#value-def-generic-voice" class="noxref"><span class="value-inst-generic-voice">&lt;generic-voice&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значением является приоритетный список
+разделённых запятыми имён семейств голосов
+(сравните с <a href="fonts.html#propdef-font-family" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-family" class="noxref"><span
+class="propinst-font-family">'font-family'</span></a>).<br>
+Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><span class="index-def" title="&lt;generic-voice&gt;,
+definition of"><a
+name="value-def-generic-voice"><strong>&lt;generic-voice&gt;</strong></a></span>
+<dd>Значениями являются семейства голосов.
+  Возможные значения: 'male', 'female' и 'child'.
+<dt><span class="index-def" title="&lt;specific-voice&gt;::definition of"><a name="value-def-specific-voice"><strong>&lt;specific-voice&gt;</strong></a></span>
+<dd>Значения являются специфическими
+  объектами (напр., comedian, trinoids, carlos, lani).
+</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<pre>H1 { voice-family: announcer, male }
+P.part.romeo  { voice-family: romeo, male }
+P.part.juliet { voice-family: juliet, female }
+</pre>
+</div>
+
+<p>Имена могут быть в кавычках и обязаны
+быть закавычены, если какое-либо слово в
+имени не соответствует правилам синтаксиса
+для <a
+href="syndata.html#tokenization" tppabs="http://pyramidin.narod.ru/css2/syndata.html#tokenization">идентификаторов</a>.
+Рекомендуется также закавычивать голоса с
+именем, состоящим из более чем одного слова.
+Если кавычки отсутствуют, любые символы <a href="syndata.html#whitespace" tppabs="http://pyramidin.narod.ru/css2/syndata.html#whitespace">пробела</a> до и после имени
+голоса игнорируются и любая
+последовательность пробельных символов
+внутри имени голоса
+конвертируется в одиночный символ пробела.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'pitch'"><a name="propdef-pitch" class="propdef-title"><strong>'pitch'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-frequency" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-frequency" class="noxref"><span class="value-inst-frequency">&lt;frequency&gt;</span></a> | x-low | low | medium | high | x-high | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>medium
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<p>Специфицирует среднюю высоту (частоту)
+говорящего голоса. Средняя высота голоса
+зависит от семейства голосов. Например,
+средняя высота стандартного мужского
+голоса - около 120Hz, а женского - около 210Hz.</p>
+
+<P>
+Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><span class="index-inst" title="&lt;frequency&gt;"><a name="x31" href="syndata.html#value-def-frequency" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-frequency" class="noxref"><span class="value-inst-frequency"><strong>&lt;frequency&gt;</strong></span></a></span>
+<dd>Специфицирует среднюю высоту голоса (Hz).
+<dt><strong>x-low</strong>, <strong>low</strong>,
+<strong>medium</strong>, <strong>high</strong>, <strong>x-high</strong>
+<dd>Эти значения не отображаются в
+  абсолютные значения частоты, поскольку
+  зависят от семейства голосов. ПА должны
+  отображать эти значения в соответствующие
+  частоты, базируясь на семействе голосов и
+  установках ПА. В то же время, ПА обязаны
+  отображать эти значения упорядоченно (т.е.
+  'x-low' ниже, чем 'low', и т.д.).
+</dl>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'pitch-range'"><a name="propdef-pitch-range" class="propdef-title"><strong>'pitch-range'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number">&lt;number&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>50
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<p>Специфицирует вариации средней высоты.
+Воспринимаемая высота человеческого
+голоса определяется фундаментальной
+частотой и обычно имеет значения: 120Hz для
+мужского и 210Hz для женского голоса. На
+человеческих языках говорят с различной
+инфлексией и частотой; эти вариации выражают
+дополнительные значения и смысл. Так,
+оживлённая речь, т.е. с сильной инфлексией,
+имеет высокий диапазон. Это свойство
+специфицирует диапазон, вне которого
+появляется вариация, т.е., как сильно
+фундаментальная частота может отклоняться
+от средней частоты.
+
+<P>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;number&gt;"><a name="x33" href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number"><strong>&lt;number&gt;</strong></span></a></span>
+<dd>Значение - между '0' и '100'. '0' производит
+  плоский монотонный голос. 50 даёт
+  нормальную инфлексию. Выше 50 - оживлённая
+  речь.
+</dl>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'stress'"><a name="propdef-stress" class="propdef-title"><strong>'stress'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number">&lt;number&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>50
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<p>Специфицирует &quot;локальные пики&quot;
+интонационного контура голоса. Например,
+английский является <strong>акцентированным</strong>
+языком, и различные части предложения имеют
+первичное, вторичное и&nbsp; третичное
+выделение. Значение свойства <a href="#propdef-stress" class="noxref"><span
+class="propinst-stress">'stress'</span></a>  управляет величиной
+инфлексии, которая является результатом
+действия этих маркёров выделения. Это
+свойство действует вместе с <a href="#propdef-pitch-range" class="noxref"><span
+class="propinst-pitch-range">'pitch-range'</span></a>  и служит для
+того, чтобы разработчики могли
+использовать высококачественные воспроизводящие
+устройства.
+
+<P>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;number&gt;"><a name="x35" href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number"><strong>&lt;number&gt;</strong></span></a></span>
+<dd>Значения - от '0' до '100'. Смысл значения
+  зависит от языка. Например, уровень '50' - для
+  стандартного мужского голоса, говорящего
+  по-английски (средняя частота = 122Hz) с
+  нормальной интонацией и выделением будет
+  отличаться от голоса со значением '50',
+  говорящего по-итальянски.
+</dl>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'richness'"><a name="propdef-richness" class="propdef-title"><strong>'richness'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number">&lt;number&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>50
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Специфицирует полётность голоса.
+Полётный голос будет слышен в большом
+помещении, а вкрадчивый - нет. (Термин &quot;вкрадчивый&quot;
+относится к форме синусоиды.)
+
+<P>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;number&gt;"><a name="x37" href="syndata.html#value-def-number" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-number" class="noxref"><span class="value-inst-number"><strong>&lt;number&gt;</strong></span></a></span>
+<dd>Значения - от '0' до '100'. Чем выше значение,
+  тем более полётный голос. Более низкие
+  значения дают мягкий, медоточивый голос.
+</dl>
+
+<H2><br>
+19.9&nbsp; <a name="speech-props">Свойства речи</a>:
+<a href="#propdef-speak-punctuation" class="noxref"><span class="propinst-speak-punctuation">'speak-punctuation'</span></a>
+и <a href="#propdef-speak-numeral" class="noxref"><span class="propinst-speak-numeral">'speak-numeral'</span></a>
+</h2>
+
+<p>Дополнительное свойство речи, <a
+href="tables.html#propdef-speak-header" tppabs="http://pyramidin.narod.ru/css2/tables.html#propdef-speak-header">speak-header</a>, описано в
+главе о <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">таблицах</a>.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'speak-punctuation'"><a name="propdef-speak-punctuation" class="propdef-title"><strong>'speak-punctuation'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>code | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<P>Специфицирует, как произносится
+пунктуация.<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><strong>code</strong>
+<dd>Такие знаки препинания, как точка с
+  запятой, скобки и так далее, произносятся
+  буквально.
+<dt><strong>none</strong>
+<dd>Знаки не произносятся, а представляются
+  естественно, как различные паузы.
+</dl>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'speak-numeral'"><a name="propdef-speak-numeral" class="propdef-title"><strong>'speak-numeral'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>digits | continuous | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>continuous
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#aural-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#aural-media-group" class="noxref">звуковой</a>
+</table>
+</dl>
+</div>
+
+
+<p>Управляет произношением чисел. Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><strong>digits</strong>
+<dd>Произносит числа отдельными цифрами.
+  Например, "237" произносится &quot;два три семь&quot;.
+<dt><strong>continuous</strong>
+<dd>Числа произносятся полностью. Например, "237"
+  произносится &quot;двести тридцать семь&quot;.
+  Словесное представление зависит от языка.
+</dl>
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<a href="ui.html" tppabs="http://pyramidin.narod.ru/css2/ui.html">предыдущий</a> &nbsp;&nbsp; <a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">следующий</a> &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+<a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</HTML><!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

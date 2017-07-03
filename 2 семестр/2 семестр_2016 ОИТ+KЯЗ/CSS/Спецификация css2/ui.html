@@ -1,0 +1,459 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Интерфейс пользователя</TITLE><link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html"><link rel="next" href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc"><link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">предыдущий</a>
+  &nbsp; <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div>
+<hr class="navbar"><H1 align="center">18&nbsp; Интерфейс
+пользователя</H1>
+<div class="subtoc"><p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#cursor-props" class="tocxref">18.1 Курсоры:
+  свойство <span class="propinst-cursor">'cursor'</span> </a>
+<li class="tocline2"><a href="#system-colors" class="tocxref">18.2 Предпочтительные
+  цвета пользователя</a>
+<li class="tocline2"><a href="#system-fonts" class="tocxref">18.3 Предпочтительные
+  шрифты пользователя</a>
+<li class="tocline2"><a href="#dynamic-outlines" class="tocxref">18.4
+  Динамические контуры: свойство <span class="index-def" title="outline">'outline'</span> </a>
+<ul class="toc"><li class="tocline3"><a href="#q5" class="tocxref">18.4.1 Контуры
+    и фокус</a></ul>
+<li class="tocline2"><a href="#q6" class="tocxref">18.5 Увеличение</a></ul></div>
+
+<H2><br>
+18.1 <a name="cursor-props">Курсоры:</a> свойство <a href="#propdef-cursor" class="noxref"><span
+class="propinst-cursor">'cursor'</span></a> </H2>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'cursor'"><a name="propdef-cursor" class="propdef-title"><strong>'cursor'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ [<a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> ,]* [ auto | crosshair | default | pointer | move | e-resize
+| ne-resize | nw-resize | n-resize | se-resize | sw-resize | s-resize
+| w-resize| text | wait | help ] ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group" class="noxref">интерактивный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует тип курсора
+указательного устройства.<br>
+Значения имеют следующий смысл:
+
+<dl>
+<dt><strong>auto</strong>
+<dd>пользовательский агент (ПА) определяет
+  курсор на базе текущего контекста.
+
+<dt><strong>crosshair</strong>
+<dd>простой крест (например, увеличение знака "+"
+  с помощью коротких отрезков).
+
+<dt><strong>default</strong>
+<dd>курсор по умолчанию, зависящий от
+  платформы. Часто отображается стрелкой.
+
+<dt><strong>pointer</strong>
+<dd>курсор - указатель на ссылку.
+
+<dt><strong>move</strong>
+<dd>обозначает то, что перемещается.
+
+<dt><strong>e-resize, ne-resize, nw-resize, n-resize, se-resize,
+sw-resize, s-resize, w-resize</strong>
+
+<dd>обозначают перемещение какого-либо края.
+  Например, курсор 'se-resize' используется, если
+  передвижение начинается в юго-восточном
+  углу бокса.
+
+<dt><strong>text</strong>
+<dd>обозначает текст, который может быть
+  выделен. Часто отображается как
+  вертикальная черта I.
+
+<dt><strong>wait</strong>
+<dd>обозначает, что программа занята и
+  пользователь должен подождать. Часто
+  отображается как (песочные) часы.
+
+<dt><strong>help</strong>
+<dd>для объекта под курсором имеется
+  вспомогательная информация. Часто
+  отображается как знак вопроса или
+  воздушный шар.
+					    
+<dt><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri"><strong>&lt;uri&gt;</strong></span></a>
+
+<dd>ПА получает курсор из ресурса,
+  обозначенного в URI. Если ПА не может
+  обработать первый курсор из списка
+  курсоров, он должен попытаться обработать
+  второй, и т.д. Если ПА не может обработать
+  ни один курсор, определённый
+  пользователем, он обязан использовать
+  общий курсор в конце списка.
+</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>P { cursor : url(&quot;mything.cur&quot;), url(&quot;second.csr&quot;), text; }
+</PRE>
+</div>
+
+<H2>18.2 <a name="system-colors">Предпочтительные цвета пользователя</a></H2>
+
+<p>В дополнение к возможности устанавливать
+предопределённые <a
+href="syndata.html#color-units" tppabs="http://pyramidin.narod.ru/css2/syndata.html#color-units">значения цветов</a> для
+текста, фона, и т.д., CSS2 позволяет авторам
+специфицировать цвета таким образом, чтобы
+интегрировать их в графическую среду
+пользователя. Таблицы стилей, учитывающие
+пользовательские установки, дают следующие
+преимущества:
+	
+<ol>
+<li>Создают страницы, соответствующие
+  привычкам и вкусам пользователя.</li>
+<li>Создают страницы более доступными, т.к.
+  текущие пользовательские установки могут
+  быть рассчитаны на людей с физическими
+  проблемами.</li>
+</ol>
+
+<p>Набор значений, определённых для
+системных цветов, представляется
+исчерпывающим. Для систем, не имеющих
+соответствующих значений,
+специфицированное значение должно
+отображаться в ближайший системный атрибут
+или в цвет по умолчанию.</p>
+
+<p>Далее дан список дополнительных значений
+для относящихся к цвету атрибутов CSS и их
+основной смысл. Любое свойство цвета (например, <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a> или <a href="colors.html#propdef-background-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background-color" class="noxref"><span
+class="propinst-background-color">'background-color'</span></a>) может
+иметь одно из следующих названий. Хотя они и
+нечувствительны к регистру, рекомендуется
+использовать смешанную капитализацию, как
+показано ниже, чтобы сделать названия более
+понятными.</p>
+
+<dl>
+<dt><strong>ActiveBorder</strong>
+<dd>Рамка активного окна.
+<dt><strong>ActiveCaption</strong>
+<dd>Заголовок активного окна.
+<dt><strong>AppWorkspace</strong>
+<dd>Цвет фона многодокументного интерфейса.
+<dt><strong>Background</strong>
+<dd>Фон рабочего стола.
+<dt><strong>ButtonFace</strong>
+<dd>Цвет переднего плана 3-мерных элементов.
+<dt><strong>ButtonHighlight</strong>
+<dd>Тёмная тень для 3-мерных элементов (для
+  краёв, выступающих из светлой основы).
+<dt><strong>ButtonShadow</strong>
+<dd>Цвет тени для 3-мерных элементов.
+<dt><strong>ButtonText</strong>
+<dd>Текст кнопки.
+<dt><strong>CaptionText</strong>
+<dd>Текст заголовка, бокса и в боксе
+  прокручиваемого списка.
+<dt><strong>GrayText</strong>
+<dd>Серый (&quot;недоступен&quot;) текст. Это цвет
+  установлен в #000 на тот случай, если текущий
+  дисплей не поддерживает сплошной серый
+  цвет.
+<dt><strong>Highlight</strong>
+<dd>Объект(ы), выделенный в элементе
+  управления.
+<dt><strong>HighlightText</strong>
+<dd>Текст объекта(ов), выделенного в элементе
+  управления.
+<dt><strong>InactiveBorder</strong>
+<dd>Рамка неактивного окна.
+<dt><strong>InactiveCaption</strong>
+<dd>Заголовок неактивного окна.
+<dt><strong>InactiveCaptionText</strong>
+<dd>Цвет текста неактивного заголовка.
+<dt><strong>InfoBackground</strong>
+<dd>Цвет фона элементов подсказки.
+<dt><strong>InfoText</strong>
+<dd>Цвет текста элементов подсказки.
+<dt><strong>Menu</strong>
+<dd>Фон меню.
+<dt><strong>MenuText</strong>
+<dd>Текст меню.
+<dt><strong>Scrollbar</strong>
+<dd>Серая область прокрутки.
+<dt><strong>ThreeDDarkShadow</strong>
+<dd>Тёмная тень для 3-мерных элементов
+  дисплея.
+<dt><strong>ThreeDFace</strong>
+<dd>Цвет переднего плана для 3-мерных элементов
+  дисплея.
+<dt><strong>ThreeDHighlight</strong>
+<dd>Цвет подсветки для 3-мерных элементов
+  дисплея.
+<dt><strong>ThreeDLightShadow</strong>
+<dd>Светлый цвет для 3-мерных элементов
+  дисплея (для краёв, выступающих из светлой
+  основы).
+<dt><strong>ThreeDShadow</strong>
+<dd>Тёмная тень для 3-мерных элементов
+  дисплея.
+<dt><strong>Window</strong>
+<dd>Фон окна.
+<dt><strong>WindowFrame</strong>
+<dd>Кадр окна.
+<dt><strong>WindowText</strong>
+<dd>Текст в окнах.
+</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Например, чтобы установить цвета фона и
+переднего плана в параграфе в те же
+значения, что и у окна пользователя,
+напишите так:
+
+<PRE>P { color: WindowText; background-color: Window }
+</PRE>
+</div>
+
+<H2>18.3 <a name="system-fonts">Предпочтительные шрифты пользователя</a></H2>
+
+<P>Как и с цветами, авторы могут
+специфицировать шрифты так, чтобы использовать
+системные ресурсы пользователя. См. детали
+в свойстве <a href="fonts.html#propdef-font" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font" class="noxref"><span
+class="propinst-font">'font'</span></a>.
+
+<h2><br>
+18.4 <a name="dynamic-outlines">Динамические контуры:</a>
+свойство <a name="x1"><span
+class="index-def" title="outline">'outline'</span></a> </h2>
+
+<P>Иногда авторам таблиц стилей может
+понадобиться создать контуры вокруг
+визуальных объектов, таких как кнопки,
+активные поля формы, карты изображений и т.п.,
+чтобы выделить их. Контуры CSS2 отличаются от <a
+href="box.html#border-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#border-properties">рамок</a> в следующем:</p>
+
+<ol>
+<li>Контуры не занимают пространство. 
+<li>Контуры могут не быть прямоугольными. 
+</ol>
+
+<P>Свойства контуров управляют стилем этих
+динамических контуров.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'outline'"><a name="propdef-outline" class="propdef-title"><strong>'outline'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="#propdef-outline-color" class="noxref"><span class="propinst-outline-color">&lt;'outline-color'&gt;</span></a> || <a href="#propdef-outline-style" class="noxref"><span class="propinst-outline-style">&lt;'outline-style'&gt;</span></a> ||
+<a href="#propdef-outline-width" class="noxref"><span class="propinst-outline-width">&lt;'outline-width'&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    конкретные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group" class="noxref">интерактивный</a>
+</table>
+</dl>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'outline-width'"><a name="propdef-outline-width" class="propdef-title"><strong>'outline-width'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="box.html#value-def-border-width" tppabs="http://pyramidin.narod.ru/css2/box.html#value-def-border-width" class="noxref"><span class="value-inst-border-width">&lt;border-width&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>medium
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em>&nbsp;<td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group" class="noxref">интерактивный</a>
+</table>
+</dl>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'outline-style'"><a name="propdef-outline-style" class="propdef-title"><strong>'outline-style'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="box.html#value-def-border-style" tppabs="http://pyramidin.narod.ru/css2/box.html#value-def-border-style" class="noxref"><span class="value-inst-border-style">&lt;border-style&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em>&nbsp;&nbsp;<td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group" class="noxref">интерактивный</a>
+</table>
+</dl>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'outline-color'"><a name="propdef-outline-color" class="propdef-title"><strong>'outline-color'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> | invert | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>invert
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em>&nbsp;<td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group" class="noxref">интерактивный</a>
+</table>
+</dl>
+</div>
+
+
+<p>Контур, созданный свойствами контуров,
+прорисовывается &quot;поверх&quot; бокса, т.е.
+контур всегда сверху и не влияет на позицию
+и размер бокса или любых других боксов.
+Следовательно, отображение или подавление
+контуров не вызывает перерисовки.<p>Контур
+прорисовывается сразу за <a
+href="box.html#border-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#border-edge">краем рамки</a>.<p>Контуры
+могут быть непрямоугольными. Например, если
+элемент разбит на несколько строк, контур
+будет минимальным необходимым для
+включения всех боксов элемента. В
+противоположность <a
+href="box.html#border-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#border-properties">рамкам</a>, контур не
+открыт в начале или в конце строчного бокса,
+но всегда полностью замкнут.
+
+<p>Свойство <a href="#propdef-outline-width" class="noxref"><span class="propinst-outline-width">'outline-width'</span></a>
+ принимает те же значения, что и <a href="box.html#propdef-border-width" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-border-width" class="noxref"><span
+class="propinst-border-width">'border-width'</span></a>.  
+
+<P>Свойство <a href="#propdef-outline-style" class="noxref"><span class="propinst-outline-style">'outline-style'</span></a>
+принимает те же значения, что и <a href="box.html#propdef-border-style" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-border-style" class="noxref"><span
+class="propinst-border-style">'border-style'</span></a>, за
+исключением 'hidden', который не является
+допустимым стилем контура.<p>Свойство <a href="#propdef-outline-color" class="noxref"><span class="propinst-outline-color">'outline-color'</span></a>
+ принимает все цвета, как и ключевое слово <span class="index-def"
+title="invert"><a class="value-def"
+name="value-def-invert">'invert'</a></span>. 'Invert' должен
+производить инверсию цвета пикселов экрана.
+Это обычный приём для того, чтобы
+удостовериться, что рамка фокуса видна
+независимо от цвета фона.
+
+<p>Свойство <a href="#propdef-outline" class="noxref"><span class="propinst-outline">'outline'</span></a> 
+это сокращённое свойство, устанавливающее
+все три: <a href="#propdef-outline-style" class="noxref"><span
+class="propinst-outline-style">'outline-style'</span></a>, <a href="#propdef-outline-width" class="noxref"><span
+class="propinst-outline-width">'outline-width'</span></a> и <a href="#propdef-outline-color" class="noxref"><span
+class="propinst-outline-color">'outline-color'</span></a>.<p class="note">Обратите
+внимание, что контур одинаков на всех
+сторонах. В отличие от рамок, свойства
+'outline-top' или 'outline-left' отсутствуют.<p>В этой
+спецификации не определено, как
+прорисовываются несколько перекрывающихся
+контуров, или как контуры прорисовываются
+для боксов, которые частично скрыты за
+другими элементами.
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ Поскольку контур фокуса не влияет на
+форматирование (т.е. для него не выделяется
+пространство в модели бокса), он может
+нормально перекрывать другие элементы на
+странице.
+</em>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Прорисовка толстого контура вокруг
+элемента BUTTON:
+
+<PRE>BUTTON { outline-width : thick }</PRE>
+
+  <P>Для динамического изменения ширины
+  контура могут использоваться скрипты, не
+  вызывая при этом перерисовки.
+</div>
+
+<H3><a name="q5"><br>
+18.4.1 Контуры и фокус</a></h3>
+
+<P>Графические интерфейсы пользователя
+могут использовать контуры вокруг
+элементов, чтобы сообщать пользователю,
+какой элемент страницы имеет <a name="x7"><span class="index-def"
+title="focus"><dfn>фокус</dfn></span></a>. Эти контуры дополняют
+рамки, и включение и выключение не должно
+вызывать перерисовки документа. Фокус
+является субъектом действий пользователя в
+документе (например, при вводе текста,
+выборе кнопки, и т.д.). ПА, поддерживающие <a
+href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group">группы интерактивных
+носителей</a>, обязаны отслеживать, где
+находится фокус, и обязаны также отображать
+фокус. Это может быть сделано путём
+использования динамических контуров
+вместе с псевдоклассом :focus.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Чтобы прорисовать толстую чёрную линию
+  вокруг элемента, когда он имеет фокус,
+  толстую красную линию, когда он активен,
+  можно использовать следующие правила:
+
+<pre>:focus  { outline: thick solid black }
+:active { outline: thick solid red }
+</pre>
+</div>
+
+<H2><a name="q6">18.5&nbsp; Увеличение</a></H2> 
+
+<P>Рабочая группа CSS считает, что увеличение
+документа или его части не должно
+специфицироваться через таблицы стилей. ПА
+могут поддерживать такое увеличение
+разными путями (например, увеличивать
+изображение, усиливать звук и т.п.).<P>При
+увеличении страницы ПАгенты должны
+выдерживать соотношения между
+позиционированными элементами.<P>&nbsp;
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">предыдущий</a> &nbsp; <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">следующий</a>&nbsp;
+&nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp;
+&nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</html>
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

@@ -1,0 +1,52 @@
+body{font-size: normal;}
+td,th{border: thin solid gray;
+	padding: 15px;}
+table{margin-left: 20px;
+	margin-right: 20px;
+	border: thin solid black;
+	border-collapse: collapse;}
+h1, h2, h3, span{color: #c71515;
+	font-size: 120%;
+    font-weight: 800;
+	font-weight: bold;
+	font-style: italic;}
+#life
+{
+	color: #FF2B2B;
+	font-family: "Times New Roman";
+	font-style: italic;
+	font-size: 120%;
+}
+a:link
+{
+	color: #4274E8;
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+	color: black;
+}
+ p:first-child
+{
+	color: green;
+}
+p:first-letter
+{
+	font-size: 120%;
+	border: 1px solid black;
+	padding: 3px;
+}
+p:first-line
+{
+	color: darkorange;
+	font-style: italic;
+	font-weight: bold;
+}
+a:before
+{
+	content: "Студент 1 курса ";
+}
+a:after {
+	content: " проживающий по адресу Белорусская 21";
+}

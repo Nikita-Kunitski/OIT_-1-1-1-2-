@@ -1,0 +1,171 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Приложение B: Изменения по сравнению с CSS1</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html"><link rel="next" href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index">
+</HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">предыдущий</a> &nbsp; <a href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">Приложение В. Изменения по сравнению с CSS1</H1>
+<div class="subtoc"><p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#q1" class="tocxref">B.1 Новая функциональность</a>
+<li class="tocline2"><a href="#q2" class="tocxref">B.2 Обновлённые описания</a>
+<li class="tocline2"><a href="#changes-from-css1" class="tocxref">B.3
+Семантические изменения по сравнению с CSS1</a></ul></div>
+<P><em>Это приложение является информативным, но не нормативным.</em></P>
+
+<P>CSS2 построен на основе CSS1, и все
+действительные таблицы стилей CSS1 являются
+действительными таблицами стилей CSS2.
+Изменения между спецификацией CSS1 (см. <a href="refs.html#ref-CSS1" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-CSS1" rel="biblioentry" class="noxref"><span class="normref">[CSS1]</span></a>)
+и данной спецификацией делятся на три
+группы: новая функциональность,
+обновлённые описания функциональности CSS1 и
+изменения по сравнению с CSS1.
+
+<H2><a name="q1"><br>
+B.1 Новая функциональность</a></H2>
+
+<P>В дополнение к функциональности CSS1, CSS2 поддерживает:</p>
+<UL><LI>Понятие <A HREF="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типов носителя</A>.
+<LI>Значение <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit">'inherit'</a> для всех свойств.
+<LI><A HREF="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">Страничные носители</A><LI><A HREF="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">Звуковые таблицы стилей</A>
+<LI>Несколько опций интернационализации, включая <a
+href="generate.html#lists" tppabs="http://pyramidin.narod.ru/css2/generate.html#lists">стили нумерации списков</a>, поддержку <a
+href="visuren.html#direction" tppabs="http://pyramidin.narod.ru/css2/visuren.html#direction">двунаправленного текста</a>
+и чувствительных к языку <a href="generate.html#quotes" tppabs="http://pyramidin.narod.ru/css2/generate.html#quotes">знаков кавычек</a>.
+<LI>Расширенный механизм <A HREF="fonts.html#font-selection" tppabs="http://pyramidin.narod.ru/css2/fonts.html#font-selection">выбора
+шрифта</A>, включая смысловой подбор, синтез
+и загружаемые шрифты. Введены также
+понятие системных шрифтов и новое
+свойство <a href="fonts.html#propdef-font-size-adjust" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size-adjust" class="noxref"><span
+class="propinst-font-size-adjust">'font-size-adjust'</span></a>.
+
+<LI><A HREF="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">Таблицы</A>, включая новые
+значения <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a> и <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align'</span></a>.
+<LI><A HREF="visuren.html#relative-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#relative-positioning">Относительное</A> и
+  <A
+HREF="visuren.html#absolute-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#absolute-positioning">абсолютное позиционирование</A>,
+включая <A HREF="visuren.html#fixed-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#fixed-positioning">фиксированное позиционирование</A>.
+<LI>Новые типы боксов (наряду с блок- и инлайн-): <a
+href="visuren.html#compact" tppabs="http://pyramidin.narod.ru/css2/visuren.html#compact">compact</a> и <a href="visuren.html#run-in" tppabs="http://pyramidin.narod.ru/css2/visuren.html#run-in">run-in</a>.
+<LI>Возможность контролировать <a href="visufx.html#overflow" tppabs="http://pyramidin.narod.ru/css2/visufx.html#overflow">переполнение</a>, <a
+href="visufx.html#clipping" tppabs="http://pyramidin.narod.ru/css2/visufx.html#clipping">сжатие</a> и <a href="visufx.html#visibility" tppabs="http://pyramidin.narod.ru/css2/visufx.html#visibility">видимость</a> содержимого в
+модели визуального форматирования.
+<LI>Возможность специфицировать максимальные и минимальные <a
+href="visudet.html#min-max-widths" tppabs="http://pyramidin.narod.ru/css2/visudet.html#min-max-widths">ширину</a> и <a
+href="visudet.html#min-max-heights" tppabs="http://pyramidin.narod.ru/css2/visudet.html#min-max-heights">высоту</a> в модели визуального форматирования.
+
+<LI>Расширенный механизм <A HREF="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">селекторов</A>,
+включая дочерние селекторы, смежные селекторы и селекторы атрибутов.
+
+<LI><A HREF="generate.html#generated-text" tppabs="http://pyramidin.narod.ru/css2/generate.html#generated-text">Генерируемое содержимое</a>,
+<a href="generate.html#counters" tppabs="http://pyramidin.narod.ru/css2/generate.html#counters">счётчики и автоматическую
+нумерацию</A> и <a href="generate.html#markers" tppabs="http://pyramidin.narod.ru/css2/generate.html#markers">маркёры</a>.
+
+<LI>Оттенение текста с помощью нового
+свойства <a href="text.html#propdef-text-shadow" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-shadow" class="noxref"><span
+class="propinst-text-shadow">'text-shadow'</span></a>.
+
+<LI>Различные новые <A
+HREF="selector.html#pseudo-classes" tppabs="http://pyramidin.narod.ru/css2/selector.html#pseudo-classes">псевдоклассы</A>, :first-child,
+:hover, :focus, :lang.
+
+<LI>Системные <A HREF="ui.html#system-colors" tppabs="http://pyramidin.narod.ru/css2/ui.html#system-colors">цвета</A> и <A href="ui.html#system-fonts" tppabs="http://pyramidin.narod.ru/css2/ui.html#system-fonts">шрифты</a>.
+<LI><A href="ui.html#cursor-props" tppabs="http://pyramidin.narod.ru/css2/ui.html#cursor-props">Курсоры</a>.
+<LI><A href="ui.html#dynamic-outlines" tppabs="http://pyramidin.narod.ru/css2/ui.html#dynamic-outlines">Динамические схемы</a>.</UL>
+<H2><a name="q2"><br>
+B.2 Обновлённые описания</a></H2>
+
+<P>Спецификация CSS1 была короче и компактнее.
+Данная спецификация намного объёмнее и
+более читабельна. Большая часть нового
+материала описывает новую
+функциональность, но описания из CSS1 также
+расширены. За исключением немногих случаев,
+описанных ниже, обновлённые описания не
+изменили ни синтаксис, ни семантику. 
+
+<H2><br>
+B.3 <a name="changes-from-css1">Семантические
+изменения по сравнению с CSS1</a></H2>
+
+<P>Хотя все действительные таблицы стилей CSS1
+являются таковыми и в CSS2, есть несколько
+случаев, когда таблицы стилей CSS1 будут
+иметь другие значения при интерпретации в
+качестве таблиц CSS2. Большинство изменений
+обусловлено опытом разработки, но есть
+также и корректировка некоторых ошибок.
+
+<UL>
+<LI>Значение &quot;!important&quot; изменено. В CSS1
+&quot;!important&quot; в таблице стилей автора имел
+преимущество перед &quot;!important&quot; таблицы
+стилей пользователя. В CSS2 сделано наоборот.
+
+
+<LI>В CSS2 <A HREF="syndata.html#color-units" tppabs="http://pyramidin.narod.ru/css2/syndata.html#color-units">значения цвета</A>
+ужаты в соответствии с гаммой устройства,
+а не с гаммой sRGB, как в CSS1.
+
+<LI>В CSS1 просто указано, что 'margin-right' игнорировалось, если 'margin-left' и 'width' были
+установлены. В CSS2 выбор между смягчением 'margin-right' или 'margin-left' зависит от направления письма.
+
+<LI>В CSS1 некоторые свойства (например, 'padding')
+имели значения, ссылающиеся на ширину родительского элемента. Это было ошибкой;
+значение всегда должно ссылаться на ширину элемента уровня блока, и данная
+спецификация отражает это путём ввода термина &quot;containing block/содержащий блок&quot;.
+<LI>Начальное значение 'display' - 'inline' в CSS2, а не 'block', как в CSS1.
+<LI>В CSS1 свойство 'clear' применялось ко всем элементам. Это было ошибкой, и в CSS2
+свойства применяются только к элементам уровня блока.
+
+<LI>В CSS1 <a name="x0"><span class="index-inst"
+title="pseudo-classes:::link|:link|link
+(pseudo-class)">':link'</span></a>, <a name="x3"><span class="index-inst"
+title="pseudo-classes:::visited|:visited|visited
+(pseudo-class)">':visited'</span></a> и <a name="x6"><span class="index-inst"
+title="pseudo-classes:::active|:active|active
+(pseudo-class)">':active'</span></a>  были взаимоисключающими; в CSS2&nbsp; <a
+href="selector.html#dynamic-pseudo-classes" tppabs="http://pyramidin.narod.ru/css2/selector.html#dynamic-pseudo-classes">':active'</a>  может
+появляться вместе с&nbsp; <a href="selector.html#link-pseudo-classes" tppabs="http://pyramidin.narod.ru/css2/selector.html#link-pseudo-classes">':link' или ':visited'</a>.
+
+<LI>Предлагаемый фактор масштаба между
+смежными индексами <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>  в таблице размеров шрифтов уменьшен с 1.5 до 1.2.
+
+<LI>Теперь наследуется вычисленное, а не
+текущее, значение <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>.
+
+<LI>CSS1-описание 'inside' (для <a href="generate.html#propdef-list-style-position" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-list-style-position" class="noxref"><span
+class="propinst-list-style-position">'list-style-position'</span></a>),
+допускало воздействие на левое поле текста, а не на позицию маркёра. В CSS2 такая
+интерпретация правила устранена.
+
+<li>См. также <em>нормативный</em> раздел <a
+href="grammar.html#tokenizer-diffs" tppabs="http://pyramidin.narod.ru/css2/grammar.html#tokenizer-diffs">Различия между символизаторами CSS1 и CSS2</a>.
+</UL><hr class="navbar"><div class="navbar" align="center">
+<p><a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">предыдущий</a><a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html"> </a>&nbsp;
+<a href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a> </div></BODY></HTML>
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

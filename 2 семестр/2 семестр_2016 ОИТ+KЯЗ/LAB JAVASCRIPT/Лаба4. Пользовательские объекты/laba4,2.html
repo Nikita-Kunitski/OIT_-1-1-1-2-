@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Лаба 4,2</title>
+</head>
+<body>
+<script type="text/javascript">
+	function Student(firstname,lastname,fiz,matem,inform)
+	{
+		this.firstname=firstname;
+		this.lastname=lastname;
+		this.fiz=fiz;
+		this.matem=matem;
+		this.inform=inform;
+		this.vivod=function vivod(fiz,matem,inform)
+						{
+document.write("<br>Средний балл студента "+this.lastname+" "+this.firstname+" составляет "+  Math.round(((Number(fiz)+Number(matem)+Number(inform))/3))+" баллов");
+						}
+	}
+	Student.prototype.city=this.city;
+	var stud1=new Student("Никита","Куницкий",8,9,10);
+	stud1.vivod(8,9,10);
+	stud1.city="Витебск";
+	var stud2=new Student("Евгений","Морозов",7,10,8);
+	stud2.vivod(7,10,8);
+	stud2.city="Могилев";
+	var stud3=new Student("Евгений","Хоменко",6,6,10);
+	stud3.vivod(6,6,10);
+	stud3.city="Минск";
+	document.write("<br>");
+	document.write("<br> ФИО: ",stud1.firstname," ",stud1.lastname," Город: ",stud1.city," Оценки: Физика (",stud1.fiz,"), Математика(",stud1.matem,"), Информатика(",stud1.inform,");");
+	document.write("<br> ФИО: ",stud2.firstname," ",stud2.lastname," Город: ",stud2.city," Оценки: Физика (",stud2.fiz,"), Математика(",stud2.matem,"), Информатика(",stud2.inform,");");
+	document.write("<br> ФИО: ",stud3.firstname," ",stud3.lastname," Город: ",stud3.city," Оценки: Физика (",stud3.fiz,"), Математика(",stud3.matem,"), Информатика(",stud3.inform,");");
+
+	alert(this.firstname in Student);//в чем ошибка?
+	alert("typeof "+ typeof Student);
+	alert("objekt "+Student instanceof Object);
+	alert("array "+Student instanceof Array);
+	alert("string "+Student instanceof String	);
+</script>
+</body>
+</html>

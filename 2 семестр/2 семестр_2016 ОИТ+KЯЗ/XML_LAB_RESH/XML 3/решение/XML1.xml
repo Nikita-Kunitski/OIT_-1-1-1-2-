@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!-- File Name: Inventory03.xml -->
+<?xml-stylesheet type="text/css" href="CSS2.css"?>
+<INVENTORY>
+	<BOOK BINDING="mass market paperback">
+		<TITLE>The Adventures of Huckleberry Finn</TITLE>
+		<AUTHOR Born="01.06.1900">Mark Twain</AUTHOR>
+		<PAGES>298</PAGES>
+		<PRICE>$5.49</PRICE>
+	</BOOK>
+	<BOOK BINDING="trade paperback">
+		<TITLE>Moby-Dick</TITLE>
+		<AUTHOR Born="12.12.1853">Herman Melville</AUTHOR>
+		<PAGES>605</PAGES>
+		<PRICE>$4.95</PRICE>
+	</BOOK>
+	<BOOK BINDING="trade paperback">
+		<TITLE>The Scarlet Letter</TITLE>
+		<AUTHOR Born="12.03.1876">Nathaniel Hawthrone</AUTHOR>
+		<PAGES>253</PAGES>
+		<PRICE>$4.25</PRICE>
+	</BOOK>
+</INVENTORY>

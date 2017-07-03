@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="movies.xsl" type="text/xsl"?>
+<colection>
+	<movie>
+		<title>Happy Gilmore</title>
+		<year>1998</year>
+		<genre>comedy</genre>
+	</movie>
+
+	<movie>
+		<title>Rango</title>
+		<year>2011</year>
+		<genre>Animated</genre>
+	</movie>
+
+	<movie>
+		<title>Three Kings</title>
+		<year>1999</year>
+		<genre>Action</genre>
+	</movie>
+</colection>

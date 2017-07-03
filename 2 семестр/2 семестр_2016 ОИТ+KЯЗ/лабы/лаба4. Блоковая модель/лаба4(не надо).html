@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<title>Первая страница</title>
+			<meta charset="utf-8">
+			<link rel="stylesheet" type="text/css" href="style.css" />
+			<style type="text/css">
+			.example_0{
+				color: red;
+				text-align: justify;
+				word-spacing: 10px;
+				letter-spacing: 10px;
+				text-decoration: underline;	
+				font-family: webdings;
+				font-size: 1.3em;
+				font-style: oblique;
+			}
+			.example_1{
+				color: #005566;
+				text-align: left;
+				word-spacing: 10px;
+				letter-spacing: 10px;
+				text-decoration: line-through;	
+				font-family: Times New Roman;
+				font-size: 30px;
+				font-style: italic;
+			}
+			.example_2{
+				color: rgb(155,20,169);
+				text-align: center;
+				word-spacing: 5px;
+				letter-spacing: 5px;
+				text-decoration: overline;	
+				font-family: fantasy;
+				font-size: 1.3em;
+				font-style: normal;
+			}
+
+			table, tr, td{
+			border-style: solid;
+			font-family: fantasy;
+			font-size: 1.2em;
+			text-align: center;
+			background-color: #f60;
+			}
+			.tr_3, td{
+				vertical-align: top;
+				height: 50px;
+			}
+			p:first-child{
+				font-family: Times New Roman;
+				color: #000;
+				text-decoration: underline;
+			}
+			p:first-letter{
+				font-size: 1.5em;
+				color:red;
+				border:2px solid black;
+				padding:5px;
+			}
+			p:first-line{
+				color: #ff0;
+				font-style: italic;
+			}
+			o:before{
+				content: 'студент I курса ';
+			}
+			o:after{
+				content: ' Адрес';
+			}
+			#div{
+				margin-left: 200px;
+				padding-left: 40px;
+				margin-right: 70px;
+				padding-right: 40px;
+				border:solid 3px #ff0;
+
+			}
+			#div2{
+				position: absolute;
+				margin-left: 220px;
+				margin-right: 78px;
+				padding-left: 50px;
+				padding-right: 40px;
+				border:dashed 2px #39f;
+			}
+			#div3{
+				padding-right: 20px;
+				border:double 2px #030 ;
+				margin-right: 1120px;
+			}
+			</style>
+		</head>
+			<body bgcolor="#6fc">
+				<h1 align="center">Я, Куницкий Никита Дмитриевич, изучаю <font color="#005566">HTML</font> и CSS</h1>
+				<h2 align="center"><font color="red">Введение</font></h2>
+				<h3 align="center">Технология полиграфических производств</h3>
+				
+				<div id="div">
+				<p class="example_0">наиболее употребительные сочетания и обороты речи, связанные со сферой общения, и комплекс речевых упражнений, целью которого является развитие речевого умения в пределах тем данного раздела. Текстовый материал аутентичен и содержит </p>
+				<p class="example_1"><b>Настоящее</b> учебно-методическое пособие <b>составлено в соответствии</b> с действующей <i>учебной программой</i> по немецкому языку и предназначено для работы со студентами <span id="span1">специальностей 147 02 01 «Технология полиграфических производств»</span>, 1-36 06 01 «Полиграфическое оборудование и системы обработки информации», 1-40 01 02-03 «Информационные системы и технологии», 1-47 01 01 «Издательское дело».</p>
+				</div>
+				<div id="div2">
+				<h3 align="center" class="style">Цель учебного пособия</h3>
+				<p class="example_2">Цель данного пособия – <span id="span2">дальнейшее развитие и совершенствование</span> у студентов навыков понимания и извлечения информации из специальных и научно-популярных текстов по полиграфической тематике с последующей ее обработкой и воспроизведением.</p>
+				<h3 align="center">Структура пособия</h3>
+				<p>Пособие имеет четкую структуру.<span style=color:yellow> Каждый раздел пособия включает словарь активной лексики,</span> наиболее употребительные сочетания и обороты речи, связанные со сферой общения, и комплекс речевых упражнений, целью которого является развитие речевого умения в пределах тем данного раздела. Текстовый материал аутентичен и содержит актуальную информацию.</p>
+				</div>				
+				<div id="div3">
+				<h2>Элементы</h2>
+				<ul class="spisok1">
+					<li>Элемент1</li>
+					<li>Элемент2</li>
+					<li>Элемент3</li>
+						<ul class="spisok2">
+							<li>Элемент4</li>
+							<li>Элемент5</li>
+							<li>Элемент6</li>
+								<ul class="spisok3">
+									<li>Элемент7</li>					
+									<li>Элемент8</li>
+									<li>Элемент9</li>
+								</ul>
+							</ul>
+						</ul>
+				</div>
+
+			<center>	<table>
+					<!1-я строка>
+					<tr>
+						<td><o>ФИО</o></td>
+						<td colspan="3"><a href="D:/основы ИТ/2 семестр/2 семестр_2016 ОИТ+KЯЗ/лабы/лаба1. HTML/file2.html" target="_blank">Куницкий Никита Дмитриевич</td>
+					</tr>
+							<!2-я строка>
+							<tr>
+								<td>Свое Фото</td>
+								<td colspan="3">Адрес:ул. Бобруйская д.25, ком.417</td>
+							</tr>
+							<!3-я строка>
+							<tr class="tr_3">
+								<td rowspan="6">1 семестр 2015/2016 уч. года</td>
+									
+									<td>Дата</td>
+									<td>Предмет</td>
+									<td>Оценка</td>
+									
+									<tr >
+									<td align="center">31.12.2015</td>	
+									<td align="center">ОАиП</td>
+									<td align="center">9</td>
+									</tr>
+
+										<tr>
+											<td align="center">05.01.2016</td>
+											<td align="center">Физика</td>	
+											<td align="center">5</td>
+										</tr>
+
+											<tr>
+												<td align="center">11.01.2016</td>
+												<td align="center">ОИТ</td>
+												<td align="center">7</td>
+											</tr>
+
+												<tr>
+													<td align="center">16.01.2016</td>
+													<td align="center">Математика</td>
+													<td align="center">8</td>
+												</tr>
+
+													<tr>
+														<td align="center">22.01.2016</td>
+														<td align="center">АЛОЦВМ</td>
+														<td align="center">8</td>
+													</tr>
+							</tr>
+				</table></center>
+			</body>
+</html>

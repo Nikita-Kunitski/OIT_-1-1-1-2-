@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style type='text/css'>
+table, tr, td {
+	border-style: solid;
+	border-width: 1px;
+
+}
+table{
+	height: 300px;
+}
+#verx {
+	vertical-align: top;
+}
+.mid{
+	vertical-align: middle;
+}
+#nis{
+	vertical-align: bottom;
+}
+#center{
+	text-align: center;
+}
+#left{
+	text-align: left;
+}
+#right{
+	text-align: right;
+}
+/* Определяйте стиль для таблицы здесь */
+</style>
+</head>
+<body>
+<table>
+<tr>
+<td id="verx">Текст ячейки <br />выровнен по верхнему краю</td>
+<td class="mid">Текст ячейки <br />выровнен по центру</td>
+<td id="nis">Текст ячейки <br />выровнен по нижнему краю</td>
+<td class="mid">Текст ячейки <br />выровнен по центру</td>
+</tr>
+<tr>
+<td style="border-width:2px">Толщина границы этой <br />ячейки равна 2 пикселя</td>
+<td style="border-width:3px">Толщина границы этой <br />ячейки равна 3 пикселя</td>
+<td style="border-width:4px">Толщина границы этой <br />ячейки равна 4 пикселя</td>
+<td rowspan="2" style="border-width:1px">Толщина границы этой <br />ячейки равна 1 пиксель</td>
+</tr>
+<tr>
+<td id="left">Текст ячейки <br />выровнен по <br />левому краю</td>
+<td id="right">Текст ячейки <br />выровнен по <br />правому краю</td>
+<td id="center">Текст ячейки выровнен по центру</td>
+</tr>
+</table>
+</body>
+</html>

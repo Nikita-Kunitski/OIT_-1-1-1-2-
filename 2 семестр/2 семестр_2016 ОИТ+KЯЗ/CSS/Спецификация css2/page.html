@@ -1,0 +1,968 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>Страничные носители</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html"><link rel="next" href="colors.html" tppabs="http://pyramidin.narod.ru/css2/colors.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html">предыдущий</a>
+  &nbsp; <a href="colors.html" tppabs="http://pyramidin.narod.ru/css2/colors.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div>
+<hr class="navbar"><H1 align="center">13&nbsp; <a name="the-page">Страничные
+носители</a></H1>
+<div class="subtoc">
+<p><strong>Содержание</strong>
+  <ul class="toc">
+    <li class="tocline2"><a href="#q1" class="tocxref">13.1 Введение</a>
+    <li class="tocline2"><a href="#page-box" class="tocxref">13.2
+      Страничные боксы: правило&nbsp; @page</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#page-margins" class="tocxref">13.2.1 Поля
+        страниц</a>
+      <li class="tocline3"><a href="#page-size-prop" class="tocxref">13.2.2
+        Размер страницы: свойство <span class="propinst-size">'size'</span> </a>
+      <ul class="toc">
+        <li class="tocline4"><a href="#q5" class="tocxref">Размещение
+          страничных боксов, не помещающихся на
+          листе</a>
+        <li class="tocline4"><a href="#q6" class="tocxref"> Позиционирование
+          страничного бокса на листе</a>
+      </ul>
+      <li class="tocline3"><a href="#crop-mark-prop" class="tocxref">13.2.3
+        Знаки обрезки: свойство <span class="propinst-marks">'marks'</span> </a>
+      <li class="tocline3"><a href="#q8" class="tocxref">13.2.4 Левая, правая
+        и первая страницы</a>
+      <li class="tocline3"><a href="#q9" class="tocxref">13.2.5 Содержимое
+        вне страничного бокса</a>
+    </ul>
+    <li class="tocline2"><a href="#page-breaks" class="tocxref">13.3 Разрывы
+      страниц</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#page-break-props" class="tocxref">13.3.1
+        Разрывы перед/после элементов: <span class="propinst-page-break-before">'page-break-before'</span>, <span class="propinst-page-break-after">'page-break-after'</span>, <span class="propinst-page-break-inside">'page-break-inside'</span></a>
+      <li class="tocline3"><a href="#named-pages" class="tocxref">13.3.2
+        Использование именованных страниц: <span class="propinst-page">'page'</span></a>
+      <li class="tocline3"><a href="#break-inside" class="tocxref">13.3.3
+        Разрывы внутри элементов: <span class="propinst-orphans">'orphans'</span>, <span class="propinst-widows">'widows'</span></a>
+      <li class="tocline3"><a href="#allowed-page-breaks" class="tocxref">13.3.4
+        Допустимые разрывы страниц</a>
+      <li class="tocline3"><a href="#forced" class="tocxref">13.3.5 Форсированные
+        разрывы страниц</a>
+      <li class="tocline3"><a href="#q16" class="tocxref">13.3.6 &quot;Наилучшие&quot;
+        разрывы страниц</a>
+    </ul>
+    <li class="tocline2"><a href="#q17" class="tocxref">13.4 Каскадирование
+      в контексте страницы</a>
+  </ul>
+</div>
+
+<H2><a name="q1"><br>
+13.1 Введение</a></H2>
+
+<P>Страничный носитель (например, бумага,
+плёнка, страницы , выводимые на экране
+компьютера и т.п.) отличается от <a href="media.html#continuous-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#continuous-media-group">непрерывного
+носителя</a> тем, что содержимое документа
+разделяется на одну или более абстрактных
+страниц. Чтобы обрабатывать разрывы
+страниц, CSS2 расширяет <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">модель визуального
+форматирования</a> следующим образом:</p>
+
+<ol>
+<li> <a href="#page-box">Страничный бокс</a> расширяет <a href="box.html#box-model" tppabs="http://pyramidin.narod.ru/css2/box.html#box-model">модель
+  бокса</a>, что позволяет авторам
+  специфицировать размеры страницы, её
+  полей и т.д.  
+
+<li> <a name="x0"><span class="index-def" title="page model"><dfn>Страничная
+  модель</dfn></span></a> расширяет <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">модель
+  визуального форматирования</a>, чтобы
+  рассчитывать <a href="#page-breaks">разрывы страниц.</a>
+</ol>
+
+<P> <a name="page-model">Страничная модель CSS 2</a>
+специфицирует, как форматируется документ
+в пределах прямоугольной области - <a
+href="#page-box">страничного бокса</a> - который
+имеет конечные ширину и высоту. Страничный
+бокс не обязательно соответствует
+реальному <a name="x1"><span
+class="index-def" title="sheet"><dfn>листу</dfn></span></a><span
+class="index-def" title="sheet"><dfn>\странице</dfn></span>, на
+котором документ в конце концов будет
+выведен (бумага, плёнка, экран и т.п.).
+Страничная модель CSS специфицирует
+форматирование в страничном боксе, но за
+перенос страничного бокса на лист отвечает пользовательский агент (ПА).<br>
+Некоторые возможности переноса:</P>
+
+<ul>
+<li>Перенос одного страничного бокса на один
+  лист (например, односторонняя печать).
+<li>Перенос двух страничных боксов на две
+  стороны одного листа (например,
+  двухсторонняя печать).
+<li>Перенос N (маленького) страничного бокса
+  на один лист (называется &quot;n-up&quot;).
+<li>Перенос одного (большого) страничного
+  бокса на&nbsp; N x M листов (называется
+  &quot;tiling&quot;).
+<li>Создание подписей. Подпись, это группа
+  страниц, напечатанных на листе, которые
+  после брошюрования и обрезки выглядят, как
+  книга, и расположены в соответствующем
+  порядке.
+<li>Печать одного документа в несколько
+  потоков печати.
+<li>Вывод в файл.
+</ul>
+
+<P>Хотя CSS2 не специфицирует то, как&nbsp; ПА
+переносят страничные боксы на листы, не
+даётся также и определённого механизма для
+того, чтобы сообщить ПА о <a href="#page-size-prop">размерах
+и ориентации</a> целевого листа.
+
+<H2><br>
+13.2 <a name="page-box">Страничные боксы</a>:
+правило&nbsp; @page</H2>
+
+<P> <a name="x2"><span class="index-def" title="page box"><dfn>Страничный
+бокс</dfn></span></a> это прямоугольный регион, содержащий
+две области:</p>
+
+<ul>
+<li> <span class="index-def" title="page area"><a
+name="page-area"><dfn>Область страницы</dfn></a></span>.
+  Включает боксы, расположенные на этой
+  странице. Края области страницы работают
+  как начальный <a
+href="visuren.html#initial-containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#initial-containing-block">содержащий блок</a>
+  планировки и расположены между разрывами
+  страниц.
+<li>Область полей, окружающих область
+  страницы.
+</ul>
+
+<div class="note"><P> 
+<em><strong>Примечание.</strong>  В CSS2 свойства <a
+href="box.html#border-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#border-properties">рамки </a> и <a
+href="box.html#padding-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#padding-properties">заполнения </a> 
+не применяются к страницам; это возможно в
+будущем.
+</em>
+</div>
+
+<P>Авторы специфицируют размеры, ориентацию,
+поля и т.п. страничного бокса в правиле&nbsp; <a name="x4"><span class="index-def" title="@page">@page</span></a>.
+Правило @page состоит из ключевого слова "@page",
+селектора станицы (и, без пробелов,
+возможного псевдокласса страницы) и блока
+объявлений (находящихся в т.н. <span class="index-def"
+title="page-context"><a name="page-context"><dfn>контексте страницы</dfn></a></span>).</p>
+
+<P> <a name="x6"><span class="index-def" title="page selector"><dfn>Селектор
+страницы</dfn></span></a> специфицирует, для каких
+страниц объявления применяются. В CSS2
+селекторы страницы могут означать первую
+страницу, все левые страницы, все правые
+страницы или страницу с определённым
+именем.
+</p>
+
+<P>Размеры страничного бокса
+устанавливаются свойством <a href="#propdef-size" class="noxref"><span
+class="propinst-size">'size'</span></a>.<br>
+Размеры области страницы - это размеры
+страничного бокса минус область полей. 
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующее
+  правило @page устанавливает размер
+  страничного бокса в 8.5 x 11 дюймов и создаёт
+  поле '2см' со всех сторон между краем
+  страничного бокса и областью листа:</p>
+
+<pre>@page { size 8.5in 11in; margin: 2cm }</pre>
+</div>
+
+Свойство <a href="#propdef-marks" class="noxref"><span class="propinst-marks">'marks'</span></a> 
+в правиле @page специфицирует знаки обрезки и
+крестика для страничного бокса.
+
+<h3><br>
+13.2.1 <a name="page-margins">Поля страницы</a></h3>
+
+<P> <a href="box.html#margin-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#margin-properties">Свойства полей</a> (<a href="box.html#propdef-margin-top" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-top" class="noxref"><span class="propinst-margin-top">'margin-top'</span></a>, <a href="box.html#propdef-margin-right" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-right" class="noxref"><span
+class="propinst-margin-right">'margin-right'</span></a>, <a href="box.html#propdef-margin-bottom" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-bottom" class="noxref"><span
+class="propinst-margin-bottom">'margin-bottom'</span></a>, <a href="box.html#propdef-margin-left" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-left" class="noxref"><span
+class="propinst-margin-left">'margin-left'</span></a> и <a href="box.html#propdef-margin" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin" class="noxref"><span
+class="propinst-margin">'margin'</span></a>) применяются внутри
+<a
+href="#page-context">контекста страницы</a>. На
+следующей диаграмме показаны соотношения
+между листом, страничным боксом и полями
+страницы:</P>
+
+<div class="figure">
+<P><img src="page-info.gif" tppabs="http://pyramidin.narod.ru/css2/page-info.gif" alt="Illustration of sheet, page
+box, margin, and page area." width="322" height="355"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-page-info" href="page-info-desc.html" tppabs="http://pyramidin.narod.ru/css2/page-info-desc.html" title="Long description illustrating relationship between page box
+      and sheet">[D]</A></SPAN></p>
+</div>
+
+<P>Вычисленное значение полей бокса вверху
+или внизу области страницы - '0'.
+
+<p> <a href="#page-context">Контекст страницы</a> не
+имеет никаких указаний о шрифте, так что
+единицы измерения 'em' и 'ex' не допускаются.
+Процентные значения свойств полей
+относительны к размерам <a
+href="#page-box">страничного бокса</a>; для левого и
+правого полей - они соотносятся с шириной
+страничного бокса, а для верхнего и нижнего
+полей - к высоте страничного бокса. Все
+другие единицы измерения, ассоциированные
+с соответствующими свойствами CSS2, являются
+допустимыми.<P>Из-за негативных значений
+полей (у страничного бокса или у элементов)
+или <a href="visuren.html#absolute-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#absolute-positioning">абсолютного позиционирования</a>
+содержимое может оканчиваться вне
+страничного бокса, но это содержимое может
+быть &quot;вырезано&quot; - ПАгентом, принтером
+или, наконец, бумажным ножом.
+
+<h3><br>
+13.2.2 <a name="page-size-prop">Размер страницы</a>:
+свойство <a href="#propdef-size" class="noxref"><span
+class="propinst-size">'size'</span></a> </h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'size'"><a name="propdef-size" class="propdef-title"><strong>'size'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a>{1,2} | auto | portrait | landscape | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    контексту страницы
+<tr valign=baseline><td><em>Наследуется:</em><td>N/A
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует размер и
+ориентацию страничного бокса.<P>Размер
+страничного бокса может быть или &quot;absolute/абсолютным&quot;
+(фиксированный размер), или &quot;relative/относительным&quot;
+(масштабируемым, т.е. соответствующим
+имеющимся размерам листа). Относительные
+страничные боксы позволяют ПА
+масштабировать документ и оптимально
+использовать целевые размеры. 
+
+<P>Три значения свойства <a href="#propdef-size" class="noxref"><span class="propinst-size">'size'</span></a>
+ создают относительный страничный бокс:</p>
+
+<DL>
+<DT><strong>auto</strong>
+<DD>Страничный бокс будет установлен в
+  соответствии с размерами и ориентацией
+  целевого листа. 
+
+<DT><strong>landscape</strong>
+<DD>Переопределяет целевую ориентацию.
+  Страничный бокс будет тех же размеров, что
+  и целевой, и по горизонтали будут
+  расположены длинные стороны.
+
+<DT><strong>portrait</strong>
+<DD>Переопределяет целевую ориентацию.
+  Страничный бокс будет тех же размеров, что
+  и целевой, и по горизонтали будут
+  расположены короткие стороны.
+</DL>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Здесь
+  внешний край страничного бокса будет
+  выровнен с целевым. Процентные значения
+  свойства <a href="box.html#propdef-margin" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin" class="noxref"><span
+class="propinst-margin">'margin'</span></a>  - относительны к целевым
+  размерам, поэтому, если целевые размеры
+  -&nbsp; 21.0см x 29.7см (т.е. A4), поля будут 2.10см и 2.97см.
+
+<pre>@page {
+  size: auto;   /* auto это начальное значение */
+  margin: 10%;
+}</pre>
+</div>
+
+<P>Измеряемые значения свойства <a href="#propdef-size" class="noxref"><span class="propinst-size">'size'</span></a>
+ создают абсолютный страничный бокс. Если
+специфицировано только одно значение, оно
+устанавливает и ширину, и высоту
+страничного бокса (т.е. квадратный бокс).
+Поскольку страничный бокс является <a
+href="visuren.html#initial-containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#initial-containing-block">начальным содержащим
+блоком</a>, процентные значения для свойства <a href="#propdef-size" class="noxref"><span
+class="propinst-size">'size'</span></a>  не допускаются.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<PRE>@page {
+  size: 8.5in 11in;  /* ширина - высота */
+}</PRE>
+
+  <P>В этом примере устанавливаются: ширина
+  страничного бокса - 8.5 дюймов и высота - 11
+  дюймов. Такой страничный бокс требует размеров
+  целевого листа 8.5&quot;x11&quot; или больше.
+</div>
+
+<P>ПА могут позволять пользователям
+контролировать перенос страничного бокса
+на лист (например, поворачивать абсолютный
+страничный бокс при печати).
+
+<h4><a name="q5"> Размещение страничных боксов, не
+помещающихся на листе</a></h4>
+
+<P>Если страничный бокс не вмещается в
+размеры целевого листа, ПА может:</p>
+
+<UL>
+<LI>Повернуть страничный бокс на 90°, если это
+  поможет разместить его.
+<LI>Масштабировать бокс, чтобы вместить в
+  целевые размеры.
+</UL>
+
+<P>ПА должен запрашивать у пользователя
+подтверждение на эти операции.
+
+<h4><a name="q6"> Позиционирование страничного бокса
+на листе</a></h4>
+
+<P>Если страничный бокс имеет размеры меньше
+целевых, то ПА может размещать страничный
+бокс в любом месте листа. Однако
+рекомендуется, чтобы страничный бокс
+центрировался на листе, поскольку это
+выровняет сдвоенные страницы и исключит случайную
+потерю информации, расположенной близко к
+краю листа.
+
+<h3><br>
+13.2.3 <a name="crop-mark-prop">Знаки обрезки</a>: свойство <a href="#propdef-marks" class="noxref"><span
+class="propinst-marks">'marks'</span></a> </h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'marks'"><a name="propdef-marks" class="propdef-title"><strong>'marks'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ crop || cross ] | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    контексту страницы
+<tr valign=baseline><td><em>Наследуется:</em><td>N/A
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<p>При высококачественной печати маркировка
+часто помещается вне страничного бокса.
+Данное свойство специфицирует, должны ли
+знаки крестика или обрезки, или оба,
+отображаться сразу за краем <a
+href="#page-box">страничного бокса</a>.<p><a name="x9"><span class="index-def" title="crop marks"><dfn>Знаки
+обрезки</dfn></span></a> обозначают место, где
+страница должна быть обрезана.<br>
+<a name="x10"><span
+class="index-def" title="cross marks"><dfn>Знак &quot;крестик&quot;</dfn></span></a>
+(известный также как знак регистрации)
+используется для выравнивания листов.<P>Маркировка
+видна только на абсолютных страничных
+боксах (см. свойство <a href="#propdef-size" class="noxref"><span
+class="propinst-size">'size'</span></a>). При относительных
+страничных боксах, страничный бокс будет
+выровнен с целевым, а маркировка будет
+находиться за пределами области печати.<P>Размеры,
+стиль и расположение крестиков зависят от ПА.<h3><a name="q8"><br>
+13.2.4&nbsp; Левая, правая и первая страницы</a></H3>
+
+<P>При печати двухсторонних документов <a href="#page-box">страничные
+боксы</a> левой и правой страниц должны
+различаться. Это можно обозначить с помощью
+двух псевдоклассов CSS, которые могут быть
+определены в <a href="#page-context">контексте страницы</a>.<P>Все
+страницы автоматически классифицируются
+ПАгентами на
+ псевдоклассы <a name="x11"><span class="index-def"
+title=":left|pseudo-class:::left">:left</span></a><span class="index-def"
+title=":left|pseudo-class:::left">&nbsp;</span> или <a name="x13"><span
+class="index-def" title=":right|pseudo-class:::right">:right</span></a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>@page :left {
+  margin-left: 4cm;
+  margin-right: 3cm;
+}
+
+@page :right {
+  margin-left: 3cm;
+  margin-right: 4cm;
+}</PRE>
+</div>
+
+<P>Если даны разные объявления для левых и
+правых страниц, ПА обязан использовать эти
+объявления, даже если ПА не переносит
+страничные боксы на левый и правый листы (например,
+для принтера, имеющего только
+одностороннюю печать).<P>Авторы могут
+специфицировать также стиль для первой
+страницы документа псевдоклассом <a name="x15"><span class="index-def"
+title=":first|pseudo-class:::first">:first</span></a>:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>@page { margin: 2cm } /* Все поля установлены в 2см */
+
+@page :first {
+  margin-top: 10cm    /* Верхнее поле на первой странице - 10см */
+}</PRE>
+</div>
+
+<P>Является ли первая страница документа :left
+или :right, зависит от направления письма в
+документе и находится вне пределов
+рассмотрения данного документа. Однако, чтобы
+форсировать первую страницу в :left или :right,
+авторы могут вставить разрыв страницы
+перед первым генерируемым боксом (например,
+в HTML, специфицировать это для элемента BODY).<P>Свойства,
+специфицированные в :left (или :right) в правилах
+@page, переопределяют те же свойства,
+специфицированные в правиле @page&nbsp; и не
+имеющие специфицированного псевдокласса.
+Свойства, специфицированные в :first в правиле
+@page, переопределяют те же свойства,
+специфицированные в :left (или :right) в правилах @page.
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ Добавление объявлений в псевдоклассы :left
+или :right не указывает, выходит ли документ на
+принтер одно- или двухсторонним (это
+находится вне рамок данной спецификации).</em>
+</div>
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ В будущих версиях CSS возможно появление
+других псевдоклассов страницы.
+</em>
+</div>
+
+<h3><a name="q9"><br>
+13.2.5&nbsp; Содержимое вне страничного
+бокса</a></h3>
+
+<P>При форматировании содержимого модели
+страницы, часть содержимого может выйти за
+границы страничного бокса. Например,
+элемент, чьё свойство <a href="text.html#propdef-white-space" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-white-space" class="noxref"><span
+class="propinst-white-space">'white-space'</span></a>  имеет
+значение 'pre', может генерировать бокс,
+который окажется шире страничного бокса.
+Также, если боксы позиционированы <a
+href="visuren.html#absolute-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#absolute-positioning">абсолютно</a>, они
+могут оканчиваться в &quot;несогласованном&quot;
+месте. Например, изображения могут быть
+размещены у края страничного бокса или на 100,000
+дюймов ниже страничного бокса.<P>Спецификация
+точного форматирования таких элементов
+находится вне пределов рассмотрения данного документа.
+Однако мы рекомендуем, чтобы авторы и ПА
+учитывали следующие общие принципы,
+касающиеся содержимого вне страничного
+бокса:</p>
+
+<ul>
+<li>Содержимое должно допускаться немного
+  позади страничного бокса, чтобы страницы
+  слегка &quot;сочились&quot;.
+
+<li>ПА должны исключить генерирование большого
+  количества пустых страничных боксов для позиционирования
+  элементов (например, Вы не захотите
+  печатать 100 пустых страниц). Заметьте,
+  однако, что генерирование небольшого
+  количества пустых страничных боксов может
+  понадобиться для значений 'left' и 'right' в <a href="#propdef-page-break-before" class="noxref"><span
+class="propinst-page-break-before">'page-break-before'</span></a> и <a href="#propdef-page-break-after" class="noxref"><span class="propinst-page-break-after">'page-break-after'</span></a>.
+
+<li>Авторы не должны позиционировать
+  элементы в несогласованных местах в целях
+  исключения их вывода. Вместо этого нужно:
+
+<ul>
+<li>Чтобы в целом уменьшить генерацию боксов,
+  установить свойство <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  в 'none'.
+<li>Чтобы сделать бокс невидимым,
+  использовать свойство <a href="visufx.html#propdef-visibility" tppabs="http://pyramidin.narod.ru/css2/visufx.html#propdef-visibility" class="noxref"><span
+class="propinst-visibility">'visibility'</span></a>.
+</ul>
+
+<LI>ПА могут обрабатывать боксы,
+  расположенные вне страничного бокса,
+  разными способами, в том числе - отбрасывая
+  их или создавая для них страничные боксы в
+  конце документа.
+</ul>
+
+<H2><br>
+13.3 <a name="page-breaks">Разрывы страниц</a></H2>
+
+<P>В данном разделе разъясняется
+форматирование страниц в CSS2. Пять свойств
+указывают, где ПА может или должен
+разрывать страницы и на какой странице (левой
+или правой) должно выводиться последующее
+содержимое. Каждый разрыв страницы
+заканчивает вывод в текущем <a href="#page-box">страничном
+боксе</a> и вызывает размещение оставшихся
+частей <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a> в новом
+страничном боксе.
+
+<h3><br>
+13.3.1 <a name="page-break-props">Разрывы перед/после элементов</a>: <a href="#propdef-page-break-before" class="noxref"><span
+class="propinst-page-break-before">'page-break-before'</span></a>,
+<a href="#propdef-page-break-after" class="noxref"><span class="propinst-page-break-after">'page-break-after'</span></a>,
+<a href="#propdef-page-break-inside" class="noxref"><span class="propinst-page-break-inside">'page-break-inside'</span></a>
+</h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'page-break-before'"><a name="propdef-page-break-before" class="propdef-title"><strong>'page-break-before'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>auto | always | avoid | left | right | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'page-break-after'"><a name="propdef-page-break-after" class="propdef-title"><strong>'page-break-after'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>auto | always | avoid | left | right | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Media:</em>&nbsp;&nbsp;<td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'page-break-inside'"><a name="propdef-page-break-inside" class="propdef-title"><strong>'page-break-inside'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>avoid | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Media:</em>&nbsp;&nbsp;<td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значения этих свойств имеют следующий
+смысл:</p>
+
+<dl>
+<dt><strong>auto</strong></dt>
+<dd>Ни форсирует, ни запрещает разрыв
+  страницы перед (после, внутри)
+  генерируемого бокса.
+<dt><strong>always</strong></dt>
+<dd>Всегда форсирует разрыв страницы перед (после,
+  внутри) генерируемого бокса.</dd>
+<dt><strong>avoid</strong></dt>
+<dd>Исключает разрыв страницы перед (после,
+  внутри) генерируемого бокса.
+<dt><strong>left</strong></dt>
+<dd>
+Форсирует один или два разрыва страницы
+перед (после, внутри) генерируемого бокса,
+так что следующая страница форматируется
+как левая страница.</dd>
+<dt><strong>right</strong></dt>
+<dd>
+Форсирует один или два разрыва страницы
+перед (после, внутри) генерируемого бокса,
+так что следующая страница форматируется
+как правая страница.</dd>
+</dl>
+
+<P>Потенциально размещение разрыва страницы
+находится под влиянием свойства <a href="#propdef-page-break-inside" class="noxref"><span
+class="propinst-page-break-inside">'page-break-inside'</span></a>
+ родительского элемента, свойства <a href="#propdef-page-break-after" class="noxref"><span
+class="propinst-page-break-after">'page-break-after'</span></a> 
+предыдущего элемента и свойства <a href="#propdef-page-break-before" class="noxref"><span
+class="propinst-page-break-before">'page-break-before'</span></a> 
+последующего элемента. Если эти свойства
+имеют значения, отличные от 'auto', то значения
+'always', 'left' и 'right' получают преимущество перед
+'avoid'.<br>
+См. в разделе о <a
+href="#allowed-page-breaks">допустимых разрывах страниц</a>
+точные правила того, как эти свойства могут
+форсировать или подавлять разрыв страницы.
+
+<h3><br>
+13.3.2 <a name="named-pages">Использование именованных
+страниц:</a> <a href="#propdef-page" class="noxref"><span class="propinst-page">'page'</span></a></h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'page'"><a name="propdef-page" class="propdef-title"><strong>'page'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-identifier" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-identifier" class="noxref"><span class="value-inst-identifier">&lt;identifier&gt;</span></a> | auto
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<p>Свойство <a href="#propdef-page" class="noxref"><span class="propinst-page">'page'</span></a> 
+можно использовать для спецификации
+определённого типа страницы, на которой
+элемент должен быть выведен.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Все таблицы будут размещены на правой
+  стороне страницы с ориентацией landscape:</P>
+
+<pre>@page rotated {size: landscape}
+TABLE {page: rotated; page-break-before: right}</pre>
+</div>
+
+<p>Свойство <a href="#propdef-page" class="noxref"><span class="propinst-page">'page'</span></a> 
+работает так: если бокс блока с инлайн-содержимым
+имеет свойство <a href="#propdef-page" class="noxref"><span
+class="propinst-page">'page'</span></a>, отличное от
+аналогичного свойства предшествующего
+бокса блока с инлайн-содержимым, тогда один
+или два разрыва страницы вставляются между
+ними, и боксы после разрыва отображаются в
+страничном боксе именованного типа. См.
+ниже <a
+href="#forced">&quot;Форсированные разрывы страниц&quot;.</a>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>В этом примере две таблицы отображаются
+  на landscape-страницах (или на одной странице,
+  если входят), и тип страницы &quot;narrow&quot;
+  вообще не используется, вопреки
+  установкам в DIV:</p>
+
+<pre>@page narrow {size: 9cm 18cm}
+@page rotated {size: landscape}
+DIV {page: narrow}
+TABLE {page: rotated}</pre>
+
+  с этим документом:
+
+<pre>&lt;DIV&gt;
+&lt;TABLE&gt;...&lt;/TABLE&gt;
+&lt;TABLE&gt;...&lt;/TABLE&gt;
+&lt;/DIV&gt;
+</pre>
+</div>
+
+
+<h3>13.3.3 <a name="break-inside">Разрывы внутри элементов</a>: <a href="#propdef-orphans" class="noxref"><span
+class="propinst-orphans">'orphans'</span></a>, <a href="#propdef-widows" class="noxref"><span
+class="propinst-widows">'widows'</span></a></h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'orphans'"><a name="propdef-orphans" class="propdef-title"><strong>'orphans'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span class="value-inst-integer">&lt;integer&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>2
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'widows'"><a name="propdef-widows" class="propdef-title"><strong>'widows'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span class="value-inst-integer">&lt;integer&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>2
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>, <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group" class="noxref">страничный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-orphans" class="noxref"><span class="propinst-orphans">'orphans'</span></a>
+специфицирует минимальное количество
+строк параграфа, которые должны оставаться
+внизу страницы. Свойство <a href="#propdef-widows" class="noxref"><span
+class="propinst-widows">'widows'</span></a>  специфицирует
+минимальное количество строк параграфа,
+которые должны оставаться вверху страницы.
+Примеры того, как они используются для
+управления разрывами страниц, даны ниже.<P>Информацию
+о форматировании параграфов см. в разделе <a href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">Строчные
+боксы</a>.
+
+<h3><br>
+13.3.4 <a name="allowed-page-breaks">Допустимые разрывы страниц</a></h3>
+
+<p>При нормальном обтекании разрывы страниц
+могут появляться в следующих местах:</p>
+
+<ol>
+<li>
+На вертикальном поле между боксами блока.
+Если разрыв страницы появляется здесь, <a href="cascade.html#computed-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#computed-value">вычисленные
+значения</a> соответствующих свойств <a href="box.html#propdef-margin-top" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-top" class="noxref"><span class="propinst-margin-top">'margin-top'</span></a>
+ и <a href="box.html#propdef-margin-bottom" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin-bottom" class="noxref"><span class="propinst-margin-bottom">'margin-bottom'</span></a>
+ установлены в '0'.
+<li>Между <a href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">строчными боксами</a>
+  внутри <a href="visuren.html#block-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#block-box">бокса блока</a>.
+</ol>
+
+
+
+<p>Эти разрывы являются субъектами для
+следующих правил:
+
+<ul>
+<li><strong>Правило A:</strong> Разрывы из пункта (1)
+  допускаются, только если свойства <a href="#propdef-page-break-after" class="noxref"><span
+class="propinst-page-break-after">'page-break-after'</span></a>  и <a href="#propdef-page-break-before" class="noxref"><span
+class="propinst-page-break-before">'page-break-before'</span></a> всех
+  элементов, генерирующих боксы у данного
+  поля, разрешают это, что имеет место, когда
+  по меньшей мере одно из них (свойств) имеет
+  значение 'always', 'left' или 'right', или когда все
+  они -
+'auto'.
+
+<li><strong>Правило B:</strong> В то же время, если все
+  они - 'auto' и ближайший общий предок всех
+  элементов имеет значение свойства <a href="#propdef-page-break-inside" class="noxref"><span
+class="propinst-page-break-inside">'page-break-inside'</span></a>&nbsp; - 'avoid',
+  тогда разрыв здесь не разрешается.
+
+<li>
+<strong>Правило C:</strong> Разрывы из пункта (2)
+допускаются, только если количество <a
+href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">строчных боксов</a> между
+разрывом и началом закрывающего бокса
+блока имеет значение <a href="#propdef-orphans" class="noxref"><span
+class="propinst-orphans">'orphans'</span></a>  или более, а
+количество строчных боксов между разрывом
+и концом бокса имеет значение <a href="#propdef-widows" class="noxref"><span class="propinst-widows">'widows'</span></a> 
+или более.
+
+<li><strong>Правило D:</strong> В дополнение, разрывы (2)
+  допускаются, только если свойство <a href="#propdef-page-break-inside" class="noxref"><span
+class="propinst-page-break-inside">'page-break-inside'</span></a>&nbsp; -&nbsp; 'auto'.
+</ul>
+
+<p>Если вышесказанное не обеспечивает
+достаточное количество точек разрывов для
+предотвращения выхода содержимого за
+пределы страничного бокса, тогда правила B и
+D исключаются для того, чтобы найти
+дополнительные точки разрывов.<p>Если это
+всё ещё не даёт достаточного количества
+точек разрывов, то правила A и C также
+исключаются, чтобы найти дополнительные
+точки разрывов.
+
+<P>Разрывы страниц не могут появляться
+внутри боксов, <a
+href="visuren.html#absolute-positioning" tppabs="http://pyramidin.narod.ru/css2/visuren.html#absolute-positioning">позиционированных абсолютно</a>.
+
+
+
+<h3><br>
+13.3.5 <a name="forced">Форсированные разрывы страниц</a></h3>
+
+<p>Разрыв страницы <em>обязан</em> возникнуть в (1),
+если среди свойств <a href="#propdef-page-break-after" class="noxref"><span
+class="propinst-page-break-after">'page-break-after'</span></a> и <a href="#propdef-page-break-before" class="noxref"><span
+class="propinst-page-break-before">'page-break-before'</span></a>
+ всех элементов, генерирующих боксы у
+данного поля, имеется по меньшей мере одно со
+значением 'always', 'left' или 'right'.
+
+<p>Разрыв страницы обязан появиться в (1),
+если последний строчный бокс выше этого
+поля и первый бокс - ниже него не имеют
+одинакового значения для <a href="#propdef-page" class="noxref"><span
+class="propinst-page">'page'</span></a>.
+
+<h3><a name="q16"><br>
+13.3.6 "Наилучшие" разрывы страниц</a></h3>
+
+<p>CSS2 <em>не</em> определяет, какой из наборов
+допустимых разрывов страниц обязан
+использоваться; CSS2 не запрещает ПАгенту
+делать разрыв в любой возможной точке
+разрыва или не делать разрывов вообще. Но CSS2
+рекомендует, чтобы ПА следовали следующей
+эвристике (признавая наличие некоторых
+противоречий):</p>
+
+<ul>
+<li>Делать разрывы как можно реже.
+<li>Делать все страницы, не оканчивающиеся
+  форсированным разрывом, одинаковой высоты.
+<li>Исключить разрывы внутри блока, имеющего
+  рамку.
+<li>Исключить разрывы внутри таблицы.
+<li>Исключить разрывы внутри всплывающего
+  элемента.
+</ul>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Предположим,
+  например, что таблица стилей содержит 'orphans : 4', 'widows : 2',
+  и имеется 20 свободных строк (<a href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">строчных
+  боксов</a>) внизу текущей страницы:</p>
+
+<ul>
+
+<li>Если параграф в конце текущей страницы
+  содержит 20 строк или менее, он должен быть
+  размещён на текущей странице.
+
+<li>Если параграф содержит 21 или 22 строк,
+  вторая часть параграфа обязана не
+  нарушать работы <a href="#propdef-widows" class="noxref"><span
+class="propinst-widows">'widows'</span></a>, и, следовательно,
+  вторая часть обязана содержать точно две
+  строки.
+
+<li>Если параграф содержит 23 строки или более,
+  первая часть должна содержать 20 строк, а
+  вторая часть - остальные строки.
+						    
+</ul>
+
+  <P>Теперь предположим, что <a href="#propdef-orphans" class="noxref"><span class="propinst-orphans">'orphans'</span></a>
+  - '10',
+<a href="#propdef-widows" class="noxref"><span class="propinst-widows">'widows'</span></a>
+  - '20', и имеется 8 свободных строк внизу
+  текущей страницы:</p>
+
+<ul>
+
+<li>Ели параграф в конце текущей страницы
+  содержит 8 строк или менее, он должен быть размещён
+  на текущей странице.
+
+<li>Если параграф содержит 9 строки или более,
+  он не может быть разделён (что могло бы
+  нарушить работу orphans), следовательно, он
+  должен быть перемещён как блок на
+  следующую страницу.
+</ul>
+</div>
+
+<h2><a name="q17"><br>
+13.4 Каскадирование в контексте страницы</a></H2>
+
+<P>Объявления в <a href="#page-context">контексте страницы</a>
+подчиняются <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">каскаду</a> так же,
+как и нормальные объявления CSS2.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<PRE>@page {
+  margin-left: 3cm;
+}
+
+@page :left {
+  margin-left: 4cm;
+}</PRE>
+
+  <P>Из-за более <a href="cascade.html#cascading-order" tppabs="http://pyramidin.narod.ru/css2/cascade.html#cascading-order">высокой
+  специфики</a> селектора псевдокласса, левое
+  поле левых страниц будет '4см', а все
+  остальные страницы (т.е. правые) - левое
+  поле '3см'.
+
+  <P>&nbsp;
+</div>
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html">предыдущий</a> &nbsp; <a href="colors.html" tppabs="http://pyramidin.narod.ru/css2/colors.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+<a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</body>
+</html>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

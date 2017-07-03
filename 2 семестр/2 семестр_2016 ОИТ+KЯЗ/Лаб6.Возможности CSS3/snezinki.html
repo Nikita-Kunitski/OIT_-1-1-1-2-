@@ -1,0 +1,103 @@
+<style type="text/css">
+#container{  
+  width: 100%;
+  height: 480px;  
+  position: relative;
+  background-color: #808991;  
+  }
+
+@-webkit-keyframes fade{
+  0%   { opacity: 0; }
+  10%  { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes fall{from {top: 10px;} to {top: 470px;}}
+
+@-webkit-keyframes accumulate{
+  from {height: 0px; opacity: 0}
+  to {height: 20px; opacity: .75;}}
+  
+@-webkit-keyframes spin1{
+  0%   { -webkit-transform: rotate(-180deg) translate(0px, 0px);}
+  100% { -webkit-transform: rotate(180deg) translate(10px, 75px);}
+}
+
+@-moz-keyframes fade{
+  0%   { opacity: 0; }
+  10%  { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fall{
+  from {top: 10px;}
+  to {top: 470px;}
+}
+@-moz-keyframes accumulate{
+  from {height: 0px; opacity: 0}
+  to {height: 20px; opacity: .75;}
+}
+@-moz-keyframes spin1{
+  0%   { -moz-transform: rotate(-180deg) translate(0px, 0px);}
+  100% { -moz-transform: rotate(180deg) translate(10px, 75px);}
+}
+
+#snow div {
+  position: absolute;
+  top: -40px;
+  -webkit-animation-name: fall, fade, spin1;
+  -webkit-animation-iteration-count: infinite; 
+  -webkit-animation-direction: normal; 
+  -webkit-animation-timing-function: ease-in;
+  -moz-animation-name: fall, fade, spin1;
+  -moz-animation-iteration-count: infinite; 
+  -moz-animation-direction: normal; 
+  -moz-animation-timing-function: ease-in;
+}
+.snowflake {
+  color: #fff;
+  font-size: 2em;
+  position: absolute; 
+}
+.snowflake.f1 {
+  left: 40px;
+  -webkit-animation-duration: 5s; 
+  -moz-animation-duration: 5s; 
+}
+.snowflake.f2 {
+  font-size: 1.8em;
+  left: 120px;
+  -webkit-animation-duration: 7s; 
+  -moz-animation-duration: 7s;
+}
+.snowflake.f3 {
+  left: 200px;
+  -webkit-animation-duration: 8s; 
+  -moz-animation-duration: 8s;
+}
+.snowflake.f4 {
+  font-size: 1.5em;
+  left: 280px;
+  -webkit-animation-duration: 6s; 
+  -moz-animation-duration: 6s; 
+}
+#ground{ 
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  -webkit-animation-name: accumulate;
+  -webkit-animation-duration: 60s;
+  -moz-animation-name: accumulate;
+  -moz-animation-duration: 60s;
+}
+</style>
+
+<div id="container">
+<div id="snow" class="snow">
+<div class="snowflake f1">&#10053;</div>
+<div class="snowflake f2">&#10052;</div>
+<div class="snowflake f3">&#10053;</div>
+<div class="snowflake f4">&#10052;</div>
+</div>
+<div id="ground"></div>
+</div>

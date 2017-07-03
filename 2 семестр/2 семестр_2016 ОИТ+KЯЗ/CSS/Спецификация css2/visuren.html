@@ -1,0 +1,2545 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>Модель визуального форматирования</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css"><link rel="prev" href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">
+<link rel="next" href="visudet.html" tppabs="http://pyramidin.narod.ru/css2/visudet.html"><link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties"><link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index">
+</HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">предыдущий</a> &nbsp; <a href="visudet.html" tppabs="http://pyramidin.narod.ru/css2/visudet.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">9&nbsp; Модель визуального форматирования</H1><div class="subtoc">
+<p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#q1" class="tocxref">9.1 Введение</a>
+<ul class="toc">
+<li class="tocline3"><a href="#q2" class="tocxref">9.1.1 Порт просмотра</a>
+<li class="tocline3"><a href="#containing-block" class="tocxref">9.1.2 <span class="index-def" title="containing block"> Содержащие
+  блоки</span></a>
+</ul>
+<li class="tocline2"><a href="#box-gen" class="tocxref">9.2 Управление
+  генерацией боксов</a><ul class="toc">
+<li class="tocline3"><a href="#q5" class="tocxref">9.2.1 Элементы
+  уровня блока и боксы блока</a><ul class="toc">
+<li class="tocline4"><a href="#anonymous-block-level" class="tocxref"> Анонимные
+  боксы блока</a></ul>
+<li class="tocline3"><a href="#q7" class="tocxref">9.2.2 Инлайн-элементы
+  и инлайн-боксы</a><ul class="toc">
+<li class="tocline4"><a href="#anonymous" class="tocxref"> Анонимные инлайн-боксы</a></ul>
+<li class="tocline3"><a href="#compact" class="tocxref">9.2.3 Боксы compact</a>
+<li class="tocline3"><a href="#run-in" class="tocxref">9.2.4 Втягивающиеся
+  боксы</a>
+<li class="tocline3"><a href="#display-prop" class="tocxref">9.2.5
+  Свойство <span class="propinst-display">'display'</span> </a>
+</ul><li class="tocline2"><a href="#positioning-scheme" class="tocxref">9.3 Схемы
+  позиционирования</a>
+<ul class="toc"><li class="tocline3"><a href="#choose-position" class="tocxref">9.3.1
+    Выбор схемы позиционирования: свойство <span class="propinst-position">'position'</span> </a>
+<li class="tocline3"><a href="#position-props" class="tocxref">9.3.2
+  Позиционирование и заполнение в боксе: <span class="propinst-top">'top'</span>, <span class="propinst-right">'right'</span>, <span class="propinst-bottom">'bottom'</span>, <span class="propinst-left">'left'</span></a>
+</ul><li class="tocline2"><a href="#normal-flow" class="tocxref">9.4 Нормальное
+  расположение</a><ul class="toc">
+<li class="tocline3"><a href="#block-formatting" class="tocxref">9.4.1 Контекст
+  форматирования блока</a>
+<li class="tocline3"><a href="#inline-formatting" class="tocxref">9.4.2 Контекст
+  форматирования инлайн</a>
+<li class="tocline3"><a href="#relative-positioning" class="tocxref">9.4.3 Относительное
+  позиционирование</a></ul>
+<li class="tocline2"><a href="#floats" class="tocxref">9.5 Поплавки</a><ul class="toc">
+<li class="tocline3"><a href="#float-position" class="tocxref">9.5.1
+  Позиционирование поплавка: свойство <span class="propinst-float">'float'</span> </a>
+<li class="tocline3"><a href="#flow-control" class="tocxref">9.5.2
+  Управление расположением после поплавка:
+  свойство <span class="propinst-clear">'clear'</span> </a>
+</ul><li class="tocline2"><a href="#absolute-positioning" class="tocxref">9.6 Абсолютное
+  позиционирование</a>
+<ul class="toc"><li class="tocline3"><a href="#fixed-positioning" class="tocxref">9.6.1
+    Фиксированное позиционирование</a>
+</ul><li class="tocline2"><a href="#q24" class="tocxref">9.7
+  Соотношение между 'display', 'position' и 'float'</a>
+<li class="tocline2"><a href="#comparison" class="tocxref">9.8
+  Сравнение нормального расположения,
+  поплавков и абсолютного позиционирования</a>
+<ul class="toc"><li class="tocline3"><a href="#q26" class="tocxref">9.8.1 Нормальное
+    расположение</a>
+<li class="tocline3"><a href="#q27" class="tocxref">9.8.2 Относительное
+  позиционирование</a>
+<li class="tocline3"><a href="#q28" class="tocxref">9.8.3 Обтекание бокса</a>
+<li class="tocline3"><a href="#q29" class="tocxref">9.8.4 Абсолютное
+  позиционирование</a>
+</ul><li class="tocline2"><a href="#q30" class="tocxref">9.9 Слои</a><ul class="toc">
+<li class="tocline3"><a href="#z-index" class="tocxref">9.9.1
+  Спецификация уровня в пакете слоёв:
+  свойство <span class="propinst-z-index">'z-index'</span> </a>
+</ul><li class="tocline2"><a href="#direction" class="tocxref">9.10
+  Направление текста: свойства <span class="propinst-direction">'direction'</span> 
+  и <span class="propinst-unicode-bidi">'unicode-bidi'</span> </a>
+</ul></div><H2><a name="q1"><br>
+9.1 Введение</a></H2>
+<P>Эта и последующие главы описывают <a name="x0"><span class="index-def"
+title="visual formatting model">модель визуального форматирования</span></a>:
+то как пользовательские агенты (ПА)
+обрабатывают <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерево документа</a>
+для визуального <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">носителя</a>.<P>В
+модели визуального форматирования каждый
+элемент дерева документа генерирует ноль
+или более боксов в соответствии с <a href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">моделью
+боксов</a>. Структура этих боксов
+управляется:</p>
+<ul><li><a href="box.html#box-dimensions" tppabs="http://pyramidin.narod.ru/css2/box.html#box-dimensions">размерами боксов</a> и
+    <a href="#box-gen">типом</a>.
+<li><a href="#positioning-scheme">схемой позиционирования</a>
+  (нормальное позиционирование, всплывание и
+  абсолютное).
+<li>взаимоотношениями между элементами в <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дереве
+  документа.</a>
+<li>внешней информацией (например, размером
+  порта просмотра, <a
+href="conform.html#intrinsic" tppabs="http://pyramidin.narod.ru/css2/conform.html#intrinsic">внутренними</a> размерами
+  изображений и т.д.).</ul>
+
+<P>Свойства, определённые в этой и следующих
+главах, применяются и к <a href="media.html#continuous-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#continuous-media-group">непрерывным
+носителям</a>, и к <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group">страничным
+носителям</a>. В то же время, значения <a href="box.html#margin-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#margin-properties">свойств
+полей</a> варьируются при использовании со
+страничным носителем (см. в <a
+href="page.html#page-model" tppabs="http://pyramidin.narod.ru/css2/page.html#page-model">страничной модели</a>).<P>Модель
+визуального форматирования не определяет
+все аспекты форматирования (например, она
+не специфицирует алгоритм расстояний между
+буквами). Поведение <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствующих ПА</a>
+может отличаться в вопросах форматирования.
+
+<h3><a name="q2"><br>
+9.1.1 &#1055;&#1086;&#1088;&#1090; &#1087;&#1088;&#1086;&#1089;&#1084;&#1086;&#1090;&#1088;&#1072;</a></h3>
+<P>ПА для <a
+href="media.html#continuous-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#continuous-media-group">непрерывных носителей</a>
+обычно предлагают пользователю <span class="index-def" title="viewport"><a
+name="viewport"><dfn>порт просмотра</dfn></a></span> (окно
+или другую область просмотра на экране), в
+котором пользователь видит документ. ПА
+могут изменять внешний вид документа, если
+порт просмотра изменил размеры (см. <a
+href="#initial-containing-block">начальный содержащий блок</a>).
+Если порт просмотра меньше, чем начальный
+содержащий блок документа, ПА должен
+предоставить механизм прокрутки. Имеется
+не менее одного порта просмотра в <a href="intro.html#canvas" tppabs="http://pyramidin.narod.ru/css2/intro.html#canvas">канве</a>,
+но ПА могут отображать более чем одну канву (т.е.
+предоставлять различные виды того же
+самого документа).
+
+<H3><br>
+9.1.2 <span class="index-def" title="containing block">
+<a name="containing-block">Содержащие блоки</a></span>
+</H3>
+
+<P>В CSS2 многие варианты позиционирования и
+размеры вычисляются относительно кромки
+прямоугольного бокса, называемого <a name="x3"><span class="index-def"
+title="containing block"><dfn>содержащий блок</dfn></span></a>.
+Обычно генерируемые боксы действуют как содержащие
+блоки для боксов-потомков; мы говорим, что
+бокс "устанавливает" содержащий блок для
+своих потомков. Фраза "блок, содержащий бокс"
+означает "блок, в котором бокс находится&quot;,
+а не блок, генерирующий бокс.<P>Каждый бокс
+имеет позицию относительно содержащего
+блока, но не ограничен этим блоком и может
+вызвать <a
+href="visufx.html#overflow" tppabs="http://pyramidin.narod.ru/css2/visufx.html#overflow">переполнение</a>.<P>Корневой
+элемент <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a>
+генерирует бокс, который служит <span class="index-def"
+title="initial containing block|containing block::initial"><a
+name="initial-containing-block"><dfn>начальным</dfn></a><dfn>
+содержащим блоком</dfn></span> для последующего
+вывода.<P>Ширина начального содержащего
+блока может быть специфицирована свойством
+<a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span class="propinst-width">'width'</span></a> 
+корневого элемента. Если это свойство имеет
+значение 'auto', ПА предоставляет начальное
+значение ширины (например, ПА использует
+текущую ширину <a href="#viewport">порта просмотра</a>).<P>Высота
+начального содержащего блока может быть
+специфицирована свойством <a href="visudet.html#propdef-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-height" class="noxref"><span class="propinst-height">'height'</span></a> 
+корневого элемента. Если это свойство имеет
+значение 'auto', высота содержащего блока
+увеличивается, чтобы приспособиться к
+содержимому документа.<P>Начальный
+содержащий блок не может быть
+позиционирован или всплывать (т.е. ПА <a href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорируют</a>
+свойства <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a>  и <a href="#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>  корневого элемента).<P> <a href="visudet.html#containing-block-details" tppabs="http://pyramidin.narod.ru/css2/visudet.html#containing-block-details">Детали</a>
+того, как высчитываются размеры
+содержащего блока, описаны в <a href="visudet.html" tppabs="http://pyramidin.narod.ru/css2/visudet.html">следующей
+главе</a>.
+
+<H2><br>
+9.2&nbsp; <a name="box-gen">Управление генерацией боксов</a></h2>
+
+<P>Последующие разделы описывают типы
+боксов, которые могут генерироваться в CSS2.
+Тип бокса воздействует отчасти на его (бокса)
+поведение в модели визуального форматирования. Свойство <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>, описанное ниже,
+специфицирует тип бокса.<H3><a name="q5"><br>
+9.2.1
+Элементы уровня блока и боксы блока</a></h3>
+
+<P><span class="index-def" title="block-level
+element"><a name="block-level"><dfn>Элементы уровня блока</dfn></a></span>
+это элементы документа-источника,
+визуально отформатированные как блоки (например,
+параграфы). Различные значения свойства <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  создают элемент
+уровня блока: 'block', 'list-item', 'compact', 'run-in' (не
+всегда; см. <a href="#compact">компактные</a> и <a href="#run-in">втягивающиеся</a><a href="#run-in">
+боксы</a>) и 'table'.<P>Элементы уровня блока
+генерируют <span class="index-def"
+title="principal block box"><a name="principal-box"><dfn>основной </dfn></a><dfn>бокс
+блока</dfn></span>, и только он содержит <span class="index-def"
+title="block box"><a name="block-box"><dfn>боксы блоков</dfn></a></span>.
+Основной бокс блока устанавливает <a
+href="#containing-block">содержащий блок</a> для боксов-потомков
+и сгенерированного содержимого и является
+также боксом, участвующим в любой схеме
+позиционирования. Основные боксы блока
+действуют в <a
+href="#block-formatting">контексте форматирования блока</a>.<P>Некоторые
+элементы уровня блока генерируют
+дополнительные боксы за пределами
+основного бокса: элементы 'list-item' и элементы
+с <A
+HREF="generate.html#markers" tppabs="http://pyramidin.narod.ru/css2/generate.html#markers">маркёрами</A>. Эти
+дополнительные боксы размещаются
+относительно основного бокса.
+
+<h4> <a name="anonymous-block-level">Анонимные боксы блока</a></h4>
+
+<p>В этом документе:<pre>&lt;DIV&gt;
+  Some text
+  &lt;P&gt;More text
+&lt;/DIV&gt;</pre>
+
+(и приняв, что и DIV, и P оба имеют 'display: block'),
+DIV имеет содержимое и инлайн-уровня, и уровня блока.
+Чтобы легче было определить форматирование,
+мы примем, что вокруг "Some text&quot; имеется <em><a name="x9"><span
+class="index-def" title="anonymous">анонимный бокс блока</span></a></em>.
+
+<div class="figure">
+<p><img src="anon-block.gif" tppabs="http://pyramidin.narod.ru/css2/anon-block.gif" alt="diagram showing the three
+boxes for the example above" width="299" height="202"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-anon-block" href="anon-block-desc.html" tppabs="http://pyramidin.narod.ru/css2/anon-block-desc.html" title="Long description for anonymous block box">[D]</A></SPAN> <p class="caption">На
+диаграмме изображены три бокса, один из
+которых анонимный, в примере - верхний.
+</div>
+
+<p>Другими словами: если бокс блока (такой
+как сгенерированный в DIV выше) имеет внутри
+себя другой бокс блока (как P), тогда мы
+заставляем его иметь боксы блока <em>только </em>внутри
+себя, перенеся любые инлайн-боксы в
+анонимный бокс блока.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <P>Эта модель будет применена в следующем
+  примере, если данные правила:</p>
+
+<PRE>/* Примечание: ПАгенты HTML могут не рассматривать эти правила */
+BODY { display: inline }
+P    { display: block }</PRE>
+
+<P>будут использованы в данном документе HTML:</p>
+
+<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Анонимный текст, прерываемый блоком.&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+<em>Анонимный текст до P.</em>
+&lt;P&gt;Содержимое элемента P.&lt;/&gt;
+<em>Анонимный текст после P.</em>
+&lt;/BODY&gt;</PRE>
+
+  <P>Элемент BODY содержит отрывок (C1)
+  анонимного текста, после которого идут
+  элемент уровня блока и второй отрывок
+  анонимного текста (C2). В результате получим
+  анонимный бокс блока для BODY, содержащий
+  анонимный бокс блока вокруг C1, бокс блока P
+  и второй анонимный бокс блока вокруг C2.
+</div>
+
+<p>Свойства анонимных боксов наследуются из
+содержащего неанонимного бокса (в примере:
+из DIV). Ненаследуемые свойства имеют свои
+начальные значения. Например, шрифт
+анонимного бокса наследуется из DIV, но поля
+имеют значения 0.
+
+<H3><a name="q7"><br>
+9.2.2 Инлайн-элементы и инлайн-боксы</a></h3>
+
+<P><span class="index-def" title="inline-level element">
+<a name="inline-level"><dfn>Инлайн-элементы</dfn></a></span> 
+это те элементы документа-источника,
+которые не образуют новых блоков
+содержимого; содержимое определяется в
+строке (на месте) (например, выделенные
+участки текста внутри параграфа, инлайн-изображения
+и т.п.). Различные значения свойства <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  делают элемент
+инлайн: 'inline', 'inline-table', 'compact' и 'run-in' (не всегда;
+см. <a
+href="#compact">компактные</a> и <a href="#run-in">втягивающиеся
+боксы</a>).
+Элементы инлайн-уровня (встроенные)
+генерируют <a name="inline-box">инлайн-боксы</a>.<P>Инлайн-боксы
+могут принимать участие в различных
+контекстах форматирования:</p>
+
+<ul>
+<li>Внутри бокса блока инлайн-бокс участвует
+  в <a
+href="#inline-formatting">инлайн-контексте форматирования</a>.
+<li>Инлайн-бокс <a href="#compact">compact</a>  расположен
+  в поле бокса блока.
+<li><a href="generate.html#markers" tppabs="http://pyramidin.narod.ru/css2/generate.html#markers">Боксы-маркёры</a> имеют
+  позицию также вне бокса блока.
+</ul>
+
+<h4> <a name="anonymous">Анонимные инлайн-боксы</a></h4>
+
+<p>В таком документе:<pre>&lt;P&gt;Некоторый &lt;EM&gt;выделенный&lt;/em&gt; текст.&lt;/P&gt;</pre>
+
+<p>элемент P генерирует бокс блока с
+несколькими инлайн-боксами внутри. Бокс для
+&quot;выделенный&quot; - это инлайн-бокс,
+сгенерированный инлайн-элементом (EM), но
+другие боксы (&quot;Некоторый&quot; и &quot;текст&quot;)
+являются инлайн-боксами, сгенерированными
+элементом уровня блока (P). Последние
+называются анонимными инлайн-боксами,
+поскольку они не имеют ассоциированного
+инлайн-элемента.<p>Такие анонимные инлайн-боксы
+наследуют наследуемые свойства своего
+родительского бокса уровня блока.
+Ненаследуемые свойства получают свои
+начальные значения. В примере - цвет
+анонимных начальных боксов наследуется
+из&nbsp; P, но фон остаётся прозрачным.<p>Если из
+контекста ясно, какой тип анонимных боксов
+подразумевается, то и боксы инлайн, и боксы
+уровня блока называются в данной
+спецификации анонимными боксами.<p>Имеются
+и другие типы анонимных боксов, возникающие
+при форматировании
+<a href="tables.html#anonymous-boxes" tppabs="http://pyramidin.narod.ru/css2/tables.html#anonymous-boxes">таблиц</a>.
+
+<H3><br>
+9.2.3 <a name="compact">Боксы compact</a>/компактные</h3>
+
+<P><i>Бокс</i> <a name="x12"><span class="index-def" title="compact box"><dfn>compact</dfn></span></a>
+ведёт себя так:</p>
+
+<ul>
+<li>Если <a href="#block-box">бокс блока</a> (не поплавок
+  и не <a href="#absolutely-positioned">позиционированный абсолютно</a>)
+  следует после бокса compact, то compact-бокс
+  форматируется как однострочный инлайн-бокс.
+  Ширина результирующего бокса
+  сравнивается с одним из полей бокса блока.
+  Выбор левого или правого поля
+  определяется в <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a><span class="propinst-direction">,</span>
+  специфицируемом для элемента,
+  производящего <a href="#containing-block">
+содержащий блок</a> для compact-бокса и
+  следующего бокса. Если ширина инлайн-бокса
+  меньше, чем/равна ширине поля, то инлайн-бокс
+  позиционируется в поле, как описано далее.
+
+<li>В ином случае compact-бокс становится боксом
+  блока.
+</ul>
+
+<P>Compact-бокс позиционируется в поле
+следующим образом: он находится вне (слева
+или справа от) первого <a href="#line-box">строчного
+бокса</a> блока, но влияет на расчёт <a
+href="visudet.html#line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#line-height">высоты строчного бокса</a>.
+Свойство <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align'</span></a> compact-бокса
+определяет вертикальную позицию compact-бокса
+относительно строчного бокса. Позиция compact-бокса
+по горизонтали - всегда в поле бокса блока.<P>Элемент,
+который не может быть отформатирован в
+пределах одной строчки, не может
+размещаться в поле последующего блока.
+Например, элемент 'compact' в HTML, который
+содержит элемент BR, всегда будет
+форматироваться как бокс блока (принимая
+для BR стиль по умолчанию, когда вставляется
+новая строка). Для размещения
+многострочного текста в поле часто больше
+подойдёт свойство <a href="#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>.
+
+<div class="html-example">
+<p>Следующий пример иллюстрирует compact-бокс:
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;A compact box example&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      DT { display: compact }
+      DD { margin-left: 4em }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;DL&gt;
+      &lt;DT&gt;Short
+        &lt;DD&gt;&lt;P&gt;Description goes here.
+      &lt;DT&gt;too long for the margin
+        &lt;DD&gt;&lt;P&gt;Description goes here.
+    &lt;/DL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+</div>
+
+<P>Этот пример может выглядеть после
+форматирования так:
+
+<pre><b>short</b>    Description goes here
+
+<b>too long for the margin</b>
+         Description goes here
+</pre>
+
+<p>Свойство <a href="text.html#propdef-text-align" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-align" class="noxref"><span class="propinst-text-align">'text-align'</span></a> 
+можно использовать для выравнивания compact-элемента
+внутри поля: у левого края поля ('left'), у
+правого края поля ('right') или по центру поля ('center').
+Значение 'justify' не применяется и
+обрабатывается или как 'left', или как 'right', в
+зависимости от <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a><span class="propinst-direction">/направления</span>
+элемента блока, в поле которого
+форматируется compact-элемент ('left', если
+направление - 'ltr', 'right', если направление 'rtl').<P>Информацию
+о том, как compact-боксы взаимодействуют с
+генерируемым содержимым, см. в разделе 
+<a href="generate.html#compact-run-in-gen" tppabs="http://pyramidin.narod.ru/css2/generate.html#compact-run-in-gen">генерируемое содержимое</a>.
+
+<H3><br>
+9.2.4 <a name="run-in">&#1042;&#1090;&#1103;&#1075;&#1080;&#1074;&#1072;&#1102;&#1097;&#1080;&#1077;&#1089;&#1103;
+&#1073;&#1086;&#1082;&#1089;&#1099;</a> (run-in)</h3>
+
+<P>Бокс <a name="x13"><span class="index-def" title="run-in box"><dfn>run-in</dfn></span></a><span class="index-def" title="run-in box"><dfn>
+</dfn></span>ведёт себя так:</p>
+
+<ul>
+<li>Если <a href="#block-box">бокс блока</a> (не поплавок
+  и не <a href="#absolutely-positioned">позиционированный абсолютно</a>)
+  следует за боксом run-in, то бокс run-in
+  становится первым инлайн-боксом в боксе
+  блока.  
+<li>Иначе бокс run-in становится боксом блока.
+</ul>
+
+<p>Бокс 'run-in' используется для run-in-заголовков,
+как в этом примере:
+
+<div class="html-example">
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Пример бокса run-in&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      H3 { display: run-in }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H3&gt;Заголовок run-in.&lt;/H3&gt;
+    &lt;P&gt;И параграф текста,
+       следующий за ним.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+</div>
+
+<p>Этот пример может форматироваться так:
+
+<pre>  <b>Заголовок run-in.</b> И
+  параграф текста, 
+  следующий за ним.
+</pre>
+
+<p>Свойства run-in-элемента наследуются от
+родителя в дереве-источнике, а не от бокса
+блока, частью которого он визуально
+является.
+
+<P>Информацию о том, как compact-боксы
+взаимодействуют с генерируемым содержимым,
+см. в разделе 
+<a href="generate.html#compact-run-in-gen" tppabs="http://pyramidin.narod.ru/css2/generate.html#compact-run-in-gen">Генерируемое содержимое</a>.<h3><br>
+9.2.5 <a name="display-prop">Свойство</a>
+<a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a> </h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'display'"><a name="propdef-display" class="propdef-title"><strong>'display'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>inline | block | list-item | run-in | compact | marker |
+table | inline-table | table-row-group | table-header-group |
+table-footer-group | table-row | table-column-group | table-column |
+table-cell | table-caption | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>inline
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>все
+    элементы
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#all-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#all-media-group" class="noxref">все</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значения этого свойства имеют следующий
+смысл:</P>
+
+<dl>
+<dt><span class="index-def" title="'block', definition of"><a
+name="value-def-block"><strong>block</strong></a></span>
+
+<dd>Элемент генерирует основной бокс блока.
+
+<dt><span class="index-def" title="'inline', definition of"><a
+name="value-def-inline"><strong>inline</strong></a></span>
+
+<dd>Элемент генерирует один или более инлайн-боксов.
+
+<dt><span class="index-def" title="'list-item', definition of"><a
+name="value-def-list-item"><strong>list-item</strong></a></span>
+<dd>Элемент (например, LI в HTML) генерирует
+  основной бокс блока и инлайн-бокс элемента
+  списка. О списках и примерах
+  форматирования списков см. раздел
+<a href="generate.html#lists" tppabs="http://pyramidin.narod.ru/css2/generate.html#lists">списки</a>.
+
+<dt><span class="index-def" title="marker', definition of"><a
+name="value-def-marker"><strong>marker</strong></a></span> 
+<dd>Объявляет <a href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html">генерируемое содержимое</a>
+  до или после бокса-маркёра. Это значение
+  должно использоваться только вместе с <a href="generate.html#before-after-content" tppabs="http://pyramidin.narod.ru/css2/generate.html#before-after-content">псевдоэлементами
+  :before и :after</a>, присоединёнными к элементам
+  уровня блока. В других случаях это
+  значение интерпретируется как 'inline'. См.
+  также раздел <a
+href="generate.html#markers" tppabs="http://pyramidin.narod.ru/css2/generate.html#markers">Маркёры</a>.
+
+<dt><strong>none</strong>
+
+<dd>Э<a name="x19">лемент</a> <b>не</b> генерирует боксы в <a
+href="intro.html#formatting-structure" tppabs="http://pyramidin.narod.ru/css2/intro.html#formatting-structure">структуре форматирования</a>
+  (т.е. элемент не влияет на вид документа).
+  Элементы-потомки не генерируют никаких
+  боксов; это поведение <strong>не может</strong>
+  быть переопределено установкой у потомков
+  свойства <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>.<P>Обратите
+  внимание, что отображение 'none' не создаёт
+  невидимый бокс; боксы вообще не создаются. CSS
+  содержит механизмы, делающие возможным генерацию
+  элементом бокса в структуре
+  форматирования, который влияет на
+  структуру форматирования, но невидим. См.
+  детали в разделе <a href="visufx.html#visibility" tppabs="http://pyramidin.narod.ru/css2/visufx.html#visibility">Видимость</a>.<dt><span class="index-def" title="'run-in', definition of"><a
+name="value-def-run-in"><strong>run-in</strong></a></span> и <span class="index-def" title="'compact', definition of"><a
+name="value-def-compact"><strong>compact</strong></a></span>
+<dd>Эти значения создают боксы блока и инлайн,
+  в зависимости от контекста. Свойства,
+  применяемые к боксам run-in и compact, базируются
+  на окончательном статусе боксов (уровень
+  инлайн или блока). Например, свойство <a href="text.html#propdef-white-space" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-white-space" class="noxref"><span
+class="propinst-white-space">'white-space'</span></a>  применяется
+  только тогда, когда бокс получает уровень
+  блока.<dt><span class="index-inst" title="'table'"><a
+name="value-inst-table"><strong>table</strong></a></span>, <span
+class="index-inst" title="'inline-table'"><a
+name="value-inst-inline-table"><strong>inline-table</strong></a></span>, <span
+class="index-inst" title="'table-row-group'"><a
+name="value-inst-table-row-group"><strong>table-row-group</strong></a></span>,
+<span class="index-inst" title="'table-column'"><a name="x25" href="tables.html#value-def-table-column" tppabs="http://pyramidin.narod.ru/css2/tables.html#value-def-table-column" class="noxref"><span class="value-inst-table-column"><strong>table-column</strong></span></a></span>,
+<span class="index-inst" title="'table-column-group'"><a
+name="value-inst-table-column-group"><strong>table-column-group</strong></a></span>,
+<span class="index-inst" title="'table-header-group'"><a name="value-inst-table-header-group"><strong>table-header-group</strong></a></span>,
+<span class="index-inst" title="'table-footer-group'"><a name="value-inst-table-footer-group"><strong>table-footer-group</strong></a></span>,
+<span class="index-inst" title="'table-row'"><a
+name="value-inst-table-row"><strong><strong>table-row</strong></strong></a></span>, <span
+class="index-inst" title="'table-cell'"><a
+name="value-inst-table-cell"><strong><strong>table-cell</strong></strong></a></span>
+  и <span
+class="index-inst" title="'table-caption'"><a
+name="value-inst-table-caption"><strong>table-caption</strong></a></span>
+<dd>При установке этих значений, элемент
+  ведёт себя как элемент таблицы (ограничения
+  описаны в главе <a
+href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">Таблицы</a>).
+</dl>
+
+<P>Заметьте, что, хотя <a href="cascade.html#initial-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#initial-value">начальное
+значение</a>&nbsp; <a href="#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>
+- 'inline', правила в <a
+href="cascade.html#default-style-sheet" tppabs="http://pyramidin.narod.ru/css2/cascade.html#default-style-sheet">таблицах по умолчанию</a>
+в ПА могут <a
+href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">переопределить</a> это значение.
+См. <a
+href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">пример таблицы стилей</a> для HTML 4.0
+в приложении.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<P>Несколько примеров свойства <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>:
+
+<PRE>P   { display: block }
+EM  { display: inline }
+LI  { display: list-item } 
+IMG { display: none }      /* Не выводить изображения */
+</PRE>
+</div>
+
+<P><span class="index-inst" title="conformance"><a name="x32"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие</a></span> ПА HTML
+могут <span class="index-inst" title="ignore"><a name="x33"
+href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорировать</a></span>  свойство
+<a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>.
+
+<h2><br>
+9.3 <a name="positioning-scheme">Схемы позиционирования</a></h2>
+
+<P>В CSS2 бокс может находиться в разных слоях
+в соответствии со <a name="x34"><span
+class="index-def" title="positioning scheme"><dfn>схемами
+позиционирования:</dfn></span></a></p>
+
+<ol>
+<li><a href="#normal-flow">Normal flow/Нормальное расположение</a>.
+  В CSS2 нормальное расположение включает <a href="#block-formatting">форматирование
+  блока</a> для <a href="#block-box">боксов блока</a>, 
+<a href="#inline-formatting">инлайн-форматирование</a>
+  для <a href="#inline-box">инлайн-боксов</a>, <a
+href="#relative-positioning">относительное позиционирование</a>
+  боксов блока или инлайн и
+  позиционирование <a href="#compact">compact</a>  и <a href="#run-in">run-in</a> 
+  боксов.
+<li><a href="#floats">Floats</a>/Поплавки. В модели
+  поплавка бокс сначала накладывается в соответствии
+  с нормальным расположением, затем
+  изымается из расположения и сдвигается влево
+  или вправо, насколько возможно. Содержимое
+  может обтекать по стороне &quot;всплывания&quot;
+  поплавка.
+<li><a href="#absolute-positioning">Абсолютное позиционирование</a>.
+  В модели абсолютного позиционирования
+  бокс удаляется из нормального
+  расположения полностью (это не действует
+  на последующие родственные элементы) и
+  получает позиционирование относительно
+  содержащего блока.
+</ol>
+
+<div class="note">
+<em><strong>Примечание.</strong>
+ Схемы позиционирования CSS2 помогают
+авторам сделать документы более доступными,
+позволяя избегать трюков разметки (например,
+невидимых изображений), используемых для
+создания эффектов отображения.
+</em>
+</div>
+
+<h3><br>
+9.3.1 <a name="choose-position">Выбор схемы
+позиционирования:</a> свойство <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a> </h3>
+
+<P>Свойства <a href="#propdef-position" class="noxref"><span class="propinst-position">'position'</span></a> 
+и <a href="#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>  определяют, какой из
+алгоритмов позиционирования CSS2
+используется для расчёта позиции бокса.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'position'"><a name="propdef-position" class="propdef-title"><strong>'position'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>static | relative | absolute | fixed | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>static
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам, но не к генерируемому
+    содержимому
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><strong>static</strong>
+
+<dd>Бокс является нормальным боксом,
+  расположенным в соответствии с <a
+href="#normal-flow">нормальным расположение</a>м.
+  Свойства <a href="#propdef-left" class="noxref"><span
+class="propinst-left">'left'</span></a> и <a href="#propdef-top" class="noxref"><span
+class="propinst-top">'top'</span></a>  не применяются. 
+
+<dt><strong>relative</strong>
+
+<dd>Позиция бокса высчитывается в
+  соответствии с <a
+href="#normal-flow">нормальным расположением</a>.
+  Затем бокс смещается <a
+href="#relative-positioning">относительно</a> нормального
+  расположения. Если бокс В позиционирован
+  относительно, расположение последующего
+  бокса вычисляется так, как если бы бокс В
+  не имел смещения.
+
+<dt><strong>absolute</strong>
+<dd> Позиция бокса (и возможные размеры)
+  определяется свойствами <a href="#propdef-left" class="noxref"><span class="propinst-left">'left'</span></a>,
+<a href="#propdef-right" class="noxref"><span class="propinst-right">'right'</span></a>, 
+<a href="#propdef-top" class="noxref"><span class="propinst-top">'top'</span></a>
+  и <a href="#propdef-bottom" class="noxref"><span class="propinst-bottom">'bottom'</span></a>.
+  Эти свойства устанавливают смещение
+  относительно бокса <a href="#containing-block">содержащего
+  блока</A>. Абсолютно позиционированные
+  боксы изымаются из нормального обтекания.
+  Это значит, что они не влияют на вывод
+  последующих родственных элементов. Также,
+  хотя <a href="#absolutely-positioned">абсолютно позиционированные</a>
+  боксы имеют поля, они не <a href="box.html#collapsing-margins" tppabs="http://pyramidin.narod.ru/css2/box.html#collapsing-margins">соединяются</a>
+  с другими полями.
+
+<dt><strong>fixed</strong>
+<dd> Позиция бокса вычисляется в
+  соответствии с моделью 'absolute', но, в
+  дополнение к этому, бокс <a
+href="#fixed-positioning">фиксируется</a> в соответствии
+  с некоторой ссылкой. В случае с <a href="media.html#continuous-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#continuous-media-group">непрерывными
+  носителями</a>, бокс фиксируется
+  относительно <a
+href="#viewport">порта просмотра</A> (и не
+  перемещается при прокрутке). В случае со <a href="media.html#paged-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#paged-media-group">страничными
+  носителям</a>, бокс фиксируется
+  относительно страницы, даже если страница
+  просматривается через <a href="#viewport">порт просмотра</A>
+  (в случае просмотра перед печатью,
+  например). Авторам может понадобиться
+  специфицировать 'fixed' способом, не
+  зависящим от носителя. Например, автор
+  может захотеть, чтобы бокс оставался в
+  верхней части <a href="#viewport">порта просмотра</A>
+  экрана, но не вверху каждой печатаемой
+  страницы. Две такие спецификации можно
+  разделить, используя правило <a href="media.html#at-media-rule" tppabs="http://pyramidin.narod.ru/css2/media.html#at-media-rule">@media</a>,
+  как здесь:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>@media screen { 
+  H1#first { position: fixed } 
+}
+@media print { 
+  H1#first { position: static }
+}
+</PRE>   
+</div>
+</dl>
+
+<H3>9.3.2 <a name="position-props">&#1055;&#1086;&#1079;&#1080;&#1094;&#1080;&#1086;&#1085;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;
+&#1080; &#1079;&#1072;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1077;
+&#1074; &#1073;&#1086;&#1082;&#1089;&#1077;</a>: <a href="#propdef-top" class="noxref"><span
+class="propinst-top">'top'</span></a>, <a href="#propdef-right" class="noxref"><span
+class="propinst-right">'right'</span></a>, <a href="#propdef-bottom" class="noxref"><span
+class="propinst-bottom">'bottom'</span></a>, <a href="#propdef-left" class="noxref"><span
+class="propinst-left">'left'</span></a></H3>
+
+<P>Элемент называется <span class="index-def" title="positioned
+element/box"><a name="positioned-element"><dfn>позиционированным</dfn></a></span>,
+если его свойство <a href="#propdef-position" class="noxref"><span class="propinst-position">'position'</span></a> 
+имеет значение, отличное от 'static'.
+Позиционированные элементы генерируют
+позиционированные боксы, располагающиеся в
+соответствии с четырьмя свойствами:</p>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'top'"><a name="propdef-top" class="propdef-title"><strong>'top'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    позиционируемым элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    высоты содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует, насколько
+смещён вниз верхний край содержимого бокса
+относительно верхнего края <a href="#containing-block">содержащего
+блока</a>.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'right'"><a name="propdef-right" class="propdef-title"><strong>'right'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    позиционируемым элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует, насколько
+смещён влево правый край содержимого бокса
+относительно правого края <a href="#containing-block">содержащего
+блока</a>.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'bottom'"><a name="propdef-bottom" class="propdef-title"><strong>'bottom'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    позиционируемым элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    высоты содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует, насколько
+смещён вверх нижний край содержимого бокса
+относительно низа <a href="#containing-block">содержащего
+блока</a>.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'left'"><a name="propdef-left" class="propdef-title"><strong>'left'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    позиционируемым элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует, насколько
+смещён вправо левый край содержимого бокса
+относительно левого края <a href="#containing-block">содержащего
+блока</a>.<P>Значения для этих четырёх свойств
+имеют следующий смысл:</p>
+
+<dl>
+<dt><strong><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a></strong>
+<dd>Смещением является расстояние от
+  соответствующего края.
+
+<dt><strong><a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a></strong>
+
+<dd>Смещением является процент ширины
+  содержащего блока (для <a href="#propdef-left" class="noxref"><span class="propinst-left">'left'</span></a>
+  или <a href="#propdef-right" class="noxref"><span
+class="propinst-right">'right'</span></a>) или высоты
+  содержащего блока (для <a href="#propdef-top" class="noxref"><span
+class="propinst-top">'top'</span></a>  и <a href="#propdef-bottom" class="noxref"><span
+class="propinst-bottom">'bottom'</span></a>). Для 'top' и 'bottom', если
+  высота содержащего блока не
+  специфицирована явно (т.е. зависит от
+  высоты содержимого), процентное значение
+  интерпретируется так же, как 'auto'.
+<dt><strong>auto</strong>
+<dd>Действие&nbsp;этого значения зависит от
+  того, какое из соответствующих свойств
+  также имеет значение 'auto'. См. также разделы
+  <a href="visudet.html#abs-non-replaced-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#abs-non-replaced-width">ширина</a> и <a href="visudet.html#abs-non-replaced-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#abs-non-replaced-height">высота</a>
+  <a href="#absolutely-positioned">абсолютно позиционируемых</a>,
+  незамещаемых элементов.
+</dl>
+
+<P>Для <a href="#absolutely-positioned">абсолютно позиционируемых</a>
+боксов - смещения являются относительными к <a
+href="#containing-block">содержащему блоку</a> бокса.
+Для относительно позиционируемых боксов - смещения являются относительными к внешним
+краям самого бокса (т.е. боксу задаётся
+нормальное расположение, а затем - смещение
+от этой позиции в соответствии с
+вышеуказанными свойствами).
+
+<H2><br>
+9.4 <a name="normal-flow">&#1053;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086;&#1077;
+расположение</a></H2> 
+
+<P>Боксы при нормальном обтекании относятся
+к <a name="x41"><span class="index-def"
+title="formatting context">контексту форматирования</span></a>,
+который может быть уровня блока и инлайн, но
+не тем и другим одновременно. Боксы <a
+href="#block-box">блока</a> находятся в контексте <a
+href="#block-formatting">форматирования блока</a>.  <a
+href="#inline-box">Инлайн-боксы</a> находятся в
+контексте <a
+href="#inline-formatting">инлайн-форматирования</a>.
+
+<h3><br>
+9.4.1 <a name="block-formatting">Контекст форматирования
+блока</a></h3> 
+
+<P>В контексте форматирования блока боксы
+устанавливаются один за другим,
+вертикально, начиная от верха содержащего
+блока. Вертикальное расстояние между двумя
+родственными боксами определяется
+свойством <a href="box.html#propdef-margin" tppabs="http://pyramidin.narod.ru/css2/box.html#propdef-margin" class="noxref"><span
+class="propinst-margin">'margin'</span></a>. Горизонтальные поля
+между смежными боксами блока в контексте
+форматирования блока <a
+href="box.html#collapsing-margins" tppabs="http://pyramidin.narod.ru/css2/box.html#collapsing-margins">сжимаются</a>.<P>В
+контексте форматирования блока левый
+внешний край бокса касается левого края
+содержащего блока (для форматирования
+справа-налево - касается правый край). Это
+верно даже в случае с поплавками (хотя
+область <em>содержимого</em> может усекаться
+из-за поплавков).<P>Информацию о разрывах
+страниц в страничных носителях см. в
+разделе <a href="page.html#allowed-page-breaks" tppabs="http://pyramidin.narod.ru/css2/page.html#allowed-page-breaks">допустимые разрывы
+страниц</a>.
+
+<H3><br>
+9.4.2 <a name="inline-formatting">Контекст инлайн-форматирования</a></H3>
+
+<P>В контексте инлайн-форматирования боксы устанавливаются по горизонтали, один
+за другим, начиная от верха содержащего
+блока. Горизонтальные поля, рамки и
+заполнение рассматриваются как отношения
+между боксами. Боксы могут быть выровнены
+по вертикали несколькими способами: могут
+быть выровнены их нижние или верхние края
+или базовые линии текста внутри них.
+Прямоугольная область, содержащая боксы,
+которые образуют строку, называется <span class="index-def" title="line box"><a
+name="line-box"><dfn>строчный бокс</dfn></a></span>.<P>Ширина
+строчного бокса определяется <A
+HREF="#containing-block">содержащим блоком</A>. Высота
+строчного бокса определяется правилами из
+раздела <a
+href="visudet.html#line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#line-height">вычисление высоты строки</a>.
+Строчный бокс всегда имеет высоту,
+достаточную для содержащихся в нём боксов.
+В то же время, он может быть выше, чем самый
+высокий из содержащихся в нём боксов (если,
+например, боксы выровнены так, что базовые
+линии выстроены). Если высота бокса В меньше,
+чем высота строчного бокса, содержащего его,
+то вертикальное выравнивание В внутри
+строчного бокса определяется свойством <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align'</span></a>.<P>Если
+несколько инлайн-боксов не входят по
+горизонтали в один строчный бокс, они
+распределяются на два или более
+вертикально упакованных строчных бокса.
+Таким образом, параграф будет вертикальным
+стеком из строчных боксов. Строчные боксы
+упакованы по вертикали без разделения и
+никогда не перекрываются.<P>Вообще, левый
+край строчного бокса касается левого края
+его содержащего блока, и правый край
+касается правого края его содержащего
+блока. В то же время, боксы-поплавки могут
+появляться между краем содержащего
+блока и краем строчного блока. Таким
+образом, хотя строчные боксы в том же самом
+контексте инлайн-форматирования обычно
+имеют ту же самую ширину (что и содержащий
+блок), они могут иметь и другую ширину из-за <a
+href="#floats">поплавков</a>, уменьшающих
+горизонтальное пространство. Строчные
+боксы в том же самом контексте инлайн-форматирования
+обычно различаются по высоте (например,
+одна строка может содержать высокое
+изображение, а другие строки - только текст).<P>Если
+суммарная ширина инлайн-боксов в строке
+меньше, чем ширина строчного бокса,
+содержащего их, то их распределение по
+горизонтали внутри строчного бокса
+определяется свойством <a href="text.html#propdef-text-align" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a>. Если это
+свойство имеет значение 'justify', ПА может
+уплотнить инлайн-боксы.<P>Поскольку инлайн-бокс
+не может превысить ширину строчного бокса,
+длинные инлайн-боксы разделяются на
+несколько боксов, и эти боксы
+распределяются на несколько строчных
+боксов. Если инлайн-бокс разделён, то поля,
+рамки и заполнение не имеют визуального
+эффекта в тех местах, где происходит
+разделение. Форматирование полей, рамок и
+заполнения может не быть определено
+полностью, если разделение происходит
+внутри двунаправленного внедрения.<P>Инлайн-боксы
+могут также быть разделены на несколько
+боксов <em>внутри одного строчного бокса</em>
+из-за <a href="#direction">двунаправленной обработки
+текста</a>.
+
+<div class="html-example"><P>Вот пример конструкции
+  инлайн-боксов. Следующий параграф (созданный
+  элементом Р уровня блока в HTML) содержит
+  анонимный текст, распределённый между
+  элементами EM и STRONG:
+
+<PRE>&lt;P&gt;Several &lt;EM&gt;emphasized words&lt;/EM&gt; appear
+&lt;STRONG&gt;in this&lt;/STRONG&gt; sentence, dear.&lt;/P&gt;</PRE>
+
+<P>Элемент P генерирует бокс блока,
+содержащий пять инлайн-боксов, три из
+которых - анонимные:</p>
+
+<ul>
+<li>Anonymous: "Several"
+<li>EM: "emphasized words"
+<li>Anonymous: "appear"
+<li>STRONG: "in this"
+<li>Anonymous: "sentence, dear."
+</ul>
+ 
+  <P>Чтобы сформатировать параграф, ПА
+  вставляет пять боксов в строчный бокс. В
+  этом примере бокс, генерируемый для
+  элемента P, устанавливает содержащий блок
+  для строчных боксов. Если содержащий блок
+  достаточно широк, все инлайн-боксы войдут
+  в один строчный бокс:
+
+<PRE>Several <EM>emphasized words</EM> appear <STRONG>in this</STRONG> sentence, dear.</PRE>
+
+<P>если нет, инлайн-боксы будут разделены и
+распределены по нескольким строчным боксам.
+Предыдущий параграф может быть разделён
+так:
+
+<PRE>Several <EM>emphasized words</EM> appear
+<STRONG>in this</STRONG> sentence, dear.</PRE>
+
+  или так:
+
+<PRE>Several <EM>emphasized</EM>  
+<EM>words</EM> appear <STRONG>in this</STRONG> 
+sentence, dear.</PRE>
+
+</div>
+
+<P>В предыдущем примере бокс EM был разделён
+на два бокса EM (назовём их "split1" и "split2"). Поля,
+рамки, заполнение или текстовый орнамент не
+имеют видимого эффекта после split1 или до split2.
+
+<div class="html-example"><P>
+Рассмотри следующий пример:
+
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Example of inline flow on several lines&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      EM {
+        padding: 2px; 
+        margin: 1em;
+        border-width: medium;
+        border-style: dashed;
+        line-height: 2.4em;
+      }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;Several &lt;EM&gt;emphasized words&lt;/EM&gt; appear here.&lt;/P&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>В зависимости от ширины P, боксы могут
+распределиться так:</P>
+
+<div class="figure">
+<P><img src="inline-layout.gif" tppabs="http://pyramidin.narod.ru/css2/inline-layout.gif"
+     alt="Image illustrating the effect of line breaking on the
+display of margins, borders, and padding." width="260" height="99"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-inline-layout" href="inline-layout-desc.html" tppabs="http://pyramidin.narod.ru/css2/inline-layout-desc.html" title="Long description for illustration of margin/border
+behavior on split inline box">[D]</A></SPAN></p>
+</div>
+
+<ul>
+<li> Поле вставлено до &quot;emphasized&quot; и после
+  &quot;words&quot;. 
+
+<li> Заполнение вставлено до, сверху и снизу
+  от &quot;emphasized&quot; и после, сверху и снизу от
+  &quot;words&quot;. Пунктирная рамка отображается с
+  трёх сторон в каждом случае.
+</ul>
+</div>
+
+<H3><br>
+9.4.3 <a name="relative-positioning">Относительное позиционирование</a></H3>  
+
+<P><a name="x43">После того</a>, как бокс расположен в
+соответствии с <a
+href="#normal-flow">нормальным расположением</a>, он
+может быть сдвинут относительно этой
+позиции. Это называется <span class="index-def" title="relative
+positioning"><dfn>относительным позиционированием</dfn></span>.
+Смещение бокса
+(B1) таким способом не окажет воздействия на
+бокс (B2), следующий за ним: B2 получит такую
+позицию, как будто B1 не смещён и B2 не
+перемещается после применения смещения B1.
+Это предполагает, что относительное
+позиционирование может вызывать взаимное
+перекрытие боксов.<p>Относительно
+позиционированные боксы сохраняют свои
+нормальные размеры и прорисовку, включая
+разрывы строк и заполнение, первоначально
+зарезервированные за ними. Относительно
+позиционированный бокс устанавливает
+новый <a
+href="#containing-block">содержащий блок</a> для
+нормальной прорисовки дочерних и
+позиционированных потомков.<P>Относительно
+позиционированный бокс генерируется, когда
+свойство <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a>  элемента имеет
+значение 'relative'. Смещение специфицируется
+свойствами <a href="#propdef-top" class="noxref"><span
+class="propinst-top">'top'</span></a>, <a href="#propdef-bottom" class="noxref"><span
+class="propinst-bottom">'bottom'</span></a>, <a href="#propdef-left" class="noxref"><span
+class="propinst-left">'left'</span></a> и <a href="#propdef-right" class="noxref"><span
+class="propinst-right">'right'</span></a>.<P>Динамическое
+перемещение боксов, позиционированных
+относительно, может создавать эффекты
+анимации в среде скриптов (см. также
+свойство <a href="visufx.html#propdef-visibility" tppabs="http://pyramidin.narod.ru/css2/visufx.html#propdef-visibility" class="noxref"><span
+class="propinst-visibility">'visibility'</span></a>). Относительное
+позиционирование можно использовать также
+как общую форму под- и надиндексов, за
+исключением того, что высота строки не
+устанавливается автоматически при
+рассмотрении позиционирования. См.
+дополнительно описание <a
+href="visudet.html#line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#line-height">вычисления высоты строки</a>.<P>Примеры
+относительного позиционирования есть в
+разделе <a
+href="#comparison">Сравнение нормального
+позиционирования, поплавков и абсолютного
+позиционирования</a>.
+
+<H2><br>
+9.5 <a name="floats">&#1055;&#1086;&#1087;&#1083;&#1072;&#1074;&#1082;&#1080;/Floats</a></H2>
+
+<P>Поплавок это бокс, который &quot;всплывает&quot;
+(смещается) влево или
+вправо на текущей строке. Самое интересное
+в поведении поплавка (или &quot;всплывающего&quot;,
+или &quot;плавающего&quot; бокса) то, что
+содержимое может обтекать его по сторонам (или
+это может быть запрещено свойством <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>). Содержимое обтекает справа бокс,
+всплывающий влево, и слева - бокс
+всплывающий вправо.<br>
+<br>
+Далее следует введение в позиционирование
+поплавков и обтекание содержимого; точные <a
+href="#float-rules">правила</a>, управляющие
+поведением поплавков, даны в описании
+свойства <a href="#propdef-float" class="noxref"><span class="propinst-float">'float'</span></a>.<P>Всплывающий
+бокс обязан иметь явно установленную
+ширину (назначенную свойством <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span
+class="propinst-width">'width'</span></a><span
+class="propinst-width">,</span> или свою <a
+href="conform.html#intrinsic" tppabs="http://pyramidin.narod.ru/css2/conform.html#intrinsic">внутреннюю</a> ширину - в
+случае <a
+href="conform.html#replaced-element" tppabs="http://pyramidin.narod.ru/css2/conform.html#replaced-element">замещаемых элементов</a>).
+Любой всплывающий бокс становится <a href="#block-box">боксом
+блока</a>, который сдвигается влево или
+вправо, пока его внешний край не коснётся
+края содержащего блока или внешнего края
+другого поплавка. Верх всплывающего бокса
+выравнивается с верхом текущего строчного
+бокса (или низом предшествующего бокса
+блока, если отсутствует строчный бокс). Если
+для поплавка не хватает горизонтального
+пространства на текущей строке, он
+сдвигается вниз строка за строкой, пока
+строка не получит достаточно пространства
+для него.<P>Пока поплавок не всплыл,
+непозиционированные боксы блока, созданные
+до и после всплывающего бокса, всплывают
+вертикально, как будто поплавка не
+существует. Однако строчные боксы,
+созданные сразу после поплавка,
+уменьшаются, чтобы дать пространство для
+всплывающего бокса. Любое содержимое на
+текущей строке до всплывающего бокса
+перерисовывается на первой доступной
+строке с противоположной стороны поплавка.<P>Несколько
+поплавков могут быть смежными, и эта модель
+применяется также к смежным поплавкам на
+той же строке.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Следующее правило вызывает всплывание
+влево всех боксов IMG с&nbsp; <samp>class="icon"</samp>&nbsp; (и
+устанавливает левое поле в '0'):</p>
+
+<PRE>IMG.icon { 
+  float: left;
+  margin-left: 0;
+}</PRE>
+</div>
+
+
+<div class="html-example"><P>Рассмотрим следующие HTML и
+  таблицу стилей:</p>
+
+<PRE>  &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Float example&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      IMG { float: left }
+      BODY, P, IMG { margin: 2em }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;&lt;IMG src=img.gif alt=&quot;This image will illustrate floats&quot;&gt;
+       Some sample text that has no other...
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+  <P> IMG-бокс всплывает влево. Последующее
+  содержимое форматируется справа от
+  поплавка, начиная с той же строки, где
+  находится поплавок. Строчные боксы справа
+  от поплавка укорачиваются из-за
+  присутствия поплавка, но имеют свою &quot;нормальную&quot;
+  ширину (как в содержащем блоке,
+  установленном элементом P) после поплавка.
+  Этот документ может быть сформатирован
+  так:</P>
+
+<div class="figure">
+<P><img src="floateg.gif" tppabs="http://pyramidin.narod.ru/css2/floateg.gif"
+     alt="Image illustrating how floating boxes interact with
+margins." width="352" height="225"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-floateg" href="floateg-desc.html" tppabs="http://pyramidin.narod.ru/css2/floateg-desc.html" title="Long description of float and text flow example">[D]</A></SPAN></p>
+</div>
+
+  <P>Форматирование могло бы быть точно таким
+  же, если бы документ был следующим:
+
+<PRE>&lt;BODY&gt;
+  &lt;P&gt;Some sample text 
+  &lt;IMG src=img.gif alt=&quot;This image will illustrate floats&quot;&gt;
+           that has no other...
+&lt;/BODY&gt;</PRE>
+
+  <P>поскольку содержимое слева от поплавка
+  замещается поплавком и обтекает его вниз
+  по его правой стороне.
+</div>
+
+<P>Поля всплывающих боксов никогда не <a
+href="box.html#collapsing-margins" tppabs="http://pyramidin.narod.ru/css2/box.html#collapsing-margins">сжимаются</a> полями
+смежных боксов. Таким образом, в предыдущем
+примере вертикальные поля не
+<a href="box.html#collapsing-margins" tppabs="http://pyramidin.narod.ru/css2/box.html#collapsing-margins">сжимаются</a> между
+боксом P и всплывающим IMG-боксом.<P>Поплавок
+может перекрывать другие боксы при
+нормальном позиционировании (например,
+когда нормально позиционированный бокс,
+следующий за поплавком, имеет
+отрицательные поля). Когда инлайн-бокс
+перекрывается поплавком, содержимое, фон и
+рамки инлайн-бокса отображаются впереди
+поплавка. Если блок бокса перекрывается,
+фон и рамки бокса блока отображаются позади
+поплавка и видны только там, где бокс
+прозрачен. Содержимое бокса блока
+отображается спереди от поплавка.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Вот другая иллюстрация, показывающая,
+  что происходит, когда поплавок
+  перекрывает рамки элемента с нормальным
+  всплыванием.
+
+<div class="figure">
+<p><img src="float2p.gif" tppabs="http://pyramidin.narod.ru/css2/float2p.gif" alt="Image showing a floating image
+that overlaps the borders of two paragraphs: the borders are
+interrupted by the image." width="320" height="315"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-float2p" href="float2p-desc.html" tppabs="http://pyramidin.narod.ru/css2/float2p-desc.html" title="Long description of how floats overlap with boxes in normal
+      flow">[D]</A></SPAN>
+
+<p class="caption">Всплывающее изображение
+скрывает рамки перекрываемого бокса блока.
+</div>
+</div>
+
+<P>Следующий пример иллюстрирует
+использование свойства <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>  для предотвращения
+всплывания содержимого после поплавка.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<p>При таком правиле:
+
+<pre>P { clear: left }</pre>
+
+<P>форматирование может выглядеть так:
+
+<div class="figure">
+<p><img src="floatclear.gif" tppabs="http://pyramidin.narod.ru/css2/floatclear.gif" alt="Image showing a floating
+image and the effect of 'clear: left' on the two paragraphs." width="322" height="296"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-floatclear" href="floatclear-desc.html" tppabs="http://pyramidin.narod.ru/css2/floatclear-desc.html" title="Long description of how floats overlap with boxes in normal
+      flow">[D]</A></SPAN>
+
+<p class="caption">Оба параграфа установлены в 'clear: left',
+что &quot;выталкивает вниз&quot; второй параграф
+в положение под поплавком - его верхнее поле
+растягивается, чтобы выполнить это (см.
+свойство <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>).
+</div>
+</div>
+
+
+<h3>9.5.1 <a name="float-position">Позиционирование
+поплавка:</a> свойство <a href="#propdef-float" class="noxref"><span class="propinst-float">'float'</span></a> </h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'float'"><a name="propdef-float" class="propdef-title"><strong>'float'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>left | right | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всему, кроме позиционированных элементов
+    и генерируемого содержимого
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует, должен ли
+бокс всплывать влево, вправо или не
+всплывать вообще. Оно может быть
+установлено для элементов, генерирующих
+боксы, которые не 
+<a href="#absolutely-positioned">позиционированы абсолютно</a>.<br>
+Значения этого свойства имеют следующий
+смысл:</p>
+
+<dl>
+<dt><strong>left</strong>
+
+<dd>Элемент генерирует <a href="#block-box">бокс блока</a>,
+  всплывающий влево. Содержимое обтекает по
+  правой стороне бокса, начиная от верха (субъект
+  свойства <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>). <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  игнорируется,
+  если только оно не имеет значения 'none'.
+
+<dt><strong>right</strong>
+
+<dd>То же, что 'left', но содержимое обтекает по
+  левой стороне бокса, начиная от верха.
+
+<dt><strong>none</strong>
+
+<dd>Бокс не всплывает.
+</dl>
+
+
+<P><span class="index-def" title="float rules"><a
+name="float-rules">Вот точные правила,</a></span>
+управляющие поведением поплавка:</p>
+
+<OL>
+<LI> Левый <a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">внешний край</a>
+  всплывающего влево бокса не может быть
+  слева от левого края его <a
+href="#containing-block">содержащего блока</a>.
+  Аналогичное правило действует для
+  элементов, всплывающих вправо.
+
+<LI> Если текущий бокс всплывает влево и
+  имеются другие всплывающие влево боксы,
+  сгенерированные элементами в документе-источнике
+  ранее, тогда для каждого такого
+  предшествующего бокса или левый <a
+href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">внешний край</a> текущего
+  бокса обязан быть справа от правого <a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">внешнего
+  края</a> предшествующего бокса, или его верх
+  обязан быть ниже, чем низ предшествующего
+  бокса. Аналогичное правило действует для
+  боксов, всплывающих вправо.
+
+<LI>Правый <a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">внешний край</a>
+  всплывающего влево бокса не может быть
+  справа от левого <a
+href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">внешнего края</a> какого-либо
+  всплывающего вправо бокса, находящегося
+  справа от него. Аналогичные правила
+  действуют для элементов, всплывающих
+  вправо.
+
+<LI> <a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">Верхний внешний край</a>
+  всплывающего бокса не может быть выше, чем
+  верх его <a
+href="#containing-block">содержащего блока</a>.
+
+<LI> <a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">Верхний внешний край</a>
+  всплывающего бокса не может быть выше, чем
+  верхний внешний край любого <a
+href="#floats">всплывающего</a> бокса <a
+href="#block-box">блока</a>,
+  сгенерированного элементом ранее в
+  документе-источнике.
+
+<LI><a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">Верхний внешний край</a>
+  всплывающего бокса элемента не может быть
+  выше, чем верх любого <span
+class="index-inst" title="line-box"><a name="x46"
+href="#line-box">строчного бокса</a></span>,
+  содержащего бокс, сгенерированный
+  элементом ранее в документе-источнике.
+
+<LI>Всплывающий влево бокс, имеющий слева от
+  себя другой всплывающий влево бокс, не
+  может иметь свой правый внешний край
+  справа от правого края своего содержащего
+  блока. (Говоря шире: левый поплавок не
+  может находиться у правого края, если только он уже не
+  находится слева так далеко, насколько это
+  возможно.) Аналогичное правило действует
+  для элементов, всплывающих вправо.
+
+<LI> Всплывающий бокс должен быть размещён
+  так высоко, насколько это возможно.
+
+<LI> Всплывающий влево бокс обязан быть
+  размещён так далеко влево, насколько это
+  возможно, а всплывающий вправо бокс обязан
+  быть размещён так далеко вправо, насколько
+  это возможно. Более высока позиция имеет
+  преимущество перед позицией, идущей далее
+  влево/вправо.
+</OL>
+
+<H3><br>
+9.5.2 <a name="flow-control">Управление положением
+после поплавка:</a> свойство <a href="#propdef-clear" class="noxref"><span class="propinst-clear">'clear'</span></a> </H3> 
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'clear'"><a name="propdef-clear" class="propdef-title"><strong>'clear'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>none | left | right | both | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство указывает, какие стороны
+бокса(ов) элемента <em>не</em> могут быть
+смежными с ранее всплывшим боксом. (Может
+быть такое, что элемент сам имеет
+всплывающих потомков; свойство <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>  не оказывает на них
+воздействия.)<p>Это свойство может быть
+специфицировано только для элементов <a
+href="#block-level">уровня блока</a> (включая поплавки).
+Для <a href="#compact">компактных</a> и <a href="#run-in">втягивающихся
+боксов</a> это свойство применяется к
+окончательному боксу блока, к которому
+компактный или втягивающийся бокс
+принадлежит.<P>Значения имеют следующий
+смысл при применении к невсплывающим
+боксам блока:</P>
+
+<dl>
+<dt><strong>left</strong>
+
+<dd>Верхнее поле генерируемого бокса
+  увеличивается настолько, чтобы верхний
+  край рамки был ниже нижнего внешнего края
+  любого всплывающего влево бокса,
+  являющегося результатом действия
+  предыдущих элементов в документе-источнике.
+
+<dt><strong>right</strong>
+
+<dd>Верхнее поле генерируемого бокса
+  увеличивается настолько, чтобы верхний
+  край рамки был ниже нижнего внешнего края
+  любого всплывающего вправо бокса,
+  являющегося результатом действия
+  предыдущих элементов в документе-источнике.
+
+<dt><strong>both</strong>
+
+<dd>Генерируемый бокс перемещается ниже всех
+  всплывающих боксов элементов, появившихся
+  ранее в документе-источнике.
+
+<dt><strong>none</strong>
+
+<dd>Нет ограничений на позицию бокса
+  относительно поплавков.
+</dl>
+
+<p>Если свойство установлено на всплывающие
+элементы, результатом будет модификация <a href="#float-rules">правил</a>
+позиционирования поплавка. Прибавляется
+дополнительное условие (#10):
+
+<ul>
+<li><a href="box.html#outer-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#outer-edge">Верхний внешний край</a>
+  поплавка обязан быть ниже нижнего
+  внешнего края всех ранее всплывающих
+  влево боксов (если 'clear:
+left'), или всех ранее всплывающих вправо
+  боксов (если 'clear:
+right'), или обоих ('clear: both').
+</ul>
+ 
+
+<H2><br>
+9.6 <a name="absolute-positioning">Абсолютное позиционирование</a></H2>
+
+<P>В модели абсолютного позиционирования
+бокс смещается явно относительно своего
+содержащего блока. Он полностью удаляется
+из нормального позиционирования (не влияет
+на последующих родственников). Абсолютно
+позиционированный бокс устанавливает
+новый содержащий блок для нормально
+позиционируемых дочерних боксов и
+позиционируемых потомков. В то же время,
+содержимое абсолютно позиционированных
+элементов не всплывает вокруг других
+боксов. Эти элементы могут или могут не
+закрывать собой содержимое другого бокса, в
+зависимости от
+<a href="#stack-level">уровней в стэке</a> у
+перекрываемых боксов.<P>Ссылки в данной
+спецификации на <span class="index-def"
+title="absolutely positioned element"><a name="absolutely-positioned"><dfn>абсолютно
+позиционированный элемент</dfn></a></span> (или
+его бокс) подразумевают, что свойство <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a>  элемента имеет
+значение
+'absolute' или 'fixed'.
+
+<H3><br>
+9.6.1 <a name="fixed-positioning">Фиксированное позиционирование</a></H3>
+
+<P>Фиксированное позиционирование это
+подкатегория абсолютного позиционирования.
+Единственное отличие в том, что для
+фиксированно позиционированного бокса
+содержащий блок устанавливается <a href="#viewport">портом
+просмотра</A>.<br>
+Для <a
+href="media.html#continuous-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#continuous-media-group">непрерывных носителей</a>
+фиксированные боксы не перемещаются при
+прокрутке документа. В этом смысле они
+похожи на <a href="colors.html#background-properties" tppabs="http://pyramidin.narod.ru/css2/colors.html#background-properties">фиксированные
+фоновые изображения</a>.<br>
+Для <a href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">страничных носителей</a>
+боксы с фиксированной позицией повторяются
+на каждой странице. Это используется для
+размещения, к примеру, подписи внизу каждой
+страницы.
+
+<div class="html-example">
+<P>Авторы могут использовать фиксированное
+позиционирование для создания
+фрэймоподобных презентаций. Рассмотрим
+следующую структуру фрэймов:</P>
+
+<div class="figure">
+<P><img src="frame.gif" tppabs="http://pyramidin.narod.ru/css2/frame.gif"
+     alt="Image illustrating a frame-like layout with position='fixed'." width="221" height="253"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-frame" href="frame-desc.html" tppabs="http://pyramidin.narod.ru/css2/frame-desc.html" title="Long description for frame layout example">[D]</A></SPAN></p>
+</div>
+
+<P>Этого можно добиться с помощью такого
+документа HTML и таблицы стилей:</P>
+
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Документ с фрэймами в CSS2&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      BODY { height: 8.5in } /* Необходим далее для процентной высоты */
+      #header {
+        position: fixed;
+        width: 100%;
+        height: 15%;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: 0;
+      }
+      #sidebar {
+        position: fixed;
+        width: 10em;
+        height: auto;
+        top: 15%;
+        right: auto;
+        bottom: 100px;
+        left: 0;
+      }
+      #main {
+        position: fixed;
+        width: auto;
+        height: auto;
+        top: 15%;
+        right: 0;
+        bottom: 100px;
+        left: 10em;
+      }
+      #footer {
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;DIV id=&quot;header&quot;&gt; ...  &lt;/DIV&gt;
+    &lt;DIV id=&quot;sidebar&quot;&gt; ...  &lt;/DIV&gt;
+    &lt;DIV id=&quot;main&quot;&gt; ...  &lt;/DIV&gt;
+    &lt;DIV id=&quot;footer&quot;&gt; ...  &lt;/DIV&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+</DIV>
+
+<h2><a name="q24">9.7 Соотношение между 'display', 'position' и
+'float'</a></h2>
+
+<P>Три свойства, влияющие на генерацию и
+структуру бокса -- <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>, <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a> и <a href="#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a> -- взаимодействуют
+так:</p>
+
+<ol>
+<li>Если <a href="#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>
+  имеет значение 'none', ПА обязаны <a href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорировать</a>
+  <a href="#propdef-position" class="noxref"><span class="propinst-position">'position'</span></a>
+  и <a href="#propdef-float" class="noxref"><span class="propinst-float">'float'</span></a>.
+  В этом случае элемент не генерирует бокса.
+
+<li>Иначе, если <a href="#propdef-position" class="noxref"><span class="propinst-position">'position'</span></a>
+  имеет значение 'absolute' или 'fixed', <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  установлен в 'block',
+  а <a href="#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>  установлен в 'none'.
+  Позиция бокса будет определяться
+  свойствами <a href="#propdef-top" class="noxref"><span
+class="propinst-top">'top'</span></a>, <a href="#propdef-right" class="noxref"><span
+class="propinst-right">'right'</span></a>, <a href="#propdef-bottom" class="noxref"><span
+class="propinst-bottom">'bottom'</span></a> и <a href="#propdef-left" class="noxref"><span
+class="propinst-left">'left'</span></a>  и содержащим блоком
+  бокса.
+
+
+
+
+<li>Иначе, если <a href="#propdef-float" class="noxref"><span class="propinst-float">'float'</span></a> 
+  имеет значение не 'none', <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  установлен в 'block',
+  и бокс всплывает.
+
+<li>Иначе, оставшиеся свойства <a href="#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  применяются так,
+  как специфицированы.
+</ol>
+
+<div class="note"><P>
+<em><strong>Примечание.</strong> CSS2 не специфицирует
+поведение структуры, если значения этих
+свойств изменяются скриптами. Например, что
+произойдёт, если элемент, имеющий 'width:
+auto' изменит позицию? Будет ли перерисовано
+содержимое или форматирование останется
+первоначальным? Ответ находится за
+пределами данного документа, и похоже, что
+такое поведение отличалось для ранних
+реализаций CSS2.
+</em>
+</div>
+
+<H2><br>
+9.8 <a name="comparison">Сравнение нормального расположения,
+поплавков и абсолютного позиционирования</a></H2>
+<P>Чтобы проиллюстрировать разницу между
+нормальным и относительным
+позиционированием, поплавками и абсолютным
+позиционированием, мы предлагаем серию
+примеров на базе следующего фрагмента HTML:<pre class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Сравнение схем позиционирования&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;Beginning of body contents.
+      &lt;SPAN id=&quot;outer&quot;&gt; Start of outer contents.
+      &lt;SPAN id=&quot;inner&quot;&gt; Inner contents.&lt;/SPAN&gt;
+      End of outer contents.&lt;/SPAN&gt;
+      End of body contents.
+    &lt;/P&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+
+<P>Для этого документа мы принимаем
+следующие правила:</p>
+
+<PRE class="example">BODY { display: block; line-height: 200%; 
+       width: 400px; height: 400px }
+P    { display: block }
+SPAN { display: inline }
+</PRE>
+
+<p>Окончательные позиции боксов,
+генерируемых <em>внешними</em> и <em>внутренними</em>
+элементами, различны в каждом примере. В
+каждой иллюстрации числа слева от
+иллюстрации обозначают позицию <a
+href="#normal-flow">нормального позиционирования</a>
+строк. (Примечание: иллюстрации используют
+различные горизонтальные и вертикальные
+масштабы.)</p>
+
+<H3><a name="q26"><br>
+9.8.1 Нормальное расположение</a></H3>
+
+<p>Рассмотрим следующие объявления CSS для <em>outer</em>
+и <em>inner</em>, которые не изменяют <a href="#normal-flow">нормального
+расположения</a> боксов:</p>
+
+<PRE class="example">#outer { color: red }
+#inner { color: blue }</PRE>
+
+<P>Элемент P содержит всё инлайн-содержимое: <a
+href="#anonymous">анонимный инлайн-текст</a> и два
+элемента SPAN. Следовательно, всё содержимое
+будет расположено вне инлайн-контекста
+форматирования внутри содержащего блока,
+устанавливаемого элементом P, и получится
+что-то подобное:</p>
+
+<div class="figure">
+<P><img src="flow-generic.gif" tppabs="http://pyramidin.narod.ru/css2/flow-generic.gif"
+     alt="Image illustrating the normal flow of text between parent and sibling boxes." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-generic" href="flow-generic-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-generic-desc.html" title="Long description for normal flow example">[D]</A></SPAN></p>
+</div>
+
+<H3><a name="q27">9.8.2 Относительное позиционирование</a></H3>
+
+<P>Чтобы увидеть действие <a href="#relative-positioning">относительного
+позиционирования</a>, мы специфицируем:</P>
+
+<PRE class="example">#outer { position: relative; top: -12px; color: red }
+#inner { position: relative; top: 12px; color: blue }</PRE>
+
+<p>Текст расположен нормально до элемента <em>outer</em>.
+Текст
+<em>outer</em>  затем всплывает в своей нормальной
+позиции и размерах в конце строки 1. Затем
+инлайн-боксы, содержащие текст (распределённый
+на три строки), сдвигаются вместе на '-12px' (вверх).<P>Содержание <em>inner</em>
+как дочернего от <em>outer</em> было бы нормально
+расположено сразу после слов &quot;of outer contents&quot;
+(на строке 1.5). Однако содержимое <em>inner</em> 
+ само смещено относительно содержимого <em>outer</em> 
+на '12px' (вниз), обратно на свою
+первоначальную позицию на строке 2.<P>Обратите
+внимание, что на содержимое, следующее
+после <em>outer</em>, относительное
+позиционирование <em>outer</em> не влияет<em>.</em></P>
+
+<div class="figure">
+<P><img src="flow-relative.gif" tppabs="http://pyramidin.narod.ru/css2/flow-relative.gif"
+     alt="Image illustrating the effects of relative positioning on a
+box's content." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-relative" href="flow-relative-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-relative-desc.html" title="Long description for relative flow example">[D]</A></SPAN></p>
+</div>
+
+<P>Заметьте также, что, имея смещение для <em>outer</em>&nbsp;
+'-24px', текст <em>outer</em>   и текст тела могут быть
+перекрыты.
+
+<H3><a name="q28"><br>
+9.8.3 Обтекание бокса</a></H3>
+
+<P>Теперь рассмотрим эффект от <a href="#floats">всплывания</a>
+текста элемента <em>inner</em>  вправо при
+использовании следующих правил:
+
+<PRE class="example">#outer { color: red }
+#inner { float: right; width: 130px; color: blue }</PRE>
+
+<P>Текст нормально расположен до бокса <em>inner</em>,
+который вытолкнут из расположения и всплыл
+к правому полю (его <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span
+class="propinst-width">'width'</span></a>  установлено явно).
+Строчные боксы слева от поплавка укорочены,
+и оставшийся текст документа всплывает в
+них.</p>
+
+<div class="figure">
+<P><img src="flow-float.gif" tppabs="http://pyramidin.narod.ru/css2/flow-float.gif"
+     alt="Image illustrating the effects of floating a box." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-float" href="flow-float-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-float-desc.html" title="Long description of example illustrating floating">[D]</A></SPAN></p>
+</div>
+
+<P>Чтобы увидеть действие свойства <a href="#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'</span></a>, мы добавим в пример <em>родственные</em>
+элементы:<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Сравнение схем позиционирования II&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;Beginning of body contents.
+      &lt;SPAN id=outer&gt; Start of outer contents.
+      &lt;SPAN id=inner&gt; Inner contents.&lt;/SPAN&gt;
+      &lt;SPAN id=sibling&gt; Sibling contents.&lt;/SPAN&gt;
+      End of outer contents.&lt;/SPAN&gt;
+      End of body contents.
+    &lt;/P&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Следующие правила:
+
+<PRE class="example">#inner { float: right; width: 130px; color: blue }
+#sibling { color: red }</PRE>
+
+<P>заставляют бокс <em>inner</em>  всплывать вправо,
+как и раньше, а остальной текст документа -
+всплывать в незанятом пространстве:</P>
+
+<div class="figure">
+<P><img src="flow-clear.gif" tppabs="http://pyramidin.narod.ru/css2/flow-clear.gif"
+     alt="Image illustrating the effects of floating a box without
+setting the clear property to control the flow of text around the
+box." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-clear" href="flow-clear-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-clear-desc.html" title="Long description of example illustrating floating
+without clear">[D]</A></SPAN></p>
+</div>
+
+<P>Однако, если свойство <a href="#propdef-clear" class="noxref"><span class="propinst-clear">'clear'</span></a>
+<em>родственного</em> элемента установлено в 'right'
+(т.е. генерируемый <em>родственный</em> бокс не
+займёт позицию справа от всплывающего
+бокса), <em>родственное</em> содержимое начнёт
+располагаться ниже поплавка:
+
+<PRE class="example">#inner { float: right; width: 130px; color: blue }
+#sibling { clear: right; color: red }</PRE>
+
+<div class="figure">
+<P><img src="flow-clear2.gif" tppabs="http://pyramidin.narod.ru/css2/flow-clear2.gif" 
+alt="Image illustrating the effects of floating an element with setting the clear property to control the flow of text around the element." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-clear2" href="flow-clear2-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-clear2-desc.html" title="Long description of example illustrating floating
+with clear">[D]</A></SPAN></p>
+</div>
+
+<H3><a name="q29">9.8.4 Абсолютное позиционирование</a></H3>
+
+<p>Наконец, мы рассмотрим действие <a
+href="#absolute-positioning">абсолютного позиционирования</a>.
+Вот объявления CSS для <em>outer</em>  и
+<em>inner</em>:</p>
+
+<PRE class="example">#outer { 
+    position: absolute; 
+    top: 200px; left: 200px; 
+    width: 200px; 
+    color: red;
+}
+#inner { color: blue }</PRE>
+
+<P>которые позиционируют верх бокса <em>outer</em> 
+относительно его содержащего блока.
+Содержащий блок для позиционируемого бокса
+устанавливается ближайшим
+позиционированным предком (или, если
+таковой не существует, <a href="#initial-containing-block">начальным
+содержащим блоком</a>, как в нашем примере).
+Верхняя сторона бокса <em>outer</em>  на '200px' ниже
+верха содержащего блока, а левая сторона -
+на '200px' от левой стороны. Дочерний бокс <em>outer'а</em> 
+позиционирован нормально относительно
+родителя.</P>
+
+<div class="figure">
+<P><img src="flow-absolute.gif" tppabs="http://pyramidin.narod.ru/css2/flow-absolute.gif"
+   alt="Image illustrating the effects of absolutely positioning a box." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-absolute" href="flow-absolute-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-absolute-desc.html" title="Long description for example illustrating absolute positioning">[D]</A></SPAN></p>
+</div>
+
+<p>Следующий пример покажет абсолютно
+позиционированный бокс, являющийся
+дочерним от относительно
+позиционированного бокса. Хотя
+родительский бокс <em>outer</em>  не имеет
+смещения, установка его свойства <a href="#propdef-position" class="noxref"><span
+class="propinst-position">'position'</span></a>  в 'relative' означает,
+что этот бокс может служить как содержащий
+блок для позиционированных потомков.
+Поскольку бокс <em>outer</em>  это инлайн-бокс,
+разделённый на несколько строк, край верха
+первого инлайн-бокса и левый край (обозначенный
+толстой пунктирной линией на рисунке ниже)
+служат как ссылки для смещений&nbsp; <a href="#propdef-top" class="noxref"><span class="propinst-top">'top'</span></a> 
+и <a href="#propdef-left" class="noxref"><span class="propinst-left">'left'</span></a>.
+
+<PRE class="example">#outer { 
+  position: relative; 
+  color: red 
+}
+#inner { 
+  position: absolute; 
+  top: 200px; left: -100px; 
+  height: 130px; width: 130px; 
+  color: blue;
+}</PRE>
+
+<p>В результате получится примерно так:</p>
+
+<div class="figure">
+<P><img src="flow-abs-rel.gif" tppabs="http://pyramidin.narod.ru/css2/flow-abs-rel.gif"
+     alt="Image illustrating the effects of absolutely positioning a
+box with respect to a containing block." width="385" height="345"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-abs-rel" href="flow-abs-rel-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-abs-rel-desc.html" title="Long description for example illustrating positioning
+with respect to a positioned ancestor">[D]</A></SPAN></p>
+</div>
+
+<P>Если мы не позиционируем бокс <em>outer</em>:</P>
+
+<PRE class="example">#outer { color: red }
+#inner {
+  position: absolute; 
+  top: 200px; left: -100px; 
+  height: 130px; width: 130px; 
+  color: blue;
+}</PRE>
+
+<P>содержащий блок для <em>inner</em>  станет <a
+href="#initial-containing-block">начальным содержащим блоком</a>
+(в нашем примере). Следующая иллюстрация
+показывает, где в этом случае окажется бокс <em>inner</em>.</P>
+
+
+<div class="figure">
+<P><img src="flow-static.gif" tppabs="http://pyramidin.narod.ru/css2/flow-static.gif"
+     alt="Image illustrating the effects of absolutely positioning a box with respect to a containing block established by a normally positioned parent." width="326" height="342"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-flow-static" href="flow-static-desc.html" tppabs="http://pyramidin.narod.ru/css2/flow-static-desc.html" title="Long description illustrating absolute positioning
+with respect to the initial containing block">[D]</A></SPAN></p>
+</div>
+
+<div class="html-example"><P>Относительное и абсолютное
+  позиционирование может использоваться
+  для выполнения смены баннеров, как
+  показано в следующем примере. Такой
+  документ:
+
+<pre>&lt;P style=&quot;position: relative; margin-right: 10px; left: 10px;&quot;&gt;
+I used two red hyphens to serve as a change bar. They
+will &quot;float&quot; to the left of the line containing THIS
+&lt;SPAN style=&quot;position: absolute; top: auto; left: -1em; color: red;&quot;&gt;--&lt;/SPAN&gt;
+word.&lt;/P&gt;</pre>
+
+<p>может дать в результате примерно это:</p>
+
+<div class="figure">
+<P><img src="changebar.gif" tppabs="http://pyramidin.narod.ru/css2/changebar.gif"
+     alt="Image illustrating the use of floats to create a changebar effect." width="243" height="141"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-changebar" href="changebar-desc.html" tppabs="http://pyramidin.narod.ru/css2/changebar-desc.html" title="Long description for change bar example">[D]</A></SPAN></p>
+</div>
+
+  <P>Сначала параграф (стороны содержащего
+  блока которого показаны на иллюстрации)
+  расположен нормально. Затем он смещается
+  на '10px' от левого края содержащего блока (таким
+  образом, правое поле в '10px' резервируется
+  для предполагаемого смещения). Два дефиса,
+  работающие как сменяющиеся баннеры,
+  изымаются из расположения и
+  позиционируются на текущей строке (поскольку
+  'top: auto'), на '-1em' от левого края своего
+  содержащего блока (установленного P в свою
+  окончательную позицию). В результате
+  сменяющиеся баннеры &quot;всплывают&quot;
+  слева от текущей строки.</p>
+</div>
+
+<H2><a name="q30"><br>
+9.9 Слои</a></H2>
+<P><em>В последующих разделах выражение &quot;спереди
+от&quot; означает ближе к пользователю,
+смотрящему на экран.</em></P>
+
+<P>В CSS2 каждый бокс имеет позицию в трёх
+измерениях. В дополнение к позиции
+относительно вертикали и горизонтали,
+боксы расположены вдоль &quot;z-axis/оси z&quot; и
+форматируются один над другим. Позиции по
+оси z обычно рассматриваются, когда боксы
+перекрываются визуально. В этом разделе
+обсуждается, как боксы можно
+позиционировать относительно оси z.<P>Каждый
+бокс принадлежит к <a name="x49"><span class="index-def" title="stacking
+context"><dfn>контексту стэка</dfn></span></a>. Каждый
+бокс в данном контексте стэка имеет
+целочисленный <span class="index-def" title="stack
+level"><a name="stack-level"><dfn>уровень стэка</dfn></a></span>,
+являющийся позицией бокса по оси z
+относительно других боксов того же самого
+контекста стэка. Боксы с большим уровнем
+стэка всегда форматируются перед боксами с
+меньшим уровнями стэка. Боксы могут иметь
+отрицательные значения уровня стэка. Боксы,
+имеющие тот же уровень в контексте стэка,
+упакованы снизу-вверх в соответствии с
+порядком дерева документа.<P> <a href="conform.html#root" tppabs="http://pyramidin.narod.ru/css2/conform.html#root">Корневой</a>
+элемент создаёт <a name="x51"><span
+class="index-def" title="root stacking context"><dfn>корневой контекст
+стэка</dfn></span></a>, но другие элементы могут
+устанавливать <a name="x52"><span
+class="index-def" title="local stacking context"><dfn>локальные контексты
+стэка</dfn></span></a>. Контексты стэка
+наследуются. Локальный контекст стэка
+первичен; боксы других контекстов стэка не
+могут появляться между его боксами.
+
+<P>Элемент, устанавливающий локальный
+контекст стэка, генерирует бокс, который
+имеет два уровня стэка: один для контекста
+создаваемого стэка (всегда '0') и второй для
+контекста стэка, к которому он (бокс)
+принадлежит (задаваемый свойством <a href="#propdef-z-index" class="noxref"><span class="propinst-z-index">'z-index'</span></a>).
+
+<P>Бокс элемента имеет тот же уровень стэка,
+что и его бокс-родитель, если только не
+задан другой уровень стэка свойством <a href="#propdef-z-index" class="noxref"><span
+class="propinst-z-index">'z-index'</span></a>.
+
+<H3><br>
+9.9.1 <a name="z-index">Спецификация уровня в пакете слоёв</a>:
+свойство <a href="#propdef-z-index" class="noxref"><span
+class="propinst-z-index">'z-index'</span></a> </H3> 
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'z-index'"><a name="propdef-z-index" class="propdef-title"><strong>'z-index'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>auto | <a href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span class="value-inst-integer">&lt;integer&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    позиционированным элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<p>Для позиционированных боксов свойство <a href="#propdef-z-index" class="noxref"><span
+class="propinst-z-index">'z-index'</span></a>  специфицирует:
+
+<ol>
+<li>Уровень стэка бокса в текущем контексте
+  стэка.
+<li>Устанавливает ли бокс локальный контекст
+  стэка.
+</ol>
+
+<P>Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;integer&gt;"><a name="x54" href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span
+class="value-inst-integer"><strong>&lt;integer&gt;</strong></span></a></span>
+<dd>Это целое число - уровень стэка
+  сгенерированного бокса в текущем
+  контексте стэка. Бокс также устанавливает
+  локальный контекст стэка со своим уровнем
+  в стэке '0'.
+<dt><strong>auto</strong>
+<dd>Уровень стэка сгенерированного бокса в
+  текущем контексте стэка тот же, что и у
+  бокса-родителя. Бокс не устанавливает
+  новый локальный контекст стэка.
+</dl>
+
+<div class="html-example"><P>В следующем примере уровни
+  стэка боксов (именованных своими
+  атрибутами "id"):
+"text2"=0, &quot;image&quot;=1, &quot;text3&quot;=2 и "text1"=3. Уровень
+  стэка для "text2" наследуется от корневого
+  бокса. Остальные - специфицируются
+  свойством <a href="#propdef-z-index" class="noxref"><span
+class="propinst-z-index">'z-index'</span></a>.<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Z-позиционирование&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      .pile { 
+        position: absolute; 
+        left: 2in; 
+        top: 2in; 
+        width: 3in; 
+        height: 3in; 
+      }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;
+      &lt;IMG id=&quot;image&quot; class=&quot;pile&quot; 
+           src=&quot;butterfly.gif&quot; alt=&quot;A butterfly image&quot;
+           style=&quot;z-index: 1&quot;&gt;
+
+    &lt;DIV id=&quot;text1&quot; class=&quot;pile&quot; 
+         style=&quot;z-index: 3&quot;&gt;
+      This text will overlay the butterfly image.
+    &lt;/DIV&gt;
+
+    &lt;DIV id=&quot;text2&quot;&gt;
+      This text will be beneath everything.
+    &lt;/DIV&gt;
+
+    &lt;DIV id=&quot;text3&quot; class=&quot;pile&quot; 
+         style=&quot;z-index: 2&quot;&gt;
+      This text will underlay text1, but overlay the butterfly image
+    &lt;/DIV&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+</div>
+
+
+<p>Этот пример демонстрирует понятие <em>прозрачности</em>.
+Поведение по умолчанию бокса - позволять
+боксам, находящимся сзади, быть видимыми сквозь
+прозрачные области своего содержимого. В
+примере каждый бокс прозрачно
+накладывается на боксы ниже себя. Это
+поведение может быть переопределено путём
+использования одного из существующих <a href="colors.html#background-properties" tppabs="http://pyramidin.narod.ru/css2/colors.html#background-properties">свойств
+фона</a>.
+
+<h2><br>
+9.10 <a name="direction">Направление текста:</a>
+свойства <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a>
+и <a href="#propdef-unicode-bidi" class="noxref"><span class="propinst-unicode-bidi">'unicode-bidi'</span></a>
+</h2>
+
+<P>Символы в некоторых видах письма
+записываются справа налево. В некоторых
+документах, особенно на арабском и
+еврейском, и в некоторых контекстах
+смешивания языков текст в одиночном (визуально
+отображаемом) блоке может появляться со
+смешанным направлением письма. Этот
+феномен называется <a name="x55"><span class="index-def"
+title="bidirectionality (bidi)"><dfn>bidirectionality</dfn></span></a><span class="index-def"
+title="bidirectionality (bidi)"><dfn>\двунаправленность</dfn></span>,
+или сокращённо - &quot;bidi&quot;.<P>Стандарт Unicode (<a href="refs.html#ref-UNICODE" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-UNICODE" rel="biblioentry" class="noxref"><span class="normref">[UNICODE]</span></a>,
+раздел 3.11) даёт сложный алгоритм
+определения направления текста. Этот
+алгоритм состоит из подразумеваемой части,
+базирующейся на свойствах символов, а также
+явной, контролирующей внедрения и
+переопределения. CSS2 обращается к этому
+алгоритму для достижения соответствующего
+двунаправленного отображения. Свойства <a href="#propdef-direction" class="noxref"><span
+class="propinst-direction">'direction'</span></a>  и <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>  позволяют
+авторам специфицировать, как элементы и
+атрибуты языка документа отображаются в
+этот алгоритм.<P>Если документ содержит
+символы справа-налево и если ПА отображает
+эти символы соответствующими глифами (а не
+произвольно замещающими, такими как знак
+кавычки, 16-ричный код, чёрный бокс и т.п.), то
+ПА обязан применять двунаправленный
+алгоритм. Это кажущееся односторонним
+требование отражает тот факт, что, хотя не
+каждый еврейский или арабский документ
+содержит текст разных направлений, велика
+вероятность того, что эти документы могут
+содержать текст слева-направо (например,
+числа, текст из других языков).<P>Поскольку
+направление текста зависит от структуры и
+семантики документа, эти свойства должны в
+большинстве случаев использоваться только
+дизайнерами описания типа документа (ОТД)
+или авторами специальных документов. Если
+таблица стилей по умолчанию специфицирует
+эти свойства, то авторы и пользователи не
+должны специфицировать правила для их
+переопределения. Типичным исключением
+будет переопределение bidi-поведения в ПА,
+если этот ПА производит транслитерацию идиша
+(обычно записанного буквами иврита) на
+латиницу по запросу пользователя.<P>Спецификация
+HTML 4.0 ([HTML40], раздел 8.2) определяет
+двунаправленное поведение для элементов HTML.  <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие</a> HTML
+ПАгенты могут поэтому игнорировать
+свойства <a href="#propdef-direction" class="noxref"><span
+class="propinst-direction">'direction'</span></a>  и <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>  в авторских
+и пользовательских таблицах стилей.
+Правила таблиц стилей, которые необходимо
+применять для bidi-поведения и которые
+специфицированы в <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a><span class="normref">,</span>
+даны в <a
+href="sample.html#bidi" tppabs="http://pyramidin.narod.ru/css2/sample.html#bidi">примере таблицы стилей</a>.
+Спецификация HTML 4.0 содержит также
+дополнительную информацию о вопросах
+двунаправленности.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'direction'"><a name="propdef-direction" class="propdef-title"><strong>'direction'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>ltr | rtl | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>ltr
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам, но см. текст
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует базовое
+направление письма блоков и направление
+внедрений и переопределений (см. <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>) для
+двунаправленного алгоритма Unicode.
+Дополнительно оно специфицирует
+направление для столбца <a
+href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">таблицы</a>, направление
+горизонтального <a href="visufx.html#overflow" tppabs="http://pyramidin.narod.ru/css2/visufx.html#overflow">переполнения</a>
+и позицию неполной последней строки блока в
+том случае, если 'text-align:
+justify'.
+
+<P>Значения этого свойства имеют следующий
+смысл:</P>
+
+<dl>
+<dt><strong>ltr</strong> 
+<dd>Направление слева направо.
+<dt><strong>rtl</strong>
+<dd> Справа налево.
+</dl>
+
+<P>Чтобы свойство <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a>
+ работало в элементах инлайн-уровня,
+значение свойства <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>  обязано быть
+'embed' или 'override'.
+
+<div class="note"><P>
+<em><strong>Примечание.</strong> 
+ Свойство <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a>,
+специфицированное для элементов столбца
+таблицы, не наследуется ячейками столбца,
+поскольку столбцы не существуют в дереве
+документа. Таким образом, CSS не может
+использовать правила наследования
+атрибута "dir", описанные в <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>,
+в разделе 11.3.2.1.
+</em>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'unicode-bidi'"><a name="propdef-unicode-bidi" class="propdef-title"><strong>'unicode-bidi'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>normal | embed | bidi-override | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>normal
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам, но см. текст
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Значения этого свойства имеют следующий
+смысл:</p>
+
+<dl>
+<dt><strong>normal</strong>
+<dd>Элемент не открывает дополнительный
+  уровень внедрения относительно
+  двунаправленного алгоритма. Для элементов
+  инлайн-уровня неявное переупорядочивание
+  работает вне границ элемента.
+
+<dt><strong>embed</strong>
+
+<dd>Если элемент - инлайн-уровня, это значение
+  открывает дополнительный уровень
+  внедрения относительно двунаправленного
+  алгоритма. Направление в этом уровне
+  внедрения задаётся свойством <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a>.
+  Внутри элемента переупорядочивание
+  выполняется неявно. Это соответствует
+  дополнению LRE (U+202A; для 'direction: ltr') или RLE
+(U+202B; для 'direction: rtl') в начале элемента и PDF
+(U+202C) в конце элемента.
+
+<dt><strong>bidi-override</strong>
+
+<dd>Если элемент - уровня блока или инлайн и
+  содержит только элементы инлайн-уровня,
+  это значение создаёт переопределение. Это
+  означает, что внутри элемента
+  переупорядочивание выполняется строго в
+  соответствии со свойством <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a>;
+  неявная часть двунаправленного алгоритма
+  игнорируется. Это соответствует
+  дополнению LRO (U+202D; для 'direction:
+ltr') или RLO (U+202E; для 'direction: rtl') в начале
+  элемента и a PDF (U+202C) в конце элемента.
+
+</dl>
+
+<P>Окончательный порядок символов в каждом
+элементе уровня блока - такой, как если бы bidi-код
+управления был добавлен так, как описано
+выше, разметка была бы вырезана, а
+результирующая последовательность
+символов - передана в двунаправленный
+алгоритм Unicode в обычный текст, который
+производил бы те же самые разрывы строк, что
+и стилизованный текст. В этом процессе
+нетекстуальные объекты, такие как
+изображения, рассматриваются как
+нейтральные символы, если только их
+свойство <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>  не имеет
+значений, отличных от 'normal', тогда они
+рассматриваются как полужирные (strong)
+символы в <a href="#propdef-direction" class="noxref"><span class="propinst-direction">'direction'</span></a><span class="propinst-direction">,</span>
+специфицированном для элемента.<P>Пожалуйста,
+обратите внимание, что, для того чтобы иметь
+возможность разместить инлайн-боксы в
+одном направлении (все слева-направо или
+все справа-налево), может понадобиться
+создание дополнительных инлайн-боксов (включая
+анонимные инлайн-боксы), и понадобится
+разделить и переупорядочить некоторые
+инлайн-боксы до размещения.<P>Поскольку
+алгоритм Unicode имеет предел - 15 уровней
+внедрения, лучше не использовать <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a>  со
+значениями, отличными от 'normal', если
+отсутствуют подходящие. Значение 'inherit'
+должно использоваться особенно осторожно.
+Однако для элементов, которые обычно
+предполагается отображать как блоки,
+установка 'unicode-bidi: embed' предпочтительнее для
+удержания элементов вместе в том случае,
+когда дисплей изменяется на инлайн (см.
+пример ниже).<p>В следующем примере показан
+документ XML с двунаправленным текстом. Он
+иллюстрирует важный принцип дизайна:
+дизайнеры <a name="x58"><span
+class="index-inst" title="DTD">ОТД</span></a> должны принимать
+в расчёт bidi и в собственно языке (элементы и
+атрибуты), и в сопровождающих таблицах
+стилей. Таблицы стилей должны быть
+разработаны так, чтобы правила bidi были
+отделены от других правил стиля. Правила bidi
+не должны переопределяться другими
+таблицами стилей, чтобы сохранить
+поведение bidi языка и ОТД.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Здесь
+  буквы нижнего регистра присущи символам
+  слева-направо, а буквы верхнего регистра -
+  символам справа-налево:
+
+<pre class="xml-example">&lt;HEBREW&gt;
+  &lt;PAR&gt;HEBREW1 HEBREW2 english3 HEBREW4 HEBREW5&lt;/PAR&gt;
+  &lt;PAR&gt;HEBREW6 &lt;EMPH&gt;HEBREW7&lt;/EMPH&gt; HEBREW8&lt;/PAR&gt;
+&lt;/HEBREW&gt;
+&lt;ENGLISH&gt;
+  &lt;PAR&gt;english9 english10 english11 HEBREW12 HEBREW13&lt;/PAR&gt;
+  &lt;PAR&gt;english14 english15 english16&lt;/PAR&gt;
+  &lt;PAR&gt;english17 &lt;HE-QUO&gt;HEBREW18 english19 HEBREW20&lt;/HE-QUO&gt;&lt;/PAR&gt;
+&lt;/ENGLISH&gt;</pre>
+
+<p>Поскольку это - XML, таблица стилей отвечает
+за направление письма.<br>
+Это таблица стилей:</p>
+
+<pre class="example">/* Правила для bidi */
+HEBREW, HE-QUO  {direction: rtl; unicode-bidi: embed}
+ENGLISH         {direction: ltr; unicode-bidi: embed} 
+
+/* Правила для представления */
+HEBREW, ENGLISH, PAR  {display: block}
+EMPH                  {font-weight: bold}
+</pre>
+
+  <p>Элемент HEBREW это блок с базовым
+  направлением справа-налево, элемент ENGLISH
+  это блок с базовым направлением слева-направо.
+  PARы - это блоки, наследующие базовое
+  направление от своих родителей. Таким
+  образом, первые два PARа готовы начаться
+  справа сверху, а последние три готовы
+  начаться слева сверху. Обратите внимание,
+  пожалуйста, что HEBREW и ENGLISH выбраны как
+  имена элементов лишь для ясности; обычно
+  имена элементов должны относиться к
+  структуре, без ссылок на языки.<p>Элемент&nbsp;
+  EMPH - уровня инлайн, и, поскольку его
+  значение для <a href="#propdef-unicode-bidi" class="noxref"><span
+class="propinst-unicode-bidi">'unicode-bidi'</span></a> - 'normal' (начальное
+  значение), он не оказывает воздействия на
+  порядок расположения текста. Элемент HE-QUO,
+  напротив, создаёт внедрение.<p>Если длина
+  строки достаточно большая, форматирование
+  текста может выглядеть примерно так:
+
+<pre class="ascii-art">               5WERBEH 4WERBEH english3 2WERBEH 1WERBEH
+
+                                8WERBEH <b>7WERBEH</b> 6WERBEH
+
+english9 english10 english11 13WERBEH 12WERBEH
+
+english14 english15 english16
+
+english17 20WERBEH english19 18WERBEH
+</pre>
+
+<p>Заметьте, что внедрение HE-QUO заставляет HEBREW18
+находиться справа от english19.
+
+<p>Если строки должны быть разбиты, то
+выглядеть будет примерно так:
+
+<pre class="ascii-art">       2WERBEH 1WERBEH
+  -EH 4WERBEH english3
+                 5WERB
+
+   -EH <b>7WERBEH</b> 6WERBEH
+                 8WERB
+
+english9 english10 en-
+glish11 12WERBEH
+13WERBEH
+
+english14 english15
+english16
+
+english17 18WERBEH
+20WERBEH english19
+</pre>
+
+  <p>Поскольку HEBREW18 обязан быть прочитан до english19,
+  он находится в строке над english19. Простой
+  разрыв строки из предыдущего форматирования
+  не должен сработать.<br>
+  Заметьте также, что первый слог из english19
+  может войти на предыдущую строку, но перенос
+  слов слева-направо в контекст справа-налево
+  и наоборот обычно подавляется, чтобы
+  исключить отображение знака переноса в
+  середине строки.<br>
+</div>
+
+<hr class="navbar">
+<div class="navbar" align="center"><p><a href="box.html" tppabs="http://pyramidin.narod.ru/css2/box.html">предыдущий</a> &nbsp; <a href="visudet.html" tppabs="http://pyramidin.narod.ru/css2/visudet.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div></BODY></HTML>
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Моя первая страница</title>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="design.css"/>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+		<style>
+		body
+		{
+		background: FloralWhite;
+		}
+		p.Logvinov
+		{
+		font-size: small;
+		color: #336699;
+		font-family: ARIAL;
+		font-weight: normal;
+		text-align: justify;
+		word-spacing: 15px;
+		letter-spacing: 5px;
+		}
+		p.Family
+		{
+		font-size: 150%;
+		color: rgb(51, 102, 153);
+		font-family: "Times New Roman";
+		font-weight: normal;
+		text-align: justify;
+		word-spacing: 4px;
+		letter-spacing: 2px;
+		}
+		p.studying
+		{
+		font-size: 1.7em;
+		color: LimeGreen;
+		font-family: CALIBRI;
+		font-weight: normal;
+		text-align: justify;
+		word-spacing: 3px;
+		letter-spacing: 1px;
+		}
+		</style>
+		</head>
+	<body>
+			<span id = "foa"><h1><p align="center">Я, Логвинов Антон Витальевич, изучаю <font color="#CC0000">HTML</font> и CSS</p></h1></span>
+			<h2>Автобиография</h2>
+			<h3>Появление на свет</h3>
+			<p class="Logvinov">
+			<span style="font-size: 45px; color: red; ">Я</span>, Логвинов Антон Витальевич, родился 29 ноября 1997 в г. Ельск <br> Гомельской области.
+			</p>
+			<h3>Родители и братья/сёстры</h3>
+			<p class="Family">
+			<span id = "span_two">Отец</span>, Логвинов Виталий Анатольевич, родился 2 сентября 1968 года в Ельске. Работает электрогазосварщиком в Ельском ПМК.</br>
+			<span id="life">Мать</span>, Логвинова Татьяна Николаевна, родилась 16 мая 1975 года в Ельске. Работает в Ельском ЛПХ инженером по идеологии и подготовке кадров.<br>
+			<span id="life">Сестра</span>, Логвинова Екатерина Витальевна, родилась 9 мая 2002 года в Ельске. Учится в СШ №1 города Ельска.
+			</p>
+			<h3>Обучение</h3>
+			<p class="studying">
+			<span id="life">В 2004</span> году начал учится в Ельской СШ №1.<br>
+			<span id="life">В 2013</span> году поступил в Мозырский Государственный Областной Лицей, который окончил в 2015 году.<br>
+			<span id="life">В этом же году</span> поступил в Белорусский государственный технологический университет по специальности "Программное обеспечение информационной безоспасности мобильных систем" где сейчас и обучаюсь.
+			</p>
+			<ol>
+			<li>Животные</li>
+				<ul style="font-family: ARIAL; color: IndianRed; font-style: Italic">
+					<li>Котик</li>
+					<li>Собачка</li>
+				</ul>
+			<li>Цветы</li>
+				<ul type="square" style="color: PowderBlue; text-decoration: underline;">
+					<li>Роза</li>
+					<li>Тюльпан</li>
+					<li>Ромашка</li>
+				</ul>
+			<li>Люди</li>
+				<ul type="circle" style="color: Crimson; font-weight: bold;">
+					<li>Хорошие</li>
+					<li>Плохие</li>	
+				</ul>
+			<li>Поры года</li>
+				<ul style="list-style-image: url(ul.jpg)">
+					<li>Зима</li>
+					<li>Весна</li>
+					<li>Лето</li>
+					<li>Осень</li>
+				</ul>
+				
+			</ol>
+			<h2>Результаты сессии</h2>
+			<table>
+				<tr align="center">
+					<td>ФИО</td>
+					<td colspan="3"><a href="secondpage.html" title="secondpage">Логвинов Антон Витальевич</a></td>
+					
+					
+				</tr>
+				<tr align="center">
+					<td><img src="I'm.jpg" title="Anton Logvinov"></td>
+					<td colspan="3">Адрес: ул. Белорусская, 21, ком. 1211</td>
+					
+					
+				</tr>
+				<tr align="center">
+					<td rowspan="6">1 семестр 2015/2016 уч. года</td>
+					<td>Дата</td>
+					<td>Предмет</td>
+					<td>Оценка</td>
+				</tr>
+				<tr align="center">
+					
+					<td>31.12.2015</td>
+					<td align="left">АЛОЦВМ</td>
+					<td id = "rating1">5</td>
+				</tr>
+				<tr align="center">
+					
+					<td>06.01.2016</td>
+					<td align="left">ОАиП</td>
+					<td id = "rating2">7</td>
+				</tr>
+				<tr align="center">
+					
+					<td>10.02.2013</td>
+					<td align="left">Физика</td>
+					<td id = "rating3">9</td>
+				</tr>
+				<tr align="center">
+					
+					<td>14.01.2016</td>
+					<td align="left">Математика</td>
+					<td id = "rating4">7</td>
+				</tr>
+				<tr align="center">
+					
+					<td>18.01.2016</td>
+					<td align="left">ОИТ</td>
+					<td id = "rating5">9</td>
+				</tr>
+			</table>
+			<script> 
+				function task1() 
+					{ 
+						var tags = ""; 
+						for (var i = 0; i < document.all.length; i++) 
+						tags += i + ". " + document.all[i].tagName + "\n"; 
+						alert(tags); 
+					} 
+				function task2() 
+					{ 
+						/*
+						for (var i = 0; i < document.body.childNodes.length; i++)
+						{
+							alert(document.body.childNodes[i]);
+						}
+						*/
+						
+						
+						var chl = ""; 
+						for(var i = 0; i < document.body.childNodes.length; i++) 
+						{ 
+						chl += i + ". " + document.body.childNodes[i].tagName + "\n"; 
+						}
+						alert(chl);
+						
+						
+					} 
+				function task3() 
+					{ 
+						var a;
+						a = $("span#foa").text();
+						alert(a); 
+					} 
+				function task4() 
+					{ 
+						var a = document.all(11).innerHTML; 
+						alert(a); 
+					} 
+				function task5() 
+					{
+						var ocen1 = Number($("#rating1").html());
+						var ocen2 = Number($("#rating2").html());
+						var ocen3 = Number($("#rating3").html());
+						var ocen4 = Number($("#rating4").html());
+						var ocen5 = Number($("#rating5").html());
+						var sr = (ocen1 + ocen2 + ocen3 + ocen4 + ocen5) / 5;
+						alert(sr);
+						alert(document.getElementById('span_two').innerHTML += "Средний балл: " + sr);
+					}
+			</script>
+		<br>
+		<input type = "button" value = "Все теги" id = "js9" onclick = "task1()" > 
+		<input type = "button" value = "Дочерние элементы узла" id = "js9" onclick = "task2()" >
+		<input type = "button" value = "span (all)" id = "js9" onclick = "task4()" > 		
+		<input type = "button" value = "span (id)" id = "js9" onclick = "task3()" > 
+		<input type = "button" value = "Средний балл + 2-span" id = "js9" onclick = "task5()" >
+	</body>
+</html>

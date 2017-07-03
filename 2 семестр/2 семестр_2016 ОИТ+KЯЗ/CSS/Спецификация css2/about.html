@@ -1,0 +1,509 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>О спецификации CSS2</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="index.htm" tppabs="http://pyramidin.narod.ru/css2/index.htm"><link rel="next" href="intro.html" tppabs="http://pyramidin.narod.ru/css2/intro.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY>
+<!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="index.htm" tppabs="http://pyramidin.narod.ru/css2/index.htm">предыдущий</a> &nbsp; <a href="intro.html" tppabs="http://pyramidin.narod.ru/css2/intro.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a> </div><hr class="navbar">
+<H1 align="center">1&nbsp; О спецификации CSS2</H1><div class="subtoc">
+<p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#q1" class="tocxref">1.1 Как читать эту спецификацию</a>
+<li class="tocline2"><a href="#q2" class="tocxref">1.2 Как организована эта спецификация</a>
+<li class="tocline2"><a href="#q3" class="tocxref">1.3 Соглашения</a><ul class="toc">
+<li class="tocline3"><a href="#q4" class="tocxref">1.3.1 Язык документа: элементы и атрибуты</a>
+<li class="tocline3"><a href="#property-defs" class="tocxref">1.3.2 Определения свойств CSS</a>
+<ul class="toc"><li class="tocline4"><a href="#q6" class="tocxref"> Значение</a>
+<li class="tocline4"><a href="#q7" class="tocxref"> Начальное</a>
+<li class="tocline4"><a href="#q8" class="tocxref"> Применяется к</a>
+<li class="tocline4"><a href="#q9" class="tocxref"> Наследуется</a>
+<li class="tocline4"><a href="#q10" class="tocxref"> Процентные значения</a>
+<li class="tocline4"><a href="#q11" class="tocxref"> Группы носителей</a></ul>
+<li class="tocline3"><a href="#shorthand" class="tocxref">1.3.3 Сокращённые свойства</a>
+<li class="tocline3"><a href="#q13" class="tocxref">1.3.4 Замечания и примеры</a>
+<li class="tocline3"><a href="#q14" class="tocxref">1.3.5 Изображения и полные описания</a>
+</ul><li class="tocline2"><a href="#q15" class="tocxref">1.4 Благодарности</a>
+<li class="tocline2"><a href="#copyright" class="tocxref">1.5 Авторские права</a></ul></div>
+<h2><a name="q1"><br>
+1.1&nbsp; Как читать эту спецификацию</a></h2>
+<P>Данная спецификация написана в расчёте на
+читателей двух типов: CSS-авторов и CSS-разработчиков.
+Мы надеемся, что эта спецификация снабдит
+авторов средствами, необходимыми для
+создания эффективных, привлекательных и
+доступных документов без излишнего
+углубления в детали реализации CSS.
+Разработчики к тому же смогут найти всё
+необходимое для создания <a href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствующих
+пользовательских агентов (ПА)</a>.<br>
+Спецификация начинается общим
+представлением CSS и постепенно всё более
+углубляется в технические подробности и
+специфику. Для быстрого доступа к
+информации служат общие и
+специализированные оглавления в начале
+каждого раздела и индексы - в электронном и
+печатном виде.<P>Спецификация создана в
+расчёте на два типа представления:
+электронное и печатное. Хотя эти два типа,
+без сомнения, похожи, читатели могут
+заметить и некоторые отличия. Например,
+ссылки не будут работать в печатной версии (естественно),
+а номера страниц будут отсутствовать в
+электронной версии. В случае возникновения
+противоречий, электронная версия должна
+считаться определяющей.<h2><a name="q2"><br>
+1.2&nbsp; Как организована
+эта спецификация</a></h2>
+<P>Эта спецификация содержит следующие
+разделы:
+<dl><dt><Strong>Раздел 2: Введение в CSS2</strong>
+<dd>Введение содержит краткий учебник по CSS2 и обсуждение принципов дизайна вне CSS2. 
+
+<dt><strong><br>Раздел 3 - 20: Справочник-учебник CSS2</strong>
+
+<dd>Основу составляет справочник языка CSS2. Этот справочник определяет, что может
+входить в таблицы стилей CSS2 (синтаксис, свойства, значения свойств) и
+как ПА обязаны интерпретировать эти таблицы стилей, чтобы претендовать на <a
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствие</a>.
+<dt><strong><br>Приложения:</strong>
+
+<dd>Содержат <a href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">образцы таблиц стилей для HTML 4.0</a>, <a href="changes.html" tppabs="http://pyramidin.narod.ru/css2/changes.html">изменения
+относительно CSS1</a>, <a href="notes.html" tppabs="http://pyramidin.narod.ru/css2/notes.html">замечания по реализации и выполнению</a>, 
+<a href="grammar.html" tppabs="http://pyramidin.narod.ru/css2/grammar.html">грамматике CSS2</a>, список
+нормативных и информативных <a href="refs.html" tppabs="http://pyramidin.narod.ru/css2/refs.html">ссылок</a>
+  и три индекса:
+<a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">Свойства</a>,
+<a href="descidx.html" tppabs="http://pyramidin.narod.ru/css2/descidx.html">Дескрипторы</a> и <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">Общий
+индекс</a>.</dl><H2><a name="q3"><br>1.3&nbsp; Соглашения</a></H2>
+
+<H3><a name="q4"><br>
+1.3.1 </a><a href="conform.html#doclanguage" tppabs="http://pyramidin.narod.ru/css2/conform.html#doclanguage">Язык документа:</a>
+элементы и атрибуты</H3>
+
+<ul>
+<li>В CSS имена свойств, дескрипторов и псевдоклассов ограничиваются одиночными кавычками.
+<li>Значения в CSS ограничиваются одиночными кавычками.
+<li>Элементы языка документа записываются буквами в верхнем регистре.
+<li>Имена атрибутов языка документа записываются в нижнем регистре и ограничиваются двойными кавычками.</ul>
+
+<H3><br>
+1.3.2&nbsp; <a name="property-defs">Определения свойств CSS</a></H3>
+<P>Каждое определение свойства CSS начинается общей ключевой информацией:</p>
+
+<div class="propdef"><dl><dt>
+<a name="propdef-property-name" class="propdef-title"><strong>'property-name'</strong></a>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>действительные значения &amp; синтаксис
+<tr valign=baseline><td><em>Начальное:</em><td>начальное значение
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к соответствующим элементам
+<tr valign=baseline><td><em>Наследуется:</em>&nbsp;&nbsp;<td>если свойство наследуется
+<tr valign=baseline><td><em>Процентное:</em><td>интерпретация процентных значений
+<tr valign=baseline><td><em>Носитель:</em><td>к каким группам носителей применяется свойство</table></dl></div>
+
+<h4>Значение/<a name="q6">Value</a></h4>
+<P>Определяет набор действительных значений
+свойства. Типы значений могут обозначаться по-разному:
+
+<ol><li> ключевые слова (например, auto, disc и т.д.);
+<li> базовые типы данных, вводимые между
+символами "&lt;" и "&gt;" (например,
+&lt;length&gt;, &lt;percentage&gt; и т.д.). В электронной
+версии документа каждый объект базового
+типа данных связан со своим определением;
+<li> типы, имеющие те же диапазоны значений,
+что и свойство, имеющее то же имя (например, &lt;'border-width'&gt;,
+&lt;'background-attachment'&gt; и т.д.). В данном случае имя
+типа является именем свойства (заключённым
+в кавычки) между символами "&lt;" и "&gt;" (например, &lt;'border-width'&gt;).
+В электронной версии документа каждый
+объект такого типа не-терминала ссылается
+на соответствующее определение свойства;
+<li> не-терминалы, не использующие имя
+свойства. В данном случае имя не-терминала
+выводится между символами "&lt;" и "&gt;",
+например, &lt;border-width&gt;. Заметьте разницу
+между &lt;border-width&gt; и &lt;'border-width'&gt;; последнее
+определено в терминах предыдущего.
+Определение не-терминала размещается
+поблизости от его первого вхождения в
+данной спецификации. В электронной версии
+документа каждый объект этого типа
+ссылается на соответствующее определение
+значения.</ol>
+
+<P>Другие слова в этих определениях являются
+ключевыми словами, которые обязаны
+появляться буквально, без кавычек (например,
+red). Слэш (/) и запятая (,) также обязаны
+появляться буквально.
+
+<P>Значения должны быть организованы так:</p>
+<ul><li>Несколько соседних слов означают, что все
+они должны появляться в указанном порядке.
+<li>Вертикальная линия (|) разделяет две или
+более альтернативы: только одна из них
+должна быть записана.
+<li>Двойная вертикальная черта (||) разделяет
+две или более опции: одна или более из них
+должны быть записаны в любом порядке.
+<li>Скобки ([&nbsp;]) служат для группирования. </ul>
+
+<P>Соседство является более строгим, чем
+двойная вертикальная черта, а двойная
+вертикальная черта - строже, чем одинарная.
+Таким образом, следующие строки
+эквивалентны:
+<PRE>    a b   |   c || d e
+  [ a b ] | [ c || [ d e ]]
+</PRE>
+
+<P>За каждым типом, ключевым словом или группой в скобках может следовать один из
+модификаторов:</p>
+<UL><LI>
+Звёздочка (*) - означает, что предыдущий тип, слово или группа появляется ноль
+или более раз.
+<LI>Плюс (+) - означает, что предыдущий тип, слово или группа появляется один или
+более раз.<LI>
+Знак вопроса (?) - означает, что предыдущий тип, слово или группа являются необязательными.
+<LI>Пара чисел в фигурных скобках ({A,B}) - означает, что предыдущий тип, слово или
+группа появляется не менее А и не более В раз.</UL>
+
+<P>Следующий пример иллюстрирует различные значения типов:
+<BLOCKQUOTE>
+<EM>Value\Значение:</EM> N | NW | NE<BR>
+<EM>Value:</EM> [ &lt;length&gt; | thick | thin ]{1,4}<BR>
+<EM>Value:</EM> [&lt;family-name&gt; , ]* &lt;family-name&gt;<BR>
+<EM>Value:</EM> &lt;uri&gt;? &lt;color&gt; [ / &lt;color&gt; ]?<BR>
+<EM>Value:</EM> &lt;uri&gt; || &lt;color&gt;<BR></BLOCKQUOTE><h4>Начальное/<a name="q7">Initial</a></h4>
+
+<P>Специфицирует начальное значение
+свойства. Если свойство наследуется, это
+значение, данное корневому элементу <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева
+документа</a>. См. в разделе <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">Каскад</a>
+информацию о взаимодействии между
+значениями - начальными, унаследованными и
+специфицированными в таблице стилей.
+
+
+<h4>Применяется к/<a name="q8"> Applies to</a></h4>
+
+<p>Перечисляет элементы, к которым
+применяется данное свойство.
+Предполагается, что все элементы имеют все
+свойства, но некоторые свойства не имеют
+действия на представление элементов
+определённых типов. Например, <a href="text.html#propdef-white-space" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-white-space" class="noxref"><span
+class="propinst-white-space">'white-space'</span></a>  действует
+только на элементы уровня блока (block-level
+elements).
+
+<h4>Наследуется/<a name="q9">Inherited</a></h4>
+
+<p>Обозначает, может ли свойство
+наследоваться от элемента-предка. См. в
+разделе <a
+href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">Каскад</a> информацию о
+взаимодействии между значениями -
+начальными, унаследованными и
+специфицированными в таблице стилей.
+
+
+<h4>Процентные значения/<a name="q10">Percentage values</a></h4>
+
+<p>Указывает, как должны интерпретироваться
+процентные значения, если они появляются в
+значении свойства. Если появляется "N/A", это
+значит, что свойство не принимает
+процентных значений.
+
+<h4>Группы носителей/<a name="q11">Media groups</a></h4>
+
+<p>Обозначает <a href="media.html#media-groups" tppabs="http://pyramidin.narod.ru/css2/media.html#media-groups">группы носителей</a>,
+к которым свойство применяется. Условия <a
+href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">соответствия</a> определяют, что
+ПА обязаны поддерживать это свойство, если
+они поддерживают представление в <a
+href="media.html#media-types" tppabs="http://pyramidin.narod.ru/css2/media.html#media-types">типах носителя</a>,
+включённых в эти <a
+href="media.html#media-groups" tppabs="http://pyramidin.narod.ru/css2/media.html#media-groups">группы носителей</a>.
+
+<H3><br>
+1.3.3 <a name="shorthand">&#1057;&#1086;&#1082;&#1088;&#1072;&#1097;&#1105;&#1085;&#1085;&#1099;&#1077;
+&#1092;&#1086;&#1088;&#1084;&#1099; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;</a></H3>
+
+<p>Некоторые свойства являются <a name="x0"><span class="index-def" title="shorthand
+property"><dfn>сокращёнными свойствами</dfn></span></a>,
+что означает, что они позволяют авторам
+специфицировать значения нескольких
+свойств в одном свойстве.<P>Например,
+свойство <a href="fonts.html#propdef-font" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font" class="noxref"><span class="propinst-font">'font'</span></a> 
+является сокращением для одновременной
+установки <a href="fonts.html#propdef-font-style" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-style" class="noxref"><span
+class="propinst-font-style">'font-style'</span></a>, <a href="fonts.html#propdef-font-variant" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-variant" class="noxref"><span
+class="propinst-font-variant">'font-variant'</span></a>, <a href="fonts.html#propdef-font-weight" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-weight" class="noxref"><span
+class="propinst-font-weight">'font-weight'</span></a>, <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>, <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height'</span></a> и <a href="fonts.html#propdef-font-family" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-family" class="noxref"><span
+class="propinst-font-family">'font-family'</span></a>.</p>
+
+<P>Если в сокращённом свойстве значения
+опущены (отсутствуют), каждое &quot;отсутствующее&quot;
+свойство устанавливается в своё начальное
+значение (см. раздел <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">Каскад</a>).
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+Несколько правил стиля в этом примере:</p>
+
+<pre>H1 { 
+  font-weight: bold; 
+  font-size: 12pt;
+  line-height: 14pt; 
+  font-family: Helvetica; 
+  font-variant: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-size-adjust: none
+}</pre>
+
+<p>можно записать с помощью одного сокращённого свойства:</p>
+<pre>H1 { font: bold 12pt/14pt Helvetica }</pre>
+<p>В этом примере <a href="fonts.html#propdef-font-variant" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-variant" class="noxref"><span
+class="propinst-font-variant">'font-variant'</span></a>, <a href="fonts.html#propdef-font-stretch" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-stretch" class="noxref"><span
+class="propinst-font-stretch">'font-stretch'</span></a>, <a href="fonts.html#propdef-font-size-adjust" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size-adjust" class="noxref"><span
+class="propinst-font-size-adjust">'font-size-adjust'</span></a> и <a href="fonts.html#propdef-font-style" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-style" class="noxref"><span
+class="propinst-font-style">'font-style'</span></a> получают свои начальные значения.</p>
+</div><h3><a name="q13"><br>
+1.3.4&nbsp; Замечания и примеры</a></h3>
+
+<P>Все примеры, иллюстрирующие неправильное
+использование, явно помечены -&nbsp; &quot;НЕПРАВИЛЬНОЕ
+ИСПОЛЬЗОВАНИЕ&quot;.<P>Все примеры HTML
+соответствуют Строгому Определению Типа
+Документа HTML 4.0/Strict DTD, (определённом в <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>),
+если иное не указано в объявлении типа
+документа.
+<P>Все примечания являются исключительно информативными.
+<P>Примеры и примечания промаркированы в
+коде HTML, чтобы ПА данной и CSS1 спецификаций представляли
+их особым образом.<h3><a name="q14"><br>
+1.3.5&nbsp; Изображения
+и полные описания</a></h3>
+
+<P>Большинство изображений в электронной
+версии данной спецификации сопровождаются
+&quot;полными описаниями&quot; того, что
+изображено. Ссылка на полное описание
+обозначена "[D]" справа от изображения.
+
+<P>Изображения и полные описания являются
+исключительно информативными.
+
+<H2><a name="q15"><br>
+1.4&nbsp; Благодарности</a></H2> 
+<P>Данная спецификация является продуктом
+работы W3C Working Group над Cascading Style Sheets (Каскадными
+Таблицами Стилей) и Formatting Properties (Свойствами
+Форматирования).&nbsp;<br>
+<br>
+Помимо редакторов данной спецификации,
+членами Working Group являются:<br>Brad Chase (Bitstream),<br>Chris Wilson (Microsoft),<br>
+Daniel Glazman (Electricit&eacute; de France),<br>Dave Raggett (W3C/HP),<br>
+Ed Tecot (Microsoft),<br>Jared Sorensen (Novell),<br>Lauren Wood (SoftQuad),<br>
+Laurie Anna Kaplan (Microsoft),<br>Mike Wexler (Adobe),<br>Murray Maloney (Grif),<br>
+Powell Smith (IBM),<br>Robert Stevahn (HP),<br>Steve Byrne (JavaSoft),<br>
+Steven Pemberton (CWI),<br>Thom Phillabaum (Netscape),<br>
+Douglas Rand (Silicon Graphics),<br>Robert Pernett (Lotus),<br>Dwayne Dicks (SoftQuad) и<br>
+Sho Kuwamoto (Macromedia).<br><br>
+Мы благодарим их всех.<P>Свой вклад внесли
+приглашённые эксперты Working Group:<br>
+George Kersher, Glenn Rippel (Bitstream),<br>
+Jeff Veen (HotWired), Markku
+T. Hakkinen (The Productivity Works),<br>
+Martin D&uuml;rst
+(W3C, до этого - Universit&auml;t Z&uuml;rich),<br>
+Roy Platon (RAL),<br>
+Todd
+Fahrner (Verso),<br>
+Tim Boland (NIST),<br>
+Eric Meyer (Case Western
+Reserve University) и<br>
+Vincent Quint (W3C).<p>Раздел Web Fonts разрабатывали Brad Chase (Bitstream),<br>
+David Meltzer (Microsoft Typography) и<br>
+Steve Zilles (Adobe).<br>
+<br>
+Следующие сотрудники в разной степени
+участвовали в разработке разделов,
+относящихся в шрифтам: Alex Beamon (Apple), Ashok Saxena (Adobe), Ben
+Bauermeister (HP), Dave Raggett (W3C/HP), David Opstad (Apple), David
+Goldsmith (Apple), Ed Tecot (Microsoft), Erik van Blokland
+(LettError), Fran&ccedil;ois Yergeau (Alis), Gavin Nicol (Inso),
+Herbert van Zijl (Elsevier), Liam Quin, Misha Wolf (Reuters), Paul
+Haeberli (SGI) и, наконец, Phil Karlton (Netscape).<P>Раздел Paged Media
+(Страничные Носители) в значительной части
+авторизовали Robert
+Stevahn (HP) и Stephen Waters (Microsoft).
+
+<P>Robert Stevahn (HP), Scott Furman (Netscape) и Scott
+Isaacs (Microsoft) являлись ключевыми сотрудниками
+при разработке CSS Positioning (Позиционирование
+CSS).<P>Mike Wexler (Adobe) был редактором рабочих
+проектов, описавшим многие из новых
+возможностей CSS2.<P><a href="javascript:if(confirm('http://cs.cornell.edu/home/raman  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://cs.cornell.edu/home/raman'" tppabs="http://cs.cornell.edu/home/raman">T.V. Raman</a> (Adobe)
+сделал основные разработки, относящиеся к Aural Cascading Style Sheets
+(ACSS)/Звуковым Таблицам Стилей/ и к концепции
+звукового представления, на базе своей
+работы в AsTeR
+(Audio System For Technical Readings). Он участвовал в
+разработке начального проекта
+спецификации ACSS, которая содержится в
+данной спецификации. Значения звуковых
+свойств для <a
+href="sample.html" tppabs="http://pyramidin.narod.ru/css2/sample.html">примера таблицы стилей HTML 4.0</a>
+разработаны им же; в настоящее время он использует
+всё это в каждодневной работе над своим audio desktop,
+в соединении с Emacspeak и браузером Emacs W3 (авторизованными
+William'ом Perry, разработавшим также звуковые
+расширения, ожидаемые W3).<P>Todd Fahrner (Verso)
+исследовал современные и предшествующие
+браузеры для разработки образцов таблиц
+стилей в Приложении.<P>Благодарим Jan K&auml;rrman,
+автора <a
+href="javascript:if(confirm('http://www.tdb.uu.se/~jan/html2ps.html  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.tdb.uu.se/~jan/html2ps.html'" tppabs="http://www.tdb.uu.se/~jan/html2ps.html">html2ps</a>, за большую
+помощь, оказанную при создании PostScript версии
+спецификации.<P>Преодолевая электронные и
+физические проблемы, следующие люди
+сотрудничали в разработке CSS2:<br>
+Alan Borning, Robert
+Cailliau, Liz Castro, James Clark, Dan Connolly, Donna Converse,
+Daniel Dardailler, Al Gilman, Daniel Greene, Scott Isaacs, Geir
+Ivars&oslash;y, Vincent Mallet, Kim Marriott, Brian Michalowski, Lou
+Montulli, Henrik Frystyk Nielsen, Jacob Nielsen, Eva von Pepel,
+William Perry, David Siegel, Peter Stuckey и Jason White.
+
+<P>Дискуссия на www-style@w3.org обсуждала многие
+ключевые вопросы CSS. Особо мы хотели бы
+поблагодарить участников:<br>
+&nbsp;Bjorn Backlund,
+Todd Fahrner, Lars Marius Garshol, Sue Jordan, Ian Hickson, Susan
+Lesch, Andrew Marshall, MegaZone, Eric Meyer, Russell O'Connor, David
+Perrell, Liam Quinn, Jon Seymour, Neil St. Laurent, Taylor, Brian Wilson и Chris
+Wilson.
+
+<P>Особая благодарность Web Accessibility Initiative Protocols
+и Formats Technical Review Working Group (WAI PF) за помощь в
+повышении доступности CSS2.
+
+<P>Благодарим Philippe Le H&eacute;garet, чей проверщик CSS
+помогал выверить корректность примеров и
+правописания.<P>Особая благодарность Arnaud Le Hors,
+чья инженерная работа сделала этот
+документ рабочим.<P>Adam Costello улучшил эту
+спецификацию, выполнив детальную ревизию.
+
+<P>Наконец, благодарим Tim Berners-Lee, без которого
+всё это вообще было бы невозможно.
+
+
+<H2><br>
+1.5&nbsp;<a name="copyright"> Авторские права</a></H2>
+
+<p><strong>Copyright &copy; 1997 <a href="javascript:if(confirm('http://www.w3.org/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.w3.org/'" tppabs="http://www.w3.org/">World Wide
+Web Consortium</a>, (<a href="javascript:if(confirm('http://www.lcs.mit.edu/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.lcs.mit.edu/'" tppabs="http://www.lcs.mit.edu/">Massachusetts
+Institute of Technology</a>, <a href="javascript:if(confirm('http://www.inria.fr/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.inria.fr/'" tppabs="http://www.inria.fr/">Institut
+National de Recherche en Informatique et en Automatique</a>, <a
+href="javascript:if(confirm('http://www.keio.ac.jp/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.keio.ac.jp/'" tppabs="http://www.keio.ac.jp/">Keio University</a>). Все Права
+Зарезервированы.</strong>
+
+<p>Документы на сайте <a href="javascript:if(confirm('http://www.w3.org/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.w3.org/'" tppabs="http://www.w3.org/">W3C</a> 
+предоставляются для копирования на основе
+следующей лицензии.<br>
+Получая, используя и/или копируя этот
+документ или документ W3C, на который в
+данном документе имеется ссылка, Вы
+согласны с тем, что Вы прочитали, поняли и
+согласны со следующими положениями и
+условиями:</p>
+
+<p>Разрешение на использование, копирование
+и распространение содержания этого
+документа или документа W3C, на который в
+данном документе имеется ссылка, на любых
+носителях для любых целей и без оплаты или
+арендной платы даётся с условием, что Вы
+включите нижеследующую информацию во <i>ВСЕ</i>
+копии документа или его части, которые Вы
+используете:
+
+<ol><li>Ссылка URI на оригинальный документ W3C.</li>
+<li>Уведомление о предшествующих авторских
+правах оригинального автора, если они
+отсутствуют, в форме: &quot;Copyright &copy; <a
+href="javascript:if(confirm('http://www.w3.org/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.w3.org/'" tppabs="http://www.w3.org/">World Wide Web Consortium</a>, (<a
+href="javascript:if(confirm('http://www.lcs.mit.edu/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.lcs.mit.edu/'" tppabs="http://www.lcs.mit.edu/">Massachusetts Institute of
+Technology</a>, <a href="javascript:if(confirm('http://www.inria.fr/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.inria.fr/'" tppabs="http://www.inria.fr/">Institut National de
+Recherche en Informatique et en Automatique</a>, <a
+href="javascript:if(confirm('http://www.keio.ac.jp/  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://www.keio.ac.jp/'" tppabs="http://www.keio.ac.jp/">Keio University</a>). Все Права Зарезервированы.&quot; </li>
+<li><em>Если они указаны</em>, СТАТУС документа W3C.</li></ol>
+
+<p>Если место позволяет, необходимо включать
+полный текст этого <b>УВЕДОМЛЕНИЯ</b>.<br>
+Дополнительно должны быть приписаны
+заверения для владельцев авторских прав на
+любое программное обеспечение, документы
+или другие объекты или продукты, которые Вы
+создали в соответствии с выполнением
+содержимого данного документа или любой
+его части. </p>
+
+<p>Вы не имеете права, в соответствии с
+данной лицензией, создавать модификации
+или выдержки.</p>
+
+<p><b>ЭТОТ ДОКУМЕНТ ДАЁТСЯ &quot;AS IS\КАК ЕСТЬ&quot;
+И ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ ДАЮТ НИКАКИХ
+УКАЗАНИЙ ИЛИ ГАРАНТИЙ, ЯВНЫХ ИЛИ КОСВЕННЫХ,
+ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯ, ГАРАНТИИ
+РЕАЛИЗУЕМОСТИ, ПРИГОДНОСТИ ДЛЯ КОНКРЕТНЫХ
+ЦЕЛЕЙ, НЕНАРУШЕНИЕ ЗАКОНА ИЛИ ИМЕНОВАНИЕ, -
+ЧТО СОДЕРЖИМОЕ ДАННОГО ДОКУМЕНТА ПОДХОДИТ
+ДЛЯ ЛЮБЫХ ЦЕЛЕЙ, НИ ЧТО ВЫПОЛНЕНИЕ ТАКОГО
+СОДЕРЖИМОГО НЕ&nbsp; ВЫЗОВЕТ НАРУШЕНИЯ
+ПАТЕНТОВ КАКОЙ-ЛИБО ТРЕТЬЕЙ СТОРОНЫ,
+АВТОРСКИХ ПРАВ, ТОРГОВЫХ МАРОК И ДРУГИХ
+ПРАВ.</b></p>
+
+<p><b>ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ НЕСУТ
+ОТВЕТСТВЕННОСТИ ЗА ЛЮБОЙ ПРЯМОЙ, КОСВЕННЫЙ,
+СПЕЦИАЛЬНЫЙ ИЛИ ВОЗМОЖНЫЙ ВРЕД, НАНЕСЁННЫЙ
+ИЗ-ЗА КАКОГО-ЛИБО ИСПОЛЬЗОВАНИЯ ДАННОГО
+ДОКУМЕНТА ИЛИ ВЫПОЛНЕНИЯ ИЛИ РЕАЛИЗАЦИИ
+ЕГО СОДЕРЖИМОГО.</b></p>
+
+<p>Имена и торговые марки владельцев
+авторских прав НЕ могут использоваться для
+публичных целей и рекламы данного
+документа или его содержимого без
+специального письменного разрешения.
+Наименование авторских прав в данном
+документе всегда остаётся за их
+владельцами. </p>
+<hr class="navbar"><div class="navbar" align="center">
+<p><a href="index.htm" tppabs="http://pyramidin.narod.ru/css2/index.htm">предыдущий</a> &nbsp; <a href="intro.html" tppabs="http://pyramidin.narod.ru/css2/intro.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a> </div></BODY></HTML><!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

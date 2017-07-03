@@ -1,0 +1,95 @@
+﻿
+<!doctype html>
+<html>
+	<head>
+	<style>
+	input
+     {
+     background-color : #FBFF00;
+     font-size:140%;
+     border: 2px solid ;
+     }
+	 body
+	 {
+	 background-color: #FFE4E1;
+	 color: #00690C;
+	 font-size:120%;
+	 }
+	 video
+	 {
+
+	 width:600px;
+	 background-color: #87CEEB;
+	 }
+	</style>
+		<title>pathExample</title>
+		<meta charset='utf-8' />
+				<script src="audio.js" type="text/JavaScript"></script>
+	</head>
+	<body>
+		
+	<header> <h1><center>Audio / Video / Canvas</center></h1> </header>
+	<section style="width: 600px; float:left">	
+	<video src="Los.mp4" controls autoplay loop ></video>
+		<audio id="bj" src="Rammstein.mp3" preload="metadata" controls onloadstart="WriteOnLoadstart('volume', this);">
+		Браузер не поддерживает audio.
+		</audio>
+		<canvas id='example'>Обновите браузер</canvas>
+		<script>
+			var example = document.getElementById("example"),
+			    ctx     = example.getContext('2d');
+			example.height = 480;
+			example.width  = 640;
+			ctx.beginPath();
+	
+    ctx.beginPath();
+
+
+						   
+		ctx.fillStyle = ' #0000CD';
+	    ctx.fillRect(150,100,250,250);
+		ctx.fillStyle = ' #BDBDBD';
+		ctx.fillRect(200,100,150,70);	
+        ctx.fillStyle = ' #0000CD';
+	    ctx.fillRect(300,105,20,60);
+		ctx.fillStyle = ' #FFF';
+	    ctx.fillRect(160,200,230,130);	
+        ctx.fillStyle = ' #F00';
+	    ctx.fillRect(165,220,220,2);		
+        ctx.fillStyle = ' #F00';
+	    ctx.fillRect(165,240,220,2);		
+        ctx.fillStyle = ' #F00';
+	    ctx.fillRect(165,260,220,2);		
+        ctx.fillStyle = ' #F00';
+	    ctx.fillRect(165,280,220,2);		
+        ctx.fillStyle = ' #F00';
+	    ctx.fillRect(165,300,220,2);
+			
+
+
+		</script>
+		<button onclick="getLocation()">Местоположение</button>
+<p id="demo"></p>
+<script>
+var h = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) { 
+	 navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Недоступно в вашем браузере");
+    }
+}
+function showPosition(position) {
+    alert("Широта: " + position.coords.latitude +
+    "\n Долгота: " + position.coords.longitude);
+}
+</script>
+<p><label for="name">Имя </label><input type="text" name="name"></p>
+    <p><label for="email">E-mail</label><input type="email" name="email"></p>
+	<label for="date">Дата</label><input type="date" name="email"><br /><br />
+	<label for="alt">Ваш возраст</label><input type="number" min="1" max="100" step="1"><br />
+	<br />
+		<label>Желаете получать рассылку?</label><input type="radio">Да <br /> <br />
+		<input type="submit" value="отправить">  <br /> <br /> <br />
+	</body>
+</html>

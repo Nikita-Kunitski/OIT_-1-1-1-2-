@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function cvet()
+	{
+		document.getElementById('text').style.color='red';
+	}
+
+	function size()
+	{
+		document.getElementById('s').style.fontSize="250%";
+	}
+
+	function zamena()
+	{
+		document.getElementById('photo').src="5.jpg";
+	}
+
+	function zamena_1()
+	{
+		document.getElementById('text_1').innerHTML='<img src="3 (2).jpg">';
+	}
+	function resize(img,x,y)
+	{
+		img.width=x;
+		img.height=y;
+	}
+	function ramka()
+	{
+		document.getElementById('text_2').style.border='double 2px';
+	}
+
+</script>
+<div onmousemove="cvet()"><p id="text">JavaScript</p></div>
+<p>JavaScript позволяет разрабатывать различные динамические эффекты, которые могут преобразовать внешний вид сайта, обеспечить простоту и удобство навигации по сайту, <span onClick="size()"><i id="s">сократить время</i></span>, количество движений и кликов пользователю сайта. В общем, может существенно преобразовать сайт в лучшую сторону.
+Для того чтобы сделать сайт на JavaScript реагирующий на действия пользователя, нужно как-то в сценариях JavaScript следить за действиями пользователя. Отслеживать действия пользователя позволяют обработчики событий. Обработчики событий следят за действиями пользователя, и при возникновении какого-либо события, соответствующий обработчик события вызывает привязанный к нему код JavaScript. Например, есть кнопка в форме HTML-документа и при клике пользователем на эту кнопку браузер вызовет обработчик события, отвечающий за клик по элементу страницы - onClick, и если к этому обработчику события привязан код JavaScript, то он будет выполнен.</p>
+<span onClick="zamena()"><img src="58.jpg" id="photo"></span>
+<br><p>Der Terminus Usability steht für die Benutzerfreundlichkeit oder auch Gebrauchs-tauglichkeit interaktiver Systeme, also Systeme, die über eine Benutzerschnittstelle verfügen und ebenso auf Aktionen des Benutzers reagieren (z.B. Software oder Webanwendungen). Die Interna-tional Standards Organisation (ISO) hat im Rahmen der internationalen <span onClick="zamena_1()"><i id="text_1">Norm „Ergonomische An-forderungen für Bürotätigkeiten an Bildschirmgeräten“ den Begriff Usability standardisiert.</i></span> Im Teil 11 dieser Norm werden Anforderungen an die Gebrauchstauglichkeit festgehalten. Usability wird dabei wie folgt definiert: „Das Ausmaß, in dem ein Produkt durch bestimmte Benutzer in einem bestimmten Nutzungskontext genutzt werden kann, um bestimmte Ziele effektiv, effizient und mit Zufriedenheit zu erreichen.“ </p>
+<br><img src="1.jpg" onmouseout="resize(this,300,500)" onmouseover="resize(this, 500, 900)">
+<br><p>Большинство современных ЦВМ состоят из двух и более архи-тектурных уровней (до шести).
+Элементы ЭВМ, являющиеся <span ondblclick="ramka()"><b><i id="text_2">представителями низшего иерар-хического</i></b></span> уровня архитектуры компьютера – цифрового логиче-ского уровня (схемотехнического), реализованные на радиотехни-ческих деталях, представляют собой мельчайшие компоненты, на основе которых строятся более крупные составляющие вычисли-тельной машины. 
+Можно выделить три основные разновидности элементов – ло-гические элементы, запоминающие, специальные.
+</p>
+</body>
+</html>

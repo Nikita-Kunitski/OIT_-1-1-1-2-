@@ -1,0 +1,666 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Текст</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">
+<link rel="next" href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">предыдущий</a>
+  &nbsp; <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">следующий</a>&nbsp; &nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp;
+  <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp; &nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<H1 align="center">16&nbsp; Текст</H1><div class="subtoc"><p><strong>Содержание</strong>
+<ul class="toc">
+<li class="tocline2"><a href="#indentation-prop" class="tocxref">16.1
+  Отступы: свойство <span class="propinst-text-indent">'text-indent'</span> </a>
+<li class="tocline2"><a href="#alignment-prop" class="tocxref">16.2
+  Выравнивание: свойство <span class="propinst-text-align">'text-align'</span> </a>
+<li class="tocline2"><a href="#q3" class="tocxref">16.3 Декоративные
+  эффекты</a><ul class="toc">
+<li class="tocline3"><a href="#lining-striking-props" class="tocxref">16.3.1
+  Подчёркивание, надчёркивание,
+  перечёркивание и мигание: свойство <span class="propinst-text-decoration">'text-decoration'</span> </a>
+<li class="tocline3"><a href="#text-shadow-props" class="tocxref">16.3.2
+  Оттенение текста: свойство <span class="propinst-text-shadow">'text-shadow'</span> </a>
+</ul>
+<li class="tocline2"><a href="#spacing-props" class="tocxref">16.4
+  Расстояния между буквами и словами:
+  свойства <span class="propinst-letter-spacing">'letter-spacing'</span>
+  и <span class="propinst-word-spacing">'word-spacing'</span> </a>
+<li class="tocline2"><a href="#caps-prop" class="tocxref">16.5
+  Капитализация: свойство <span class="propinst-text-transform">'text-transform'</span> </a>
+<li class="tocline2"><a href="#white-space-prop" class="tocxref">16.6
+  Пробел: свойство <span class="propinst-white-space">'white-space'</span> </a>
+</ul></div>
+
+<P>Свойства, определённые в следующих
+разделах, влияют на визуальное
+представление символов, пробелов, слов и
+параграфов.
+
+<H2><br>
+16.1 <a name="indentation-prop">Отступы</a>: свойство <a href="#propdef-text-indent" class="noxref"><span
+class="propinst-text-indent">'text-indent'</span></a> </H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'text-indent'"><a name="propdef-text-indent" class="propdef-title"><strong>'text-indent'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage">&lt;percentage&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>0
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P>Это свойство специфицирует отступ первой
+строки текста в блоке. Точнее, оно
+специфицирует отступ первого бокса,
+всплывающего в первый <a
+href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">строчный бокс</a> блока. Бокс
+получает отступ относительно левого (или
+правого, для вывода справа-налево) края
+строчного бокса. Пользовательские агенты (ПА)
+должны отображать этот отступ как пробел.
+
+<P>Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><span class="index-inst" title="&lt;length&gt;"><a name="x1" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length"><strong>&lt;length&gt;</strong></span></a></span>
+<dd>Отступ имеет фиксированный размер.
+<dt><span class="index-inst" title="&lt;percentage&gt;"><a name="x2" href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span
+class="value-inst-percentage"><strong>&lt;percentage&gt;</strong>
+</span></a></span>
+<dd>Процент от ширины содержащего блока.
+</dl>
+
+<P>Значение <a href="#propdef-text-indent" class="noxref"><span
+class="propinst-text-indent">'text-indent'</span></a>  может быть
+отрицательным, но могут быть ограничения,
+зависящие от реализации. 
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Отступ
+  размером '3em' для текста.
+
+<PRE>  P { text-indent: 3em }
+</PRE>
+</div>
+
+<H2>16.2 <a name="alignment-prop">Выравнивание:</a> свойство
+<a href="#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a> </H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'text-align'"><a name="propdef-text-align" class="propdef-title"><strong>'text-align'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>left | right | center | justify | <a href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span class="value-inst-string">&lt;string&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+    и направления письма
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство описывает, как выравнивается
+инлайн-содержимое блока.<br>
+Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><strong>left</strong>, <strong>right</strong>, 
+<strong>center</strong>, and <strong>justify</strong>
+<dd>Выравнивает текст влево, вправо, по
+  центру и по формату.
+<dt><span class="index-inst" title="&lt;string&gt;"><a name="x4" href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span
+class="value-inst-string"><strong>&lt;string&gt;</strong></span></a></span>
+<dd>Специфицирует строку, в которой ячейки
+  столбца таблицы будут выровнены (см.
+  детали и пример в разделе <a href="tables.html#column-alignment" tppabs="http://pyramidin.narod.ru/css2/tables.html#column-alignment">Горизонтальное
+  выравнивание в столбце</a>). Это значение
+  применяется <em>только</em> к ячейкам <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">таблицы</a>.
+  Если установлено в другом элементе, оно
+  рассматривается как 'left' или 'right', в
+  зависимости от того, каково направление
+  письма: <a href="visuren.html#propdef-direction" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-direction" class="noxref"><span
+class="propinst-direction">'direction'</span></a> - 'ltr' или 'rtl',
+  соответственно.
+</dl>
+
+<P>Блок текста это стопка <a href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">строчных
+боксов</a>. В случаях 'left', 'right' и 'center', это
+свойство специфицирует, как инлайн-боксы в
+каждом строчном боксе выравниваются
+относительно левой и правой сторон
+строчного бокса; выравнивание не
+производится относительно <a
+href="visuren.html#viewport" tppabs="http://pyramidin.narod.ru/css2/visuren.html#viewport">порта просмотра</a>. В случае
+с&nbsp; 'justify', ПА может сжать инлайн-боксы в
+дополнение к уточнению их позиций. (См.
+также <a href="#propdef-letter-spacing" class="noxref"><span
+class="propinst-letter-spacing">'letter-spacing'</span></a> и <a href="#propdef-word-spacing" class="noxref"><span
+class="propinst-word-spacing">'word-spacing'</span></a>.)
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Здесь
+  обратите внимание, что, поскольку <a href="#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a>  наследуется,
+  все элементы уровня блока внутри элемента DIV
+  с 'class=center' получат своё инлайн-содержимое
+  сцентрированным. 
+
+<PRE>DIV.center { text-align: center }</PRE>
+</div>
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ Фактический алгоритм выравнивания по
+формату зависит от ПА и языка письма.</em>
+
+<P><em><span class="index-inst" title="conformance"><a name="x5"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие
+пользовательские агенты (ПА</a>)</span> могут
+интерпретировать значение 'justify' как 'left' или
+'right', в зависимости от того, каково по
+умолчанию направление письма: слева-направо
+или справа-налево, соответственно.</em>
+</div>
+
+<H2><a name="q3"><br>
+16.3
+&#1044;&#1077;&#1082;&#1086;&#1088;&#1072;&#1090;&#1080;&#1074;&#1085;&#1099;&#1077;
+&#1101;&#1092;&#1092;&#1077;&#1082;&#1090;&#1099;</a></H2>
+
+<H3>16.3.1 <a name="lining-striking-props">Подчёркивание,
+надчёркивание, перечёркивание и мигание</a>:
+свойство <a href="#propdef-text-decoration" class="noxref"><span
+class="propinst-text-decoration">'text-decoration'</span></a>
+</H3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'text-decoration'"><a name="propdef-text-decoration" class="propdef-title"><strong>'text-decoration'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>none | [ underline || overline || line-through || blink ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет (см. текст)
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство описывает декоративное
+оформление текста элемента. Если это
+свойство специфицировано для элемента <a
+href="visuren.html#block-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#block-level">уровня блока</a>, оно
+воздействует на всех потомков инлайн-уровня
+данного элемента. Если оно специфицировано
+(или влияет на) элемент <a href="visuren.html#inline-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#inline-level">инлайн-уровня</a>,
+оно воздействует на все боксы, генерируемые
+элементом. Если элемент не имеет
+содержимого или текста (например, элемент IMG
+в HTML), ПА обязаны <a href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорировать</a>
+данное свойство.
+
+<P>Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><strong>none</strong>
+<dd>Не производит декоративное оформление.
+<dt><strong>underline</strong>
+<dd>Каждая строка текста подчёркнута.
+<dt><strong>overline</strong>
+<dd>Каждая строка текста имеет над собой
+  линию.
+<dt><strong>line-through</strong>
+<dd>Каждая строка текста имеет посередине
+  перечёркивающую линию.
+<dt><strong>blink</strong>
+<dd>Текст мигает. От <a href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствующих
+  ПА</a> не требуется поддерживать это
+  значение.
+</dl>
+
+<P>Цвет(а), необходимый для декорирования
+текста, должен быть получен из значения
+свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>.
+
+<P> Это свойство не наследуется, но боксы -
+потомки бокса блока должны быть
+сформатированы с тем же оформлением (например,
+все должны быть с подчёркиванием). Цвет
+оформления должен остаться тем же самым,
+даже если элементы-потомки имеют другие
+значения <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>В
+  следующем примере для HTML, текстовое
+  содержимое всех элементов A будет
+  подчёркнуто:</p>
+
+<PRE>A[href] { text-decoration: underline }
+</PRE>
+</div>
+
+<H3>16.3.2 <a name="text-shadow-props">Оттенение текста</a>:
+свойство <a href="#propdef-text-shadow" class="noxref"><span
+class="propinst-text-shadow">'text-shadow'</span></a> </H3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'text-shadow'"><a name="propdef-text-shadow" class="propdef-title"><strong>'text-shadow'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>none | [<a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> || <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a>? ,]*
+[<a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> || <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a>?] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет (см. текст)
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство принимает список
+разделённых запятыми эффектов оттенения,
+применяемых к тексту элемента. Эффекты
+оттенения применяются в том порядке, в
+котором они специфицированы, и могут, таким
+образом, перекрываться один другим, но они
+никогда не перекрывают сам текст. Эффекты
+оттенения не изменяют размеры бокса, но
+могут выходить за его пределы. <A
+href="visuren.html#stack-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#stack-level">Уровень стэка</a> эффекта
+оттенения - тот же самый, что и самого
+элемента.<P>Каждый эффект оттенения обязан
+специфицировать смещение оттенения и может
+по выбору специфицировать радиус рассеяния
+и цвет тени.<P>Смещение оттенения
+специфицируется двумя значениями <span class="index-inst"
+title="&lt;length&gt;"><a name="x8" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length">&lt;length&gt;</span></a></span><span
+class="value-inst-length">,</span> указывающими расстояние
+от текста. Первое значение специфицирует расстояние
+по горизонтали справа от текста.
+Отрицательное значение по горизонтали
+помещает тень слева от текста. Второе
+значение специфицирует вертикальное
+расстояние под текстом. Отрицательное
+значение по вертикали помещает тень сверху
+от текста.<P>Радиус рассеяния может быть по
+выбору специфицирован после смещения
+оттенения. Радиус рассеяния это значение,
+обозначающее границы эффекта рассеяния.
+Точный алгоритм вычисления эффекта
+рассеяния не специфицирован.<P>Значение
+цвета может быть по выбору специфицировано
+до или после значений
+length эффекта оттенения. Значение цвета будет
+использоваться как базис эффекта оттенения.
+Если цвет не специфицирован, вместо него
+будет использоваться значение свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>.
+
+<P>Оттенения текста могут использоваться
+вместе с псевдоэлементами <a
+href="selector.html#first-letter" tppabs="http://pyramidin.narod.ru/css2/selector.html#first-letter">:first-letter</a>  и <a
+href="selector.html#first-line" tppabs="http://pyramidin.narod.ru/css2/selector.html#first-line">:first-line</a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+  <P>Следующий пример установит тень справа и
+  снизу от текста элемента. Поскольку цвет
+  не специфицирован, тень будет того же
+  цвета, что и сам элемент, и, поскольку
+  радиус рассеяния не специфицирован, тень
+  текста не будет рассеиваться:</p>
+
+<PRE>H1 { text-shadow: 0.2em 0.2em }</PRE>
+
+  <P>Следующий пример установит тень справа и
+  снизу от текста элемента. Тень будет иметь
+  радиус рассеяния 5px и красный цвет:
+
+<PRE>H2 { text-shadow: 3px 3px 5px red }</PRE>
+
+  <P>Следующий пример специфицирует список
+  эффектов оттенения. Первая тень будет
+  справа и снизу от текста элемента и будет
+  красного цвета без рассеяния. Вторая тень
+  будет перекрывать первую и будет жёлтая, с
+  рассеянием и размещена влево и ниже текста.
+  Третья тень будет справа и сверху над
+  текстом. Поскольку у неё цвет не
+  специфицирован, будет использоваться
+  значение свойства&nbsp; <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>
+  элемента:</p>
+
+<PRE>H2 { text-shadow: 3px 3px red, yellow -3px 3px 2px, 3px -3px }</PRE>
+
+</DIV>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<P>Рассмотри этот пример:
+
+<PRE>SPAN.glow { 
+    background: white; 
+    color: white;
+    text-shadow: black 0px 0px 5px;
+}</PRE>
+
+  <P>Здесь свойства <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a> 
+  и <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a> 
+  имеют одинаковые значения, и свойство <a href="#propdef-text-shadow" class="noxref"><span class="propinst-text-shadow">'text-shadow'</span></a>
+  используется для создания эффекта &quot;солнечного&nbsp;
+  затмения&quot;:</p>
+
+<P><IMG SRC="eclipse-outline.gif" tppabs="http://pyramidin.narod.ru/css2/eclipse-outline.gif" alt="Solar eclipse effect" width="141" height="58"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-eclipse-outline" href="eclipse-outline-desc.html" tppabs="http://pyramidin.narod.ru/css2/eclipse-outline-desc.html" title="Long description of text shadow example">[D]</A></SPAN></p>
+</DIV>
+
+<div class="note"><P>
+<em><strong>Примечание.</strong> Это свойство не
+определено в CSS1. Некоторые эффекты
+оттенения (такие как в последнем примере)
+могут делать текст невидимым в ПА,
+поддерживающих только CSS1.</em>
+</div>
+
+<H2><br>
+16.4 <a name="spacing-props">Расстояния между буквами и
+словами</a>: свойства <a href="#propdef-letter-spacing" class="noxref"><span
+class="propinst-letter-spacing">'letter-spacing'</span></a>  и <a href="#propdef-word-spacing" class="noxref"><span
+class="propinst-word-spacing">'word-spacing'</span></a> </H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'letter-spacing'"><a name="propdef-letter-spacing" class="propdef-title"><strong>'letter-spacing'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>normal | <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>normal
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует расстояние
+между символами текста.<br>
+Значения имеют следующий смысл:</P>
+
+<dl>
+<dt><strong>normal</strong>
+<dd>Нормальное расстояние для текущего
+  шрифта. Это значение позволяет ПА изменять
+  расстояние между символами при
+  выравнивании и распределении текста.
+<dt><span class="index-inst" title="&lt;length&gt;"><a name="x10" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length"><strong>&lt;length&gt;</strong></span></a></span>
+<dd>Обозначает межсимвольное пространство, <em>дополнительное</em><em>
+  к значению по умолчанию</em>. Значения могут
+  быть отрицательными, но могут иметься
+  ограничения в конкретных реализациях. ПА
+  могут не иметь возможности после этого
+  возможности изменять межсимвольное
+  пространство для распределения и
+  выравнивания текста.
+</dl>
+
+<P>Алгоритмы межсимвольного пространства независимы
+от ПА. Межсимвольное пространство может
+также устанавливаться при выравнивании по
+формату (см. свойство <a href="#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a>).
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>В этом
+  примере пространство между символами в
+  элементах
+BLOCKQUOTE увеличено на '0.1em'.
+
+<PRE>BLOCKQUOTE { letter-spacing: 0.1em }</PRE>
+
+  <P>В следующем примере ПАгенту не разрешено
+  изменять межсимвольное пространство:</p>
+
+<PRE>BLOCKQUOTE { letter-spacing: 0cm }   /* То же, что '0' */</PRE>
+</div>
+
+<P> Если расстояние-результат между двумя
+символами отличается от расстояния по
+умолчанию, ПА не должны использовать
+лигатуры<a name="x11"><span class="index-inst" title="ligatures">.</span></a>
+
+<P><span class="index-inst" title="conformance"><a name="x12"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие ПА</a></span>
+могут рассматривать значение свойства <a href="#propdef-letter-spacing" class="noxref"><span
+class="propinst-letter-spacing">'letter-spacing'</span></a>  как 'normal'.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'word-spacing'"><a name="propdef-word-spacing" class="propdef-title"><strong>'word-spacing'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>normal | <a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>normal
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство специфицирует расстояние
+между словами.<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><strong>normal</strong>
+<dd>Нормальное межсловное пространство, как
+  определено текущим шрифтом и/или ПА.
+<dt><span class="index-inst" title="&lt;length&gt;"><a name="x14" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length"><strong>&lt;length&gt;</strong></span></a></span>
+<dd>Это значение указывает межсловное
+  пространство, <em>дополняющее</em> значение
+  по умолчанию. Значения могут быть
+  отрицательными, но могут существовать
+  ограничения, в зависимости от конкретной
+  реализацией. 
+</dl>
+
+<P>Алгоритмы межсловного пространства
+зависят от ПА. Межсловное пространство
+устанавливается также при выравнивании по
+формату (см. свойство <a href="#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a>).
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Здесь пространство между словами в
+элементах H1 увеличено на '1em'.
+
+<PRE>H1 { word-spacing: 1em }</PRE>
+</div>
+
+<P><span class="index-inst" title="conformance"><a name="x12"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие ПА</a></span>
+могут <a name="x15">рассмат</a>ривать значение свойство <a href="#propdef-letter-spacing" class="noxref"><span
+class="propinst-letter-spacing">'letter-spacing'</span></a>  как 'normal'.
+
+
+
+<H2><br>
+16.5 <a name="caps-prop">Капитализация</a>: свойство <a href="#propdef-text-transform" class="noxref"><span
+class="propinst-text-transform">'text-transform'</span></a> </H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'text-transform'"><a name="propdef-text-transform" class="propdef-title"><strong>'text-transform'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>capitalize | uppercase | lowercase | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство управляет эффектами
+капитализации текста элемента.<br>
+Значения имеют следующий смысл:</p>
+
+<DL>
+  <DT><strong>capitalize</strong>
+  <DD>Переводит первый символ каждого слова в
+    верхний регистр.
+  <DT><strong>uppercase</strong>
+  <DD>Переводит все символы каждого слова в
+    верхний регистр.
+  <DT><strong>lowercase</strong>
+  <DD>Переводит все символы каждого слова в
+    нижний регистр.
+  <DT><strong>none</strong>
+  <DD>Нет эффектов капитализации.
+</DL>
+
+<P>Реальная трансформация зависит в каждом
+конкретном случае от языка письма. См. о
+способах определения языка элемента в RFC 2070 (<a href="refs.html#ref-RFC2070" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC2070" rel="biblioentry" class="noxref"><span class="normref">[RFC2070]</span></a>).<P><span class="index-inst" title="conformance"><a name="x17"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие ПА</a></span>
+могут рассматривать значение <a href="#propdef-text-transform" class="noxref"><span
+class="propinst-text-transform">'text-transform'</span></a>  как 'none'
+для тех символов, которые не входят в
+репертуар Latin-1, и для элементов на тех
+языках, в которых трансформация отличается
+от трансформации, специфицированной
+таблицей конвертации регистров для ISO 10646
+(<a href="refs.html#ref-ISO10646" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-ISO10646" rel="biblioentry" class="noxref"><span class="normref">[ISO10646]</span></a>).
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Здесь
+  весь текст в элементе H1 переводится в
+  верхний регистр.
+<PRE>H1 { text-transform: uppercase }
+</PRE>
+</div>
+
+<H2>16.6 <a name="white-space-prop">Пробел</a>: свойство <a href="#propdef-white-space" class="noxref"><span
+class="propinst-white-space">'white-space'</span></a> </H2>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'white-space'"><a name="propdef-white-space" class="propdef-title"><strong>'white-space'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>normal | pre | nowrap | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>normal
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+    элементам уровня блока
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство объявляет, как
+обрабатываются <a
+href="syndata.html#whitespace" tppabs="http://pyramidin.narod.ru/css2/syndata.html#whitespace">пробелы</a> внутри элемента.<br>
+Значения имеют следующий смысл:</P>
+
+
+
+<dl>
+<dt><strong>normal</strong>
+<dd>Это значение указывает ПАгентам, что
+  нужно сжимать последовательности
+  пробелов и что нужны разрывы строк для
+  заполнения строк бокса. Дополнительные
+  разрывы строк могут создаваться с помощью
+  ввода "\A" в генерируемом содержимом (например,
+  для элемента BR в HTML).
+<dt><strong>pre</strong>
+<dd>Это значение предотвращает сжатие
+  ПАгентами последовательностей пробелов.
+  Строки переносятся только в коде
+  документа или при появлениях "\A" в
+  генерируемом содержимом.
+<dt><strong>nowrap</strong>
+<dd>Это значение сжимает пробелы, как 'normal', но
+  подавляет разрывы строк в тексте, за
+  исключением тех, которые создаются "\A" в
+  генерируемом содержимом (например, для
+  элемента&nbsp; BR в HTML).
+</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующие
+  примеры демонстрируют ожидаемое
+  поведение пробелов в элементах PRE и P и
+  атрибута "nowrap" HTML.
+<PRE>PRE        { white-space: pre }
+P          { white-space: normal }
+TD[nowrap] { white-space: nowrap }</PRE>
+</div>
+
+<P><span class="index-inst" title="conformance"><a name="x19"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие ПА</a></span>
+могут <span class="index-inst" title="ignore"><a name="x20"
+href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорировать</a></span> свойство <a href="#propdef-white-space" class="noxref"><span
+class="propinst-white-space">'white-space'</span></a>  в авторских и
+пользовательских таблицах стилей, но
+обязаны специфицировать для них значение в
+таблице стилей по умолчанию.
+
+<P>&nbsp;
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="fonts.html" tppabs="http://pyramidin.narod.ru/css2/fonts.html">предыдущий</a> &nbsp; <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">следующий</a>&nbsp;
+&nbsp;<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>&nbsp;
+&nbsp;<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</HTML>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

@@ -1,0 +1,1362 @@
+<html><!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'>
+<html lang="ru"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>&#1057;&#1077;&#1083;&#1077;&#1082;&#1090;&#1086;&#1088;&#1099;</title>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="syndata.html" tppabs="http://pyramidin.narod.ru/css2/syndata.html">
+<link rel="next" href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index">
+</head>
+<body><center><!--#include virtual="/lvt.htm"--></center><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="syndata.html" tppabs="http://pyramidin.narod.ru/css2/syndata.html">предыдущий</a> &nbsp; <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+<hr class="navbar">
+
+<h1 align="center">5&nbsp; Селекторы</h1><div class="subtoc"><p><strong>Содержание</strong>
+<ul class="toc"><li class="tocline2"><a href="#q1" class="tocxref">5.1
+    Блоки символов
+    для подстановки</a>
+<li class="tocline2"><a href="#q2" class="tocxref">5.2 Синтаксис селектора</a><ul class="toc">
+<li class="tocline3"><a href="#grouping" class="tocxref">5.2.1 Группирование</a></ul>
+<li class="tocline2"><a href="#universal-selector" class="tocxref">5.3 Универсальный
+  селектор</a>
+<li class="tocline2"><a href="#type-selectors" class="tocxref">5.4 Селекторы
+  типа</a>
+<li class="tocline2"><a href="#descendant-selectors" class="tocxref">5.5 Селекторы
+  потомков</a>
+<li class="tocline2"><a href="#child-selectors" class="tocxref">5.6 Селекторы
+  дочерних элементов</a>
+<li class="tocline2"><a href="#adjacent-selectors" class="tocxref">5.7 Смежные
+  селекторы родственники</a>
+<li class="tocline2"><a href="#attribute-selectors" class="tocxref">5.8 Селекторы
+  атрибутов</a>
+<ul class="toc">
+<li class="tocline3"><a href="#q10" class="tocxref">5.8.1 Совпадение
+  атрибутов и их значений</a>
+<li class="tocline3"><a href="#q11" class="tocxref">5.8.2 Значения по
+  умолчанию для атрибутов в ОТД</a>
+<li class="tocline3"><a href="#class-html" class="tocxref">5.8.3 Селекторы
+  класса</a></ul>
+<li class="tocline2"><a href="#id-selectors" class="tocxref">5.9
+  Селекторы ID</a>
+<li class="tocline2"><a href="#pseudo-elements" class="tocxref">5.10 Псевдоэлементы
+  и псевдоклассы</a>
+<li class="tocline2"><a href="#q15" class="tocxref">5.11 Псевдоклассы</a><ul class="toc">
+<li class="tocline3"><a href="#first-child" class="tocxref">5.11.1
+  Псевдокласс :first-child</a>
+<li class="tocline3"><a href="#link-pseudo-classes" class="tocxref">5.11.2
+  Псевдоклассы гиперссылки&nbsp; <span class="index-def" title="pseudo-classes:::link|:link|link (pseudo-class)">:link</span> 
+  и <span class="index-def" title="pseudo-classes:::visited|:visited|visited (pseudo-class)">:visited</span></a>
+<li class="tocline3"><a href="#dynamic-pseudo-classes" class="tocxref">5.11.3
+  Динамические псевдоклассы <span class="index-def" title="pseudo-classes:::hover|:hover|hover (pseudo-class)">:hover</span>, <span class="index-def" title="pseudo-classes:::active|:active|active (pseudo-class)">:active</span>
+  и <span class="index-def" title="pseudo-classes:::focus|:focus|focus (pseudo-class)">:focus</span></a>
+<li class="tocline3"><a href="#lang" class="tocxref">5.11.4
+  Псевдокласс языка&nbsp; <span class="index-def" title="pseudo-classes:::lang|:lang|lang (pseudo-class)">:lang</span></a>
+</ul><li class="tocline2"><a href="#q20" class="tocxref">5.12 Псевдоэлементы</a><ul class="toc">
+<li class="tocline3"><a href="#first-line-pseudo" class="tocxref">5.12.1
+  Псевдоэлемент <span class="index-def" title="pseudo-elements:::first-line|:first-line|first-line">:first-line</span> </a>
+<li class="tocline3"><a href="#first-letter" class="tocxref">5.12.2
+  Псевдоэлемент <span class="index-def" title="pseudo-elements:::first-letter|:first-letter|first-letter">:first-letter</span> </a>
+<li class="tocline3"><a href="#before-and-after" class="tocxref">5.12.3
+  Псевдоэлементы&nbsp; <span class="index-def" title="pseudo-elements:::before|:before">:before</span>
+  и <span class="index-def" title="pseudo-elements:::after|:after">:after</span> </a>
+</ul></ul></div>
+<h2><a name="q1"><br>
+5.1 Блоки символов &#1076;&#1083;&#1103; &#1087;&#1086;&#1076;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1080;</a></h2>
+
+<p>В CSS правила совпадения символов
+определяют, какое правило стиля применить к
+элементам <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a>.
+Такие блоки символов (патэрн), называемые <a name="x0"><span class="index-inst"
+title="selector">селекторами,</span></a> могут иметь
+диапазон имён от простых имён элементов до
+сложных контекстуальных блоков. <a name="x1"> Если</a> все
+условия в патэрн верны для конкретного
+элемента, селектор <span class="index-def"
+title="match|selector::match"><dfn>совпадает</dfn></span> с
+элементом.<P>Чувствительность к регистру имён
+элементов в селекторах зависит от языка
+документа. Например, в HTML имена элементов нечувствительны
+к регистру, а в XML - чувствительны к регистру.
+
+<P>В этой таблице суммирован синтаксис
+селекторов CSS2:</P>
+
+<table border=1 width="100%">
+<TR><TH>Патэрн<TH>Смысл<TH>Описан в разделе</TR>
+<TR><TD>*<TD>Совпадает любой элемент.<TD><a href="#universal-selector">Универсальный
+    селектор</a></TR>
+<TR><TD>E<TD>Совпадает любой элемент E (т.е.
+    элемент типа E).<TD><a href="#type-selectors">Типы селекторов</a></TR>
+<TR><TD>E F<TD>Совпадает любой элемент F,
+    являющийся потомком элемента E.<TD><a href="#descendant-selectors">Селекторы-потомки</a></TR>
+<TR><TD>E &gt; F<TD>Совпадает любой элемент F,
+    являющийся дочерним относительно
+    элемента E.<TD><a href="#child-selectors">Дочерние селекторы</a></TR>
+<TR><TD>E:first-child<TD>Совпадает элемент E, если E
+    является первым дочерним элементом
+    своего родителя.
+<TD><a href="#first-child">Псевдокласс :first-child</a></TR>
+
+<TR><TD>E:link<br>E:visited <TD>Совпадает элемент E, если E
+    является якорем ещё не посещённого
+    ресурса гиперссылки (:link) или уже
+    посещённого (:visited).
+<TD><a href="#link-pseudo-classes">Псевдоклассы гиперссылки</a></TR>
+<TR><TD>E:active<br>E:hover<br>E:focus <TD>Совпадает элемент E
+    во время определённых действий
+    пользователя.
+<TD><a href="#dynamic-pseudo-classes">Динамические псевдоклассы</a>
+<TR><TD>E:lang(c) <TD>Совпадает элемент типа E, если
+    он на (человеческом) языке с (язык
+    документа специфицирует то, как
+    определяется язык).
+<TD><a href="#lang">Псевдокласс&nbsp; :lang()</a>
+<TR><TD>E + F<TD>Совпадает любой элемент F,
+    непосредственно перед которым идёт
+    элемент E.<TD><a href="#adjacent-selectors">Смежные селекторы</a>
+</TR>
+<TR><TD>E[foo]<TD>Совпадает любой элемент E с
+    установленным атрибутом &quot;foo&quot; (с каким-либо
+    значением).
+<TD><a href="#attribute-selectors">Селекторы атрибутов</a>
+</TR>
+<TR><TD>E[foo="warning"]<TD>Совпадает любой элемент E,
+    чьё значение атрибута &quot;foo&quot; точно
+    равно &quot;warning&quot;.
+<TD><a href="#attribute-selectors">Селекторы атрибутов</a>
+</TR>
+<TR><TD>E[foo~="warning"]<TD>Совпадает любой элемент E,
+    чьё значение атрибута &quot;foo&quot; является
+    списком разделённых пробелами значений,
+    одно из которых точно равно &quot;warning&quot;.
+<TD><a href="#attribute-selectors">Селекторы атрибутов</a>
+</TR>
+<TR><TD>E[lang|="en"]<TD>Совпадает любой элемент E, чей
+    атрибут "lang" содержит список разделённых
+    дефисами значений, начинающийся (слева) с
+    &quot;en&quot;.
+<TD><a href="#attribute-selectors">Селекторы атрибутов</a>
+</TR>
+<TR><TD>DIV.warning<TD><em>Только в HTML</em>. То же, что
+    DIV[class~=&quot;warning&quot;].
+<TD><a href="#class-html">Селекторы классов</a></TR>
+<TR><TD>E#myid<TD>Совпадает любой ID элемента E,
+    эквивалентный &quot;myid&quot;.<TD><a href="#id-selectors">Селекторы
+    ID</a></TR>
+</table>
+
+
+<h2><a name="q2"><br>
+5.2&nbsp; Синтаксис селектора</a></h2>
+
+<P> <span class="index-def" title="simple selector"><a
+name="simple-selector"><dfn>Простой селектор</dfn></a></span> - <a href="#type-selectors">селектор
+типа</a> или <a
+href="#universal-selector">универсальный селектор</a>,
+непосредственно после которого идёт ноль
+или более <a href="#attribute-selectors">селекторов атрибутов</a>, <a href="#id-selectors">селекторов
+ID</a> или <a
+href="#pseudo-classes">псевдоклассов</a> в любом
+порядке. Простой селектор совпадает, если совпадают
+все его компоненты.<P> <a name="x4"><span class="index-def"
+title="selector"><dfn>Селектор</dfn></span></a> это цепь из
+одного или более простых селекторов,
+разделённых комбинаторами.  <span class="index-def"
+title="combinator"><a
+name="combinator"><dfn>Комбинаторами</dfn></a></span>
+являются: пробелы,
+"&gt;&quot; и "+". Пробелы могут появляться между
+комбинатором и простыми селекторами вокруг
+него.<P>Элементы дерева документов,
+совпадающие с селектором, называются
+<span class="index-def" title="subject (of selector)|selector::subject
+of"><a name="subject"><dfn>субъектами</dfn></a></span> 
+селектора. Селектор, состоящий из одного
+простого селектора, совпадает с любым
+элементом, удовлетворяющим его условиям.
+Предопределённость простого селектора и
+комбинатора в цепи вызывает дополнительные
+ограничения для совпадения, так что
+субъекты селектора всегда являются
+поднабором элементов, совпадающим с самым
+правым простым селектором.<P>Один <a href="#pseudo-elements">псевдоэлемент</a>
+может быть присоединён к последнему
+простому селектору в цепи, и в этом случае
+информация стиля применяется к подразделу
+каждого субъекта.
+
+<h3><br>
+5.2.1&nbsp; <a name="grouping">Группирование</a></h3>
+
+<p>Если несколько селекторов используют
+общие объявления, то они могут быть
+сгруппированы в список с разделением
+запятыми.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <P>Здесь три правила с идентичными
+  объявлениями собраны в одно. Таким образом,
+
+<pre>H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }</pre>
+
+<p>эквивалентно:</p>
+
+<pre>H1, H2, H3 { font-family: sans-serif }</pre>
+</div>
+
+<P>CSS предлагает также другие механизмы &quot;сокращений&quot;,
+включая 
+<span class="index-def" title="multiple declarations">
+<a name="x8" href="syndata.html#declaration" tppabs="http://pyramidin.narod.ru/css2/syndata.html#declaration">множественные объявления</a></span>
+и <span class="index-inst" title="shorthand property"><a name="x9"
+href="about.html#shorthand" tppabs="http://pyramidin.narod.ru/css2/about.html#shorthand">сокращённые свойства</a></span>.
+
+<h2><br>
+5.3&nbsp;<a name="universal-selector"> Универсальный селектор</a>&nbsp;&nbsp;<a name="x10">&nbsp;&nbsp;</a></h2>
+
+<P>Универсальный селектор, записываемый "*",
+совпадает с именем любого типа элемента. Он
+совпадает с любым простым элементом в <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дереве документа.</a><P>Универсальный
+селектор не является единственным компонентом <a
+href="#simple-selector">простого селектора</a>, символ "*"
+может быть опущен. Например:</P>
+
+<ul>
+<li><code>*[LANG=fr] </code>и <code>[LANG=fr]</code>  эквивалентны.
+<li><code>*.warning</code> и <code>.warning</code>&nbsp;
+  эквивалентны.
+<li><code>*#myid</code> и <code>#myid</code>&nbsp; эквивалентны.
+</ul>
+
+<h2><br>
+5.4&nbsp; <a name="type-selectors">Селекторы типа</a></h2>
+
+<p><a name="x11"><span class="index-def" title="type selector"><em>Селектор
+типа</em></span></a> совпадает с именем типа
+элемента языка документа. Селектор типа
+совпадает с каждым вхождением типа
+элемента в дереве документа.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <P>Следующее правило совпадает со всеми
+  элементами H1 в дереве документа:</p>
+
+<pre>H1 { font-family: sans-serif }
+</pre>
+</div>
+
+<h2>5.5&nbsp; <a name="descendant-selectors">Селекторы потомков</a></h2>
+
+<p>А<a name="x12">вторам </a> может понадобиться, чтобы селекторы
+совпадали с элементом, который является
+потомком другого элемента в дереве
+документа (например, &quot;Совпадать с теми
+элементами EM, которые содержаться в
+элементе H1&quot;). Селекторы потомков выражают
+следующие взаимоотношения в патэрн.
+Селектор потомков состоит из двух или более
+селекторов, разделённых
+<a href="syndata.html#whitespace" tppabs="http://pyramidin.narod.ru/css2/syndata.html#whitespace">пробелами</a>. Селектор
+потомков&nbsp; "<code>A B</code>" совпадает, если
+элемент&nbsp; <code>B</code>&nbsp; является
+произвольным потомком некоторого элемента-<a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">предка</a>&nbsp; <code>A</code>.
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+Рассмотрим следующие правила:</p>
+
+<pre>H1 { color: red }
+EM { color: red }</pre>
+
+  <p>Хотя смысл этих правил в том, чтобы выделять
+  текст путём изменения его цвета, в
+  следующем случае эффект не будет
+  достигнут:</p>
+
+<pre class="html-example">&lt;H1&gt;This headline is &lt;EM&gt;very&lt;/EM&gt; important&lt;/H1&gt;</pre>
+
+  <p>В этом случае мы дополняем предыдущие
+  правила правилом, которое устанавливает голубой
+  цвет текста, если EM появляется где-либо
+  внутри H1:</p>
+
+<pre>H1 { color: red }
+EM { color: red }
+H1 EM { color: blue }</pre>
+
+<p>Третье правило совпадёт с элементом EM в
+следующем фрагменте:</p>
+
+<pre class="html-example">&lt;H1&gt;This &lt;SPAN class=&quot;myclass&quot;&gt;headline 
+is &lt;EM&gt;very&lt;/EM&gt; important&lt;/SPAN&gt;&lt;/H1&gt;</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Следующий селектор:</p>
+
+<PRE>DIV * P</PRE>
+
+  <P>совпадает с элементом P, который является
+  внуком, или позднейшим потомком, элемента DIV.
+  Обратите внимание на пробелы с каждой
+  стороны от "*".
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Селектор
+  в следующем правиле, сочетающий селекторы
+  потомка и <a href="#attribute-selectors">атрибута</a>,
+  совпадает с любым элементом, имеющим (1)
+  установленный атрибут "href" и (2) находящимся
+  внутри P, который сам находится внутри DIV:</p>
+
+<pre>DIV P *[href]
+</pre>
+</div>
+
+<h2>5.6 <a name="child-selectors">Селекторы дочерних элементов</a></h2>
+
+<p> <a name="x13"><span class="index-def" title="child selector"><em>Селектор
+дочерних элементов</em></span></a> совпадает, если
+элемент является <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дочерним</a> относительно
+другого элемента. Селектор дочерних
+элементов состоит из двух или более
+селекторов, разделённых символом "&gt;".
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Это
+  правило устанавливает стиль всех
+  элементов P, являющихся дочерними
+  относительно BODY:</p>
+
+<pre>BODY &gt; P { line-height: 1.3 }</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Здесь сочетаются селекторы потомков и
+селекторы дочерних элементов:</p>
+<pre>DIV OL&gt;LI P</pre>
+
+  <P>Здесь селектор совпадает с элементом P,
+  являющимся потомком LI; элемент LI обязан
+  быть дочерним относительно элемента OL;
+  элемент OL обязан быть потомком DIV.<br>
+  Обратите
+  внимание, что необязательные пробелы
+  вокруг комбинатора "&gt;" опущены.
+</div>
+
+<P>Информацию о выборе первого дочернего
+элемента данного элемента см. ниже в
+разделе о псевдоклассе <a href="#first-child">:first-child</a>.
+
+<h2><br>
+5.7 <a name="adjacent-selectors">&#1057;&#1084;&#1077;&#1078;&#1085;&#1099;&#1077;
+&#1089;&#1077;&#1083;&#1077;&#1082;&#1090;&#1086;&#1088;&#1099;-&#1088;&#1086;&#1076;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1080;&#1082;&#1080;</a></h2>
+
+<p>Смежные селекторы-родственники имеют
+следующий синтаксис: E1 + E2, где E2 является
+субъектом селектора. Селектор совпадает,
+если E1 и E2 имеют одного общего предка в
+дереве документа и E1 непосредственно
+предшествует E2.<p>В определённых контекстах
+смежные элементы генерируют
+форматированные объекты, чьё представление
+обрабатывается автоматически (например,
+сжатие вертикальных полей между смежными
+боксами). Селектор "+" позволяет авторам
+специфицировать дополнительный стиль для
+смежных элементов.
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Так,
+  следующее правило указывает, что если
+  элемент P следует непосредственно за
+  элементом MATH, то он не должен учитываться:</p>
+
+<pre>MATH + P { text-indent: 0 } </pre>
+
+  <p>Следующий пример уменьшает вертикальное
+  пространство, разделяющее H1 и H2:</p>
+
+<pre>H1 + H2 { margin-top: -5mm }   </pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Следующее
+  правило аналогично одному из
+  вышеприведённых примеров, за исключением
+  того, что оно добавляет селектор атрибута.
+  Таким образом, специальное форматирование
+  возникает только тогда, когда
+H1 имеет <samp>class=&quot;opener&quot;</samp>:</p>
+
+<pre>H1.opener + H2 { margin-top: -5mm }   
+</pre>
+</div>
+
+<h2>5.8 <a name="attribute-selectors">Селекторы атрибутов</a></h2>
+
+<p>CSS2 позволяет авторам специфицировать
+правила, которые определяют совпадение
+атрибутов, определённых в документе-источнике.
+
+<h3><a name="q10"><br>
+5.8.1 Совпадение атрибутов и их значений</a></h3>
+
+<P>Селекторы атрибутов могут совпадать
+четырьмя способами:</p>
+
+<dl>
+<dt><code>[att]</code>
+<dd>Если элемент устанавливает атрибут
+  &quot;att&quot; с каким-либо значением атрибута.
+<dt><a name="x14"><span class="index-def" title="exact
+matching|="><code>[att=val]</code></span></a>
+<dd>Если значение атрибута &quot;att&quot; элемента
+  - точно &quot;val&quot;.
+<dt><a name="x16"><span class="index-def" title="space-separated
+matching|~="><code>[att~=val]</code></span></a>
+<dd>Если значение атрибута &quot;att&quot; элемента
+  - список разделённых пробелами &quot;слов&quot;,
+  одно из которых - &quot;val&quot;. Если
+  используется данный селектор, то слова в
+  значении обязаны не содержать пробелов (поскольку
+  они сами разделяются пробелами).
+<dt><a name="x18"><span class="index-def" title="hyphen-separated
+matching|&#124;="><code>[att|=val]</code></span></a>
+<dd>Если значения атрибута &quot;att&quot; элемента
+  - список разделённых дефисами &quot;слов&quot;,
+  начинающийся с &quot;val&quot;. Совпадение всегда
+  стартует от начала значения атрибута. Это
+  принимается во внимание прежде всего для
+  того, чтобы <a name="x20">позволит</a>ь совпасть субкоду
+  языка (например, атрибут "lang" в HTML), как
+  описано в RFC 1766 (<a href="refs.html#ref-RFC1766" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC1766" rel="biblioentry" class="noxref"><span class="informref">[RFC1766]</span></a>).
+</dl>
+
+<p>Значением атрибута обязана быть строка
+или идентификатор. Чувствительность к
+регистру имён атрибутов и значений в
+селекторах зависит от языка документа.
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+Следующий селектор атрибута совпадает со
+всеми элементами H1, которые
+специфицировали атрибут &quot;title&quot; с любым
+значением:</p>
+
+<pre>H1[title] { color: blue; }</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Здесь
+  селектор совпадает со всеми элементами SPAN,
+  чей атрибут &quot;class&quot; имеет значение
+  &quot;example&quot;:</p>
+
+<pre>SPAN[class=example] { color: blue; }</pre>
+</div>
+
+<P>Несколько селекторов атрибута могут
+использовать для обращения к различным
+атрибутам элемента, или даже несколько раз
+к одному и тому же атрибуту.
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Здесь
+  селектор совпадает со всеми элементами SPAN,
+  чей атрибут &quot;hello&quot; имеет значение
+  &quot;Cleveland&quot; и чей атрибут &quot;goodbye&quot; имеет
+  значение &quot;Columbus&quot;:</P>
+
+<pre>SPAN[hello=&quot;Cleveland&quot;][goodbye=&quot;Columbus&quot;] { color: blue; }</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Следующие
+  селекторы иллюстрируют разницу между "=" и "~=".
+  первый селектор совпадает, к примеру, со
+  значением &quot;copyright copyleft copyeditor&quot; атрибута "rel".
+  Второй селектор совпадает только тогда,
+  когда атрибут "href" имеет значение
+  &quot;http://www.w3.org/&quot;.
+</p>
+
+<pre>A[rel~=&quot;copyright&quot;]
+A[href=&quot;http://www.w3.org/&quot;]</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующее
+  правило скрывает все элементы, у которых
+  атрибут "lang" имеет значение &quot;fr&quot; (т.е.
+  язык - французский).
+
+<PRE>*[LANG=fr] { display : none }</PRE>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Следующее правило совпадает для значений
+атрибута "lang", начинающихся с &quot;en&quot;,
+включая &quot;en&quot;, &quot;en-US&quot; и &quot;en-cockney&quot;:</p>
+
+<PRE>*[LANG|=&quot;en&quot;] { color : red }</PRE>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Таким
+  же образом, следующие правила звуковой
+  таблицы стилей позволяют громко читать
+  скрипт различными для каждой роли
+  голосами:</p>
+
+<pre class="example">DIALOGUE[character=romeo] 
+     { voice-family: &quot;Lawrence Olivier&quot;, charles, male }
+      
+DIALOGUE[character=juliet]  
+     { voice-family: &quot;Vivien Leigh&quot;, victoria, female }
+</pre>
+</div>
+
+<H3><a name="q11">5.8.2&nbsp; Значения по умолчанию для атрибутов
+в ОТД</a></H3>
+
+<P>Совпадение происходит в значениях
+атрибутов в дереве документа. Для языков
+документа, отличных от HTML, значения по
+умолчанию для атрибутов могут определяться
+в <a name="x21"><span class="index-inst" title="DTD">ОТД</span></a> или
+где-либо ещё. Таблицы стилей&nbsp; должны
+создаваться так, чтобы они работали даже
+тогда, когда значения по умолчанию не
+включены в дерево документа.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <P>Рассмотрим элемент EXAMPLE с атрибутом &quot;notation&quot;,
+  имеющим значение по умолчанию "decimal".<br>
+  Фрагмент ОТД может быть таким:
+
+<pre class="dtd-example">&lt;!ATTLIST EXAMPLE notation (decimal,octal) &quot;decimal&quot;&gt;</pre>
+
+<p>Если таблица стилей содержит правила
+
+<pre class="example">EXAMPLE[notation=decimal] { /*... установки по умолчанию для свойства ...*/ }
+EXAMPLE[notation=octal] { /*... другие установки ...*/ }</pre>
+
+  <p>тогда, чтобы отобрать случаи, когда
+  атрибут установлен по умолчанию, а не явно,
+  можно добавить следующее правило:
+
+<pre class="example">EXAMPLE { /*... значения по умолчанию для свойства  ...*/ }</pre>
+
+  <p>Поскольку этот селектор менее
+  специфичен, чем селектор атрибута, он
+  будет использоваться только для случаев
+  установки значения по умолчанию. Это
+  делается для того, чтобы все другие
+  значения атрибута, не получающие тот же
+  стиль, что и стиль по умолчанию, были
+  охвачены явно.
+</div>
+
+
+<h3><br>
+5.8.3 <a name="class-html">Селекторы класса</a></h3> 
+
+<p>В таблицах стилей, используемых в HTML,
+авторы могут употреблять точку (.) как
+альтернативу "~=" при совпадении с атрибутом
+&quot;class&quot;. Таким образом, в HTML &quot;DIV.value&quot; и
+&quot;DIV[class~=value]&quot; имеют одно значение.
+Значение атрибута обязано следовать сразу
+за ".".
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Мы
+  можем назначить стилевую информацию всем
+  элементам <samp>class~=&quot;pastoral&quot;</samp>&nbsp;
+  следующим образом:</p>
+
+<pre>*.pastoral { color: green }  /* все элементы с class~=pastoral */</pre>
+
+  или просто
+
+<pre>.pastoral { color: green }  /* все элементы с class~=pastoral */</pre>
+
+  <p>Следующее - назначает стиль только
+  элементам H1 с
+<samp>class~=&quot;pastoral&quot;</samp>:</p>
+
+<pre>H1.pastoral { color: green }  /* элементы H1 с class~=pastoral */</pre>
+
+  <p>При назначении эти правил первое
+  вхождение H1 ниже не имеет зелёного цвета
+  текста, а второе - имеет:</p>
+
+<pre>&lt;H1&gt;Not green&lt;/H1&gt;
+&lt;H1 class=&quot;pastoral&quot;&gt;Very green&lt;/H1&gt;</pre>
+</div>
+
+<p>Чтобы совпасть с поднабором значений
+&quot;class&quot;, каждое значение обязано иметь
+предшествующую &quot;.&quot;.</P>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующее
+  правило совпадает с любым элементом P, чей
+  атрибут &quot;class&quot; сопоставлен списку
+  разделённых пробелами значений &quot;pastoral&quot;
+  и &quot;marine&quot;:</p>
+
+<pre> P.pastoral.marine { color: green }</pre>
+
+  <p>Правило совпадает, если&nbsp; <samp>class="pastoral blue aqua
+marine"</samp>, но не совпадает&nbsp; <samp>class="pastoral
+blue"</samp>.
+</div>
+
+<div class="note"><p> <em><strong>Примечание.</strong> CSS даёт
+  такую мощь атрибуту &quot;class&quot;, что авторы
+  могут создавать свои собственные &quot;языки
+  документа&quot; на базе элементов с почти не
+  ассоциированным представлением (таких как
+  DIV и SPAN в HTML) и назначать стилевую
+  информацию через атрибут &quot;class&quot;.
+  Авторам следует избегать такой практики,
+  поскольку структурные элементы языка
+  документа часто имеют распознаваемые и
+  принимаемые значения, а классы,
+  определённые авторами - не могут.</em>
+</div>
+
+<h2><br>
+5.9 <a name="id-selectors">Селекторы ID</a></h2>
+
+<P>Языки документов могут содержать
+атрибуты, которые объявлены как имеющие тип ID.
+Особенностью атрибутов типа ID является то,
+что они могут иметь одно значение;
+независимо от языка документа, атрибут ID
+может использоваться для уникальной
+идентификации элемента. В HTML все атрибуты ID
+именуются &quot;id&quot;; приложения XML могут
+именовать атрибуты ID по-разному, но с
+применением одинаковых ограничений.<p>Атрибут
+ID языка документа позволяет авторам
+назначать идентификатор объекту элемента в
+дереве документа. В CSS ID-селекторы совпадают
+с объектом элемента на базе идентификатора. ID-селектор
+CSS содержит "#" непосредственно перед
+значением ID.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Следующий
+  ID-селектор совпадает с элементом H1, чей
+  атрибут ID имеет значение "chapter1":</p>
+
+<PRE>H1#chapter1 { text-align: center }</PRE>
+</div>
+
+<div class="html-example"><p>В следующем пример правило
+  таблицы стилей устанавливает
+  совпадение&nbsp; элементом, чьё значение ID - "z98y".
+  Правило, таким образом, совпадает для
+  элемента P:</p>
+
+<pre>&lt;HEAD&gt;
+  &lt;TITLE&gt;Match P&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+    *#z98y { letter-spacing: 0.3em }
+  &lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+   &lt;P id=z98y&gt;Wide text&lt;/P&gt;
+&lt;/BODY&gt;</pre>
+
+<p>В следующем пример, однако, правило стиля
+совпадает только с тем элементом H1, который
+имеет значение ID - "z98y". Правило в этом
+примере не совпадает с элементом P:</p>
+
+<pre>&lt;HEAD&gt;
+  &lt;TITLE&gt;Match H1 only&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+    H1#z98y { letter-spacing: 0.5em }
+  &lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+   &lt;P id=z98y&gt;Wide text&lt;/P&gt;
+&lt;/BODY&gt;</pre>
+</div>
+
+<P>ID-селекторы имеют более высокий приоритет,
+чем селекторы атрибутов. Например, в HTML
+селектор&nbsp; <samp>#p123</samp>&nbsp; более специфичен,
+чем&nbsp; <samp>[ID=p123]</samp>, в терминах <a
+href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">каскада</a>.
+
+<div class="note">
+<p><em><strong>Примечание.</strong>  В XML 1.0 <a href="refs.html#ref-XML10" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-XML10" rel="biblioentry" class="noxref"><span class="informref">[XML10]</span></a>
+информация о том, какой атрибут содержит ID-ы
+элемента, находится в ОТД. При разборе XML, ПА
+не всегда читают ОТД и поэтому могут не
+знать, какой ID у элемента. Если дизайнер
+таблицы стилей знает или предполагает, что
+это именно данный случай, он должен
+использовать нормальные селекторы
+атрибутов: <code>[name=p371]</code>&nbsp; вместо&nbsp; <code>#p371</code>.
+Однако каскадный порядок нормальных
+селекторов атрибутов отличается от ID-селекторов.
+Может понадобиться добавить приоритет "!important"
+в объявления: <code>[name=p371]
+{color: red ! important}</code>. Конечно, элементы в
+документах XML 1.без ОТД не имеют ID-ов вообще.</em>
+</div>
+
+<h2><br>
+5.10 <a name="pseudo-elements">Псевдоэлементы</a> и <a
+name="pseudo-classes">псевдоклассы</a></h2>
+
+<p>В CSS2 стиль обычно присоединяется к
+элементу на базе его позиции в <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дереве
+документа</a>. Этой простой модели во многих
+случаях достаточно, но некоторые обычные
+сценарии могут оказаться недоступными из-за
+структуры <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a>.
+Например, в HTML
+4.0 (см. <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>)
+нет элементов, относящихся к первой строке
+параграфа, и, следовательно, простой
+селектор CSS не может с ним соотноситься.</p>
+
+<p>CSS вводит <a name="x22"><span class="index-def"
+title="pseudo-elements"><dfn>псевдоэлементы</dfn></span></a> и <a name="x23"><span
+class="index-def"
+title="pseudo-classes"><dfn>псевдоклассы</dfn></span></a>,
+чтобы разрешить форматирование на базе
+информации, находящейся вне дерева
+документа. </p>
+
+<ul>
+<li>Псевдоэлементы создают абстракции
+  дерева документа наряду с абстракциями,
+  специфицированными языком документа.
+  Например, языки документа не имеют
+  механизмов для доступа к первой букве или
+  первой строке содержимого элемента .
+  Псевдоэлементы CSS позволяют дизайнерам
+  таблиц стилей получить доступ к
+  информации, иначе не доступной.
+  Псевдоэлементы могут также предоставить
+  способ назначить стиль содержимому,
+  которое не существует в документе-источнике
+  (например, псевдоэлементы <a
+href="generate.html#before-after-content" tppabs="http://pyramidin.narod.ru/css2/generate.html#before-after-content">:before и :after</a>
+  дают доступ к генерируемому содержимому).
+
+<li>Псевдоклассы классифицируют элементы не
+  по их именам, атрибутам или содержимому, а
+  по другим характеристикам ; по
+  характеристикам, которые в принципе не могут быть
+  получены из дерева документа.
+  Псевдоклассы могут быть динамическими в
+  предположении, что элемент может получить
+  или потерять псевдокласс, пока
+  пользователь взаимодействует с
+  документом. Исключением является <a href="#first-child">':first-child'</a>,
+  который <em>может</em> быть вычислен из дерева
+  документа.
+</ul>
+
+<P>Ни псевдоэлементы, ни псевдоклассы не
+появляются в документе-источнике или в
+дереве документа.<P>Псевдоклассы допустимы
+в селекторах везде, в то время как
+псевдоэлементы могут появляться только
+после <a
+href="#subject">субъекта</a> селектора.
+</p>
+
+
+<p>Имена псевдоэлементов и псевдоклассов
+нечувствительны к регистру.</p>
+
+<P>Некоторые псевдоклассы взаимоисключающи,
+а другие могут применяться одновременно в
+одном и том же элементе. В случае конфликта
+правил, нормальный <a href="cascade.html#cascading-order" tppabs="http://pyramidin.narod.ru/css2/cascade.html#cascading-order">порядок
+каскадирования</A> определяет выход.
+
+<p><a href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">ПА, соответствующие HTML</a>
+ могут <span class="index-inst" title="ignore"><a name="x24"
+href="syndata.html#ignore" tppabs="http://pyramidin.narod.ru/css2/syndata.html#ignore">игнорировать</a></span>  все
+правила с селекторами :first-line или :first-letter или,
+альтернативно, могут поддерживать только
+поднаборы свойств этих псевдоэлементов.</P>
+
+<h2><a name="q15"><br>
+5.11 Псевдоклассы</a></h2>
+
+<h3>5.11.1 Псевдокласс <a name="first-child">:first-child</a> &nbsp;</h3>
+
+<P>Псевдокласс <a name="x25"><span class="index-def"
+title="first-child|:first-child">:first-child</span></a>  совпадает с
+элементом, являющимся первым дочерним
+элементом какого-либо другого элемента.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Здесь селектор совпадает с любым элементом P,
+являющимся первым дочерним элементом
+элемента DIV. Правило подавляет отступ для
+первого параграфа DIV:</p>
+
+<PRE>DIV &gt; P:first-child { text-indent: 0 }</PRE>
+
+  Следующий селектор может совпасть с
+  элементом P внутри DIV в следующем фрагменте:
+
+<pre class="html-example">&lt;P&gt; Последний P перед note.
+&lt;DIV class=&quot;note&quot;&gt;
+   &lt;P&gt; Первый P внутри note.
+&lt;/DIV&gt;</pre>
+
+  но не совпадёт со вторым P в следующем
+  фрагменте:<pre class="html-example">&lt;P&gt; Последний P перед note.
+&lt;DIV class=&quot;note&quot;&gt;
+   &lt;H2&gt;Note&lt;/H2&gt;
+   &lt;P&gt; Первый P внутри note.
+&lt;/DIV&gt;</pre>
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Следующее правило устанавливает вес
+  шрифта 'bold' для любого элемента EM,
+  являющегося каким-либо потомком элемента P,
+  который, в свою очередь, является первым
+  дочерним элементом:</p>
+
+<pre>P:first-child EM { font-weight : bold }</pre>
+</div>
+
+<P>Заметьте, что <a href="visuren.html#anonymous" tppabs="http://pyramidin.narod.ru/css2/visuren.html#anonymous">анонимные</a>
+боксы не являются частью дерева документа,
+они не учитываются при вычислении первого
+дочернего элемента.</p>
+
+<div class="html-example"><P>
+Например, EM в:</p>
+
+<PRE>&lt;P&gt;abc &lt;EM&gt;default&lt;/EM&gt; </PRE>
+
+  является первым дочерним элементом от P.
+</div>
+
+<P>Следующие два раздела эквивалентны:</p>
+
+<PRE>* &gt; A:first-child   /* первый дочерний элемент любого элемента */
+A:first-child       /* То же самое */
+</PRE>
+
+
+<h3>5.11.2 <a name="link-pseudo-classes">Псевдоклассы гиперссылки</a>: <a name="x27"><span
+class="index-def" title="pseudo-classes:::link|:link|link
+(pseudo-class)">:link</span></a> и <a name="x30"><span class="index-def"
+title="pseudo-classes:::visited|:visited|visited
+(pseudo-class)">:visited</span></a></h3>
+
+<p>ПА обычно отображают непосещённые
+гиперссылки иначе, чем посещённые. CSS имеет
+псевдоклассы ':link' и ':visited' для этих случаев:</p>
+
+<ul>
+<li> Псевдокласс :link применяется к ссылкам,
+  которые ещё не посещены.
+
+<li> Псевдокласс :visited применяется после того,
+  как пользователь посетил ссылку.
+</ul>
+
+<p class="note"><em><strong>Примечание.</strong>  По
+истечении некоторого времени ПА могут
+вернуть посещённую гиперссылку к
+первоначальному состоянию (непосещённому) ':link'.</em>
+
+<P>Эти два состояния взаимоисключающи.<p>Язык
+документа определяет, какие элементы
+являются якорями ссылки на ресурс. Например,
+в HTML&nbsp;4.0 псевдоклассы гиперссылки
+применяются к элементам A с атрибутом "href".
+Таким образом, следующие два объявления CSS2
+имеют один эффект:</p>
+
+<pre>A:link { color: red }
+:link  { color: red }</pre>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+Если следующая ссылка:</p>
+
+<pre class="html-example">&lt;A class=&quot;external&quot; href=&quot;http://out.side/&quot;&gt;external link&lt;/A&gt;</pre>
+
+  будет посещена, то данное правило:
+
+<pre>A.external:visited { color: blue }</pre>
+
+  сделает её голубой.
+</div>
+
+<h3><br>
+5.11.3 <a name="dynamic-pseudo-classes">Динамические псевдоклассы:</a>
+<a name="x33"><span class="index-def" title="pseudo-classes:::hover|:hover|hover
+(pseudo-class)">:hover</span></a>, <a name="x36"><span class="index-def"
+title="pseudo-classes:::active|:active|active
+(pseudo-class)">:active</span></a> и <a name="x39"><span class="index-def"
+title="pseudo-classes:::focus|:focus|focus
+(pseudo-class)">:focus</span></a></h3>
+
+<p>Интерактивные ПА иногда изменяют
+представление в ответ на действия
+пользователя. CSS имеет три псевдокласса для
+общих случаев:</p>
+
+<ul>
+<li> Псевдокласс :hover применяется, если указал
+  на элемент (каким-либо указательным
+  устройством), но не активировал его.
+  Например, визуальный ПА может применить
+  этот псевдокласс, когда курсор (указатель
+  мыши) проходит над боксом, сгенерированным
+  элементом. ПА, не поддерживающие <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group">интерактивные
+  носители</a>, не должны поддерживать этот
+  псевдокласс. Некоторые соответствующие ПА,
+  поддерживающие <a href="media.html#interactive-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#interactive-media-group">интерактивные
+  носители</a>, могут оказаться неспособными
+  поддерживать этот псевдокласс (например,
+  устройство &quot;карандаш&quot;).
+
+<li> Псевдокласс :active применяется, если
+  элемент активирован пользователем.
+  Например, между нажатием и отпусканием
+  пользователем клавиши мыши.
+
+<li> Псевдокласс :focus применяется, если
+  элемент имеет фокус (принял событие от
+  клавиатуры или другие формы ввода текста).
+</ul>
+
+<p>Эти псевдоклассы не являются
+взаимоисключающими. Элемент может
+совпадать с несколькими из них
+одновременно.<p>CSS не определяет, какие
+элементы могут быть в вышеуказанных
+состояниях и как осуществляется вход и
+выход из этих состояний. Сценарий может
+меняться в зависимости от того, реагирует
+элемент на действия пользователя или нет, и
+различные устройства и ПА могут иметь
+разные способы указания на элементы (их
+активации).<p>От ПА не требуется
+перерисовывать отображаемый в данный
+момент документ из-за переносов
+псевдоклассов. Например, таблица стилей
+может специфицировать, что <a href="fonts.html#propdef-font-size" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-size" class="noxref"><span
+class="propinst-font-size">'font-size'</span></a>  гиперссылки&nbsp; :active
+должен быть больше, чем у неактивной
+гиперссылки, но поскольку это может вызвать
+изменение положения букв при выборе
+пользователем гиперссылки, ПА может
+проигнорировать соответствующее правило
+стиля.</p>
+
+<div class="example"><P style="display:none">Пример(ы):</P><pre>A:link    { color: red }    /* непосещённые ссылки */
+A:visited { color: blue }   /* посещённые ссылки   */
+A:hover   { color: yellow } /* пользователь провёл над */
+A:active  { color: lime }   /* активные ссылки    */
+</pre>
+
+  <p>Заметьте, что A:hover обязан размещаться
+  после правил A:link и A:visited, поскольку иначе
+  правила каскадирования спрячут свойство <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>  правила A:hover.
+  Аналогично, поскольку A:active размещено
+  после A:hover, цвет активной ссылки (lime) будет
+  применён, когда пользователь и активирует
+  и проведёт над элементом A.
+</div>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<p>Пример комбинации динамических
+псевдоклассов:
+
+<pre>A:focus { background: yellow }
+A:focus:hover { background: white }</pre>
+
+  <P>Последний селектор совпадает с
+  элементами A, которые входят в
+  псевдоклассы :focus и :hover.
+
+</div>
+
+ 
+
+<P>О представлении контуров фокуса см.
+раздел <a href="ui.html#dynamic-outlines" tppabs="http://pyramidin.narod.ru/css2/ui.html#dynamic-outlines">динамические контуры
+фокуса</a>.
+
+<div class="note"><P>
+<em><strong>Примечание.</strong> В CSS1 псевдокласс ':active'
+взаимно исключался с ':link' и ':visited'. Сейчас
+это уже не так. Элемент может быть и&nbsp; ':visited',
+и ':active' (или ':link' и ':active'), и нормальные
+правила каскадирования определяют
+применение свойств.</em>
+</div>
+
+<h3><br>
+5.11.4 <a name="lang">Псевдокласс языка&nbsp;</a> <a name="x42"><span
+class="index-def" title="pseudo-classes:::lang|:lang|lang
+(pseudo-class)">:lang</span></a></h3>
+
+<p>Если язык документа специфицирует, как
+определяется <a name="x45"><span class="index-inst"
+title="language (human)">человеческий язык</span></a>, то
+становится возможным записывать селекторы CSS,
+которые совпадают с элементом, на базе его
+языка. Например, в HTML <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>
+язык определяется комбинацией атрибута "lang",
+элемента META и, возможно, информацией из
+протокола (такой как в &quot;шапках&quot; HTTP). XML
+использует атрибут, называемый XML:LANG, и
+могут быть также и другие методы
+определения языка, зависящие от языковой
+специфики.<p>Псевдокласс ':lang(C)' совпадает,
+если документ написан на языке C. Здесь C -
+это <a name="x46"><span class="index-inst"
+title="language code">код языка,</span></a> как
+специфицировано в HTML&nbsp;4.0 <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="normref">[HTML40]</span></a>
+и RFC&nbsp;1766 <a href="refs.html#ref-RFC1766" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-RFC1766" rel="biblioentry" class="noxref"><span class="informref">[RFC1766]</span></a>.
+Он совпадает тем же способом, что и для
+оператора <a href="#attribute-selectors">'|='</a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Следующие правила устанавливают знаки
+  кавычек для документа HTML на французском
+  или немецком языке:</p>
+
+<pre>HTML:lang(fr) { quotes: '« ' ' »' }
+HTML:lang(de) { quotes: '»' '«' '\2039' '\203A' }
+:lang(fr) &gt; Q { quotes: '« ' ' »' }
+:lang(de) &gt; Q { quotes: '»' '«' '\2039' '\203A' }</pre>
+
+  <p>Вторая пара правил в действительности
+  устанавливает свойство <a href="generate.html#propdef-quotes" tppabs="http://pyramidin.narod.ru/css2/generate.html#propdef-quotes" class="noxref"><span
+class="propinst-quotes">'quotes'</span></a>  элементов Q в
+  соответствии с языком его предка. Так
+  делается, потому что выбор знаков кавычек
+  обычно базируется на языке элемента,
+  окружающего кавычки, а не самих кавычек, и кусок французского текста &#8220;&agrave; l'improviste&#8221;
+  в середине английского текста использует
+  английские знаки кавычек.  </div>
+
+<h2><a name="q20"><br>
+5.12 Псевдоэлементы</a></h2>
+
+<h3>5.12.1 Псевдоэлемент <span class="index-def"
+title="pseudo-elements:::first-line|:first-line|first-line"><a
+name="first-line-pseudo">:first-line</a></span></h3>
+
+<p>Псевдоэлемент :first-line применяет
+специальный стиль к первой форматированной
+строке параграфа. К примеру:</p>
+
+<pre class="example">P:first-line { text-transform: uppercase }</pre>
+
+<p>Это правило говорит: &quot;Перевести буквы
+первой строки каждого параграфа в верхний
+регистр&quot;. Однако селектор &quot;P:first-line&quot;
+не совпадёт ни с каким реальным элементом HTML.
+Он совпадёт с псевдоэлементом, который <a href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">соответствующие
+ПА</a> будут вставлять в начале каждого
+параграфа.</p>
+
+<p>Заметьте, что длина первой строки зависит
+от нескольких факторов, включая ширину
+страницы, размер шрифта и т.д. Таким образом,
+обычный параграф HTML:</p>
+
+<pre class="html-example">&lt;P&gt;This is a somewhat long HTML 
+paragraph that will be broken into several 
+lines. The first line will be identified
+by a fictional tag sequence. The other lines 
+will be treated as ordinary lines in the 
+paragraph.&lt;/P&gt;</pre>
+
+строки которого могут быть разбиты так:
+
+<pre class="html-example">THIS IS A SOMEWHAT LONG HTML PARAGRAPH THAT
+will be broken into several lines. The first
+line will be identified by a fictional tag 
+sequence. The other lines will be treated as 
+ordinary lines in the paragraph.</pre>
+
+может быть "переписан" ПАгентами с
+включением <em><a name="x50"><span
+class="index-def" title="fictional tag sequence">последовательности
+фиктивных тэгов</span></a></em> для :first-line. Эта
+фиктивная последовательность тэгов
+поможет продемонстрировать, как
+наследуются свойства:
+
+<pre>&lt;P&gt;<b>&lt;P:first-line&gt;</b> This is a somewhat long HTML 
+paragraph that will <b>&lt;/P:first-line&gt;</b> be broken into several
+lines. The first line will be identified 
+by a fictional tag sequence. The other lines 
+will be treated as ordinary lines in the 
+paragraph.&lt;/P&gt;</pre>
+
+<p>Если псевдоэлемент разрывает реальный
+элемент, то желаемый эффект может часто
+быть описан последовательностью фиктивных
+тэгов, которая закрывает и затем снова
+открывает элемент. Таким образом, если мы разметим
+предыдущий параграф с использованием
+элемента SPAN:</p>
+
+<pre>&lt;P&gt;<b>&lt;SPAN class=&quot;test&quot;&gt;</b> This is a somewhat long HTML
+paragraph that will be broken into several
+lines.<b>&lt;/SPAN&gt;</b> The first line will be identified
+by a fictional tag sequence. The other lines 
+will be treated as ordinary lines in the 
+paragraph.&lt;/P&gt;</pre>
+
+ПА сможет сгенерировать соответствующие
+начальный и конечный тэги для SPAN при
+вставке последовательности фиктивных
+тэгов для :first-line.
+
+<pre>&lt;P&gt;&lt;P:first-line&gt;<b>&lt;SPAN class=&quot;test&quot;&gt;</b> This is a
+somewhat long HTML
+paragraph that will <b>&lt;/SPAN&gt;</b>&lt;/P:first-line&gt;<b>&lt;SPAN class=&quot;test&quot;&gt;</b> be
+broken into several
+lines.<b>&lt;/SPAN&gt;</b> The first line will be identified
+by a fictional tag sequence. The other lines
+will be treated as ordinary lines in the 
+paragraph.&lt;/P&gt;</pre>
+
+<p>Псевдоэлемент <a name="x51"><span class="index-inst" title="pseudo-elements:::first-line">:first-line</span></a> 
+может быть присоединён только к элементу
+уровня блока.</p>
+
+<p>Псевдоэлемент <a name="first-line">:first-line</a> 
+подобен инлайн-элементу, но с некоторыми
+ограничениями. К псевдоэлементу :first-line
+применяются только следующие свойства : <a
+href="fonts.html#font-properties" tppabs="http://pyramidin.narod.ru/css2/fonts.html#font-properties">свойства шрифта,</a> <a
+href="colors.html" tppabs="http://pyramidin.narod.ru/css2/colors.html">свойства цвета,</a> <a
+href="colors.html#background-properties" tppabs="http://pyramidin.narod.ru/css2/colors.html#background-properties">свойства фона,</a> <a href="text.html#propdef-word-spacing" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-word-spacing" class="noxref"><span class="propinst-word-spacing">'word-spacing',</span></a>
+<a href="text.html#propdef-letter-spacing" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-letter-spacing" class="noxref"><span
+class="propinst-letter-spacing">'letter-spacing',</span></a> <a href="text.html#propdef-text-decoration" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-decoration" class="noxref"><span
+class="propinst-text-decoration">'text-decoration',</span></a> <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align',</span></a> <a href="text.html#propdef-text-transform" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-transform" class="noxref"><span
+class="propinst-text-transform">'text-transform',</span></a> <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height',</span></a> <a href="text.html#propdef-text-shadow" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-shadow" class="noxref"><span
+class="propinst-text-shadow">'text-shadow'</span></a> и <a href="visuren.html#propdef-clear" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'.</span></a></p>
+
+<h3><br>
+5.12.2 <a name="first-letter">Псевдоэлемент</a> <a name="x52"><span class="index-def" title="pseudo-elements:::first-letter|:first-letter|first-letter">:first-letter</span></a> </h3>
+
+
+
+<p>Псевдоэлемент :first-letter можно использовать
+для <a name="x55"><span
+class="index-inst" title="initial caps">&quot;начальных
+заглавных&quot;</span></a> и <a name="x56"><span class="index-inst" title="drop caps">&quot;зависающих
+заглавных&quot;</span></a>, которые являются
+распространёнными типографскими эффектами.
+Этот тип начальных букв похож на инлайн-элемент,
+если его свойство <a href="visuren.html#propdef-float" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>  - 'none', иначе он похож
+на всплывающий элемент.</p>
+
+<p>Вот свойства, применимые к псевдоэлементу :first-letter: <a href="fonts.html#font-properties" tppabs="http://pyramidin.narod.ru/css2/fonts.html#font-properties">свойства
+шрифта,</a> <a href="colors.html" tppabs="http://pyramidin.narod.ru/css2/colors.html">свойства цвета,</a> <a
+href="colors.html#background-properties" tppabs="http://pyramidin.narod.ru/css2/colors.html#background-properties">свойства фона,</a>
+<a href="text.html#propdef-text-decoration" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-decoration" class="noxref"><span class="propinst-text-decoration">'text-decoration',</span></a> <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align'</span></a>  (только
+если 'float' установлен в&nbsp; 'none'), <a href="text.html#propdef-text-transform" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-transform" class="noxref"><span
+class="propinst-text-transform">'text-transform',</span></a> <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height',</span></a> <a
+href="box.html#margin-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#margin-properties">свойства полей,</a> <a
+href="box.html#padding-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#padding-properties">свойства заполнения,</a> <a
+href="box.html#border-properties" tppabs="http://pyramidin.narod.ru/css2/box.html#border-properties">свойства рамок,</a> <a href="visuren.html#propdef-float" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-float" class="noxref"><span
+class="propinst-float">'float',</span></a> <a href="text.html#propdef-text-shadow" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-shadow" class="noxref"><span
+class="propinst-text-shadow">'text-shadow'</span></a> и <a href="visuren.html#propdef-clear" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-clear" class="noxref"><span
+class="propinst-clear">'clear'.</span></a></p>
+
+<div class="html-example"><p>Следующий CSS2 сделает
+  начальную заглавную зависающую букву,
+  захватывающую две строки:</p>
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+ &lt;HEAD&gt;
+  &lt;TITLE&gt;Drop cap initial letter&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+   P              { font-size: 12pt; line-height: 12pt }
+   P:first-letter { font-size: 200%; font-style: italic;
+                    font-weight: bold; float: left }
+   SPAN           { text-transform: uppercase }
+  &lt;/STYLE&gt;
+ &lt;/HEAD&gt;
+ &lt;BODY&gt;
+  &lt;P&gt;&lt;SPAN&gt;The first&lt;/SPAN&gt; few words of an article
+    in The Economist.&lt;/P&gt;
+ &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+
+<p>Этот пример может быть сформатирован так:</p>
+
+<div class="figure">
+<P>
+<img src="first-letter.gif" tppabs="http://pyramidin.narod.ru/css2/first-letter.gif" alt="Image illustrating the combined effect of the :first-letter and :first-line pseudo-elements" width="105" height="54"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-first-letter" href="first-letter-desc.html" tppabs="http://pyramidin.narod.ru/css2/first-letter-desc.html" title="Long description for drop cap example">[D]</A></SPAN></p>
+</div>
+
+<p><a name="x57">Последовательность фиктивных
+тэго</a>в
+такова:</p>
+
+<pre>&lt;P&gt;
+&lt;SPAN&gt;
+&lt;P:first-letter&gt;
+T
+&lt;/P:first-letter&gt;he first
+&lt;/SPAN&gt; 
+few words of an article in the Economist.
+&lt;/P&gt;</pre>
+
+  <p>Обратите внимание, что тэги
+  псевдоэлемента :first-letter примыкают к
+  содержимому (т.е. к начальному символу),
+  поскольку начальный тэг псевдоэлемента :first-line
+  вставлен справа после начального тэга
+  элемента, к которому он присоединён.</p>
+</div>
+
+<P>Чтобы выполнить форматирование
+традиционных зависающих заглавных букв, ПА
+могут выровнять размеры шрифта, например,
+по базовой линии. Также и контуры глифов
+могут быть приняты в расчёт при
+форматировании.<P>Пунктуация (т.е. символы,
+определённые в Unicode <a href="refs.html#ref-UNICODE" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-UNICODE" rel="biblioentry" class="noxref"><span class="normref">[UNICODE]</span></a> 
+в классах пунктуации &quot;open&quot; (Ps), &quot;close&quot;
+(Pe) и &quot;other&quot; (Po)), которая предшествует
+первой букве, должна включаться, как в этом
+примере:</p>
+
+<div class="figure">
+<P>
+<img src="first-letter2.gif" tppabs="http://pyramidin.narod.ru/css2/first-letter2.gif" alt="Quotes that precede the
+first letter should be included." width="114" height="72"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-first-letter2" href="first-letter2-desc.html" tppabs="http://pyramidin.narod.ru/css2/first-letter2-desc.html" title="Long description for punctuation and drop cap example">[D]</A></SPAN></p>
+</div>
+
+<p>Псевдоэлемент :first-letter совпадает только с
+частью элементов <a
+href="visuren.html#block-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#block-level">уровня блока</a>.</p>
+
+<p>
+В некоторых языках могут быть
+специфические правила рассмотрения
+определённых сочетаний букв. В датском
+языке, например, если комбинация "ij"
+появляется в начале слова, обе буквы должны
+рассматриваться псевдоэлементом :first-letter.
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>
+<a name="overlapping-example">Следующий пример иллюстрирует,&nbsp;</a>
+  как может действовать перекрывание
+  псевдоэлементов. Первые буквы каждого
+  элемента P будут зелёными и размером '24pt'.
+  Остаток первой форматированной строки
+  будет 'blue', а остаток параграфа - 'red'.</p>
+
+  <pre>P { color: red; font-size: 12pt }
+P:first-letter { color: green; font-size: 200% }
+P:first-line { color: blue }
+
+&lt;P&gt;Какой-нибудь текст не менее двух строк.&lt;/P&gt;</pre>
+
+  <p>Если предположить, что разрыв строки
+  появится перед словом &quot;не&quot;,
+<a name="x58"><span class="index-inst" title="fictional tag sequence">последовательность
+фиктивных тэгов</span></a> для этого фрагмента
+  может быть такой:</p>
+
+<pre>&lt;P&gt;
+&lt;P:first-line&gt;
+&lt;P:first-letter&gt; 
+К
+&lt;/P:first-letter&gt;акой-нибудь текст 
+&lt;/P:first-line&gt; 
+не менее двух строк.
+&lt;/P&gt;</pre>
+
+  <p>Заметьте, что элемент :first-letter находится
+  внутри элемента :first-line. Свойства,
+  установленные в :first-line, наследуются в :first-letter,
+  но переопределяются, если то же самое
+  свойство установлено в
+:first-letter.</p>
+</div>
+
+<h3><br>
+<a name="before-and-after">5.12.3 </a>Псевдоэлементы <a name="x59"><span class="index-def"
+title="pseudo-elements:::before|:before">:before</span></a> и <a name="x61"><span
+class="index-def" title="pseudo-elements:::after|:after">:after</span></a>
+</h3>
+
+<p>Псевдоэлементы ':before' и ':after' можно
+использовать для вставки генерируемого
+содержимого до или после содержимого
+элемента. Они разъясняются в разделе <a href="generate.html" tppabs="http://pyramidin.narod.ru/css2/generate.html">генерируемый
+текст.</a>
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<pre>H1:before {content: counter(chapno, upper-roman) &quot;. &quot;}</pre>
+</div>
+
+<p>Если псевдоэлементы :first-letter и :first-line
+сочетаются с&nbsp; :before и :after, то они
+применяются к первой букве или строке
+элемента, включая вставленный текст.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<pre>P.special:before {content: &quot;Special! &quot;}
+P.special:first-letter {color: #ffd800}</pre>
+
+<p>Это выведет &quot;S&quot; в слове &quot;Special!&quot;
+золотом.
+
+<p>&nbsp;
+</div>
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="syndata.html" tppabs="http://pyramidin.narod.ru/css2/syndata.html">предыдущий</a> &nbsp; <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</body>
+</html><!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

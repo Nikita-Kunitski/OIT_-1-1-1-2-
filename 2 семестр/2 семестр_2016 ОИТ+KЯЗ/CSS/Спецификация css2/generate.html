@@ -1,0 +1,1390 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html lang="ru">
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><title>Генерируемое содержимое,
+автоматическая нумерация и списки</title>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="visufx.html" tppabs="http://pyramidin.narod.ru/css2/visufx.html"><link rel="next" href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc"><link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></head>
+<body><center><!--#include virtual="/lvt.htm"--></center><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="visufx.html" tppabs="http://pyramidin.narod.ru/css2/visufx.html">предыдущий</a> &nbsp; <a href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+<h1 align="center">12&nbsp; Генерируемое содержимое, автоматическая нумерация и списки</h1>
+<div class="subtoc"><p><strong>Содержание</strong><ul class="toc">
+<li class="tocline2"><a href="#before-after-content" class="tocxref">12.1
+Псевдоэлементы <span class="index-def" title=":before|pseudo-elements:::before|before">:before</span> 
+и <span class="index-def" title=":after|pseudo-elements:::after|after">:after</span> </a>
+<li class="tocline2"><a href="#content" class="tocxref">12.2
+Свойство <span class="propinst-content">'content'</span> </a>
+<li class="tocline2"><a href="#compact-run-in-gen" class="tocxref">12.3
+Взаимодействие :before и :after с элементами <span class="value-inst-compact">'compact'</span>
+и <span class="value-inst-run-in">'run-in'</span></a>
+<li class="tocline2"><a href="#quotes" class="tocxref">12.4 Знаки кавычек</a><ul class="toc">
+<li class="tocline3"><a href="#quotes-specify" class="tocxref">12.4.1
+Спецификация кавычек свойством <span class="propinst-quotes">'quotes'</span> </a>
+<li class="tocline3"><a href="#quotes-insert" class="tocxref">12.4.2
+Вставка кавычек с применением свойства <span class="propinst-content">'content'</span></a></ul>
+<li class="tocline2"><a href="#counters" class="tocxref">12.5 Автоматические счётчики и нумерация</a>
+<ul class="toc"><li class="tocline3"><a href="#scope" class="tocxref">12.5.1 Вложение счётчиков и область видимости</a>
+<li class="tocline3"><a href="#counter-styles" class="tocxref">12.5.2 Стили счётчиков</a>
+<li class="tocline3"><a href="#q10" class="tocxref">12.5.3 Счётчики в элементах с 'display: none'</a></ul>
+<li class="tocline2"><a href="#q11" class="tocxref">12.6 Маркировка и списки</a><ul class="toc">
+<li class="tocline3"><a href="#markers" class="tocxref">12.6.1
+Маркировка: свойство <span class="propinst-marker-offset">'marker-offset'</span> </a>
+<li class="tocline3"><a href="#lists" class="tocxref">12.6.2 Списки:
+свойства <span class="propinst-list-style-type">'list-style-type'</span>, <span class="propinst-list-style-image">'list-style-image'</span>, <span class="propinst-list-style-position">'list-style-position'</span>
+и <span class="propinst-list-style">'list-style'</span></a></ul></ul></div>
+
+<p>В некоторых случаях бывает необходимо,
+чтобы пользовательские агенты (ПА)
+отображали содержимое не из <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева
+документа</a>. Известный пример -
+нумерованный список: автор не хочет, чтобы нумерация
+выводилась явным образом, он или она хотят,
+чтобы ПА генерировал нумерацию автоматически. Также автор может пожелать, чтобы ПА вставлял слово
+&quot;Figure&quot; перед заглавием или фигурой или "Chapter 7"
+в начале 7 главы. В особенности для аудио и
+брайль-носителей, ПА должны иметь
+возможность вставить эти строки.<p>В CSS2
+содержимое может генерироваться с помощью
+различных механизмов:</p>
+
+<ul>
+<li>Свойство <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>
+в сочетании с псевдоэлементами&nbsp; :before и :after.
+<li>Звуковые свойства <a href="aural.html#propdef-cue-before" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-cue-before" class="noxref"><span class="propinst-cue-before">'cue-before'</span></a>
+и <a href="aural.html#propdef-cue-after" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-cue-after" class="noxref"><span class="propinst-cue-after">'cue-after'</span></a>
+(см. главу <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">звуковые таблицы стилей</a>).
+Если свойство <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>  комбинируется со
+звуковыми свойствами, то они выводятся в
+следующем порядке: :before, <a href="aural.html#propdef-cue-before" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-cue-before" class="noxref"><span
+class="propinst-cue-before">'cue-before'</span></a>, (<a href="aural.html#propdef-pause-before" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-pause-before" class="noxref"><span
+class="propinst-pause-before">'pause-before'</span></a>), содержимое
+элемента, (<a href="aural.html#propdef-pause-after" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-pause-after" class="noxref"><span class="propinst-pause-after">'pause-after'</span></a>),
+<a href="aural.html#propdef-cue-after" tppabs="http://pyramidin.narod.ru/css2/aural.html#propdef-cue-after" class="noxref"><span class="propinst-cue-after">'cue-after'</span></a>
+и :after.
+<li>Элементы со значением 'list-item' для свойства
+<a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>.</ul>
+<P>Ниже описаны механизмы, ассоциированные со свойством <a href="#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>.<h2><br>
+12.1 <a name="before-after-content">Псе</a>вдоэлементы <a name="x2"><span class="index-def"
+title=":before|pseudo-elements:::before|before">:before</span></a>  и <a name="x5"><span
+class="index-def" title=":after|pseudo-elements:::after|after">:after</span></a></h2>
+
+<p>Авторы специфицируют стиль и размещение
+генерируемого содержимого с помощью
+псевдоэлементов&nbsp; :before&nbsp; и&nbsp; :after. Как
+видно из их имён, псевдоэлементы :before и :after
+специфицируют размещение содержимого до и
+после содержимого <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева документа</a>
+элемента. Свойство <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>
+в соединении с этими псевдоэлементами
+специфицирует, что же будет вставлено.
+
+<div class=example><P style="display:none">Пример(ы):</P><p>Следующее правило вставляет строку &quot;Note: "
+перед содержимым каждого элемента P, чей атрибут &quot;class&quot; имеет значение &quot;note&quot;:</p>
+
+<pre>P.note:before { content: &quot;Note: &quot; }</pre></div>
+
+<P>Форматирующие объекты (напр., боксы),
+генерируемые элементом, включают
+генерируемое содержимое. Так, например,
+изменение вышеприведённой таблицы стилей:</p>
+
+<pre class="example">P.note:before { content: &quot;Note: &quot; }
+P.note        { border: solid green }</pre>
+
+<P>вызовет появление сплошной зелёной рамки
+вокруг параграфа, включая начальную строку.<P>Псевдоэлементы
+:before и :after <a
+href="cascade.html#inheritance" tppabs="http://pyramidin.narod.ru/css2/cascade.html#inheritance">наследуют</a> любые
+наследуемые свойства из тех элементов
+дерева документа, к которым они
+присоединены.</p>
+<div class=example><P style="display:none">Пример(ы):</P>
+<p>Следующие правила вставляют открывающий знак кавычек перед каждым элементом Q. Цвет знака кавычки - красный, но шрифт
+будет тот же, что и шрифт остальной части элемента Q:</p>
+<pre>Q:before {
+  content: open-quote;
+  color: red
+}</pre></div>
+
+<p>В объявлениях псевдоэлементов :before или :after
+ненаследуемые свойства получают свои <a href="cascade.html#initial-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#initial-value">начальные значения</a>.</p>
+
+<div class=example><P style="display:none">Пример(ы):</P><p>Так, например, поскольку начальное
+значение свойства <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  - 'inline', кавычка в
+предыдущем примере вставляется как инлайн-бокс (т.е. на той же самой строке, что и содержимое
+начального текста элемента). В следующем примере свойство 
+<a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a> 
+явно устанавливается в 'block', так что вставленный текст становится блоком:</p>
+
+<pre>BODY:after {
+    content: &quot;The End&quot;;
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+}</pre>
+
+<P>Обратите внимание, что пользователи аудио-ПА услышат слова &quot;The End&quot; после
+вывода оставшейся части содержимого BODY.</div>
+
+<P>ПА обязаны игнорировать следующие
+свойства при наличии псевдоэлементов :before и
+:after:<a href="visuren.html#propdef-position" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-position" class="noxref"><span
+class="propinst-position"><br>
+'position'</span></a>, <a href="visuren.html#propdef-float" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-float" class="noxref"><span
+class="propinst-float">'float'</span></a>, свойства <a href="#lists">списков</a>
+и <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">таблиц</a>.<P>Псевдоэлементы :before
+и :after допускают значения свойства <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>:
+
+<ul><li>Если <a href="selector.html#subject" tppabs="http://pyramidin.narod.ru/css2/selector.html#subject">субъект</a> селектора
+является элементом <a href="visuren.html#block-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#block-level">уровня
+блока</a>, допустимыми значениями будут 'none', 'inline', 'block' и 'marker'.<br>
+Если <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>
+имеет другие значения, псевдоэлементы будут вести себя так, как если бы значение было 'block'. 
+<li>Если <a href="selector.html#subject" tppabs="http://pyramidin.narod.ru/css2/selector.html#subject">субъект</a> селектора является <a href="visuren.html#inline-level" tppabs="http://pyramidin.narod.ru/css2/visuren.html#inline-level">инлайн-элементом</a>,
+допустимыми значениями будут 'none' и 'inline'.<br>
+Если <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a>
+имеет другие значения, псевдоэлементы будут вести себя так, как если бы значение было 'inline'.</ul>
+
+<div class="note"><P><em><strong>Примечание.</strong>  Другие значения могут быть допущены в будущих уровнях CSS.</em></div>
+<h2><br>12.2&nbsp; Свойство <a href="#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a> </h2>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'content'"><a name="propdef-content" class="propdef-title"><strong>'content'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span class="value-inst-string">&lt;string&gt;</span></a> | <a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> | <a href="syndata.html#value-def-counter" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-counter" class="noxref"><span class="value-inst-counter">&lt;counter&gt;</span></a> | attr(X) | open-quote | close-quote
+| no-open-quote | no-close-quote ]+ | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>пустая строка<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+псевдоэлементам :before и :after<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#all-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#all-media-group" class="noxref">все</a>
+</table></dl></div>
+
+<p>Это свойство используется с псевдоэлементами :before и :after для генерации
+содержимого документа.<br>Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;string&gt;"><a name="x9" href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span
+class="value-inst-string"><strong>&lt;string&gt;</strong></span></a></span>
+<dd>Содержимое текста (см. раздел <a href="syndata.html#strings" tppabs="http://pyramidin.narod.ru/css2/syndata.html#strings">строки</a>).
+
+<dt><span class="index-inst" title="&lt;uri&gt;"><a name="x10" href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span
+class="value-inst-uri"><strong>&lt;uri&gt;</strong></span></a></span>
+<dd>Значением является URI, обозначающий внешний ресурс. Если ПА не может поддержать данный ресурс (в связи с <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типами
+носителя</a>), он может игнорировать данный ресурс.
+<div class="note"><strong>Примечание.<em>CSS2 не предлагает механизмов для изменения размеров
+внедрённого объекта или для предоставления его текстуального описания, подобных
+атрибутам &quot;alt&quot; или &quot;longdesc&quot; для изображений HTML. Это может быть изменено в будущих уровнях CSS.</strong></em></div
+
+<dt><span class="index-inst" title="&lt;counter&gt;"><a name="x11" href="syndata.html#value-def-counter" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-counter" class="noxref"><span
+class="value-inst-counter"><strong>&lt;counter&gt;</strong></span></a></span>
+<dd><a href="syndata.html#counter" tppabs="http://pyramidin.narod.ru/css2/syndata.html#counter">Счётчики/Counters</a> могут быть специфицированы двумя различными
+функциями: 'counter()' или 'counters()'. Первая имеет две формы: 'counter(<var>name</var>)' или 'counter(<var>name</var>,
+<var>style</var>)'. Генерируемый текст является значением именованного счётчика от этой
+точки в структуре форматирования; он форматируется в указанном <a href="#counter-styles">стиле</a>
+(по умолчанию - 'decimal'). Вторая функция имеет также две формы: 'counters(<var>name</var>, <var>string</var>)'
+или 'counters(name, string, <var>style</var>)'. Генерируемый текст является значениями всех счётчиков с
+данным именем от этой точки в структуре форматирования, разделёнными специфицированной строкой. Счётчики
+выводятся в указанном <a href="#counter-styles">стиле</a>(по умолчанию - 'decimal'). См. раздел <a href="#counters">автоматические
+счётчики и нумерация</a>.
+<dt><span class="index-inst" title="open-quote"><a name="x12" href="#value-def-open-quote" class="noxref"><span
+class="value-inst-open-quote"><strong>open-quote</strong></span></a></span> и <span class="index-inst" title="close-quote"><a name="x13" href="#value-def-close-quote" class="noxref"><span
+class="value-inst-close-quote"><strong>close-quote</strong></span></a></span>
+
+<dd>Эти значения замещаются подходящей
+строкой свойства <a href="#propdef-quotes" class="noxref"><span class="propinst-quotes"><strong>'quotes'</strong></span></a>.
+
+<dt><span class="index-inst" title="no-open-quote"><a name="x14" href="#value-def-no-open-quote" class="noxref"><span
+class="value-inst-no-open-quote"><strong>no-open-quote</strong></span></a></span>
+и <span class="index-inst" title="no-close-quote"><a name="x15" href="#value-def-no-close-quote" class="noxref"><span
+class="value-inst-no-close-quote"><strong>no-close-quote</strong></span></a></span>
+
+<dd>Ничего не вставляют (пустая строка), но увеличивают (уменьшают) уровень вложения кавычек.
+
+<dt><a name="x16"><span class="index-def" title="attr()"><strong>attr(X)</strong></span></a>
+<dd>Эта функция возвращает строковое значение X для
+  субъекта селектора. Строка не
+разбирается процессором CSS. Если субъект селектора не имеет атрибута X, возвращается пустая строка.
+Чувствительность к регистру имён атрибутов зависит от языка документа.
+<div class="note"><strong>Примечание. <em>В CSS2 невозможно
+обращаться к значениям атрибутов других элементов селектора.</em></strong></div></dl>
+
+<P>Свойство <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a> 
+регулирует, куда помещается содержимое, в
+блок, инлайн- или маркированный бокс.<P>Авторы
+должны поместить объявление <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>
+ в правила <span class="index-inst" title="@media"><a name="x17"
+href="media.html#at-media-rule" tppabs="http://pyramidin.narod.ru/css2/media.html#at-media-rule">@media</a>,</span>  если
+содержимое является медиа-чувствительным.
+Например, буквенный текст может
+использоваться для любой группы носителей,
+но изображения применяются только к медиа-группам
+visual + bitmap, а звуковые файлы применяются
+только к звуковым медиа-группам.
+
+<div class="example"><P style="display:none">Примеры(ы):</P>
+<p>Следующее правило вызывает проигрывание звукового файла в конце отрезка с
+кавычками (см. дополнительные механизмы в разделе <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">&quot;звуковые таблицы стилей&quot;</a>):</p>
+
+<pre>@media aural {
+   BLOCKQUOTE:after { content: url(&quot;beautiful-music.wav&quot;) }
+   }</pre></div>
+
+<div class="example"><P style="display:none">Примеры(ы):</P><p>Следующее правило вставляет текст
+атрибута &quot;alt&quot; HTML перед изображением. Если изображение не выводится, пользователь увидит текст &quot;alt&quot;.
+
+<pre>IMG:before { content: attr(alt)}</pre></div>
+
+<p>Авторы могут включать новые строки в
+генерируемое содержимое путём ввода escape-последовательности
+&quot;\A&quot; в одной из строк после свойства <a href="#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>. Это вставляет <a name="x18"><span class="index-def" title="forced line break"><dfn>форсированный
+обрыв строки</dfn></span></a>, подобно элементу BR в
+HTML. См. дополнительную информацию об escape-последовательности
+&quot;\A&quot; в разделах <a
+href="syndata.html#strings" tppabs="http://pyramidin.narod.ru/css2/syndata.html#strings">&quot;Строки&quot;</a>  и <a
+href="syndata.html#escaped-characters" tppabs="http://pyramidin.narod.ru/css2/syndata.html#escaped-characters">&quot;Символы и регистр&quot;</a>.
+
+<div class="example"><P style="display:none">Примеры(ы):</P>
+
+<PRE>H1:before {
+    display: block;
+    text-align: center;
+    content: &quot;chapter\A hoofdstuk\A chapitre&quot;
+}</pre></div>
+
+<P>Генерируемое содержимое не изменяет
+дерево документа. Обычно оно не передаётся
+обратно процессору языка документа (например,
+для повторного разбора).
+
+<div class=note><p><em><strong>Примечание.</strong> В будущих
+уровнях&nbsp; CSS свойство <a href="#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>   сможет принимать
+дополнительные значения, позволяя варьировать стиль участков генерируемого
+содержимого, но в CSS2 всё содержимое псевдоэлементов :before или :after имеет один стиль.</em></p></div>
+<h2><br>12.3 <a name="compact-run-in-gen">Взаимодействие</a> :before и :after
+с элементами <span class="index-inst" title="compact"><a name="x19" href="visuren.html#value-def-compact" tppabs="http://pyramidin.narod.ru/css2/visuren.html#value-def-compact" class="noxref"><span
+class="value-inst-compact">'compact'</span></a></span>  и <span
+class="index-inst" title="run-in"><a name="x20" href="visuren.html#value-def-run-in" tppabs="http://pyramidin.narod.ru/css2/visuren.html#value-def-run-in" class="noxref"><span
+class="value-inst-run-in">'run-in'</span></a></span> </h2><p>Могут быть следующие ситуации:</p>
+
+<ol><li><strong>Элемент 'run-in' или 'compact' имеет псевдоэлемент :before типа 'inline':</strong>
+псевдоэлементы учитываются, если размер бокса элемента вычислен (для 'compact') и выведен внутри того же бокса блока, что и
+элемент.
+
+<li><strong>Элемент 'run-in' или 'compact' имеет псевдоэлемент :after типа 'inline':<br></strong>применяются правила предыдущего пункта.
+
+<li><strong>Элемент 'run-in' или 'compact' имеет псевдоэлемент :before типа 'block':</strong>
+псевдоэлемент форматируется как блок поверх элемента и не участвует в вычислении размера элемента (для 'compact').
+
+<li><strong>Элемент 'run-in' или 'compact' имеет псевдоэлемент :after типа 'block':<br></strong>и элемент,
+и его псевдоэлемент :after форматируются как боксы блока. Элемент <em>не</em> форматируется как инлайн-бокс в своём собственном
+псевдоэлементе :after. 
+
+<li><strong>Элемент, следующий за элементом 'run-in' или 'compact', имеет :before типа 'block':</strong> 
+решение о том, как форматировать элемент 'run-in'/'compact', принимается с учётом результирующего
+бокса блока из псевдоэлемента :before.
+
+<li><strong>Элемент, следующий за элементом 'run-in' или 'compact', имеет :before типа 'inline':</strong>
+решение о том, как форматировать элемент 'run-in'/'compact', зависит от значения <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  элемента, к которому присоединён :before.</ol>
+
+<div class="example"><P style="display:none">Пример(ы):</P><p>Это заголовок 'run-in' с псевдоэлементом :after,
+после которого идёт параграф с псевдоэлементом :before. В этом пример все псевдоэлементы являются инлайн (по
+умолчанию). Когда таблица стилей:</p>
+
+<pre>H3 { display: run-in }
+H3:after { content: &quot;: &quot; }
+P:before { content: &quot;... &quot; }</pre>
+
+<p>применяется к такому документу-источнику:</p>
+
+<pre class="html-example">&lt;H3&gt;Centaurs&lt;/H3&gt;
+&lt;P&gt;have hoofs
+&lt;P&gt;have a tail</pre>
+<p>визуальное форматирование будет таким:</p>
+<pre class="none">Centaurs: ... have hoofs
+... have a tail
+</pre></div>
+
+<h2>12.4&nbsp; <a name="quotes">Знаки кавычек</a></h2>
+
+<P>В CSS2 авторы могут специфицировать, в
+чувствительной к стилю и контекстно-зависимой
+манере, как ПА должны отображать знаки
+кавычек. Свойство <a href="#propdef-quotes" class="noxref"><span class="propinst-quotes">'quotes'</span></a> 
+специфицирует пары знаков кавычек для
+каждого уровня внедрённого закавычивания.
+Свойство <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>
+ даёт доступ к таким знакам кавычек и
+вставляет их до и после закавычивания.<H3>12.4.1 <a name="quotes-specify">Спецификация
+кавычек</a> свойством <a href="#propdef-quotes" class="noxref"><span
+class="propinst-quotes">'quotes'</span></a> </H3>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'quotes'"><a name="propdef-quotes" class="propdef-title"><strong>'quotes'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[<a href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span class="value-inst-string">&lt;string&gt;</span></a> <a href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span class="value-inst-string">&lt;string&gt;</span></a>]+ | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>зависит от ПА
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P>Это свойство специфицирует знаки кавычек
+для любого количества внедрённых
+закавычиваний. Значения имеют следующий
+смысл:</p>
+
+<dl><dt><strong>none</strong>
+<dd>Значения 'open-quote' и 'close-quote' свойства <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a> 
+не производят знаков кавычек.
+<dt>[<span class="index-inst" title="&lt;string&gt;"><a name="x22" href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span
+class="value-inst-string"><strong>&lt;string&gt;</strong></span></a></span>
+&nbsp;<span class="index-inst" title="&lt;string&gt;"><a name="x23" href="syndata.html#value-def-string" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-string" class="noxref"><span
+class="value-inst-string"><strong>&lt;string&gt;</strong></span></a></span>]+
+<dd>Значения для 'open-quote' и 'close-quote' свойства <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a> 
+берутся из данного списка пар знаков кавычек (закрывающих и открывающих). Первая (самая левая) пара представляет
+самый внешний уровень закавычивания, вторая пара - первый уровень внедрения и т.д.<br>ПА обязан применять подходящие пары
+знаков кавычек в соответствии с уровнем внедрения.</dl>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Применение следующей таблицы стилей:</p>
+
+<PRE class="example">/* Специфицируются пары кавычек двух уровней для двух языков */
+Q:lang(en) { quotes: '&quot;' '&quot;' &quot;'&quot; &quot;'&quot; }
+Q:lang(no) { quotes: &quot;«&quot; &quot;»&quot; &quot;&lt;&quot; &quot;&gt;&quot; }
+
+/* Вставляются кавычки до и после содержимого элемента Q */
+Q:before { content: open-quote }
+Q:after  { content: close-quote }</PRE>
+
+  <P>к данному фрагменту HTML:</p>
+
+<PRE class="html-example">&lt;HTML lang=&quot;en&quot;&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Quotes&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;&lt;Q&gt;Quote me!&lt;/Q&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>позволит ПАгенту выдать:</p>
+
+<PRE class="ascii-art">&quot;Quote me!&quot;</PRE>
+
+<P>а данный фрагмент HTML:</p>
+
+<PRE class="html-example">&lt;HTML lang=&quot;no&quot;&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Quotes&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;&lt;Q&gt;Tr&oslash;ndere gr&aring;ter n&aring;r &lt;Q&gt;Vinsjan p&aring; kaia&lt;/Q&gt; blir deklamert.&lt;/Q&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>выдаст:</p>
+
+<PRE class="ascii-art">«Tr&oslash;ndere gr&aring;ter n&aring;r &lt;Vinsjan p&aring; kaia&gt; blir deklamert.»
+</PRE></div>
+
+<div class="note"><P><em><strong>Примечание.</strong>
+ Хотя знаки кавычек, специфицированные в <a href="#propdef-quotes" class="noxref"><span
+class="propinst-quotes">'quotes'</span></a>  предыдущего примера, по соглашению находятся на
+клавиатурах компьютера, установки для высококачественного вывода потребуют других символов ISO 10646.<br>
+В следующей информативной таблице приведён список некоторых символов кавычек ISO 10646:</em></p>
+
+<TABLE border="1" width="678"><TR><TH width="174" align="center">
+<p align="center">Ориентировочное представление<TH width="171" align="center">
+<p align="center">код ISO 10646 (hex)<TH width="311">
+<p align="center">Описание<TR><TD width="174">"<TD width="171">0022<TD width="311">КАВЫЧКА [двойная
+кавычка ASCII]
+<TR><TD width="174">'<TD width="171">0027<TD width="311">АПОСТРОФ [одиночная кавычка ASCII]
+<TR><TD width="174">&lt;<TD width="171">2039<TD width="311">ОДИНОЧНАЯ ЛЕВАЯ УГЛОВАЯ КАВЫЧКА
+<TR><TD width="174">><TD width="171">203A<TD width="311">ОДИНОЧНАЯ ПРАВАЯ УГЛОВАЯ КАВЫЧКА
+<TR><TD width="174">«<TD width="171">00AB<TD width="311">ЛЕВАЯ ДВОЙНАЯ УГЛОВАЯ КАВЫЧКА
+<TR><TD width="174">»<TD width="171">00BB<TD width="311">ПРАВАЯ ДВОЙНАЯ УГЛОВАЯ КАВЫЧКА
+<TR><TD width="174">`<TD width="171">2018<TD width="311">ЛЕВАЯ ОДИНОЧНАЯ КАВЫЧКА [single high-6]
+<TR><TD width="174">'<TD width="171">2019<TD width="311">ПРАВАЯ ОДИНОЧНАЯ КАВЫЧКА [single high-9]
+<TR><TD width="174">``<TD width="171">201C<TD width="311">ЛЕВАЯ ДВОЙНАЯ КАВЫЧКА [double high-6]
+<TR><TD width="174">''<TD width="171">201D<TD width="311">ПРАВАЯ ДВОЙНАЯ КАВЫЧКА [double high-9]
+<TR><TD width="174">,,<TD width="171">201E<TD width="311">ДВОЙНАЯ КАВЫЧКА LOW-9 [double low-9]</TABLE></div>
+
+<H3><br>12.4.2 <a name="quotes-insert">Вставка кавычек</a> с
+применением свойства <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a> </H3>
+
+<p>Знаки кавычек вставляются в
+соответствующих местах документа
+значениями <span class="index-def" title="open-quote"><a
+class="value-def" name="value-def-open-quote">'open-quote'</a></span>
+ и <span class="index-def" title="close-quote"><a class="value-def"
+name="value-def-close-quote">'close-quote'</a></span>  свойства <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>.
+Каждое вхождение 'open-quote' или 'close-quote'
+замещается одной их строк значения <a href="#propdef-quotes" class="noxref"><span
+class="propinst-quotes">'quotes'</span></a>, базируясь на
+глубине вложения.<p>'Open-quote' относится к
+первой кавычке из пары, 'close-quote' относится ко
+второй. То, какая пара кавычек используется,
+зависит от уровня вложения кавычек: число
+вхождений 'open-quote' во всём сгенерированном
+тексте перед текущим вхождением минус
+число вхождений 'close-quote'. Если глубина - 0,
+используется первая пара, если глубина - 1,
+вторая пара и т.д. Если глубина вложения
+больше, чем число пар, повторяется
+последняя пара.<p>Обратите внимание, что
+глубина вложения кавычек не зависит от
+вложения документа-источника или структуры
+форматирования.<p>Некоторые стили печати
+требуют, чтобы знак открывающей кавычки
+повторялся перед каждым параграфом блока
+кавычек, охватывающего несколько
+параграфов, но только последний параграф
+оканчивался знаком закрывающей кавычки. В
+CSS этого можно добиться вставкой &quot;фантома&quot;
+закрывающих кавычек. Ключевое слово <span class="index-def" title="no-close-quote"><a
+class="value-def"
+name="value-def-no-close-quote">'no-close-quote'</a></span>  уменьшает
+уровень кавычек, но не вставляет знак
+кавычки.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<p>Следующая таблица стилей помещает знаки открывающей кавычки в каждом параграфе в
+BLOCKQUOTE и вставляет одиночную закрывающую кавычку в конце:
+
+<pre>BLOCKQUOTE P:before     { content: open-quote }
+BLOCKQUOTE P:after      { content: no-close-quote }
+BLOCKQUOTE P.last:after { content: close-quote }</pre>
+
+<P>Это относится к последнему параграфу, маркированному классом &quot;last&quot;,
+поскольку нет селекторов, которые могут совпадать с последним потомком элемента.</div>
+
+<p>Для симметрии имеется также ключевое слово <span class="index-def"
+title="no-open-quote"><a class="value-def"
+name="value-def-no-open-quote">'no-open-quote'</a></span>, которое ничего
+не вставляет, а увеличивает глубину закавычивания на единицу.
+
+<div class="note"><p><em><strong>Примечание.</strong>  Если язык закавычивания отличается от языка
+окружающего текста, то лучше использовать знаки кавычек языка окружающего текста, а не языка закавычивания.</em></div>
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Французский внутри английского:<blockquote>
+The device of the order of the garter is &#8220;Honi soit qui mal y pense.&#8221;</blockquote>
+Английский внутри французского:<blockquote>Il disait: «&nbsp;Il faut mettre l'action en &#8249;&nbsp;fast
+forward&nbsp;&#8250;.»</blockquote>
+
+<p>Таблица стилей типа следующей установит
+свойство 'quotes' таким образом, что 'open-quote' и 'close-quote'
+будут корректно работать во всех элементах.
+Это правила для документов, содержащих
+только английский, французский или оба этих
+языка. Одно правило понадобится для каждого
+дополнительного языка. <a name="selector.html#combinator"> Обратите</a> внимание
+на использование комбинатора-потомка (">")
+для установки кавычек в элементы на базе
+языка окружающего текста:</P>
+
+<pre>[LANG|=fr] &gt; *  { quotes: &quot;«&quot; &quot;»&quot; &quot;\2039&quot; &quot;\203A&quot; }
+[LANG|=en] &gt; *  { quotes: &quot;\201C&quot; &quot;\201D&quot; &quot;\2018&quot; &quot;\2019&quot; }</pre>
+
+<p>Знаки кавычек для английского показаны здесь в такой форме, что большинство людей
+будет способно их напечатать. Если Вы можете печатать их напрямую, то они будут выглядеть примерно так:
+
+<pre>[LANG|=fr] &gt; * { quotes: &quot;«&quot; &quot;»&quot; &quot;‹&quot; &quot;›&quot; }
+[LANG|=en] &gt; * { quotes: &quot;“&quot; &quot;”&quot; &quot;‘&quot; &quot;’&quot; }</pre></div>
+
+
+<h2><br>12.5&nbsp; Автоматические <span class="index-def" title="counters"><a
+name="counters">счётчики</a></span>  и нумерация</h2>
+
+<p>Автоматическая нумерация в CSS2 контролируется двумя свойствами,
+<a href="#propdef-counter-increment" class="noxref"><span class="propinst-counter-increment">'counter-increment'</span></a>
+ и <a href="#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a>.
+Счётчики, определённые в этих свойствах,
+используются с функциями counter() и counters()
+свойства <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a>.
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'counter-reset'"><a name="propdef-counter-reset" class="propdef-title"><strong>'counter-reset'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="syndata.html#value-def-identifier" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-identifier" class="noxref"><span class="value-inst-identifier">&lt;identifier&gt;</span></a> <a href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span class="value-inst-integer">&lt;integer&gt;</span></a>? ]+ | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#all-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#all-media-group" class="noxref">все</a>
+</table></dl></div>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'counter-increment'"><a name="propdef-counter-increment" class="propdef-title"><strong>'counter-increment'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="syndata.html#value-def-identifier" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-identifier" class="noxref"><span class="value-inst-identifier">&lt;identifier&gt;</span></a> <a href="syndata.html#value-def-integer" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-integer" class="noxref"><span class="value-inst-integer">&lt;integer&gt;</span></a>? ]+ | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#all-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#all-media-group" class="noxref">все</a>
+</table></dl></div>
+
+<p>Свойство <a href="#propdef-counter-increment" class="noxref"><span
+class="propinst-counter-increment">'counter-increment'</span></a> 
+принимает одно или более имён счётчиков (идентификаторы),
+за каждым из которых может следовать целое
+число. Это число обозначает, насколько
+счётчик увеличивается при каждом появлении
+элемента. Увеличение по умолчанию - 1.
+Допустимы 0 и негативные значения.<p>Свойство
+<a href="#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a>
+ также содержит список из одного или более
+имён счётчиков, за каждым из которых может
+следовать целое число. Целое число задаёт
+значение, в которое счётчик сбрасывается при каждом появлении
+элемента. По умолчанию - 0.<p>Если <a href="#propdef-counter-increment" class="noxref"><span
+class="propinst-counter-increment">'counter-increment'</span></a> 
+относится к счётчику, который не находится
+в <a href="#scope">области видимости (см. ниже</a>)
+какого-либо <a href="#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a>,
+то принимается, что счётчик установлен в 0
+корневым элементом.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<p>Здесь показан способ нумерации глав и разделов:
+"Chapter 1", "1.1", &quot;1.2&quot; и т.д.:
+
+<pre>H1:before {
+    content: &quot;Chapter &quot; counter(chapter) &quot;. &quot;;
+    counter-increment: chapter;  /* Добавляет 1 к главе */
+    counter-reset: section;      /* Устанавливает раздел в 0 */
+}
+H2:before {
+    content: counter(chapter) &quot;.&quot; counter(section) &quot; &quot;;
+    counter-increment: section;
+}</pre></div>
+
+<p>Если элемент увеличивает/сбрасывает счётчик и использует его (в свойстве <a href="#propdef-content" class="noxref"><span class="propinst-content">'content'</span></a> 
+в псевдоэлементах :before или :after), то счётчик
+используется <em>после</em> того, как увеличен/сброшен.<p>Если
+элемент и увеличивает, и сбрасывает счётчик, то счётчик сначала
+сбрасывается, а затем увеличивается.<P>Свойство
+<a href="#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a>
+ следует правилам каскадирования. Таким
+образом, в соответствии с каскадированием,
+следующая таблица стилей:</p>
+
+<pre class="example">H1 { counter-reset: section -1 }
+H1 { counter-reset: imagenum 99 }</pre>
+
+<p>сбросит только 'imagenum'. Чтобы сбросить оба счётчика, их нужно
+специфицировать вместе:</p>
+
+<pre class="example">H1 { counter-reset: section -1 imagenum 99 }
+</pre>
+
+<h3>12.5.1 <a name="scope">Вложение счётчиков и область
+видимости</a></h3>
+
+<p>Счётчики являются &quot;самовкладывающимися&quot;,
+т.е. повторное использование счётчика в
+элементах-потомках автоматически создаёт
+новый объект счётчика. Это важно, например,
+для таких случаев, как списки в HTML, где
+элементы могут вкладываться внутри себя на
+произвольную глубину, и может оказаться
+невозможным определить уникально
+именованный счётчик для каждого уровня.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <p>Так, следующего достаточно для нумерации
+  вложенных элементов списка. Результат
+  очень похож на применение установки 'display:list-item'
+  и 'list-style: inside' в элементе LI:
+
+<pre>OL { counter-reset: item }
+LI { display: block }
+LI:before { content: counter(item) &quot;. &quot;; counter-increment: item }</pre>
+</div>
+
+<p>Самовложение базируется на том принципе,
+что каждый элемент, имеющий <a href="#propdef-counter-reset" class="noxref"><span class="propinst-counter-reset">'counter-reset'</span></a> 
+для счётчика X, создаёт новый счётчик X, <a name="x32"><span class="index-def"
+title="scope"><dfn>область видимости</dfn></span></a>
+которого - элемент, его предшествующие
+родственники и все потомки элемента и его
+предшествующих родственников.<p>В
+предыдущем примере OL создаст счётчик, и все
+потомки OL будут ссылаться на этот счётчик.
+
+<div class="html-example"> <p>Если мы обозначим с помощью item[n]&nbsp; n<sup>ый</sup> экземпляр счётчика &quot;item&quot;&nbsp;
+и&nbsp; "(" and ")"&nbsp; -&nbsp; начало и конец области видимости, то следующий фрагмент HTML будет
+использовать указанные счётчики. (Мы используем ту же таблицу стилей, что и в предыдущем примере).
+
+<pre>&lt;OL&gt;               &lt;!-- (set item[0] to 0          --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[0] (= 1)   --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[0] (= 2)   --&gt;
+    &lt;OL&gt;           &lt;!--  (set item[1] to 0         --&gt;
+      &lt;LI&gt;item     &lt;!--   increment item[1] (= 1)  --&gt;
+      &lt;LI&gt;item     &lt;!--   increment item[1] (= 2)  --&gt;
+      &lt;LI&gt;item     &lt;!--   increment item[1] (= 3)  --&gt;
+        &lt;OL&gt;       &lt;!--   (set item[2] to 0        --&gt;
+          &lt;LI&gt;item &lt;!--    increment item[2] (= 1) --&gt;
+        &lt;/OL&gt;      &lt;!--   )                        --&gt;
+        &lt;OL&gt;       &lt;!--   (set item[3] to 0        --&gt;
+          &lt;LI&gt;     &lt;!--    increment item[3] (= 1) --&gt;
+        &lt;/OL&gt;      &lt;!--   )                        --&gt;
+      &lt;LI&gt;item     &lt;!--   increment item[1] (= 4)  --&gt;
+    &lt;/OL&gt;          &lt;!--  )                         --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[0] (= 3)   --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[0] (= 4)   --&gt;
+&lt;/OL&gt;              &lt;!-- )                          --&gt;
+&lt;OL&gt;               &lt;!-- (reset item[4] to 0        --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[4] (= 1)   --&gt;
+  &lt;LI&gt;item         &lt;!--  increment item[4] (= 2)   --&gt;
+&lt;/OL&gt;              &lt;!-- )                          --&gt;
+</pre>
+</div>
+
+<p>Функция 'counters()' генерирует строку,
+составленную из значений всех счётчиков с
+тем же самым именем, разделённых заданной
+строкой.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Следующая
+таблица стилей нумерует вложенные элементы списка как "1", "1.1", &quot;1.1.1&quot; и т.д.
+
+<PRE>OL { counter-reset: item }
+LI { display: block }
+LI:before { content: counters(item, &quot;.&quot;); counter-increment: item }
+</PRE></div>
+
+<h3>12.5.2 <a name="counter-styles">Стили счётчиков</a></h3>
+
+<p>По умолчанию счётчики форматируются десятичными
+числами, а все стили, доступные для свойства <a href="#propdef-list-style-type" class="noxref"><span
+class="propinst-list-style-type">'list-style-type'</span></a><span
+class="propinst-list-style-type">,</span> доступны также для
+счётчиков.<br>
+Обозначение будет такое:</P>
+
+<pre>counter(<var>name</var>)</pre>
+<p>для таблицы стилей по умолчанию, или:</p>
+
+<pre>counter(<var>name</var>, <a href="#propdef-list-style-type" class="noxref"><span class="propinst-list-style-type">'list-style-type'</span></a>)</pre>
+
+<p>Допустимы все стили, включая 'disc', 'circle', 'square' и 'none'.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+
+<pre>H1:before        { content: counter(chno, upper-latin) &quot;. &quot; }
+H2:before        { content: counter(section, upper-roman) &quot; - &quot; }
+BLOCKQUOTE:after { content: &quot; [&quot; counter(bq, hebrew) &quot;]&quot; }
+DIV.note:before  { content: counter(notecntr, disc) &quot; &quot; }
+P:before         { content: counter(p, none) }
+</pre></div>
+
+<h3><a name="q10">12.5.3 Счётчики в элементах с&nbsp; 'display: none'</a></h3>
+
+<p>Элемент, который не отображается (<a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  установлено в 'none'),
+не может установить или сбросить счётчик.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<p>С помощью следующей таблицы стилей
+элементы H2 с классом &quot;secret&quot; не
+увеличивают 'count2'.
+
+<pre>H2.secret {counter-increment: count2; display: none}</pre></div>
+
+<p>В то же время, элементы с <a href="visufx.html#propdef-visibility" tppabs="http://pyramidin.narod.ru/css2/visufx.html#propdef-visibility" class="noxref"><span class="propinst-visibility">'visibility'</span></a><span class="propinst-visibility">,</span>
+установленной в 'hidden', <em>увеличивают </em>счётчики.
+
+<h2><a name="q11"><br>12.6 Маркировка и списки</a></h2>
+
+<P>Большинство элементов уровня блока в CSS
+генерируют один основной бокс блока.<br>
+В этом разделе мы обсуждаем два механизма CSS,
+которые заставляют элемент генерировать
+два бокса: один <a
+href="visuren.html#principal-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#principal-box">основной</a> бокс блока (для
+содержимого элемента) и отдельный бокс
+маркёра (для элемента оформления, такого
+как кружок, изображение или номер). Бокс
+маркёра может быть позиционирован внутри
+или вне основного бокса. В отличие от
+содержимого :before и :after, бокс маркёра не
+влияет на позицию основного бокса, какой бы
+ни была схема позиционирования.<P>Самым
+общим из этих двух механизмов является
+новый для CSS2 механизм, называемый
+<a name="x33"><span class="index-def" title="markers"><dfn>маркёры</dfn></span></a>.
+Механизм с более ограниченными
+возможностями привлекает свойства <a href="#lists">списков</a> CSS1.
+Свойства списков дают авторам быстрый
+результат для многих сценариев
+упорядоченных и неупорядоченных списков.
+Однако маркёры дают авторам точный
+контроль над содержимым и позицией
+маркёров. Маркёры можно использовать
+вместе со <a href="#counters">счётчиками</a> для
+создания новых стилей списков, нумерации
+примечаний на полях и многого другого.
+
+<div class="html-example">
+<P>Например, следующий пример иллюстрирует,
+как маркёры могут использоваться для того,
+чтобы добавлять точку после каждого
+элемента нумерованного списка.<br>
+Эта программа HTML и таблица стилей:</p>
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+   &lt;HEAD&gt;
+     &lt;TITLE&gt;Создание списка с маркёрами&lt;/TITLE&gt;
+     &lt;STYLE type=&quot;text/css&quot;&gt;
+	  LI:before { 
+	      display: marker;
+	      content: counter(mycounter, lower-roman) &quot;.&quot;;
+	      counter-increment: mycounter;
+	  }   
+     &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;OL&gt;
+      &lt;LI&gt; Это первый элемент списка.
+      &lt;LI&gt; Это второй элемент списка.
+      &lt;LI&gt; Это третий элемент списка.
+    &lt;/OL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+
+<P>должны дать на выходе примерно следующее: </P>
+
+<PRE>   i. Это первый элемент списка.
+  ii. Это второй элемент списка.
+ iii. Это третий элемент списка.</PRE>
+</div>
+
+<P>С помощью <a href="selector.html#descendant-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#descendant-selectors">селекторов
+потомков</a> и <a href="selector.html#child-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#child-selectors">дочерних
+селекторов</a> можно специфицировать
+маркёры различных типов в зависимости от
+глубины вложения списков.
+
+<h3><br>
+12.6.1 <a name="markers">Маркировка:</a> свойство <a href="#propdef-marker-offset" class="noxref"><span
+class="propinst-marker-offset">'marker-offset'</span></a> </h3>
+
+<P>Маркёры создаются путём установки
+свойства <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>  в 'marker' внутри
+псевдоэлементов :before или :after. Поскольку
+содержимое 'block' и 'inline' в :before и :after является
+частью <a
+href="visuren.html#principal-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#principal-box">основного бокса</a>,
+генерируемого элементом, содержимое 'marker'
+форматируется в независимом боксе маркёра
+вне основного бокса. Боксы маркёра
+форматируются как единая строка (т.е. один <a href="visuren.html#line-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#line-box">бокс
+строки (строчный бокс)</a>), поэтому они не
+обладают такой гибкостью, как <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">поплавки</a>.
+Боксы маркёра создаются только тогда, когда
+свойство <a href="#propdef-content" class="noxref"><span
+class="propinst-content">'content'</span></a>  псевдоэлементов
+действительно генерирует содержимое.<P>Боксы
+маркёра имеют заполнение и рамку, но не
+имеют полей.<P>Для псевдоэлемента :before
+базовая линия текста в боксе маркёра будет
+выровнена вертикально относительно
+базовой линии текста первой строки
+содержимого основного бокса. Если основной
+бокс не содержит текста, верхний внешний
+край бокса маркёра будет выровнен с верхним
+внешним краем основного бокса. Для
+псевдоэлемента :after базовая линия текста в
+боксе маркёра будет выровнена вертикально
+относительно базовой линии текста
+последней строки содержимого основного
+бокса. Если основной бокс не содержит
+текста, нижний внешний край бокса маркёра
+будет выровнен с нижним внешним краем
+основного бокса.<p>Высота бокса маркёра
+задаётся в свойстве <a href="visudet.html#propdef-line-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-line-height" class="noxref"><span
+class="propinst-line-height">'line-height'</span></a>. Бокс маркёра :before
+(:after) участвует в подсчёте высоты первого (последнего)
+строчного бокса основного бокса. Таким
+образом, маркёры выравниваются по первой и
+последней строке содержимого элемента,
+даже если боксы маркёра находятся в разных
+строчных боксах. Если в основном боксе
+отсутствует первый или последний строчный
+бокс, то бокс маркёра сам устанавливает
+свой первый строчный бокс.<P>Вертикальное
+выравнивание бокса маркёра внутри его
+строчного бокса специфицируется свойством <a href="visudet.html#propdef-vertical-align" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-vertical-align" class="noxref"><span
+class="propinst-vertical-align">'vertical-align'</span></a>.<P>Если
+значение свойства <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span class="propinst-width">'width'</span></a>
+ - 'auto', то <a
+href="box.html#content-width" tppabs="http://pyramidin.narod.ru/css2/box.html#content-width">ширина содержимого</a> бокса
+маркёра является шириной содержимого,
+иначе - это значение <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span
+class="propinst-width">'width'</span></a>. Для значений <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span
+class="propinst-width">'width'</span></a> меньших, чем ширина
+содержимого, свойство <a href="visufx.html#propdef-overflow" tppabs="http://pyramidin.narod.ru/css2/visufx.html#propdef-overflow" class="noxref"><span class="propinst-overflow">'overflow'</span></a> 
+специфицирует поведение при переполнении.
+Боксы маркёра могут перекрывать основные
+боксы. Для значений <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span class="propinst-width">'width'</span></a>
+ больших,&nbsp; чем ширина содержимого,
+свойство <a href="text.html#propdef-text-align" tppabs="http://pyramidin.narod.ru/css2/text.html#propdef-text-align" class="noxref"><span
+class="propinst-text-align">'text-align'</span></a> определяет
+горизонтальное выравнивание содержимого в
+боксе маркёра.<P>Свойство <a href="#propdef-marker-offset" class="noxref"><span class="propinst-marker-offset">'marker-offset'</span></a>
+ специфицирует смещение по горизонтали
+между боксом маркёра и ассоциированным <a href="visuren.html#principal-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#principal-box">основным
+боксом</a>. Расстояние измеряется между их
+ближайшими <a
+href="box.html#border-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#border-edge">краями рамок</a>.<br>
+<div class="note"><strong>Примечание.<em>
+ Если маркёр всплывает вправо от поплавка в
+содержимом, отформатированном слева направо,
+то основной бокс будет всплывать вниз от
+правой стороны поплавка, но боксы маркёра
+будут появляться слева от поплавка.
+Поскольку левый край рамки основного бокса
+расположен слева от поплавка (см. описание <a
+href="visuren.html#floats" tppabs="http://pyramidin.narod.ru/css2/visuren.html#floats">поплавков</a>), а бокс маркёра
+расположен вне края рамки основного бокса,
+маркёр расположится также слева от
+поплавка. Аналогичным будет и поведение при
+форматировании справа налево, когда маркёр
+всплывёт слева от поплавка.</em></strong></div>
+<P>Если
+свойство&nbsp; <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span class="propinst-display">'display'</span></a> 
+имеет значение 'marker' для содержимого,
+генерируемого элементом с 'display: list-item', то
+бокс маркёра, генерируемый для ':before',
+замещает нормальный маркёр элемента списка.
+
+
+<div class="html-example">
+<P>В следующем примере содержимое
+центрируется в боксе маркёра фиксированной
+ширины.<br>
+Этот документ:</p>
+
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+ &lt;HTML&gt;
+    &lt;HEAD&gt;
+      &lt;TITLE&gt;Выравнивание содержимого в боксе маркёра&lt;/TITLE&gt;
+      &lt;STYLE type=&quot;text/css&quot;&gt;
+           LI:before { 
+               display: marker;
+               content: &quot;(&quot; counter(counter) &quot;)&quot;;
+               counter-increment: counter;
+               width: 6em;
+               text-align: center;
+           }
+      &lt;/STYLE&gt;
+   &lt;/HEAD&gt;
+   &lt;BODY&gt;
+     &lt;OL&gt;
+       &lt;LI&gt; Это первый элемент списка.
+       &lt;LI&gt; Это второй элемент списка.
+       &lt;LI&gt; Это третий элемент списка.
+     &lt;/OL&gt;
+   &lt;/BODY&gt;
+ &lt;/HTML&gt;</pre>
+
+<p>должен дать примерно такой вывод: </P>
+
+<PRE>  (1)   Это первый
+        элемент списка.
+  (2)   Это второй 
+        элемент списка.
+  (3)   Это третий 
+        элемент списка.
+</PRE></div>
+
+<P>В следующем примере создаются маркёры до и после элементов списка. 
+
+<div class="html-example"><P>Этот документ:</p>
+
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Маркёры до и после элементов списка&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      @media screen, print {
+         LI:before { 
+   	      display: marker;
+	      content: url(&quot;smiley.gif&quot;);
+         LI:after {
+	      display: marker;
+   	      content: url(&quot;sad.gif&quot;);
+         }
+      }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;первый элемент списка появляется первым
+      &lt;LI&gt;второй элемент списка появляется вторым
+    &lt;/UL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+
+<P>должен дать примерно такой вывод (здесь используется рисунок ascii вместо изображения gif улыбки):</p>
+
+<PRE>  :-) первый элемент списка 
+      появляется первым      :-(
+  :-) второй элемент списка
+      появляется вторым      :-(
+</PRE></div>
+
+<P>В следующем примере маркёры используются
+для нумерации примечаний (параграфов).</p>
+
+<div class="html-example">
+<P>Данный документ:</p>
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Маркёры для создания нумерованных примечаний 4&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      P { margin-left: 12 em; }
+      @media screen, print {
+         P.Note:before         { 
+  	      display: marker;
+	      content: url(&quot;note.gif&quot;) 
+                       &quot;Примечание &quot; counter(note-counter) &quot;:&quot;;
+              counter-increment: note-counter;
+              text-align: left;
+              width: 10em;
+         }
+     }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;P&gt;Это первый параграф данного документа.&lt;/P&gt;
+    &lt;P CLASS=&quot;Note&quot;&gt;Это очень короткий документ.&lt;/P&gt;
+    &lt;P&gt;Это конец.&lt;/P&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+
+<P>должен дать примерно такой вывод:</p>
+
+<PRE>                  Это первый параграф 
+                  данного документа.
+
+  Примечание 1:   Это очень короткий
+                  документ.
+           
+                  Это конец.
+</PRE></div>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'marker-offset'"><a name="propdef-marker-offset" class="propdef-title"><strong>'marker-offset'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length">&lt;length&gt;</span></a> | auto | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>auto
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к элементам с 'display: marker'
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P>Это свойство специфицирует расстояние
+между ближайшим <a
+href="box.html#border-edge" tppabs="http://pyramidin.narod.ru/css2/box.html#border-edge">краем рамки</a> бокса маркёра
+и ассоциированным с ним <a href="visuren.html#principal-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#principal-box">основным
+боксом</a>. Смещение может или
+специфицироваться пользователем (<span class="index-inst"
+title="&lt;length&gt;"><a name="x35" href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span
+class="value-inst-length">&lt;length&gt;</span></a></span>), или
+выбираться ПА ('auto'). Значения размеров могут
+быть отрицательными, но могут существовать
+ограничения, в зависимости от специфики
+реализации. 
+
+<div class="html-example"><P>
+В следующем примере показано, как маркёры
+могут использоваться для добавления точек
+после каждого элемента нумерованного
+списка.<br>
+Эта программа HTML и таблица стилей:</p>
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+ &lt;HTML&gt;
+    &lt;HEAD&gt;
+      &lt;TITLE&gt;Пример маркёров 5&lt;/TITLE&gt;
+      &lt;STYLE type=&quot;text/css&quot;&gt;
+           P { margin-left: 8em } /* Создаёт пространство для счётчиков */
+           LI:before { 
+               display: marker;
+               marker-offset: 3em;
+               content: counter(mycounter, lower-roman) &quot;.&quot;;
+               counter-increment: mycounter;
+           }   
+      &lt;/STYLE&gt;
+   &lt;/HEAD&gt;
+   &lt;BODY&gt;
+     &lt;P&gt; Это большой предшествующий параграф ...
+     &lt;OL&gt;
+       &lt;LI&gt; Это первый элемент списка.
+       &lt;LI&gt; Это второй элемент списка.
+       &lt;LI&gt; Это третий элемент списка.
+     &lt;/OL&gt;
+     &lt;P&gt; Это большой последующий параграф ...
+   &lt;/BODY&gt;
+ &lt;/HTML&gt;</pre>
+
+<P>должен дать примерно такой вывод: </P>
+
+  <PRE>        Это большой предшествующий
+        параграф ...
+      
+   i.   Это первый элемент списка.
+  ii.   Это второй элемент списка.
+ iii.   Это третий элемент списка.
+
+        Это большой последующий
+        параграф ...
+</PRE></div>
+
+<h3>12.6.2&nbsp; <a name="lists">Списки:</a> свойства <a href="#propdef-list-style-type" class="noxref"><span
+class="propinst-list-style-type">'list-style-type'</span></a>, <a href="#propdef-list-style-image" class="noxref"><span
+class="propinst-list-style-image">'list-style-image'</span></a>, <a href="#propdef-list-style-position" class="noxref"><span
+class="propinst-list-style-position">'list-style-position'</span></a> и <a href="#propdef-list-style" class="noxref"><span class="propinst-list-style">'list-style'</span></a> </h3>
+
+<P> <a name="x36"><span class="index-def" title="list properties"><dfn>Свойства
+списков</dfn></span></a> создают базовое
+визуальное форматирование списков. Как и с
+более общими маркёрами, элемент с 'display:
+list-item' генерирует <a href="visuren.html#principal-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#principal-box">основной</a>
+для содержимого элемента и
+необязательный бокс маркёра. Другие
+свойства списка позволяют авторам
+специфицировать тип маркёра (изображение,
+глиф или цифра) и его позицию относительно
+основного бокса (вне или внутри него перед
+содержимым). Они не позволяют авторам
+специфицировать другие стили (цвет, шрифт,
+выравнивание и т.п.) для маркёра списка или
+уточнять его позицию относительно
+основного бокса.<P>Следовательно, если
+маркёр M (созданный в 'display: marker')
+используется с элементом списка, созданным
+в свойстве списка, M замещает стандартный
+маркёр элемента списка.<P>Вместе со
+свойствами списка <a
+href="colors.html#background-properties" tppabs="http://pyramidin.narod.ru/css2/colors.html#background-properties">свойства фона</a>
+применяются только к основному боксу; бокс
+маркёра 'outside' прозрачен. Маркёры дают
+больший контроль над стилем бокса маркёра.<P>&nbsp;
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'list-style-type'"><a name="propdef-list-style-type" class="propdef-title"><strong>'list-style-type'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>disc | circle | square | decimal | decimal-leading-zero | 
+lower-roman | upper-roman | lower-greek | lower-alpha | lower-latin | upper-alpha | upper-latin | 
+hebrew | armenian | georgian | 
+cjk-ideographic | hiragana | katakana | hiragana-iroha | katakana-iroha |
+none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>disc<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к
+элементам с 'display: list-item'<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P>Это свойство специфицирует вид маркёра
+элемента списка, если
+<a href="#propdef-list-style-image" class="noxref"><span class="propinst-list-style-image">'list-style-image'</span></a> 
+имеет значение 'none' или если изображение, на
+которое указывает URI, не может быть
+отображено. Значение 'none' специфицирует
+отсутствие маркёров, для других случаев имеются
+три типа маркёров: глифы, системы нумерации
+и алфавитные системы.
+<div class="note"><strong>Примечание.<em>  Нумерованные списки
+улучшают доступность документа, т.к. делают
+списки более удобными для навигации.</em></strong></div>
+<P>Глифы специфицируются с помощью <span class="index-def" title="disc"><strong><a class="value-def"
+name="value-def-disc">disc</a></strong></span>, 
+<strong><span class="index-def" title="circle"><a class="value-def"
+name="value-def-circle">circle</a></span></strong> и <span class="index-def" title="square"> 
+<strong><a class="value-def"
+name="value-def-square">square</a></strong></span>. Их точное
+представление зависит от ПА.
+
+<P>Системы нумерации специфицируются с помощью:</P>
+
+<dl><dt><span class="index-def" title="decimal"><a class="value-def" name="value-def-decimal">
+<strong>decimal</strong></a></span><dd>Десятеричных чисел, начинающихся с 1.
+<dt><strong><span class="index-def" title="decimal-leading-zero"><a class="value-def" name="value-def-decimal-leading-zero">decimal-leading-zero</a></span></strong>
+<dd>Десятеричных чисел, дополненных начальными нулями (например, 01, 02, 03, ..., 98, 99).
+<dt><strong><span class="index-def" title="lower-roman"><a class="value-def" name="value-def-lower-roman">lower-roman</a></span></strong>
+<dd>Римских цифр в нижнем регистре (i, ii, iii, iv, v&nbsp;и т.д.).
+<dt><strong><span class="index-def" title="upper-roman"><a class="value-def" name="value-def-upper-roman">upper-roman</a></span></strong>
+<dd>Римских цифр в верхнем регистре (I, II, III, IV, V&nbsp; и т.д.).
+<dt><strong><span class="index-def" title="hebrew"><a class="value-def" name="value-def-hebrew">hebrew</a></span></strong>
+<dd>Традиционной еврейской нумерации.
+<dt><strong><span class="index-def" title="georgian"><a class="value-def" name="value-def-georgian">georgian</a></span></strong>
+<dd>Традиционной грузинской нумерации (an, ban, gan, ..., he, tan, in, in-an, ...).
+<dt><strong><span class="index-def" title="armenian"><a class="value-def" name="value-def-armenian">armenian</a></span></strong>
+<dd>Традиционной армянской нумерации.
+<dt><strong><span class="index-def" title="cjk-ideographic"><a class="value-def" name="value-def-cjk-ideographic">cjk-ideographic</a></span></strong>
+<dd>Простых идеографических чисел.
+<dt><strong><span class="index-def" title="hiragana"><a class="value-def" name="value-def-hiragana">hiragana</a></span></strong>
+<dd>a, i, u, e, o, ka, ki, ...
+<dt><strong><span class="index-def" title="katakana"><a class="value-def" name="value-def-katakana">katakana</a></span></strong>
+<dd>A, I, U, E, O, KA, KI, ...
+<dt><strong><span class="index-def" title="hiragana-iroha"><a class="value-def" name="value-def-hiragana-iroha">hiragana-iroha</a></span></strong>
+<dd>i, ro, ha, ni, ho, he, to, ...
+<dt><strong><span class="index-def" title="katakana-iroha"><a class="value-def" name="value-def-katakana-iroha">katakana-iroha</a></span></strong>
+<dd>I, RO, HA, NI, HO, HE, TO, ...
+</dl>
+
+<P>ПА, не распознающий системы нумерации, должен использовать 'decimal'.
+
+<div class="note"><P><em><strong>Примечание.</strong>
+ Этот документ не специфицирует точный механизм действия каждой системы нумерации
+(например, как вычисляются римские цифры). В будущих Примечаниях W3C могут быть даны дальнейшие разъяснения.</em></div>
+
+<P>Алфавитные системы специфицируются с помощью:</P>
+
+<dl>
+<dt><strong><span class="index-def" title="lower-latin"><a class="value-def" name="value-def-lower-latin">lower-latin</a></span></strong>
+или <strong>lower-alpha</strong><dd>Букв ascii нижнего регистра (a, b, c, ... z).
+<dt><strong><span class="index-def" title="upper-latin"><a class="value-def" name="value-def-upper-latin">upper-latin</a></span></strong> 
+или <strong>upper-alpha</strong><dd>Букв ascii верхнего регистра (A, B, C, ... Z).
+<dt><strong><span class="index-def" title="lower-greek"><a class="value-def" name="value-def-lower-greek">lower-greek</a></span></strong>
+<dd>Классических греческих букв нижнего регистра альфа, бета, гамма, ... (&#945;, &#946;, &#947;, ...)</dl>
+
+<P>Эта спецификация не определяет то, как происходит перенос алфавитной системы в конце
+алфавита. Например, после 26 элементов списка представление 'lower-latin' не определено. Поэтому для длинных
+списков мы рекомендуем, чтобы авторы специфицировали точные числа.
+
+<div class="html-example"><P>
+Например, следующий документ HTML:<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+   &lt;HEAD&gt;
+     &lt;TITLE&gt;Нумерация латинскими буквами нижнего регистра&lt;/TITLE&gt;
+     &lt;STYLE type=&quot;text/css&quot;&gt;
+          OL { list-style-type: lower-roman }   
+     &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;OL&gt;
+      &lt;LI&gt; Это первый элемент списка.
+      &lt;LI&gt; Это второй элемент списка.
+      &lt;LI&gt; Это третий элемент списка.
+    &lt;/OL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>может дать на выходе:
+
+<PRE>  i Это первый элемент списка.
+ ii Это второй элемент списка.
+iii Это третий элемент списка.</PRE>
+
+<P>Обратите внимание, что выравнивание
+маркёров списка (здесь - по правому краю)
+зависит от ПА.</div>
+
+<div class="note"><P><em><strong>Примечание.</strong> Следующие версии CSS могут предоставить
+более совершенные механизмы международных стилей нумерации.</em></div>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'list-style-image'"><a name="propdef-list-style-image" class="propdef-title"><strong>'list-style-image'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-uri" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-uri" class="noxref"><span class="value-inst-uri">&lt;uri&gt;</span></a> | none | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к элементам с 'display: list-item'
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P>Это свойство определяет изображение,
+которое будет использоваться как маркёр
+элемента списка. Если изображение доступно,
+оно замещает маркёр, установленный&nbsp; <a href="#propdef-list-style-type" class="noxref"><span
+class="propinst-list-style-type">'list-style-type'</span></a>.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>В следующем примере устанавливается маркёр
+- изображение &quot;ellipse.png&quot; - в начале каждого элемента списка .
+
+<PRE>UL { list-style-image: url(&quot;<a href="javascript:if(confirm('http://png.com/ellipse.png  \n\nЭтот файл не был найден Teleport Pro, потому что it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nВы хотите открыть это с сервера?'))window.location='http://png.com/ellipse.png'" tppabs="http://png.com/ellipse.png">http://png.com/ellipse.png</a>&quot;) }
+</PRE></div>
+
+<div class="propdef"><dl><dt>
+<span class="index-def" title="'list-style-position'"><a name="propdef-list-style-position" class="propdef-title"><strong>'list-style-position'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>inside | outside | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>outside
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к элементам с 'display: list-item'
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+
+<P> Это свойство специфицирует позицию бокса маркёра в основном боксе блока.<br>Значения имеют следующий смысл:</p>
+
+<dl><dt><strong>outside</strong><dd>Бокс маркёра находится вне основного бокса блока.
+<div class="note"><strong>Примечание.<em> CSS1 не специфицировал точное размещение бокса маркёра из соображений совместимости, и в CSS2 осталась
+такая же двусмысленность. Для более точного управления боксами маркёров используйте маркёры.</em></strong></div>
+<dt><strong>inside</strong>
+<dd>Бокс маркёра это первый инлайн-бокс в боксе основного блока, после которого всплывает содержимое элемента.</dl>
+
+<div class="html-example"><P>Например:
+
+<PRE>&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Сравнение позиций inside/outside&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      UL         { list-style: outside }
+      UL.compact { list-style: inside }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;first list item comes first
+      &lt;LI&gt;second list item comes second
+    &lt;/UL&gt;
+
+    &lt;UL class=&quot;compact&quot;&gt;
+      &lt;LI&gt;first list item comes first
+      &lt;LI&gt;second list item comes second
+    &lt;/UL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P> Этот пр<a name="img-listinout">имер отображается так</a>:</P>
+
+<div class="figure"><P>
+  <img src="list-inout.gif" tppabs="http://pyramidin.narod.ru/css2/list-inout.gif" alt="Difference between inside
+and outside list style position" width="204" height="219"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-list-inout" href="list-inout-desc.html" tppabs="http://pyramidin.narod.ru/css2/list-inout-desc.html" title="Long description for example showing inside vs. outside
+list marker">[D]</A></SPAN></p></div></div>
+
+<P>В тексте справа-налево маркёры должны выводиться с правой стороны бокса.
+
+<P>&nbsp;<div class="propdef"><dl><dt>
+<span class="index-def" title="'list-style'"><a name="propdef-list-style" class="propdef-title"><strong>'list-style'</strong></a></span>
+<dd><table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="#propdef-list-style-type" class="noxref"><span class="propinst-list-style-type">&lt;'list-style-type'&gt;</span></a> || <a href="#propdef-list-style-position" class="noxref"><span class="propinst-list-style-position">&lt;'list-style-position'&gt;</span></a> || <a href="#propdef-list-style-image" class="noxref"><span class="propinst-list-style-image">&lt;'list-style-image'&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>не определено для сокращённых свойств
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>к элементам с 'display: list-item'
+<tr valign=baseline><td><em>Наследуется:</em><td>да
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table></dl></div>
+<P>Свойство <a href="#propdef-list-style" class="noxref"><span class="propinst-list-style">'list-style'</span></a> 
+- это сокращённое обозначение для установки
+трёх свойств: <a href="#propdef-list-style-type" class="noxref"><span
+class="propinst-list-style-type">'list-style-type'</span></a>, <a href="#propdef-list-style-image" class="noxref"><span
+class="propinst-list-style-image">'list-style-image'</span></a> и <a href="#propdef-list-style-position" class="noxref"><span
+class="propinst-list-style-position">'list-style-position'</span></a>  в
+одном месте в таблице стилей.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>UL { list-style: upper-roman inside }  /* Какой-либо UL */
+UL &gt; UL { list-style: circle outside } /* UL - потомок UL */</PRE></div>
+
+<P>Хотя авторы могут специфицировать информацию о <a href="#propdef-list-style" class="noxref"><span
+class="propinst-list-style">'list-style'</span></a>
+непосредственно в элементах списка (напр., LI
+в HTML), это нужно делать аккуратно. Следующие правила похожи, но в первом объявляется <a
+href="selector.html#descendant-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#descendant-selectors">селектор-потомок</a>,
+а во втором (более специфический) <a
+href="selector.html#child-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#child-selectors">дочерний селектор.</a><PRE class="example">OL.alpha LI   { list-style: lower-alpha } /* LI - потомок OL */
+OL.alpha &gt; LI { list-style: lower-alpha } /* LI-наследник OL */</PRE>
+
+<P>Авторы, использующие только <a href="selector.html#descendant-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#descendant-selectors">селекторы-потомки</a>,
+могут не получить тот результат, на который рассчитывали. Рассмотрим следующие правила:
+
+<PRE class="html-example">&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;ПРЕДУПРЕЖДЕНИЕ: Непредсказуемый результат из-за каскадирования&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      OL.alpha LI  { list-style: lower-alpha }
+      UL LI        { list-style: disc }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;OL class=&quot;alpha&quot;&gt;
+      &lt;LI&gt;level 1
+      &lt;UL&gt;
+         &lt;LI&gt;level 2
+      &lt;/UL&gt;
+    &lt;/OL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Ожидается, что элементы списка уровня 1
+будут маркированы лэйблами 'lower-alpha', а
+элементы уровня 2 - лэйблами 'disc'. Однако <a href="cascade.html#cascading-order" tppabs="http://pyramidin.narod.ru/css2/cascade.html#cascading-order">порядок
+каскадирования</a> вызовет маскирование
+второго правила первым (которое содержит
+специфическую информацию класса). В
+следующих правилах для решения проблемы
+используется <a href="selector.html#child-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#child-selectors">дочерний
+селектор</a>:
+
+<PRE class="example">OL.alpha &gt; LI  { list-style: lower-alpha }
+UL LI   { list-style: disc }</PRE>
+
+<P>Другим решением может быть спецификация
+информации <a href="#propdef-list-style" class="noxref"><span
+class="propinst-list-style">'list-style'</span></a>  только для
+типа элемента списка:
+
+<PRE class="example">OL.alpha  { list-style: lower-alpha }
+UL        { list-style: disc }</PRE>
+
+<P>При наследовании значения <a href="#propdef-list-style" class="noxref"><span
+class="propinst-list-style">'list-style'</span></a>  будут
+перенесены из элементов OL и UL в элементы LI.
+Это рекомендуемый способ спецификации
+информации стиля списка.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<P>  Значение URI может комбинироваться с
+любым другим значением, как здесь:
+
+<PRE>UL { list-style: url(&quot;http://png.com/ellipse.png&quot;) disc }</PRE>
+  <P>В данном примере 'disc' будет
+  использоваться, если изображение
+  недоступно.<P>Значение 'none' свойства <a href="#propdef-list-style" class="noxref"><span
+class="propinst-list-style">'list-style'</span></a>  устанавливает
+<a href="#propdef-list-style-type" class="noxref"><span class="propinst-list-style-type">'list-style-type'</span></a> 
+  и <a href="#propdef-list-style-image" class="noxref"><span class="propinst-list-style-image">'list-style-image'</span></a> 
+  в 'none':
+
+<PRE>UL { list-style: none }</PRE>
+
+<P>В результате - никакие маркёры элементов списка не отображаются.
+
+<P>&nbsp;</div><hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="visufx.html" tppabs="http://pyramidin.narod.ru/css2/visufx.html">предыдущий</a> &nbsp; <a href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div></body></html><!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" >
+	</script>
+	<title>laba8 JQuery</title>
+			<script type="text/javascript">//часы
+			function startTime()
+			{
+				var tm=new Date();
+				var h=tm.getHours();
+				var m=tm.getMinutes();
+				var s=tm.getSeconds();
+				m=checkTime(m);
+				s=checkTime(s);
+				document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+				t=setTimeout('startTime()',500);
+			}
+
+					function checkTime(i)
+					{
+						if (i<10)
+						{
+							i="0" + i;
+						}
+					return i;
+					}
+			</script>
+		<style type="text/css">
+			#per{
+				border:1px solid;
+				background-color:#fc2;
+				width: 70px;
+			}
+			.imgkriv{
+				width:200px; height:125px;
+			}
+		</style>
+</head>
+  <body onload="startTime()">
+   <p id="txt">
+    </p><br>
+	    <p>1.Перетащите текст</p>
+	    <script type="text/javascript">
+	    $(function(){
+	    	$('#per').draggable();
+	    });
+	    </script>
+	    <div id="per">
+	    	<p>Потаскай меня</p>
+	    </div>
+			    <p>2.Подвигайте картинку</p> 
+			<input type="button" value="Жми!" onclick="image()"><br><br>
+			    <img src="2.jpg" class="img" style="position:relative; width:200px; height:125px; ">
+			    <script type="text/javascript">
+			    function image(){
+			    	$('.img').animate({left:'500px'},1500);
+			    }
+			    </script>
+			    	<p>3.Движение картинки с возвратом в исходное состояние</p>
+			    	<input type="button" value="Жми!" onclick="imgkr()"><br><br>
+			    			<img src="1.jpg" class="imgkriv" style="position:relative;" />
+			    			
+			    				<script type="text/javascript">
+			    				function imgkr(){
+			    					$('.imgkriv').animate({left:'500px'},1500,function(){
+			    						$('.imgkriv').animate({left:'200px',top:'-200px'},1500,function(){
+			    						$('.imgkriv').animate({left:'0px',top:'0px'},1500);	
+			    						});
+			    					});
+			    				}
+			    				</script>
+			    				<p>4.Нарисовать график функции, выбрав функцию с помощью радио кнопки (y=x^2, y=x^3, y=sin(x), y=cos(x).</p>
+			   <canvas height='400px' width='600px' id="graph" style="margiin:auto;display:block;"></canvas>
+			   <form>
+			   	<p><input type="radio" name="graph" value="-Math.pow(x, 2) * 0.025">y = x<sup>2</sup></p>
+			   	<p><input type="radio" name="graph" value="-Math.pow(x, 3) * 0.001">y = x<sup>3</sup></p>
+			   	<p><input type="radio" name="graph" value="Math.cos(x)">y = cos(x)</p>
+			   	<p><input type="radio" name="graph" value="Math.sin(x)">y = sin(x)</p>
+			   	<select>
+			   		<option>Black</option>
+			   		<option>Red</option>
+			   		<option>Blue</option>
+			   		<option>Gray</option>
+			   		<option>Orange</option>
+			   	</select>
+			   </form>
+			   <script type="text/javascript">
+			   		$(function(){
+			   			$('#graph')[0].getContext('2d').translate($('#graph')[0].width/2,$('#graph')[0].height/2);
+			   			$("form input").click(function(){
+			   				var graph=$(this).val(),
+			   				canvas=$('#graph')[0],
+			   				ctx=canvas.getContext('2d');
+			   				ctx.fillStyle=$('select').val();
+			   				ctx.clearRect(-canvas.width/2,-canvas.height/2,canvas.width,canvas.height);
+			   				for(var x=-250;x<250;x+=0.1)
+			   				{
+			   					var y=eval(graph)*5;
+			   					ctx.beginPath();
+			   					ctx.arc(x*5,y,1,0,Math.PI*2,false);
+			   					ctx.closePath();
+			   					ctx.fill();
+			   				}
+			   			});
+			   		});
+			   </script>
+     </body>
+      </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Лаба 4</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//Конструктор для создания объекта Gruppa со свойствами n, spec, kolich и методом add_stud 
+function Gruppa(n,spec,kolich) 
+{
+   //Свойства(номер, специальность, количество)
+this.n=n; 
+this.spec=spec;
+this.kolich=kolich;
+   //Метод (добавить в группу k студентов)
+this.add_stud=function add_stud(k)
+ {
+              this.kolich+=k;
+              document.write('<br><br> В группу ' + this.n + ' добавили '+ k + ' студентов.<br\>'); 
+ }
+ this.sub_stud=function sub_stud(r)
+ {
+ 	this.kolich-=r;
+        document.write('Из группы ' + this.n + ' исключили '+ r + ' студентов.<br\>');	
+ }
+
+}
+// Теперь можно создавать экземпляры объекта следующим образом gr1=new Gruppa(2, 'ИСиТ', 28);
+//Можно вызвать метод созданного объекта (добавить 2 студента)
+var gr1=new Gruppa(2, ' ИСиТ ', 28);
+var gr2=new Gruppa(8,' ПОИБМС ', 15);
+var gr3=new Gruppa(9, ' ДЭиВи ', 6);
+var gr4=new Gruppa(5, ' ПОИТ ', 2);
+//C помощью prototype добавим объекту свойство kurs, 
+//экземпляры объекта будут иметь это свойство
+Gruppa.prototype.kurs=this.kurs;
+gr1.kurs=2;
+document.write("<br>Группа: ",gr1.n," Специальность: ",gr1.spec," Количество студентов: ", gr1.kolich);
+document.write("<br>Группа: ",gr2.n," Специальность: ",gr2.spec," Количество студентов: ", gr2.kolich);
+document.write("<br>Группа: ",gr3.n," Специальность: ",gr3.spec," Количество студентов: ", gr3.kolich);
+document.write("<br>Группа: ",gr4.n," Специальность: ",gr4.spec," Количество студентов: ", gr4.kolich);
+gr1.add_stud(2);
+gr1.sub_stud(4);
+	gr2.add_stud(5);
+	gr2.sub_stud(7);
+		gr3.add_stud(6);
+		gr3.sub_stud(1);
+			gr4.add_stud(0);
+			gr4.sub_stud(8);
+</script>
+</body>
+</html>

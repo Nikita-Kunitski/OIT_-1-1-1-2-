@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<title>Первая страница</title>
+			<meta charset="utf-8">
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+				</script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" >
+			</script>
+		</head>
+			<body>
+				<h1 align="center">Я, Куницкий Никита Дмитриевич, изучаю <font color="#005566">HTML</font> и CSS</h1>
+				<h2 align="center"><font color="red">Введение</font></h2>
+				<h3 align="center">Технология полиграфических производств</h3>
+				<p><font size="+1" face="Arial" color="#009944">Настоящее учебно-методическое пособие составлено в соответствии с действующей учебной программой по немецкому языку и предназначено для работы со студентами <span  style=color:blue>специальностей 147 02 01 «Технология полиграфических производств»</span>, 1-36 06 01 «Полиграфическое оборудование и системы обработки информации», 1-40 01 02-03 «Информационные системы и технологии», 1-47 01 01 «Издательское дело».</font></p>
+				<h3 align="center">Цель учебного пособия</h3>
+				<p><font color="#550044" size="-2" face="Calibri">Цель данного пособия – <span style=color:red id="l">дальнейшее развитие и совершенствование</span> у студентов навыков понимания и извлечения информации из специальных и научно-популярных текстов по полиграфической тематике с последующей ее обработкой и воспроизведением.</font></p>
+				<h3 align="center">Структура пособия</h3>
+				<p><font color="#880014" size="+2" face="Claderon">Пособие имеет четкую структуру.<span style=color:yellow> Каждый раздел пособия включает словарь активной лексики,</span> наиболее употребительные сочетания и обороты речи, связанные со сферой общения, и комплекс речевых упражнений, целью которого является развитие речевого умения в пределах тем данного раздела. Текстовый материал аутентичен и содержит актуальную информацию. </font></p>
+				<h2>Элементы</h2>
+				<ul>
+					<li>Элемент1</li>
+					<li>Элемент2</li>
+					<li>Элемент3</li>
+						<ul type="circle">
+							<li>Элемент4</li>
+							<li>Элемент5</li>
+							<li>Элемент6</li>
+								<ul type="square">
+									<li>Элемент7</li>					
+									<li>Элемент8</li>
+									<li>Элемент9</li>
+								</ul>
+						</ul>
+				</ul>
+				<table border="5">
+					<!1-я строка>
+					<tr>
+						<td>ФИО</td>
+						<td colspan="3"><a href="D:/основы ИТ/2 семестр/2 семестр_2016 ОИТ+KЯЗ/лабы/лаба1. HTML/file2.html" target="_blank">Куницкий Никита Дмитриевич</td>
+					</tr>
+							<!2-я строка>
+							<tr>
+								<td>Свое Фото</td>
+								<td colspan="3">Адрес:ул. Бобруйская д.25, ком.417</td>
+							</tr>
+							<!3-я строка>
+							<tr>
+								<td rowspan="7">1 семестр 2015/2016 уч. года</td>
+									
+									<td>Дата</td>
+									<td>Предмет</td>
+									<td>Оценка</td>
+									
+									<tr>
+									<td align="center">31.12.2015</td>	
+									<td align="center">ОАиП</td>
+									<td align="center" id="val1">9</td>
+									</tr>
+
+										<tr>
+											<td align="center">05.01.2016</td>
+											<td align="center">Физика</td>	
+											<td align="center" id="val2">5</td>
+										</tr>
+
+											<tr>
+												<td align="center">11.01.2016</td>
+												<td align="center">ОИТ</td>
+												<td align="center" id="val3">7</td>
+											</tr>
+
+												<tr>
+													<td align="center">16.01.2016</td>
+													<td align="center">Математика</td>
+													<td align="center" id="val4">8</td>
+												</tr>
+
+													<tr>
+														<td align="center">22.01.2016</td>
+														<td align="center">АЛОЦВМ</td>
+														<td align="center" id="val5">8</td>
+													</tr>
+							</tr>
+				</table>
+				<br><input type="button" value="Теги" onclick="tags()" />
+				<br><input type="button" value="Дочерние элементы" onclick="child()" />
+				<br><input type="button" value="span через all" onclick="span_all()" />
+				<br><input type="button" value="span через id" onclick="span_id()" />
+				<br><input type="button" value="Средний балл" onclick="sr_bal()" />
+				<script type="text/javascript">
+						function tags(){
+							var tag="";
+							for(var i=0;i<document.all.length;i++)
+								tag+=i+"."+document.all[i].tagName + "\n";
+							alert(tag);
+						}
+
+						function child(){
+								var ch = ""; 
+							for(var i = 0; i < document.body.childNodes.length; i++) 
+							{ 
+							ch += i + "." + document.body.childNodes[i].tagName + "\n"; 
+							}
+							alert(ch);
+						}
+
+						function span_all(){
+							var a=document.all(11).innerHTML;
+							alert(a);
+						}
+
+						function span_id(){
+							var a;
+							a=$("span#l").text();
+							alert(a);
+						}
+
+						function sr_bal(){
+							var bal1=Number($("#val1").html());
+							var bal2=Number($("#val2").html());
+							var bal3=Number($("#val3").html());
+							var bal4=Number($("#val4").html());
+							var bal5=Number($("#val5").html());
+							var sb=(bal1+bal2+bal3+bal4+bal5)/5;
+							alert("Мой средний бал равен: "+sb);
+						}
+				</script>
+			</body>
+</html>

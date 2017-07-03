@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+function otkr(){
+
+
+	a=window.open();
+	a.document.open()
+	{
+		a.document.write("<html>");
+		a.document.write("<head>");
+		a.document.write("<title>"+"vkladka"+"</title>");
+		a.document.write("</head>");
+		a.document.write("<body>");
+		a.document.write("<p>Как же браузер понимает – посетитель вызвал открытие окна или нет?Для этого при работе скрипта он хранит внутренний «флаг», который говорит – инициировал посетитель выполнение или нет. Например, при клике на кнопку весь код, который выполнится в результате, включая вложенные вызовы, будет иметь флаг «инициировано посетителем» и попапы при этом разрешены.А если код был на странице и выполнился автоматически при её загрузке – у него этого флага не будет. Попапы будут заблокированы.</p>");
+		a.document.write('<input type="button" value="Закрыть" onclick="window.close()">');
+		a.document.write("</body>");
+		a.document.write("</html>");
+	}
+	a.document.close();
+}
+alert(navigator.userAgent);
+document.write('<table border="1px">');
+document.write("<tr><td>Браузер</td>");
+document.write("<td>"+ navigator.userAgent +"</td></tr>");
+document.write("<tr><td>Версия браузера</td>");
+document.write("<td>"+ navigator.appVersion+"</td></tr>");
+document.write("<tr><td>Название браузера</td>");
+document.write("<td>"+ navigator.appName+"</td></tr>");
+document.write("<tr><td>Кодовое название браузера</td>");
+document.write("<td>"+ navigator.appCodeName+"</td></tr>");
+document.write("<tr><td>Операционная система</td>");
+document.write("<td>"+ navigator.platform+"</td></tr>");
+document.write("<tr><td>поддержка JavaScript</td>");
+document.write("<td>"+ navigator.javaEnabled()+"</td></tr>");
+document.write("<tr><td>Ширина и высота экрана</td>");
+document.write("<td>"+screen.width+" "+screen.height+"</td></tr>");
+document.write("<tr><td>Глубна цвета</td>");
+document.write("<td>"+ screen.colorDepth+"</td></tr>");
+document.write("<tr><td>Текущий адрес</td>");
+document.write("<td>"+ location.href+"</td></tr>");
+document.write("<tr><td>Путь к загр док-ту</td>");
+document.write("<td>"+ location.pathname+"</td></tr>");
+document.write("<tr><td>Адрес хоста</td>");
+document.write("<td>"+ location.host+"</td></tr>");
+document.write("</table>");
+</script>
+<input type="button" value="Открытие" onclick="otkr()">
+</body>
+</html>

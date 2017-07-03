@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="FILTR.xsl"?>
+
+<INVENTORY>
+	<LANGUAGE>
+		<TITLE>C++</TITLE>
+		<AUTHOR>Bjarne Strous Trup</AUTHOR>
+		<ORIGIN>1983</ORIGIN>
+		<SITE>isocpp.org</SITE>
+	</LANGUAGE>
+	
+	<LANGUAGE>
+		<TITLE>Java</TITLE>
+		<AUTHOR>Oracle (company)</AUTHOR>
+		<ORIGIN>1995</ORIGIN>
+		<SITE>java.com</SITE>
+	</LANGUAGE>
+	
+	<LANGUAGE>
+		<TITLE>JavaScript</TITLE>
+		<AUTHOR>Brendan Eich</AUTHOR>
+		<ORIGIN>1995</ORIGIN>
+		<SITE>javascript.com</SITE>
+	</LANGUAGE>
+	
+	<LANGUAGE>
+		<TITLE>C#</TITLE>
+		<AUTHOR>Anders Hejlsberg</AUTHOR>
+		<ORIGIN>2000</ORIGIN>
+		<SITE>None</SITE>
+	</LANGUAGE>
+</INVENTORY>

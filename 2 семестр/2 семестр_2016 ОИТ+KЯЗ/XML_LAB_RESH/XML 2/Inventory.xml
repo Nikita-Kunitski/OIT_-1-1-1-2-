@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="Inventory01.css"?>
+<INVENTORY>
+	<BOOK>
+		<TITLE>The Advetures of Huckleberry Finn</TITLE>
+		<AUTHOR>Mark Twain</AUTHOR>
+		<BINDING>mass marker paperback</BINDING>
+		<PAGES>298</PAGES>
+		<PRICE>$5.49</PRICE>
+	</BOOK>
+	<BOOK>
+		<TITLE>Moby-Dick</TITLE>
+		<AUTHOR>Herman Melville</AUTHOR>
+		<BINDING>trade paperback</BINDING>
+		<PAGES>605</PAGES>
+		<PRICE>$4.95</PRICE>
+	</BOOK>
+	<BOOK>
+		<TITLE>The Scarlet Letter</TITLE>
+		<AUTHOR>Nathaniel Hawthorne</AUTHOR>
+		<BINDING>trade paperback</BINDING>
+		<PAGES>253</PAGES>
+		<PRICE>$4.25</PRICE>
+	</BOOK>
+</INVENTORY>

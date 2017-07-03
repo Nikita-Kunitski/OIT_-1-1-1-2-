@@ -1,0 +1,980 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru"><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<TITLE>Модель бокса</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">
+<link rel="next" href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">
+<link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center"><p><a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">предыдущий</a>
+  &nbsp; <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">следующий</a> &nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a>
+  &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+
+<H1 align="center">8&nbsp; <a name="box-model">Модель бокса</a></H1>
+<div class="subtoc"><p><strong>Содержание</strong>
+  <ul class="toc">
+    <li class="tocline2"><a href="#box-dimensions" class="tocxref">8.1 Размеры
+      бокса</a>
+    <li class="tocline2"><a href="#mpb-examples" class="tocxref">8.2 Пример
+      полей, заполнения и рамок</a>
+    <li class="tocline2"><a href="#margin-properties" class="tocxref">8.3
+      Свойства поля: <span class="propinst-margin-top">'margin-top'</span>,  <span class="propinst-margin-right">'margin-right'</span>,  <span class="propinst-margin-bottom">'margin-bottom'</span>, <span class="propinst-margin-left">'margin-left'</span>
+      и <span class="propinst-margin">'margin'</span></a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#collapsing-margins" class="tocxref">8.3.1
+        Сжатие полей</a>
+    </ul>
+    <li class="tocline2"><a href="#padding-properties" class="tocxref">8.4
+      Свойства заполнения: <span class="propinst-padding-top">'padding-top'</span>, <span class="propinst-padding-right">'padding-right'</span>, <span class="propinst-padding-bottom">'padding-bottom'</span>, <span class="propinst-padding-left">'padding-left'</span>
+      и <span class="propinst-padding">'padding'</span></a>
+    <li class="tocline2"><a href="#border-properties" class="tocxref">8.5 Свойства
+      рамки</a>
+    <ul class="toc">
+      <li class="tocline3"><a href="#border-width-properties" class="tocxref">8.5.1
+        Ширина рамки: <span class="propinst-border-top-width">'border-top-width'</span>, <span class="propinst-border-right-width">'border-right-width'</span>, <span class="propinst-border-bottom-width">'border-bottom-width'</span>, <span class="propinst-border-left-width">'border-left-width'</span>
+        и <span class="propinst-border-width">'border-width'</span></a>
+      <li class="tocline3"><a href="#border-color-properties" class="tocxref">8.5.2
+        Цвет рамки: <span class="propinst-border-top-color">'border-top-color'</span>, <span class="propinst-border-right-color">'border-right-color'</span>, <span class="propinst-border-bottom-color">'border-bottom-color'</span>, <span class="propinst-border-left-color">'border-left-color'</span>
+        и <span class="propinst-border-color">'border-color'</span></a>
+      <li class="tocline3"><a href="#border-style-properties" class="tocxref">8.5.3
+        Стиль рамки: <span class="propinst-border-top-style">'border-top-style'</span>, <span class="propinst-border-right-style">'border-right-style'</span>, <span class="propinst-border-bottom-style">'border-bottom-style'</span>, <span class="propinst-border-left-style">'border-left-style'</span>
+        и <span class="propinst-border-style">'border-style'</span></a>
+      <li class="tocline3"><a href="#border-shorthand-properties" class="tocxref">8.5.4
+        Сокращённые свойства
+        рамок: <span class="propinst-border-top">'border-top'</span>, <span class="propinst-border-bottom">'border-bottom'</span>, <span class="propinst-border-right">'border-right'</span>, <span class="propinst-border-left">'border-left'</span>
+        и <span class="propinst-border">'border'</span></a>
+    </ul>
+  </ul>
+</div>
+
+<P>Модель бокса CSS описывает прямоугольный
+бокс, который генерируется для элементов <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерева
+документа</a> и располагается в соответствии
+с <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">моделью визуального форматирования</a>. <A href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">Страничный
+бокс</A> это особый вид бокса, детально описанный
+в разделе <A
+href="page.html" tppabs="http://pyramidin.narod.ru/css2/page.html">страничный носитель</a>.
+
+<H2><br>
+8.1 <a name="box-dimensions">Размеры бокса</a></H2> 
+
+<P>Каждый бокс имеет <span class="index-def" title="box::content|content::of a box"><a name="box-content-area"><dfn>область
+содержимого</dfn></a></span> (например, текст,
+изображение и т.п.) и необязательное
+окружение - области <span class="index-def" title="box::padding|padding::of a box"><a name="box-padding-area"><dfn>заполнения</dfn></a></span>,
+<span class="index-def" title="box::border|border::of a box">
+<a name="box-border-area"><dfn>рамки</dfn></a></span> и <span class="index-def" title="box::margin|margin::of a box"><a name="box-margin-area"><dfn>поля</dfn></a></span>;
+размер каждой области специфицируется
+свойствами, определёнными ниже. На
+диаграмме показано соотношение этих
+областей и терминология, используемая для
+ссылок на разные участки поля/margin, рамки/border
+и заполнения/padding:</P>
+
+<div class="figure">
+<P><img src="boxdim.gif" tppabs="http://pyramidin.narod.ru/css2/boxdim.gif"
+     alt="Image illustrating the relationship between content, padding, borders, and margins." width="433" height="317"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-boxdim" href="javascript:if(confirm('http://pyramidin.narod.ru/css2/boxdim-desc.html  \n\nЭтот файл не был найден Teleport Pro, потому что the server reports that this file cannot be found.  \n\nВы хотите открыть это с сервера?'))window.location='http://pyramidin.narod.ru/css2/boxdim-desc.html'" tppabs="http://pyramidin.narod.ru/css2/boxdim-desc.html" title="Long description of illustration of box areas">[D]</A></SPAN></P>
+</div>
+
+<P>Поле, рамка и заполнение могут быть
+разорваны в левом, правом, верхнем или
+нижнем сегментах (например, на диаграмме,
+&quot;LM&quot; в левом поле, &quot;RP&quot; в правом
+заполнении, &quot;TB&quot; в верху рамки и т.д.).<P>Периметр
+каждой из четырёх областей (содержимого,
+заполнения, рамки и поля) называется &quot;край&quot;,
+соответственно - каждый бокс имеет четыре
+края:</P>
+
+<dl>
+<dt><span class="index-def"
+title="content edge"><a name="content-edge"><strong>content edge</strong></a><strong><a name="content-edge">/</a>край
+  содержимого</strong></span> или <span class="index-def" title="inner edge"><a name="inner-edge"><strong>inner edge</strong></a><strong>/внутренний
+  край</strong></span>
+<dd>Край содержимого окружает <a href="conform.html#rendered-content" tppabs="http://pyramidin.narod.ru/css2/conform.html#rendered-content">отображаемое
+  содержимое</a>.
+<dt><span class="index-def" title="padding edge"><a name="padding-edge"><strong>padding edge</strong></a><strong>/край
+  заполнения</strong></span>
+<dd>Окружает заполнение бокса. Если
+  заполнение имеет ширину 0, край заполнения
+  - это то же, что и край содержимого. Край
+  заполнения бокса определяет края <a href="visuren.html#containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#containing-block">содержащего
+  блока</a>, установленного боксом.
+<dt><span class="index-def" title="border edge"><a name="border-edge"><strong>border edge</strong></a><strong>/край
+  рамки</strong></span>
+<dd>Окружает рамку бокса. Если рамка имеет
+  ширину 0, то край рамки - это то же, что и край
+  заполнения.
+<dt><span class="index-def" title="margin edge"><a name="margin-edge"><strong>margin edge</strong></a><strong>/край
+  поля</strong></span> или <span class="index-def" title="outer edge"><a name="outer-edge"><strong>outer
+edge</strong></a><strong>/внешний край</strong></span>
+<dd>Окружает поле бокса. Если поле имеет
+  ширину 0, то край поля - тот же, что и край
+  рамки.
+</dl>
+
+<P>Каждый край может быть разорван слева,
+справа, вверху и внизу.<P>Размеры области
+содержимого бокса - <span
+class="index-def" title="box::content width"><a
+name="content-width"><dfn>ширина содержимого</dfn></a></span>
+и <span
+class="index-def" title="box::content height"><a
+name="content-height"><dfn>высота содержимого</dfn></a></span>
+- зависят от нескольких факторов: имеет ли
+элемент, генерирующий бокс, установленные
+свойства <a href="visudet.html#propdef-width" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-width" class="noxref"><span class="propinst-width">'width'</span></a>
+или <a href="visudet.html#propdef-height" tppabs="http://pyramidin.narod.ru/css2/visudet.html#propdef-height" class="noxref"><span class="propinst-height">'height'</span></a>,
+содержит ли бокс текст или другие боксы,
+является ли бокс таблицей и т.д. Ширина и
+высота бокса обсуждаются в главе&nbsp;<a href="visudet.html" tppabs="http://pyramidin.narod.ru/css2/visudet.html">
+некоторые детали модели визуального форматирования</a>.<P> <span class="index-def" title="box::width"><a
+name="the-box-width"><dfn>Ширина бокса</dfn></a></span>
+выводится как сумма левого и правого поля,
+рамки, заполнения и ширины содержимого. <span class="index-def" title="box::height"><a
+name="the-box-height"><dfn>Высота</dfn></a></span>  выводится
+как сумма верхнего и нижнего поля, рамки,
+заполнения и высоты содержимого.<P>Стиль
+фона различных областей бокса определяется
+так:</p>
+
+<ul>
+<li><em>Область содержимого</em>: свойство <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a>  генерирующего
+  элемента.
+<li><em>Область заполнения</em>: свойство <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span
+class="propinst-background">'background'</span></a>  генерирующего
+  элемента.
+<li><em>Область рамки</em>: <a href="#border-properties">
+свойства рамки</a> генерирующего элемента.
+<li><em>Область поля</em>: поля всегда прозрачны.
+</ul>
+
+<H2><br>
+8.2 <a name="mpb-examples">Пример полей, заполнения и рамок</a></H2> 
+
+Этот пример документа HTML показывает, как поля, рамки и
+заполнение взаимодействуют:<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;Пример полей, заполнения и рамок&lt;/TITLE&gt;
+    &lt;STYLE type=&quot;text/css&quot;&gt;
+      UL { 
+        background: green; 
+        margin: 12px 12px 12px 12px;
+        padding: 3px 3px 3px 3px;
+                                     /* Рамки не установлены */
+      }
+      LI { 
+        color: black;                /* цвет текста - чёрный */ 
+        background: gray;            /* Содержимое, заполнение будет серым */
+        margin: 12px 12px 12px 12px;
+        padding: 12px 0px 12px 12px; /* Заметьте, что заполнение справа 0px */
+        list-style: none             /* перед элементом списка нет никаких глифов */
+                                     /* Рамки не установлены */
+      }
+      LI.withborder {
+        border-style: dashed;
+        border-width: medium;        /* устанавливает ширину рамок всех сторон */
+        border-color: black;
+      }
+    &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;Первый элемент списка
+      &lt;LI class=&quot;withborder&quot;&gt;Второй элемент списка длиннее,
+                             чтобы показать перенос.
+    &lt;/UL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>и даёт <a href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерево
+документа</a> с (помимо других соотношений)
+элементом UL, в котором есть два дочерних LI.<P>Первая
+диаграмма иллюстрирует, что этот пример
+даст в результате.<br>
+Вторая иллюстрирует взаимоотношения между
+полями, рамками и заполнением элементов UL и LI.</P>
+
+<div class="figure">
+<P><img src="boxdimeg.gif" tppabs="http://pyramidin.narod.ru/css2/boxdimeg.gif"
+     alt="Image illustrating how parent and child margins, borders,
+and padding relate." width="419" height="592"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-boxdimeg" href="boxdimeg-desc.html" tppabs="http://pyramidin.narod.ru/css2/boxdimeg-desc.html" title="Long description of list box example showing margins,
+padding, and borders">[D]</A></SPAN></p>
+</div>
+
+<P>Обратите внимание, что:</p>
+
+<ul>
+
+<li> <a href="#content-width">Ширина содержимого</a>
+  каждого бокса LI вычисляется сверху вниз; <a href="visuren.html#containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#containing-block">содержащий
+  блок</a> для каждого бокса LI
+  устанавливается элементом UL.
+
+<li>Высота каждого бокса LI задаётся <a
+href="#content-height">высотой содержимого</a> плюс
+  верхнее и нижнее заполнение, рамки и поля.
+  Обратите внимание, что горизонтальные поля
+  между боксами
+LI <a href="#collapsing-margins">сжаты.</a>
+
+<li>Правое заполнение боксов LI было
+  установлено шириной 0 (свойство <a href="#propdef-padding" class="noxref"><span class="propinst-padding">'padding'</span></a>).
+  Результат виден на второй иллюстрации.
+
+<li>Поля боксов LI прозрачны - поля всегда
+  прозрачны - так что цвет фона (зелёный)
+  заполнения и области содержимого UL
+  просвечивает сквозь него. 
+
+<li>Второй элемент LI специфицирует
+  пунктирную рамку (свойство <a href="#propdef-border-style" class="noxref"><span class="propinst-border-style">'border-style'</span></a>).
+</ul>
+
+<H2><br>
+8.3 <a name="margin-properties">Свойства поля</a>:
+<a href="#propdef-margin-top" class="noxref"><span class="propinst-margin-top">'margin-top'</span></a>, 
+<a href="#propdef-margin-right" class="noxref"><span class="propinst-margin-right">'margin-right'</span></a>, 
+<a href="#propdef-margin-bottom" class="noxref"><span class="propinst-margin-bottom">'margin-bottom'</span></a>,
+<a href="#propdef-margin-left" class="noxref"><span class="propinst-margin-left">'margin-left'</span></a>
+и <a href="#propdef-margin" class="noxref"><span class="propinst-margin">'margin'</span></a></H2>
+
+<P>Свойства поля специфицируют <a
+href="#box-margin-area">область полей</a> бокса.
+Сокращённое свойство <a href="#propdef-margin" class="noxref"><span class="propinst-margin">'margin'</span></a> 
+устанавливает поле для всех четырёх сторон,
+в то время как другие свойства
+устанавливают только соответствующие
+стороны. 
+
+<P>Свойства, определённые в этом разделе,
+относятся к типу значений <span
+class="index-def" title="&lt;margin-width&gt;::definition of"><a
+name="value-def-margin-width"><strong>&lt;margin-width&gt;</strong></a></span>,
+который может устанавливаться в:
+
+<dl>
+<dt><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length"><strong>&lt;length&gt;</strong></span></a>
+<dd>Специфицирует фиксированную ширину.
+<dt><a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a>
+<dd>Процентное значение высчитывается
+  относительно <em>ширины</em> 
+<a href="visuren.html#containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#containing-block">содержащего блока</a>
+  сгенерированного бокса. Это верно для <a href="#propdef-margin-top" class="noxref"><span
+class="propinst-margin-top">'margin-top'</span></a>  и <a href="#propdef-margin-bottom" class="noxref"><span
+class="propinst-margin-bottom">'margin-bottom'</span></a><span
+class="propinst-margin-bottom"> везде</span>, кроме <a href="page.html#page-context" tppabs="http://pyramidin.narod.ru/css2/page.html#page-context">контекста
+  страницы</a>, где процентные значения
+  относятся к высоте бокса страницы.
+<dt><strong>auto</strong>
+<dd>См. <a
+href="visudet.html#Computing_widths_and_margins" tppabs="http://pyramidin.narod.ru/css2/visudet.html#Computing_widths_and_margins">расчёт ширины и полей</a>.
+</dl>
+
+<P>Негативные значения свойств полей допускаются,
+но могут существовать ограничения,
+специфичные для конкретных реализаций. 
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'margin-top'"><a name="propdef-margin-top" class="propdef-title"><strong>'margin-top'</strong></a></span>, <span class="index-def" title="'margin-right'"><a name="propdef-margin-right" class="propdef-title"><strong>'margin-right'</strong></a></span>, <span class="index-def" title="'margin-bottom'"><a name="propdef-margin-bottom" class="propdef-title"><strong>'margin-bottom'</strong></a></span>, <span class="index-def" title="'margin-left'"><a name="propdef-margin-left" class="propdef-title"><strong>'margin-left'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-margin-width" class="noxref"><span class="value-inst-margin-width">&lt;margin-width&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>0
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это свойство устанавливает верхнее,
+нижнее, правое и левое поля бокса.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { margin-top: 2em }
+</PRE>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'margin'"><a name="propdef-margin" class="propdef-title"><strong>'margin'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-margin-width" class="noxref"><span class="value-inst-margin-width">&lt;margin-width&gt;</span></a>{1,4} | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>не
+    определено для сокращённого свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P> <a href="#propdef-margin" class="noxref"><span class="propinst-margin">'margin'</span></a> 
+- это сокращённое свойство для установки
+значений <a href="#propdef-margin-top" class="noxref"><span
+class="propinst-margin-top">'margin-top'</span></a>, <a href="#propdef-margin-right" class="noxref"><span
+class="propinst-margin-right">'margin-right'</span></a>, <a href="#propdef-margin-bottom" class="noxref"><span
+class="propinst-margin-bottom">'margin-bottom'</span></a> и <a href="#propdef-margin-left" class="noxref"><span
+class="propinst-margin-left">'margin-left'</span></a>  в одном месте
+в таблице стилей.<P>Если имеется одно
+значение, то оно применяется ко всем
+сторонам. Если дано два значения, верхнее и
+нижнее поля устанавливаются в первое, а
+правое и левое поля - во второе значение.
+Если дано три значения, верхнее поле
+устанавливается в первое, левое и правое -
+во второе, а нижнее поле - в третье значение.
+Если задано четыре значения, они
+применяются к верхнему, правому, нижнему и
+левому полям соответственно.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BODY { margin: 2em }         /* все поля установлены в 2em */
+BODY { margin: 1em 2em }     /* верхнее и нижнее = 1em, правое и левое = 2em */
+BODY { margin: 1em 2em 3em } /* верхнее=1em, правое=2em, нижнее=3em, левое=2em */
+</PRE>
+
+<P> Последнее правило эквивалентно
+следующему:<PRE>BODY {
+  margin-top: 1em;
+  margin-right: 2em;
+  margin-bottom: 3em;
+  margin-left: 2em;          /* копируется из противоположной стороны (из правой) */
+}
+</PRE>
+</div>
+
+<H3>8.3.1 <a name="collapsing-margins">Сжатие полей</a></H3>
+
+<P>В этой спецификации выражение <a name="x24"><span class="index-def"
+title="collapsing margin"><dfn>сжатие полей</dfn></span></a>
+означает, что смежные поля (не разделённые
+заполнением и рамками) двух или более
+боксов (которые могут быть
+последовательными или вложенными) образуют
+единое поле.<P>В CSS2 <a name="x25"><span class="index-inst" title="horizontal
+margin|margin::horizontal">вертикальные поля</span></a>
+никогда не сжимаются.<P><a name="x27"><span class="index-inst" title="vertical margin|margin::vertical">
+Горизонтальные поля</span></a> могут сжиматься
+между определёнными боксами:</p>
+
+<ul>
+<li>Два или более смежных горизонтальных поля
+  боксов <a
+href="visuren.html#block-box" tppabs="http://pyramidin.narod.ru/css2/visuren.html#block-box">блока</a> при <a
+href="visuren.html#normal-flow" tppabs="http://pyramidin.narod.ru/css2/visuren.html#normal-flow">нормальном расположении</a>
+  сжимаются. Результирующая ширина поля -
+  это максимальная ширина из смежных полей.
+  В случае негативных значений полей,
+  абсолютный максимум негативных смежных
+  полей отсчитывается от максимума
+  позитивных смежных полей. Если нет
+  позитивных полей, абсолютный максимум
+  негативных смежных полей отсчитывается от
+  нуля.
+
+<li>Вертикальные поля между <a
+href="visuren.html#floats" tppabs="http://pyramidin.narod.ru/css2/visuren.html#floats">обтекаемым</a> боксом и любым
+  другим боксом не сжимаются.
+
+<li>Поля <a
+href="visuren.html#absolutely-positioned" tppabs="http://pyramidin.narod.ru/css2/visuren.html#absolutely-positioned">абсолютно</a> и
+  относительно позиционированных боксов не
+  сжимаются.
+</ul>
+
+<P>См. иллюстрацию сжимаемых полей в <a href="#mpb-examples">примере
+полей, заполнения и рамок</a>.
+
+<H2><br>
+8.4 <a name="padding-properties">Свойства</a> заполнения:
+<a href="#propdef-padding-top" class="noxref"><span class="propinst-padding-top">'padding-top'</span></a>,
+<a href="#propdef-padding-right" class="noxref"><span class="propinst-padding-right">'padding-right'</span></a>,
+<a href="#propdef-padding-bottom" class="noxref"><span class="propinst-padding-bottom">'padding-bottom'</span></a>,
+<a href="#propdef-padding-left" class="noxref"><span class="propinst-padding-left">'padding-left'</span></a>
+и <a href="#propdef-padding" class="noxref"><span class="propinst-padding">'padding'</span></a>
+</H2> 
+
+<P>Свойства обтекания специфицируют ширину <a
+href="#box-padding-area">области заполнения</a> бокса.
+Сокращённое свойство <a href="#propdef-padding" class="noxref"><span
+class="propinst-padding">'padding'</span></a>  устанавливает
+заполнение для всех четырёх сторон, а
+другие свойства заполнения устанавливают
+соответствующие стороны.<P>Свойства,
+определённые в этом разделе, относятся к
+типу значений <span
+class="index-def" title="&lt;padding-width&gt;::definition of"><a
+name="value-def-padding-width"><strong>&lt;padding-width&gt;</strong></a></span>,
+который может устанавливаться в:</p>
+
+<dl>
+<dt><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length"><strong>&lt;length&gt;</strong></span></a>
+<dd>Специфицирует фиксированную ширину.
+<dt><a href="syndata.html#value-def-percentage" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-percentage" class="noxref"><span class="value-inst-percentage"><strong>&lt;percentage&gt;</strong></span></a>
+<dd>Процентное, высчитывается относительно <em>ширины</em> <a
+href="visuren.html#containing-block" tppabs="http://pyramidin.narod.ru/css2/visuren.html#containing-block">содержащего блока</a>,
+  генерирующего бокс, в том числе и для
+<a href="#propdef-padding-top" class="noxref"><span class="propinst-padding-top">'padding-top'</span></a> 
+  и <a href="#propdef-padding-bottom" class="noxref"><span
+class="propinst-padding-bottom">'padding-bottom'</span></a>.
+</dl>
+
+<P>В отличие от свойств полей, значения
+заполнения не могут быть негативными. Как и
+в свойствах полей, процентные значения
+свойств заполнения относятся к ширине
+бокса, сгенерированного содержащим блоком.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'padding-top'"><a name="propdef-padding-top" class="propdef-title"><strong>'padding-top'</strong></a></span>, <span class="index-def" title="'padding-right'"><a name="propdef-padding-right" class="propdef-title"><strong>'padding-right'</strong></a></span>, <span class="index-def" title="'padding-bottom'"><a name="propdef-padding-bottom" class="propdef-title"><strong>'padding-bottom'</strong></a></span>, <span class="index-def" title="'padding-left'"><a name="propdef-padding-left" class="propdef-title"><strong>'padding-left'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-padding-width" class="noxref"><span class="value-inst-padding-width">&lt;padding-width&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>0
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Эти свойства устанавливают верхнее,
+правое, нижнее и левое заполнение для бокса.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BLOCKQUOTE { padding-top: 0.3em }
+</PRE>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'padding'"><a name="propdef-padding" class="propdef-title"><strong>'padding'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-padding-width" class="noxref"><span class="value-inst-padding-width">&lt;padding-width&gt;</span></a>{1,4} | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>не
+    определено для сокращённого свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em>&nbsp;<td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>относительно
+    ширины содержащего блока
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P> Свойство <a href="#propdef-padding" class="noxref"><span class="propinst-padding">'padding'</span></a> 
+- это сокращённое свойство для установки <a href="#propdef-padding-top" class="noxref"><span
+class="propinst-padding-top">'padding-top'</span></a>, <a href="#propdef-padding-right" class="noxref"><span
+class="propinst-padding-right">'padding-right'</span></a>, <a href="#propdef-padding-bottom" class="noxref"><span
+class="propinst-padding-bottom">'padding-bottom'</span></a> и <a href="#propdef-padding-left" class="noxref"><span
+class="propinst-padding-left">'padding-left'</span></a>  в одном
+месте в таблице стилей.
+
+<P> Если имеется одно значение, то оно
+применяется ко всем сторонам. Если дано два
+значения, верхнее и нижнее заполнение
+устанавливаются в первое, а правое и левое
+заполнения - во второе значение. Если дано
+три значения, верхнее заполнение
+устанавливается в первое, левое и правое -
+во второе, а нижнее заполнение - в третье
+значение. Если задано четыре значения, они
+применяются к верхнему, правому, нижнему и
+левому заполнениям соответственно.
+
+<P> <br>
+Цвет поверхности области заполнения
+специфицируется через свойство <a href="colors.html#propdef-background" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-background" class="noxref"><span class="propinst-background">'background'</span></a>:
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { 
+  background: white; 
+  padding: 1em 2em;
+}</PRE>
+
+  <P>Вышеприведённый пример специфицирует
+  вертикальное заполнение '1em' (<a href="#propdef-padding-top" class="noxref"><span
+class="propinst-padding-top">'padding-top'</span></a>  и <a href="#propdef-padding-bottom" class="noxref"><span
+class="propinst-padding-bottom">'padding-bottom'</span></a>) и
+  горизонтальное заполнение '2em' (<a href="#propdef-padding-right" class="noxref"><span
+class="propinst-padding-right">'padding-right'</span></a>  и <a href="#propdef-padding-left" class="noxref"><span
+class="propinst-padding-left">'padding-left'</span></a>). Единицы
+  измерения 'em' относительны к размеру
+  шрифта элемента: '1em' эквивалентно размеру
+  используемого шрифта.
+</div>
+
+<H2><br>
+8.5 <a name="border-properties">Свойства рамки</a></H2>
+
+<P>Свойства рамки специфицируют ширину, цвет
+и стиль <a
+href="#box-border-area">области рамки</a> бокса. Эти
+свойства применимы ко всем элементам.
+
+
+<div class="note"><P>
+<em><strong>Примечание.</strong>
+ Особенно в HTML, ПА могут отображать рамки
+определённых элементов (например, кнопок,
+меню и т.п.) иначе, чем у &quot;обычных&quot;
+элементов.
+</em>
+</div>
+
+<H3><br>
+8.5.1 <a name="border-width-properties">Ширина рамки</A>: <a href="#propdef-border-top-width" class="noxref"><span
+class="propinst-border-top-width">'border-top-width'</span></a>, <a href="#propdef-border-right-width" class="noxref"><span
+class="propinst-border-right-width">'border-right-width'</span></a>, <a href="#propdef-border-bottom-width" class="noxref"><span
+class="propinst-border-bottom-width">'border-bottom-width'</span></a>,
+<a href="#propdef-border-left-width" class="noxref"><span class="propinst-border-left-width">'border-left-width'</span></a>
+и <a href="#propdef-border-width" class="noxref"><span class="propinst-border-width">'border-width'</span></a></H3>
+
+<P>Свойства ширины рамки специфицируют
+ширину <a
+href="#box-border-area">области рамки</a>. Свойства,
+определённые в этом разделе, относятся к
+типу значений <span class="index-def"
+title="&lt;border-width&gt;::definition of"><a
+name="value-def-border-width"
+class="value-def"><strong>&lt;border-width&gt;</strong></a></span>,
+который может устанавливаться в:</P>
+
+<dl>
+<dt><strong>thin</strong>
+<dd>Тонкая рамка.
+<dt><strong>medium</strong>
+<dd>Средняя рамка.
+<dt><strong>thick</strong>
+<dd>Толстая рамка.
+<dt><a href="syndata.html#value-def-length" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-length" class="noxref"><span class="value-inst-length"><strong>&lt;length&gt;</strong></span></a>
+<dd>Толщина рамки имеет точное значение. Это
+  значение не может быть негативным.
+</dl>
+
+<P>Интерпретация первых трёх значений
+зависит от ПА. Следующие соотношения,
+однако, обязаны выдерживаться:
+
+<P>'thin' &lt;='medium' &lt;= 'thick'.  
+
+<P>К тому же эти значения ширины обязаны быть
+константными в пределах документа.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-top-width'"><a name="propdef-border-top-width" class="propdef-title"><strong>'border-top-width'</strong></a></span>, <span class="index-def" title="'border-right-width'"><a name="propdef-border-right-width" class="propdef-title"><strong>'border-right-width'</strong></a></span>, <span class="index-def" title="'border-bottom-width'"><a name="propdef-border-bottom-width" class="propdef-title"><strong>'border-bottom-width'</strong></a></span>, <span class="index-def" title="'border-left-width'"><a name="propdef-border-left-width" class="propdef-title"><strong>'border-left-width'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-border-width" class="noxref"><span class="value-inst-border-width">&lt;border-width&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>medium
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Эти свойства устанавливают верхнюю,
+правую, нижнюю и левую линии рамки для бокса.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-width'"><a name="propdef-border-width" class="propdef-title"><strong>'border-width'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-border-width" class="noxref"><span class="value-inst-border-width">&lt;border-width&gt;</span></a>{1,4} | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    индивидуальные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P> Это сокращённое свойство для установки <a href="#propdef-border-top-width" class="noxref"><span class="propinst-border-top-width">'border-top-width'</span></a>, 
+<a href="#propdef-border-right-width" class="noxref"><span class="propinst-border-right-width">'border-right-width'</span></a>, 
+<a href="#propdef-border-bottom-width" class="noxref"><span class="propinst-border-bottom-width">'border-bottom-width'</span></a>
+и <a href="#propdef-border-left-width" class="noxref"><span class="propinst-border-left-width">'border-left-width'</span></a> 
+в одном месте в таблице стилей.<P>Если
+имеется одно значение, то оно применяется
+ко всем сторонам. Если дано два значения,
+верхняя и нижняя линии рамки
+устанавливаются в первое, а правая и левая
+линии рамки - во второе значение. Если дано
+три значения, верхняя линия рамки
+устанавливается в первое, левая и правая -
+во второе, а нижняя линия рамки - в третье
+значение. Если задано четыре значения, они
+применяются к верхней, правой, нижней и
+левой линиям рамки соответственно.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>Комментарии
+  в данном примере поясняют результаты
+  установки ширины верхней, правой, нижней и
+  левой линий рамки:
+
+<PRE>H1 { border-width: thin }                   /* thin thin thin thin */
+H1 { border-width: thin thick }             /* thin thick thin thick */
+H1 { border-width: thin thick medium }      /* thin thick medium thick */
+</PRE>
+</div>
+
+<H3>8.5.2 <A name="border-color-properties">Цвет рамки</A>:
+<a href="#propdef-border-top-color" class="noxref"><span class="propinst-border-top-color">'border-top-color'</span></a>,
+<a href="#propdef-border-right-color" class="noxref"><span class="propinst-border-right-color">'border-right-color'</span></a>,
+<a href="#propdef-border-bottom-color" class="noxref"><span class="propinst-border-bottom-color">'border-bottom-color'</span></a>,
+<a href="#propdef-border-left-color" class="noxref"><span class="propinst-border-left-color">'border-left-color'</span></a>
+и <a href="#propdef-border-color" class="noxref"><span class="propinst-border-color">'border-color'</span></a>
+</H3>
+
+<P>Эти свойства специфицируют цвет рамки
+бокса.
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-top-color'"><a name="propdef-border-top-color" class="propdef-title"><strong>'border-top-color'</strong></a></span>, <span class="index-def" title="'border-right-color'"><a name="propdef-border-right-color" class="propdef-title"><strong>'border-right-color'</strong></a></span>, <span class="index-def" title="'border-bottom-color'"><a name="propdef-border-bottom-color" class="propdef-title"><strong>'border-bottom-color'</strong></a></span>, <span class="index-def" title="'border-left-color'"><a name="propdef-border-left-color" class="propdef-title"><strong>'border-left-color'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>значение
+    свойства 'color'
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-color'"><a name="propdef-border-color" class="propdef-title"><strong>'border-color'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a>{1,4} | transparent | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    индивидуальные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;<td>ко всем
+    элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-border-color" class="noxref"><span class="propinst-border-color">'border-color'</span></a>
+ устанавливает цвет рамки с четырёх сторон.<br>
+Значения имеют следующий смысл:</p>
+
+<dl>
+<dt><span class="index-inst" title="&lt;color&gt;"><a name="x46" href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span
+class="value-inst-color"><strong>&lt;color&gt;</strong></span></a></span>
+<dd>Специфицирует значение цвета.
+<dt><strong>transparent</strong>
+<dd>Рамка прозрачна (хотя и может иметь
+  ширину).
+</dl>
+
+
+<P>Свойство <a href="#propdef-border-color" class="noxref"><span class="propinst-border-color">'border-color'</span></a>
+ может иметь от одного до четырёх значений,
+и эти значения устанавливаются для четырёх
+сторон так же, как и в <a href="#propdef-border-width" class="noxref"><span
+class="propinst-border-width">'border-width'</span></a>.<P>Если цвет
+рамки элемента не специфицирован в
+свойстве рамки, ПА обязаны использовать
+значение свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>  элемента как <a href="cascade.html#computed-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#computed-value">вычисленное
+значение</a> цвета рамки.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+  <P>В этом примере рамка будет сплошной и
+  чёрной:
+<PRE>P { 
+  color: black; 
+  background: white; 
+  border: solid;
+}
+</PRE>
+</div>
+
+<H3>8.5.3 <A name="border-style-properties">Стиль рамки</a>:
+<a href="#propdef-border-top-style" class="noxref"><span class="propinst-border-top-style">'border-top-style'</span></a>,
+<a href="#propdef-border-right-style" class="noxref"><span class="propinst-border-right-style">'border-right-style'</span></a>,
+<a href="#propdef-border-bottom-style" class="noxref"><span class="propinst-border-bottom-style">'border-bottom-style'</span></a>,
+<a href="#propdef-border-left-style" class="noxref"><span class="propinst-border-left-style">'border-left-style'</span></a>
+и <a href="#propdef-border-style" class="noxref"><span class="propinst-border-style">'border-style'</span></a></H3>
+
+<P>Свойства стиля рамки специфицируют стиль
+линии рамки бокса (solid, double, dashed и т.д.).
+Свойства, определённые в этом разделе,
+относятся к типу значений <span class="index-def"
+title="&lt;border-style&gt;, definition of"><a
+name="value-def-border-style"><strong>&lt;border-style&gt;</strong></a></span>,
+который может устанавливаться в:</p>
+
+<dl>
+<dt><strong><span class="index-def" title="'none'::as border style"><a name="value-def-bo-none" class="value-def">none</a></span></strong>
+<dd>Нет рамки. Форсирует вычисленное
+  значение <a href="#propdef-border-width" class="noxref"><span class="propinst-border-width">'border-width'</span></a>
+  в '0'. 
+<dt><strong><span class="index-def" title="'hidden'"><a name="value-def-hidden" class="value-def">hidden</a></span></strong>
+<dd>То же, что и 'none', за исключением <a
+href="tables.html#border-conflict-resolution" tppabs="http://pyramidin.narod.ru/css2/tables.html#border-conflict-resolution">разрешения конфликтов
+  рамок</a> для <a href="tables.html" tppabs="http://pyramidin.narod.ru/css2/tables.html">элементов таблицы</a>.
+<dt><strong><span class="index-def" title="'dotted'"><a name="value-def-dotted" class="value-def">dotted</a></span></strong>
+<dd>Рамка из точек.
+<dt><strong><span class="index-def" title="'dashed'"><a name="value-def-dashed" class="value-def">dashed</a></span></strong>
+<dd>Рамка из пунктирных линий.
+<dt><strong><span class="index-def" title="'solid'"><a name="value-def-solid" class="value-def">solid</a></span></strong>
+<dd>Рамка из сплошной линии.
+<dt><strong><span class="index-def" title="'double'"><a name="value-def-double" class="value-def">double</a></span></strong>
+<dd>Двойная сплошная линия. Сумма двух линий
+  и пространства между ними равна значению <a href="#propdef-border-width" class="noxref"><span
+class="propinst-border-width">'border-width'</span></a>.
+<dt><strong><span class="index-def" title="'groove'"><a name="value-def-groove" class="value-def">groove</a></span></strong>
+<dd>Рамка выглядит как вырезанная в канве.
+<dt><strong><span class="index-def" title="'ridge'"><a name="value-def-ridge" class="value-def">ridge</a></span></strong>
+<dd>Противоположно 'groove': рамка выглядит как
+  выступающая над канвой.
+<dt><strong><span class="index-def" title="'inset'"><a name="value-def-inset" class="value-def">inset</a></span></strong>
+<dd>Весь бокс выглядит вдавленным в канву.
+<dt><strong><span class="index-def" title="'outset'"><a name="value-def-outset" class="value-def">outset</a></span></strong>
+<dd>Противоположно 'inset': выпуклый бокс.
+</dl>
+
+<P>Все рамки прорисовываются на поверхности
+фона бокса. Цвет рамок со значениями 'groove', 'ridge',
+'inset' и 'outset' зависит от свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>
+ элемента.
+
+<P><span class="index-inst" title="conformance"><a name="x58"
+href="conform.html#conformance" tppabs="http://pyramidin.narod.ru/css2/conform.html#conformance">Соответствующие
+пользовательские агенты (ПА) HTML</a></span> могут
+интерпретировать 'dotted', 'dashed', 'double', 'groove', 'ridge',
+'inset' и 'outset' как 'solid'. 
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-top-style'"><a name="propdef-border-top-style" class="propdef-title"><strong>'border-top-style'</strong></a></span>, <span class="index-def" title="'border-right-style'"><a name="propdef-border-right-style" class="propdef-title"><strong>'border-right-style'</strong></a></span>, <span class="index-def" title="'border-bottom-style'"><a name="propdef-border-bottom-style" class="propdef-title"><strong>'border-bottom-style'</strong></a></span>, <span class="index-def" title="'border-left-style'"><a name="propdef-border-left-style" class="propdef-title"><strong>'border-left-style'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-border-style" class="noxref"><span class="value-inst-border-style">&lt;border-style&gt;</span></a> | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>none
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-style'"><a name="propdef-border-style" class="propdef-title"><strong>'border-style'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td><a href="#value-def-border-style" class="noxref"><span class="value-inst-border-style">&lt;border-style&gt;</span></a>{1,4} | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    индивидуальные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-border-style" class="noxref"><span class="propinst-border-style">'border-style'</span></a>
+ устанавливает стиль для четырёх сторон
+рамки. Может иметь от одного до четырёх
+значений, и значения устанавливаются для
+разных сторон, как для
+<a href="#propdef-border-width" class="noxref"><span class="propinst-border-width">'border-width'</span></a> 
+выше.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>#xy34 { border-style: solid dotted }</PRE>
+  <P>В этом примере горизонтальные линии
+  рамки будут 'solid', а вертикальные - 'dotted'.
+</div>
+
+<P>Поскольку начальное значение стиля рамки
+- 'none', рамка будет видна только после
+установки значения стиля.
+
+<H3><br>
+8.5.4 <A name="border-shorthand-properties">Сокращённые свойства
+рамок</a>:
+<a href="#propdef-border-top" class="noxref"><span class="propinst-border-top">'border-top'</span></a>,
+<a href="#propdef-border-bottom" class="noxref"><span class="propinst-border-bottom">'border-bottom'</span></a>,
+<a href="#propdef-border-right" class="noxref"><span class="propinst-border-right">'border-right'</span></a>,
+<a href="#propdef-border-left" class="noxref"><span class="propinst-border-left">'border-left'</span></a>
+и <a href="#propdef-border" class="noxref"><span class="propinst-border">'border'</span></a></h3>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border-top'"><a name="propdef-border-top" class="propdef-title"><strong>'border-top'</strong></a></span>, <span class="index-def" title="'border-right'"><a name="propdef-border-right" class="propdef-title"><strong>'border-right'</strong></a></span>, <span class="index-def" title="'border-bottom'"><a name="propdef-border-bottom" class="propdef-title"><strong>'border-bottom'</strong></a></span>, <span class="index-def" title="'border-left'"><a name="propdef-border-left" class="propdef-title"><strong>'border-left'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="#propdef-border-top-width" class="noxref"><span class="propinst-border-top-width">&lt;'border-top-width'&gt;</span></a> || <a href="#propdef-border-style" class="noxref"><span class="propinst-border-style">&lt;'border-style'&gt;</span></a> || <a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    индивидуальные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Это сокращённое свойство для установки
+ширины, стиля и цвета верхней, правой,
+нижней и левой сторон рамки.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>H1 { border-bottom: thick solid red }</PRE>
+
+  <P>Это правило устанавливает ширину, стиль
+  и цвет рамки <strong>после</strong> элемента H1.
+  Опущенные значения установлены в свои <a href="cascade.html#initial-value" tppabs="http://pyramidin.narod.ru/css2/cascade.html#initial-value">начальные
+  значения</a>. Поскольку нижеследующее
+  правило не специфицирует цвет рамки, рамка
+  будет иметь цвет, определённый свойством <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>:
+
+<PRE>H1 { border-bottom: thick solid }
+</PRE>
+</div>
+
+<div class="propdef">
+<dl><dt>
+<span class="index-def" title="'border'"><a name="propdef-border" class="propdef-title"><strong>'border'</strong></a></span>
+<dd>
+<table class="propinfo" cellspacing=0 cellpadding=0>
+<tr valign=baseline><td><em>Значение:</em><td>[ <a href="#propdef-border-width" class="noxref"><span class="propinst-border-width">&lt;'border-width'&gt;</span></a> || <a href="#propdef-border-style" class="noxref"><span class="propinst-border-style">&lt;'border-style'&gt;</span></a> || <a href="syndata.html#value-def-color" tppabs="http://pyramidin.narod.ru/css2/syndata.html#value-def-color" class="noxref"><span class="value-inst-color">&lt;color&gt;</span></a> ] | <a href="cascade.html#value-def-inherit" tppabs="http://pyramidin.narod.ru/css2/cascade.html#value-def-inherit" class="noxref"><span class="value-inst-inherit">inherit</span></a>
+<tr valign=baseline><td><em>Начальное:</em><td>см.
+    индивидуальные свойства
+<tr valign=baseline><td><em>Применяется:</em>&nbsp;&nbsp;<td>ко
+    всем элементам
+<tr valign=baseline><td><em>Наследуется:</em><td>нет
+<tr valign=baseline><td><em>Процентное:</em><td>N/A
+<tr valign=baseline><td><em>Носитель:</em><td><a href="media.html#visual-media-group" tppabs="http://pyramidin.narod.ru/css2/media.html#visual-media-group" class="noxref">визуальный</a>
+</table>
+</dl>
+</div>
+
+
+<P>Свойство <a href="#propdef-border" class="noxref"><span class="propinst-border">'border'</span></a> 
+- это сокращённое свойство для установки
+одинаковых значений ширины, цвета и стиля
+для всех четырёх сторон рамки бокса. В
+отличие от сокращённых свойств <a href="#propdef-margin" class="noxref"><span
+class="propinst-margin">'margin'</span></a> и <a href="#propdef-padding" class="noxref"><span
+class="propinst-padding">'padding'</span></a>, свойство <a href="#propdef-border" class="noxref"><span
+class="propinst-border">'border'</span></a>  не может
+устанавливать разные значения для четырёх
+сторон. Для этого придётся использовать
+одно или более других свойств.
+
+<div class="example"><P style="display:none">Пример(ы):</P><P>
+Первое правило эквивалентно установке
+четырёх последующих значений:
+
+<PRE>P { border: solid red }
+P {
+  border-top: solid red;
+  border-right: solid red;
+  border-bottom: solid red;
+  border-left: solid red
+}</PRE>
+</div>
+
+<P>Поскольку, в некоторой степени, свойства
+могут перекрываться, порядок, в котором правила
+специфицированы, имеет важное значение.
+
+<div class="example"><P style="display:none">Пример(ы):</P>
+<PRE>BLOCKQUOTE {
+  border-color: red;
+  border-left: double;
+  color: black
+}</PRE>
+
+  <P>В приведённом примере цвет левой линии
+  рамки - чёрный, а других линий - красный. Это
+  потому, что в <a href="#propdef-border-left" class="noxref"><span
+class="propinst-border-left">'border-left'</span></a>  установлены
+  ширина, стиль и цвет. Поскольку значение
+  цвета в свойстве <a href="#propdef-border-left" class="noxref"><span class="propinst-border-left">'border-left'</span></a> 
+  не установлено, оно будет взято из
+  свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span class="propinst-color">'color'</span></a>.
+  Фактически свойство <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a><span
+class="propinst-color">, установленное после </span>свойства
+  <a href="#propdef-border-left" class="noxref"><span
+class="propinst-border-left">'border-left'</span></a><span
+class="propinst-border-left">,</span> не имеет к этому
+  никакого отношения.
+</div>
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">предыдущий</a> &nbsp; <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</HTML>
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

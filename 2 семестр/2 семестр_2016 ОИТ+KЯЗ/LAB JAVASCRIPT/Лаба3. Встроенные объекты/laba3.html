@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Лаба_3</title>
+</head>
+<body>
+<script type="text/javascript">
+	var mass=[];
+	mass[0]=(6*Math.pow(Math.PI,2)) + (3*Math.exp(8));
+	mass[1]=(2*Math.cos(4)) + Math.cos(12) + (3*Math.exp(3));
+	mass[2]=(3*Math.sin(9)) + Math.log(5) + Math.sqrt(3);
+	mass[3]=(2*Math.tan(5)) + (6*Math.PI) + Math.sqrt(12);
+	var i=0;
+
+	for(i;i<mass.length;i++)
+		document.write(i +"-й элемент массива "+mass[i]+"<br>");
+
+	var maxim=Math.max(mass[0],mass[1],mass[2],mass[3]);
+	var minim=Math.min(mass[0],mass[1],mass[2],mass[3]);
+	var ind1=mass.indexOf(maxim);
+	alert("Максимальный элемент массива: mass["+ ind1 +"]="+maxim);
+	var ind2=mass.indexOf(minim);
+	alert("Минимальный элемент массива: mass["+ ind2 +"]="+minim);
+
+		var arr=['pow','pop','push','shift','round','floor','sline','sort'];
+		var matharr=[];
+		var arrayarr=[];
+		for(i=0; i<arr.length;i++)
+		{
+			var t='Math.' +arr[i];
+			if(typeof(eval(t))=='undefined')
+				arrayarr.push(arr[i]);
+			else
+				matharr.push(arr[i]);
+		}
+
+		matharr.push('PI');
+		arrayarr.splice(0,0,'splice');
+		document.write("<br><b>"+" массив Array: "+"</b>"+arrayarr.join('; ')+"<b>"+'. Элементов: '+"</b>"+arrayarr.length+'<br />');
+		document.write("<b>"+" массив Math: "+"</b>"+matharr.join('; ')+"<b>"+'. Элементов: '+"</b>"+matharr.length);
+
+		var str="Куницкий Никита Дмитриевич";
+		var dl=str.length;
+		document.write("<br><br>"+str);
+		document.write("<br>" +str.toUpperCase());
+		document.write("<br>" +str.toLowerCase());
+
+		var h=new Date();
+		document.write('<table border="2px">');
+		document.write("<tr>");
+		document.write("<td>Год</td>");
+		document.write("<td>"+h.getFullYear()+"</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td>Месяц</td>");
+		document.write("<td>"+h.getMonth()+"</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td>День</td>");
+		document.write("<td>"+h.getDay()+"</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td>Час</td>");
+		document.write("<td>"+h.getHours()+"</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td>Минуты</td>");
+		document.write("<td>"+h.getMinutes()+"</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td>Секунды</td>");
+		document.write("<td>"+h.getSeconds()+"</td>");
+		document.write("</tr>");
+		document.write("</table>");
+	</script>
+</body>
+</html>

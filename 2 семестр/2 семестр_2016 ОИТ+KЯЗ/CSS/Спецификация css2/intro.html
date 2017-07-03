@@ -1,0 +1,598 @@
+<html><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html lang="ru">
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru"><TITLE>CSS2 Введение</TITLE>
+<link rel="stylesheet" href="default.css" tppabs="http://pyramidin.narod.ru/css2/default.css" type="text/css">
+<link rel="prev" href="about.html" tppabs="http://pyramidin.narod.ru/css2/about.html"><link rel="next" href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">
+<link rel="contents" href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc"><link rel="CSS-properties" href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html" title="properties">
+<link rel="index" href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html" title="index"></HEAD>
+<BODY><!--#include virtual="/lvt.htm"--><p>&nbsp;</p>
+<div class="navbar" align="center">
+<p><a href="about.html" tppabs="http://pyramidin.narod.ru/css2/about.html">предыдущий</a> &nbsp; <a href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">следующий</a>
+&nbsp; <a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a>
+&nbsp; <a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a></div><hr class="navbar">
+
+<H1 align="center">2&nbsp; CSS2. Введение.</H1><div class="subtoc"><p><strong>Содержание</strong>
+<ul class="toc"><li class="tocline2"><a href="#q1" class="tocxref">2.1 Краткое пособие CSS2 для HTML</a>
+<li class="tocline2"><a href="#q2" class="tocxref">2.2 Краткое пособие CSS2 для XML</a>
+<li class="tocline2"><a href="#processing-model" class="tocxref">2.3 Модель процесса CSS2</a>
+<ul class="toc"><li class="tocline3"><a href="#q4" class="tocxref">2.3.1 Канва</a>
+<li class="tocline3"><a href="#q5" class="tocxref">2.3.2 Модель адресации CSS2</a></ul>
+<li class="tocline2"><a href="#q6" class="tocxref">2.4 Принципы дизайна CSS</a></ul></div><H2><a name="q1"><br>
+2.1 Краткое пособие CSS2 для HTML</a></H2>
+
+<P>В этом пособии мы покажем, как можно
+быстро создать простые таблицы стилей.<br>
+Для использования этого пособия необходимо
+немного знать HTML (см. <a href="refs.html#ref-HTML40" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-HTML40" rel="biblioentry" class="noxref"><span class="informref">[HTML40]</span></a>)&nbsp;
+и некоторые базовые термины настольных
+публикаций.
+
+<P>Вот небольшой документ HTML:</p>
+
+<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Чтобы установить голубой цвет текста элемента H1, можно написать такое правило CSS:</P>
+
+<PRE class="example">  H1 { color: blue }</PRE>
+
+<P>Правило CSS состоит из двух главных частей: <a
+href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">селектора</a> ('H1') и объявления ('color:
+blue'). Объявление имеет две части: свойство ('color')
+и значение ('blue'). Поскольку в предыдущем
+примере делается попытка использовать
+только одно из свойств, необходимое для
+отображения документа HTML, он может быть
+квалифицирован как таблица стилей. В
+комбинации с другими таблицами стилей (возможность
+комбинировать таблицы стилей является
+одним из фундаментальных свойств CSS) оно (свойство)
+определит конечный вид документа.<P>Спецификация
+HTML 4.0 определяет, как правила таблиц стилей
+могут быть специфицированы для документов HTML:
+или внутри документа HTML, или в таблицах
+стилей. Чтобы поместить в документ таблицу
+стилей, используйте элемент STYLE:</p>
+
+<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+    H1 { color: blue }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P> Для максимальной гибкости мы рекомендуем,
+чтобы авторы специфицировали внешние
+таблицы стилей; они могут быть изменены без
+модификации документа-источника HTML, а также
+могут раздельно использоваться
+несколькими документами. Чтобы сослаться
+на внешнюю таблицу стилей, Вы можете
+использовать элемент LINK:</p>
+
+<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;LINK rel=&quot;stylesheet&quot; href=&quot;bach.css&quot; type=&quot;text/css&quot;&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Элемент LINK специфицирует:</p>
+
+<ul><li> тип гиперссылки: &quot;stylesheet&quot;;<li> размещение таблицы стилей: в атрибуте
+  &quot;ref&quot;; 
+<li>тип таблицы стилей, на которую ссылаются:
+  &quot;text/css&quot;.
+</ul>
+
+<P>Чтобы продемонстрировать тесную
+взаимосвязь между таблицей стилей и
+структурной разметкой, мы продолжим
+использовать элемент STYLE в этом пособии.
+Давайте добавим больше цветов:
+
+<PRE class="html-example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+    BODY { color: red }
+    H1 { color: blue }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Таблица стилей теперь содержит два
+правила: первое устанавливает цвет
+элемента BODY в 'red', а второе - цвет элемента H1
+в 'blue'. Поскольку для элемента P не
+специфицирован цвет, он будет наследовать
+цвет от своего элемента-предка, а именно - от
+BODY.
+Элемент H1 является также дочерним
+элементом элемента BODY, но второе правило
+переопределяет наследуемое значение. В CSS
+часто возникают такие конфликты между
+различными значениями, и данная
+спецификация описывает, как их разрешить. 
+
+<P>В CSS2 имеется более 100 различных свойств, в
+том числе - <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>.<br>
+Рассмотри некоторые другие:
+
+<PRE class="example">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+  &lt;TITLE&gt;Bach's home page&lt;/TITLE&gt;
+  &lt;STYLE type=&quot;text/css&quot;&gt;
+    BODY { 
+      font-family: &quot;Gill Sans&quot;, sans-serif;
+      font-size: 12pt;
+      margin: 3em; 
+    }
+  &lt;/STYLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Bach's home page&lt;/H1&gt;
+    &lt;P&gt;Johann Sebastian Bach was a prolific composer.
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</PRE>
+
+<P>Первое, что нужно отметить, это несколько
+объявлений, сгруппированных внутри блока,
+заключённого в фигурные скобки ({...}) и
+разделённых знаком точка с запятой, хотя
+последнее объявление может также
+заканчиваться точкой с запятой.<P>Первое
+объявление элемента BODY устанавливает
+семейство шрифтов &quot;Gill Sans&quot;. Если этот
+шрифт недоступен, ПА (часто называемый &quot;браузер&quot;)
+будет использовать семейство шрифтов
+'sans-serif', которое является одним из пяти
+семейств шрифтов, известных всем ПА.
+Дочерние элементы элемента BODY унаследуют
+значение свойства <a href="fonts.html#propdef-font-family" tppabs="http://pyramidin.narod.ru/css2/fonts.html#propdef-font-family" class="noxref"><span
+class="propinst-font-family">'font-family'</span></a>.<P>Второе
+объявление устанавливает размер шрифта
+элемента BODY в 12 пунктов. Единица измерения
+&quot;пункт&quot; используется обычно в
+типографской печати для обозначения
+размеров шрифта и других размеров. Это
+пример абсолютных единиц измерения,
+которые не определяются относительно
+окружения.<P>Третье объявление использует
+относительные единицы измерения, которые
+определяются относительно своего
+окружения. Единица &quot;em&quot; относится к
+размеру шрифта элемента. В нашем случае
+поля вокруг элемента BODY шире размера шрифта
+в три раза.
+
+<H2><a name="q2"><br>
+2.2 Краткое пособие CSS2 для XML</a></H2>
+
+<P>CSS может использоваться с любым
+структурированным форматом документа,
+например, с приложениями eXtensible Markup Language <a href="refs.html#ref-XML10" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-XML10" rel="biblioentry" class="noxref"><span class="informref">[XML10]</span></a>.
+На самом деле XML намного больше зависит от
+таблиц стилей, чем HTML, поскольку авторы
+могут создавать свои собственные элементы,
+которые не известны ПА и не могут ими
+выводиться.
+
+<P>Вот простой фрагмент XML:
+
+<PRE class="xml-example">&lt;ARTICLE&gt;
+  &lt;HEADLINE&gt;Fredrick the Great meets Bach&lt;/HEADLINE&gt;
+  &lt;AUTHOR&gt;Johann Nikolaus Forkel&lt;/AUTHOR&gt;
+  &lt;PARA&gt;
+    One evening, just as he was getting his 
+    &lt;INSTRUMENT&gt;flute&lt;/INSTRUMENT&gt; ready and his
+    musicians were assembled, an officer brought him a list of
+    the strangers who had arrived.
+  &lt;/PARA&gt;
+&lt;/ARTICLE&gt;</PRE>
+
+<P>Чтобы вывести данный фрагмент в виде
+документа, мы обязаны сначала объявить,
+какие элементы являются элементами инлайн-уровня
+(т.е. не вызывают разрывов строк) и какие -
+уровня блока (т.е. вызывают разрывы строк). 
+
+<PRE class="example">INSTRUMENT { display: inline }
+ARTICLE, HEADLINE, AUTHOR, PARA { display: block }</PRE>
+
+<P>Первое правило объявляет INSTRUMENT как инлайн,
+а второе правило с его списком разделённых
+запятыми селекторов объявляет все другие
+элементы как элементы уровня блока.<P>Одним
+из вариантов связи таблицы стилей с
+документом XML является использование инструкций
+процесса:
+
+<PRE class="xml-example">&lt;?XML:stylesheet type=&quot;text/css&quot; href=&quot;bach.css&quot;?&gt;
+&lt;ARTICLE&gt;
+  &lt;HEADLINE&gt;Fredrick the Great meets Bach&lt;/HEADLINE&gt;
+  &lt;AUTHOR&gt;Johann Nikolaus Forkel&lt;/AUTHOR&gt;
+  &lt;PARA&gt;
+    One evening, just as he was getting his 
+    &lt;INSTRUMENT&gt;flute&lt;/INSTRUMENT&gt; ready and his
+    musicians were assembled, an officer brought him a list of
+    the strangers who had arrived.
+  &lt;/PARA&gt;
+&lt;/ARTICLE&gt;</PRE>
+
+<P>Визуальный ПА может отформатировать
+вышеприведённый пример так:
+
+<div class="figure">
+<p><img src="bach1.gif" tppabs="http://pyramidin.narod.ru/css2/bach1.gif" alt="Example rendering" width="356" height="100"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-bach1" href="bach1-desc.html" tppabs="http://pyramidin.narod.ru/css2/bach1-desc.html" title="Long description for the first Bach/XML formatting example">[D]</A></SPAN>
+</div>
+
+<P>Обратите внимание, что слово "flute" остаётся
+внутри параграфа, поскольку это содержимое
+инлайн-элемента INSTRUMENT.<P>Тем не менее, текст
+ещё не выглядит так, как Вы могли бы ожидать.
+Например, шрифт заголовка должен быть
+крупнее, чем остальной текст, и Вам может
+понадобиться вывести имя автора курсивом:</P>
+
+<PRE class="example">INSTRUMENT { display: inline }
+ARTICLE, HEADLINE, AUTHOR, PARA { display: block }
+HEADLINE { font-size: 1.3em }
+AUTHOR { font-style: italic }
+ARTICLE, HEADLINE, AUTHOR, PARA { margin: 0.5em }</PRE>
+
+<P>Визуальный ПА может сформатировать этот
+пример так:
+
+<div class="figure">
+<p><img src="bach2.gif" tppabs="http://pyramidin.narod.ru/css2/bach2.gif" alt="Example rendering" width="354" height="126"><SPAN class="dlink">&nbsp;&nbsp;&nbsp;<A name="img-bach2" href="bach2-desc.html" tppabs="http://pyramidin.narod.ru/css2/bach2-desc.html" title="Long description for the second Bach/XML formatting example">[D]</A></SPAN>
+</div>
+
+<P>Добавление других правил в таблицу стилей
+позволить Вам сделать представление
+документа ещё более интересным. 
+
+<H2><br>
+2.3 <a name="processing-model">Модель процесса CSS2</a></H2>
+
+<P>Этот раздел представляет одну из
+возможных моделей того, как работают ПА,
+поддерживающие CSS. Это лишь концептуальная
+модель; конкретные реализации могут
+варьироваться.
+
+<P>ПА в этой модели обрабатывает источник,
+выполняя следующие шаги:</P>
+
+<ol>
+<li>Разбирает документ-источник и создаёт <a
+href="conform.html#doctree" tppabs="http://pyramidin.narod.ru/css2/conform.html#doctree">дерево документа</a>.</li>
+
+<li>Идентифицирует <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">тип носителя</a>.
+
+<li>Запрашивает все таблицы стилей,
+  ассоциированные с документом, которые специфицированы
+  для целевого <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типа носителя</a>.
+
+<li>Помечает каждый элемент дерева документа
+  назначением одиночного значения каждому <a href="syndata.html#properties" tppabs="http://pyramidin.narod.ru/css2/syndata.html#properties">свойству</a>,
+  которое может быть применено к целевому <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типу
+  носителя</a>. Значения свойств
+  устанавливаются в соответствии с
+  механизмами, описанными в разделе <a href="cascade.html" tppabs="http://pyramidin.narod.ru/css2/cascade.html">каскадирование
+  и наследование</a>.<P>Частично расчёт значений зависит от
+алгоритма форматирования, соответствующего
+целевому <a href="media.html" tppabs="http://pyramidin.narod.ru/css2/media.html">типу носителя</a>.
+Например, если целевой носитель - это экран,
+то ПА применяют <a href="visuren.html" tppabs="http://pyramidin.narod.ru/css2/visuren.html">модель визуального
+форматирования</a>. Если целевой носитель - это
+  страница для печати, то ПА применяют <a
+href="page.html#page-model" tppabs="http://pyramidin.narod.ru/css2/page.html#page-model">страничную модель</a>. Если целевой носитель - это
+  устройство звукового вывода (например,
+  речевой синтезатор), то ПА применяют <a href="aural.html" tppabs="http://pyramidin.narod.ru/css2/aural.html">модель
+  звукового представления</a>.
+
+<li>На базе размеченного дерева документа
+  генерирует 
+<span class="index-def" title="formatting structure">
+<a name="formatting-structure"><dfn>структуру форматирования</dfn></a></span>.
+  Часто структура форматирования напоминает
+  дерево документа, но может также и слегка
+  отличаться, особенно если авторы
+  используют псевдоэлементы и генерируемое
+  содержимое. Во-первых, структура
+  форматирования вообще не должна иметь "очертания
+  дерева" - природа структуры зависит от
+  реализации. Во-вторых, структура
+  форматирования может содержать
+  информации больше или меньше, чем дерево
+  документа. Например, если элемент дерева
+  документа имеет значение 'none' для свойства <a href="visuren.html#propdef-display" tppabs="http://pyramidin.narod.ru/css2/visuren.html#propdef-display" class="noxref"><span
+class="propinst-display">'display'</span></a>, то этот элемент не
+  будет ничего генерировать в структуре
+  форматирования. Элемент list, с другой
+  стороны, может генерировать больше
+  информации в структуре форматирования:
+  содержимое элемента list и стилевую
+  информацию (например, изображение для
+  маркёра).<P>Обратите внимание, что ПА CSS не
+  изменяет дерево документа на этом этапе. И
+  особенно, что содержимое, генерируемое в связи
+  с таблицы стилей, не возвращается
+  процессору языка документа (например, для
+  повторного разбора).
+
+<li>Переносит структуру форматирования на
+  целевой носитель (например, печатает
+  результат, отображает его на экране,
+  представляет в виде речевого потока и т.д.).
+</ol>
+
+<P>Шаг 1 находится вне пределов действия
+данной спецификации (см., например, <a href="refs.html#ref-DOM" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-DOM" rel="biblioentry" class="noxref"><span class="informref">[DOM]</span></a>).<P>Шаги
+2-5 адресуются основным объёмом данной
+спецификации.
+
+<P>Шаг 6 находится вне пределов действия
+данной спецификации.</p>
+
+<h3><a name="q4"><br>
+2.3.1 Канва</a></h3>
+
+<P>Для всех носителей термин <span class="index-def" title="canvas"><a
+name="canvas"><dfn>канва</dfn></a></span>  описывает &quot;пространство,
+где выводится сформатированная структура&quot;.
+Канва бесконечна по каждому измерению, но
+представление обычно производится в
+пределах ограниченной области канвы,
+установленной ПА в соответствии с целевым
+носителем. Например, вывод ПАгентами на
+экран обычно требует наличия минимальной
+ширины и выбора начальной ширины на базе
+размеров <a href="visuren.html#viewport" tppabs="http://pyramidin.narod.ru/css2/visuren.html#viewport">порта просмотра</a>.
+Вывод ПАгентами на страницу обычно требует
+ограничения ширины и высоты. Звуковые ПА
+могут предполагать ограничения звукового
+пространства, но не времени. 
+
+<h3><a name="q5"><br>
+2.3.2 Модель адресации CSS2</a></h3>
+
+<P><a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">Селекторы</a> и свойства CSS2
+позволяют обращаться из таблиц стилей к
+следующим частям документа или ПАгента:</p>
+
+<ul>
+<li>Элементам дерева документа и
+  определённым их взаимоотношениям (см.
+  раздел <a href="selector.html" tppabs="http://pyramidin.narod.ru/css2/selector.html">селекторы</a>).
+
+<li>Атрибутам элементов дерева документа и
+  значениям этих атрибутов (см. раздел <a
+href="selector.html#attribute-selectors" tppabs="http://pyramidin.narod.ru/css2/selector.html#attribute-selectors">селекторы атрибутов</a>).
+
+<li>Некоторым частям содержимого элемента (см.
+  псевдоэлементы <a
+href="selector.html#first-line" tppabs="http://pyramidin.narod.ru/css2/selector.html#first-line">:first-line</a> и <a
+href="selector.html#first-letter" tppabs="http://pyramidin.narod.ru/css2/selector.html#first-letter">:first-letter</a>.
+
+<li>Элементам дерева документа, находящимся
+  в определённом состоянии (см. раздел <a href="selector.html#pseudo-classes" tppabs="http://pyramidin.narod.ru/css2/selector.html#pseudo-classes">псевдоклассы</a>).
+
+<li>Некоторым аспектам <a href="#canvas">канвы</a> при
+  выводе документа.
+
+<li>Некоторой системной информации (см.
+  раздел <a href="ui.html" tppabs="http://pyramidin.narod.ru/css2/ui.html">интерфейс пользователя</a>).
+</ul>
+
+<H2><a name="q6"><br>
+2.4 Принципы дизайна CSS</a></H2>
+
+<P>CSS2, а до них - CSS1, базируются на наборе
+принципов дизайна:</p>
+
+
+<UL>
+
+<LI>
+<P><strong>Совместимость вперёд и обратная</strong>.
+ПА CSS2 понимают таблицы стилей CSS1. ПА CSS1
+могут читать таблицы стилей CSS2&nbsp; и
+отбрасывать те части, которые они не
+понимают. Также ПА, не поддерживающие CSS,
+могут отображать документы со стилями.
+Конечно, стилистические приёмы, возможные в CSS,
+не будут выводиться, но всё содержимое
+будет представлено.</P>
+</LI>
+
+<LI>
+<P><strong>Дополнение структурированных
+документов</strong>. Таблицы стилей дополняют
+структурированные документы (например,
+приложения HTML и XML), предоставляя
+стилистическую информацию для
+размеченного текста. Должна иметься
+возможность легко изменять таблицы стилей
+без или с минимальным влиянием на разметку.</P>
+</LI>
+
+<LI>
+<P><STRONG>Независимость от изготовителя,
+платформы и устройства</STRONG>. Таблицы стилей
+делают возможным создание документов, не
+зависящих от изготовителя, платформы и
+устройства. Таблицы стилей сами по себе
+также не зависят от изготовителя, платформы
+и устройства, но CSS2 позволяют Вам назначить
+таблицу стилей группе устройств (например,
+принтеров).</P>
+</LI>
+
+<LI>
+<P><strong>Удобство обслуживания</strong>. Ссылаясь
+из документа на таблицы стилей, web-мастера
+могут упростить обслуживание сайта и
+добиться целостного вида и содержания
+всего сайта. Например, если изменяется цвет
+фона сайта организации, нужно будет
+изменить лишь один файл.</P>
+</LI>
+
+<LI>
+<P><strong>Простота</strong>. CSS2 сложнее, чем CSS1, но
+остаётся простым языком стилей, доступным
+для чтения и понимания человеком. Свойства CSS
+не зависят одно от другого,
+чтобы иметь в будущем возможности для
+расширения, и поэтому обычно имеется лишь
+один способ для достижения определённого
+эффекта.</P>
+</LI>
+
+<LI> 
+<P><strong>Скорость работы сети</strong>. CSS
+предоставляют компактные способы
+представления содержимого. По сравнению с
+файлами изображений или аудиофайлами,
+которые часто используются авторами для
+получения определённых эффектов
+представления, таблицы стилей чаще всего
+уменьшают объёмы содержимого. Требуется
+также меньше сетевых соединений, что
+увеличивает пропускную способность сети.</P> </LI>
+
+<LI>
+<P><strong>Гибкость</strong>. CSS может применяться в
+содержимом разными способами. Ключевым
+является возможность каскадирования
+стилевой информации, специфицированной в
+таблице стилей по умолчанию(в ПА),
+пользовательских таблицах стилей,
+связанных таблицах стилей, шапке документа
+и атрибутах элементов, формирующих тело
+документа.</P>
+</LI>
+
+<LI>
+<P><strong>Богатство возможностей</strong>.
+Предоставление авторам большого набора
+эффектов отображения увеличивает
+разнообразие Web. Дизайнерам была необходима
+функциональность, которая уже
+использовалась в настольных приложениях и
+слайд-презентациях. Некоторые из требуемых
+эффектов конфликтуют с независимостью от
+конкретных устройств, но CSS2 явился
+дальнейшим шагом на пути удовлетворения
+запросов дизайнеров.</P>
+</LI>
+
+<LI>
+<P><strong>Связи с другими языками</strong>. Набор
+свойств CSS, описанный в этой спецификации,
+образует последовательную модель
+форматирования для визуального и звукового
+представления. Эта модель форматирования
+может быть доступна из языка CSS, но возможны
+также связи с другими языками. Например,
+программа JavaScript может динамически изменить
+значение свойства <a href="colors.html#propdef-color" tppabs="http://pyramidin.narod.ru/css2/colors.html#propdef-color" class="noxref"><span
+class="propinst-color">'color'</span></a>  определённого
+элемента.</P>
+</LI>
+
+<LI>
+<P><strong>Доступность</strong>. Некоторые
+возможности CSS сделают Web более доступным
+для пользователей с физическими проблемами:</p>
+
+<UL>
+<LI>Свойства для управления выводом шрифта позволяют
+  авторам исключить недоступность
+  растрированных текстовых изображений. 
+<li>Свойства позиционирования позволяют
+  авторам исключить трюки с разметкой (например,
+  невидимые изображения) для целей
+  изменения вывода.
+<LI>Семантика правил <tt>!important</tt>  означает,
+  что пользователи с особыми требованиями к
+  представлению могут переопределять
+  установки авторских таблиц стилей.
+<li>Новое значение 'inherit' для всех свойств
+  улучшает каскадирование и даёт
+  возможность более лёгкой и точной
+  настройки стиля.
+<li>Улучшенная поддержка носителей, включая
+  группы носителей и брайль-носители,
+  рельефные и tty типы носителей, позволит
+  пользователям и авторам создавать
+  страницы для данных устройств.
+<LI>Звуковые свойства дают возможность
+  управлять речевым и аудиовыводом.
+<LI>Селекторы атрибутов, функция 'attr()' function и
+  свойство 'content' дают возможность доступа к
+  альтернативному содержимому.
+<LI>Счётчики и нумерация разделов/параграфов
+  может улучшить навигацию по документам и
+  сохранить пространство отступов (важно
+  для байль-устройств). Свойства 'word-spacing' и 'text-indent'
+  исключают надобность в излишнем свободном
+  пространстве в документе.
+</UL>
+
+<div class="note"><P> <em><strong>Примечание.</strong>  За
+  дополнительной информацией о разработке
+  доступных документов с использованием CSS и
+  HTML обратитесь, пожалуйста, на <a href="refs.html#ref-WAI-PAGEAUTH" tppabs="http://pyramidin.narod.ru/css2/refs.html#ref-WAI-PAGEAUTH" rel="biblioentry" class="noxref"><span class="informref">[WAI-PAGEAUTH]</span></a>.</em>
+</div>
+</UL>
+
+
+<hr class="navbar">
+
+<div class="navbar" align="center">
+<p><a href="about.html" tppabs="http://pyramidin.narod.ru/css2/about.html">предыдущий</a> &nbsp; <a href="conform.html" tppabs="http://pyramidin.narod.ru/css2/conform.html">следующий</a> &nbsp;
+<a href="index.htm#minitoc" tppabs="http://pyramidin.narod.ru/css2/index.htm#minitoc">содержание</a> &nbsp; <a href="propidx.html" tppabs="http://pyramidin.narod.ru/css2/propidx.html">свойства</a> &nbsp;
+<a href="indexlist.html" tppabs="http://pyramidin.narod.ru/css2/indexlist.html">индекс</a>
+</div>
+</BODY>
+</HTML>
+
+<!-- ><!-- "><!-- '><!-- --></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<script language="JavaScript" src="http://bs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

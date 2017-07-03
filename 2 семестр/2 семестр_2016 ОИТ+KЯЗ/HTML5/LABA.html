@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>HTML5</title>
+	<style type="text/css">
+			body{
+				background-image: url(2.jpg);
+			}
+			#video{
+				text-align: center;
+			}
+	</style>
+</head>
+<body>
+<div id="video">
+<video width="430" height="320" controls="controls" poster="1.jpg">
+	<source src="KISH.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+</video></div>
+<h4 style="color:white;">Король и Шут-Два друга и разбойники</h4>
+<audio controls="controls">
+	<source src="(02) [Король и Шут] Два друга и разбойники.mp3" type="audio/mpeg">
+</audio>
+<br>
+<canvas id="exemple"></canvas>
+	<script type="text/javascript">
+	var example = document.getElementById("exemple"),
+			ctx = example.getContext('2d');
+			example.height = 500;
+			example.width  = 500;
+			ctx.beginPath();						   
+		ctx.fillStyle = ' #3cf';
+	    ctx.fillRect(0,0,500,500);
+	    ctx.fillStyle='#006';
+	    ctx.fillRect(20,20,460,460);
+	    ctx.fillStyle = ' #3cf';
+	    ctx.font="bold 400px Calibri";
+	    ctx.fillText("Ps",60,380)
+	</script>
+	<br>
+	<p id="geo" style="color:white;"></p>
+	<script>
+	navigator.geolocation.getCurrentPosition(
+    function(position) {
+	    alert('Последний раз вас засекали здесь: ' +
+		    position.coords.latitude + ", " + position.coords.longitude);
+	}
+);
+</script>
+<p><label for="name" style="color:white;">Имя </label><input type="text" name="name"></p>
+    <p><label for="email"style="color:white;">E-mail</label><input type="email" name="email"></p>
+	<label for="date" style="color:white;">Дата</label><input type="date" name="email"><br /><br />
+	<label for="alt" style="color:white;">Ваш возраст</label><input type="number" min="1" max="100" step="1"><br />
+	<br />
+		<label style="color:white;">Желаете получать рассылку?</label><input type="radio">Да <br /> <br />
+		<input type="submit" value="отправить">  <br /> <br /> <br />
+
+</body>
+</html>
